@@ -1,94 +1,24 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+  <div class="container">
+    <img class="logo" src="../assets/logo.jpg" alt="">
+    <div class="input-group input-group-lg">
+  <input id="search" type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
+<span class="input-group-addon" id="sizing-addon1"><i class="fa fa-search" aria-hidden="true"></i></span>
+</div>
+     <footeMenu></footeMenu>
   </div>
+
 </template>
 
 <script>
+import footeMenu from './footeMenu'
 export default {
-  name: 'home',
+  components: {
+    footeMenu
+  },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'this is component "home"'
     }
   }
 }
@@ -99,15 +29,23 @@ export default {
 h1, h2 {
   font-weight: normal;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
 li {
   display: inline-block;
   margin: 0 10px;
 }
 a {
   color: #42b983;
+}
+#search{
+  font-size: 12px;
+}
+.logo{
+  width: 50%;
+  margin-top: 30px;
+  margin-bottom:15px;
+}
+.input-group-lg>.form-control, .input-group-lg>.input-group-addon, .input-group-lg>.input-group-btn>.btn{
+  padding: 0px 12px;
+  height:36px;
 }
 </style>
