@@ -5,7 +5,7 @@
   <input id="search" type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
 <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-search" aria-hidden="true"></i></span>
 </div>
-     <footeMenu></footeMenu>
+     <foote-menu></foote-menu>
   </div>
 
 </template>
@@ -16,10 +16,8 @@ export default {
   components: {
     footeMenu
   },
-  data () {
-    return {
-      msg: 'this is component "home"'
-    }
+  mounted: function () {
+    document.querySelector('body').setAttribute('style', 'background-color:#fff')
   }
 }
 </script>
@@ -40,8 +38,8 @@ a {
   font-size: 12px;
 }
 .logo{
-  width: 50%;
-  margin-top: 30px;
+  width: 40%;
+  margin-top: 20px;
   margin-bottom:15px;
 }
 .input-group-lg>.form-control, .input-group-lg>.input-group-addon, .input-group-lg>.input-group-btn>.btn{

@@ -12,10 +12,8 @@ export default {
   components: {
     footeMenu
   },
-  data () {
-    return {
-      msg: 'this is component "create"'
-    }
+  mounted: function () {
+    document.querySelector('body').setAttribute('style', 'background-color:#fff')
   }
 }
 </script>
