@@ -26,8 +26,6 @@ ul{
   width: 100%;
   padding: 15px 0;
   text-align: center;
-}
-a{
-  color: #fff;
+  color: gray;
 }
 </style>

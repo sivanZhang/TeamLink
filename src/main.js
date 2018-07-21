@@ -3,6 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+/* 注册全局组件 */
+import footeMenu from './components/footeMenu'
+Vue.component('foote-menu', footeMenu)
 
 Vue.config.productionTip = false
 /* eslint-disable no-new */

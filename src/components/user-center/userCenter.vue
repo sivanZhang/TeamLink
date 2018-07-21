@@ -1,6 +1,6 @@
 <template>
 <div class="container text-center">
-    <img class="logo" src="../../assets/logo.jpg" alt="">
+    <div class="title">More</div>
     <ul class="text-left row links">
         <li>
             <router-link to="/login">Sign in<i class="fa fa-pull-right fa-angle-right" aria-hidden="true"></i></router-link>
@@ -14,13 +14,9 @@
 </template>
 
 <script>
-import footeMenu from '../footeMenu'
 export default {
-  components: {
-    footeMenu
-  },
   mounted: function () {
-    document.querySelector('body').setAttribute('style', 'background-color:#f4f5f9')
+    document.querySelector('body').setAttribute('style', 'background-color:#fff')
   }
 }
 </script>
@@ -41,14 +37,14 @@ ul.links {
 li+li {
     border-top: 1px solid #e1e4e8;
 }
-
-.logo {
-    width: 40%;
-    margin-top: 20px;
-    margin-bottom: 15px;
+.logo{
+  width: 40%;
+  padding-bottom: 9px;
+  margin: 0 auto;
 }
-
-a {
-    color: inherit;
+.title{
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
 }
 </style>

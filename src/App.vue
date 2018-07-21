@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
 }
 </script>
 
@@ -21,7 +21,6 @@ body {
     -moz-osx-font-smoothing: grayscale;
     color: #333;
 }
-
 ul {
     padding: 0px;
     margin: 0px;
@@ -42,7 +41,9 @@ input:-webkit-autofill,
 select:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px white inset !important;
 }
-
+a {
+    color: inherit;
+}
 .relative {
     position: relative;
 }
