@@ -1,10 +1,10 @@
 <template>
   <ul class="row">
-    <router-link to="/"><li class='col-xs-4'><i class="fa fa-search" aria-hidden="true"></i></li>
+    <router-link class="nav-link " to="/"><li class='col-xs-4'><i class="fa fa-search" aria-hidden="true"></i></li>
     </router-link>
-    <router-link to="/create"><li class='col-xs-4'><i class="fa fa-bandcamp" aria-hidden="true"></i></li>
+    <router-link class="nav-link" to="/create"><li class='col-xs-4'><i class="fa fa-bandcamp" aria-hidden="true"></i></li>
     </router-link>
-    <router-link to="/user-center"><li class='col-xs-4'><i class="fa fa-ellipsis-h" aria-hidden="true"></i></li>
+    <router-link class="nav-link" to="/user-center"><li class='col-xs-4'><i class="fa fa-ellipsis-h" aria-hidden="true"></i></li>
     </router-link>
   </ul>
 </template>
@@ -14,7 +14,8 @@ export default {
   data () {
     return {
     }
-  }
+  },
+  props: ['actice']
 }
 </script>
 

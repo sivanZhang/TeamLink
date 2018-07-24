@@ -1,7 +1,7 @@
 <template>
 <div class="text-left back">
-    <span @click="go_back"><i class="fa fa-angle-left" aria-hidden="true"></i> Back</span>
-    <a class="pull-right" href="/">Home</a>
+    <span @click="go_back"><i class="fa fa-angle-left" aria-hidden="true"></i></span>
+    <router-link class="pull-right" to="/">Home</router-link>
 </div>
 </template>
 
@@ -19,9 +19,8 @@ export default {
 <style scoped>
 .back {
     padding-top: 15px;
-    color: #a9afb6;
+    color: grey;
 }
-
 a {
     color: inherit;
 }

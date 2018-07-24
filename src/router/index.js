@@ -21,13 +21,16 @@ const routes = [{
 {
   path: '/user-center',
   component: userCenter
-},{
+},
+{
   path: '/login',
   component: login
-},{
+},
+{
   path: '/signup',
   component: signUp
-},{
+},
+{
   path: '/forgot',
   component: forgot
 }]

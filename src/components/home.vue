@@ -9,30 +9,24 @@
     </div>
      <foote-menu></foote-menu>
   </div>
-
 </template>
 
 <script>
 export default {
-  mounted: function() {
-    document
-      .querySelector("body")
-      .setAttribute("style", "background-color:#f4f5f9");
-  }
-};
+}
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #search {
     border: none;
     outline: none;
-    border-radius: 4px;
-    box-shadow:0 0 0px 0px rgba(0,0,0,0.16), 0 0 18px 1px rgba(0,0,0,0.08);
+    border-radius: 6px;
+    box-shadow:0 0 10px 0px rgba(0,0,0,0.16), 0 0 20px 1px rgba(0,0,0,0.08);
     margin-top: 15px;
     width: 100%;
     padding-right: 54px;
     color:gray;
+    height: 46px;
 }
 h1,
 h2 {
@@ -45,7 +39,7 @@ li {
 .icons{
   position: absolute;
   right: 6px;
-  bottom: 7px;
+  bottom: 12px;
 }
 #search {
   font-size: 12px;

@@ -1,19 +1,18 @@
 <template>
-<div class="container">
-    <back></back>
-    <form>
+<div>
+    <div class="container"><back></back></div>
+    <form class="container">
         <div class="text-center"><img class="logo" src="../../assets/logo.jpg" alt=""></div>
-        <input class="form-control" @blur="sure" type="number" name="phone_number" placeholder="Phone">
+        <input v-model="user.phone" class="form-control" type="number" placeholder="Phone">
         <div class="relative">
-            <input class="form-control" @blur="sure" type="password" name="verification" placeholder="Verification code">
-            <button id="send_code" type="button">send</button>
+            <input v-model="user.phonecode" @blur="test_phone" class="form-control" type="text" name="verification" placeholder="Verification code">
+            <button @click='send_code' id="send_code" type="button">send</button>
         </div>
-        <input class="form-control" @blur="sure" type="password" name="phone_number" placeholder="Password">
-        <input class="form-control" @blur="sure" type="password" name="phone_number" placeholder="Password">
-        <button id="submit" type="submit" class="btn">Resetting</button>
+        <input v-model="user.password" class="form-control" type="password" name="phone_number" placeholder="Password">
+        <button  @click='submit' id="submit" type="button" class="black-btn common-btn">Resetting</button>
         <p class="text-center">
             After successful reset to
-            <router-link to="/login">Sign in</router-link>
+            <router-link to="/login" class="blue-link">Sign in</router-link>
         </p>
     </form>
 </div>
@@ -27,9 +26,42 @@ export default {
     },
     data() {
         return {
-            msg: 'this is component "user-center"'
+            user:{
+                phone:'',
+                password:'',
+                phonecode:''
+            }
         }
     },
+    methods: {
+        submit:function() {
+            this.$ajax.post('http://47.95.239.228:9000/users/register/?json',this.$qs.stringify(this.user))
+                .then(result => {
+                    console.log(result)
+                })
+                .catch(res => {
+                    console.log('error')
+                });
+        },
+        test_phone() {/* 验证码是否正确 */
+            this.$ajax.get('http://47.95.239.228:9000/users/phonecode/'+this.user.phone+'/'+this.user.phonecode+'?json')
+                .then(result => {
+                    console.log(result)
+                })
+                .catch(res => {
+                    console.log('error')
+                });
+        },
+        send_code(){/* 发送验证码 */
+            this.$ajax.get('http://47.95.239.228:9000/users/phonecode/'+this.user.phone+'?json&codetype=1')
+                .then(result => {
+                    console.log(result)
+                })
+                .catch(res => {
+                    console.log('error')
+                });
+        }
+  },
     mounted: function () {
         document.querySelector('body').setAttribute('style', 'background-color:#f4f5f9');
     }
@@ -40,28 +72,24 @@ export default {
 .row {
     margin-top: 15px;
 }
-
 .row a {
     color: gray;
 }
-
 #submit {
     width: 100%;
     margin-top: 15px;
-    background-color: #000;
-    color: #fff;
 }
-
 form {
-    padding-top: 120px;
+    position: absolute;
+    bottom: 50%;
+    transform: translateY(45%);
+    width: 100%;
 }
-
 p {
     padding-top: 15px;
     margin-top: 15px;
     border-top: 1px solid rgba(48, 51, 57, 0.15);
 }
-
 .logo {
     width: 40%;
     margin: 15px auto;
@@ -106,10 +134,5 @@ input:-ms-input-placeholder {
 #send_code:focus {
     border: 0px;
     outline: 0px;
-}
-
-.form-control,
-.btn {
-    border-radius: 3px;
 }
 </style>
