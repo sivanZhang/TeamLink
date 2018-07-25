@@ -96,8 +96,12 @@ export default {
               "?json"
           )
           .then(result => {
-            this.msg.pop();
-            this.msg.push(result.data.msg);
+            if (result.data.status == "ok") {
+              return;
+            } else {
+              this.msg.pop();
+              this.msg.push(result.data.msg);
+            }
           })
           .catch(res => {
             this.msg.pop();

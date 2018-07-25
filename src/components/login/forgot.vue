@@ -82,8 +82,12 @@ export default {
               "?json"
           )
           .then(result => {
-            this.msg.pop();
-            this.msg.push(result.data.msg);
+            if (result.data.status == "ok") {
+              return;
+            } else {
+              this.msg.pop();
+              this.msg.push(result.data.msg);
+            }
           })
           .catch(result => {
             this.msg.pop();
@@ -104,10 +108,12 @@ export default {
               "?json&codetype=1"
           )
           .then(result => {
-            console.log(result);
+            this.msg.pop();
+            this.msg.push(result.data.msg);
           })
           .catch(result => {
-            console.log("error");
+            this.msg.pop();
+            this.msg.push("后台错误，验证码发送失败");
           });
       }
     },
