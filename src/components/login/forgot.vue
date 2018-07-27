@@ -3,12 +3,12 @@
     <div class="container"><back></back></div>
     <form class="container">
         <div class="text-center"><img class="logo" src="../../assets/logo.jpg" alt=""></div>
-        <input v-model="user.phone" @blur="test_phone" class="form-control" type="number" placeholder="Phone">
+        <input v-model.lazy="user.phone" @blur="test_phone" class="form-control" type="number" placeholder="Phone">
         <div class="relative">
-            <input v-model="user.phonecode" @blur="test_phonecode" class="form-control" type="text" name="verification" placeholder="Verification code">
+            <input v-model.lazy="user.phonecode" @blur="test_phonecode" class="form-control" type="text" name="verification" placeholder="Verification code">
             <button @click='send_code' id="send_code" type="button">send</button>
         </div>
-        <input v-model="user.password" class="form-control" type="password" name="phone_number" placeholder="Password">
+        <input v-model.lazy="user.password" class="form-control" type="password" name="phone_number" placeholder="Password">
         <button  @click='submit' id="submit" type="button" class="black-btn common-btn">Resetting</button>
         <p class="text-center">
             After successful reset to

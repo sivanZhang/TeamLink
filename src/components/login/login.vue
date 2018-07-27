@@ -38,9 +38,6 @@ export default {
     };
   },
   computed: {
-    removeMsg: function() {
-      this.msg.pop();
-    },
     message: function() {
       return this.msg.toString();
     }
@@ -48,7 +45,7 @@ export default {
   methods: {
     submit() {
       if (!this.user.phone || !this.user.password) {
-        this.removeMsg; /* 调用计算属性 */
+        this.msg.pop();
         this.msg.push("phone and password required.");
       } else {
         this.$ajax
@@ -57,12 +54,13 @@ export default {
             this.$qs.stringify(this.user)
           )
           .then(result => {
-            this.removeMsg;
+            console.log(result);
+            this.msg.pop();
             this.msg.push(result.data.msg);
           })
           .catch(result => {
-            this.removeMsg;
-            this.msg.push("error!");
+            this.msg.pop();
+            this.msg.push("server is down!");
           });
       }
     },

@@ -9,7 +9,6 @@ import qs from 'qs'
 import router from './router'
 /* 注册全局组件 */
 import footeMenu from './components/footeMenu'
-import '../static/font-awesome/css/font-awesome.min.css'
 import '../static/css/base.css'
 /* import '../static/font-awesome/css/font-awesome.min.css' */
 Vue.use(VueAxios, axios)

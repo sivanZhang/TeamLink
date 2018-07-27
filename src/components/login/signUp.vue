@@ -7,12 +7,12 @@
         <div class="text-center">
             <img class="logo" src="../../assets/logo.jpg" alt="">
         </div>
-        <input class="form-control" v-model="user.phone" @blur="test_phone" type="text" autocomplete='tel-national' placeholder="Phone">
+        <input class="form-control" v-model.lazy="user.phone" @blur="test_phone" type="text" autocomplete='tel-national' placeholder="Phone">
         <div class="relative">
-            <input class="form-control" type="text" v-model="user.phonecode" @blur="test_phonecode" name="verification" placeholder="Verification code">
+            <input class="form-control" type="text" v-model.lazy="user.phonecode" @blur="test_phonecode" name="verification" placeholder="Verification code">
             <button id="send_code" @click='send_code' type="button">send</button>
         </div>
-        <input class="form-control" type="password" v-model="user.password" autocomplete='tel-national' placeholder="Password">
+        <input class="form-control" type="password" v-model.lazy="user.password" autocomplete='tel-national' placeholder="Password">
         <button id="submit" type="button" @click='submit' class="black-btn common-btn">Create an account</button>
         <p class="text-center">
             By signing up you acknowledge that you have read and agree to the
