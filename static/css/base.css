@@ -41,6 +41,13 @@
     font-size:12px;
 }
 /* ----------------------------------------更改默认样式----------------------------------- */
+.common-btn[disabled],#send_code[disabled]{
+    cursor: not-allowed;
+    filter: alpha(opacity=65);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    opacity: .65;
+}
 .common-btn:active{
     color: initial;
 }

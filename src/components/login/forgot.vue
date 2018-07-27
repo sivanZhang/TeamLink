@@ -8,15 +8,15 @@
             <input v-model.lazy="user.phonecode" @blur="test_phonecode" class="form-control" type="text" name="verification" placeholder="Verification code">
             <button @click='send_code' id="send_code" type="button">send</button>
         </div>
-        <input v-model.lazy="user.password" class="form-control" type="password" name="phone_number" placeholder="Password">
-        <button  @click='submit' id="submit" type="button" class="black-btn common-btn">Resetting</button>
+        <input v-model.lazy="user.password" class="form-control" type="password" name="phone_number" placeholder="New password">
+        <button  @click='submit' :disabled="isDisabled" id="submit" type="button" class="black-btn common-btn">Resetting</button>
         <p class="text-center">
             After successful reset to
             <router-link to="/login" class="blue-link">Sign in</router-link>
         </p>
         <div v-if="msg.length" class="alert alert-warning alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <strong>Warning!</strong> {{message}}
+            {{message}}
         </div>
     </form>
 </div>
@@ -41,37 +41,45 @@ export default {
   computed: {
     message: function() {
       return this.msg.toString();
+    },
+    isDisabled() {
+      if (!this.user.phone || !this.user.password || !this.user.phonecode) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    regtestPhone() {
+      return !/^1[3|4|5|8][0-9]\d{8}$/.test(this.user.phone);
     }
   },
   methods: {
-    submit: function() {
-      if (!this.user.phone || !this.user.password || !this.user.phonecode) {
-        this.msg.pop();
-        this.msg.push("input required.");
+    setInfo(info) {
+      this.msg.pop();
+      this.msg.push(info);
+    },
+    submit() {
+      if (this.regtestPhone) {
+        this.setInfo("请输入正确的手机号");
       } else {
         this.$ajax
           .post(
-            "http://47.95.239.228:9000/users/register/?json",
+            "http://47.95.239.228:9000/users/find_password?json",
             this.$qs.stringify(this.user)
           )
           .then(result => {
-            this.msg.pop();
-            this.msg.push(result.data.msg);
+            console.log(result);
+            this.setInfo(result.data.msg);
           })
           .catch(result => {
-            this.msg.pop();
-            this.msg.push("server is down!");
+            this.setInfo("server is down!");
           });
       }
     },
     test_phonecode() {
       /* 验证码是否正确 */
-      if (!this.user.phonecode) {
-        this.msg.pop();
-        this.msg.push("验证码不能为空!");
-      } else if (this.user.phonecode.length != 4) {
-        this.msg.pop();
-        this.msg.push("验证码错误!");
+      if (!/^\d{4}$/.test(this.user.phonecode)) {
+        this.setInfo("输入正确的四位验证码!");
       } else {
         this.$ajax
           .get(
@@ -85,21 +93,18 @@ export default {
             if (result.data.status == "ok") {
               return;
             } else {
-              this.msg.pop();
-              this.msg.push(result.data.msg);
+              this.setInfo(result.data.msg);
             }
           })
           .catch(result => {
-            this.msg.pop();
-            this.msg.push("系统错误，效验验证码失败");
+            this.setInfo("系统错误，效验验证码失败");
           });
       }
     },
     send_code() {
       /* 发送验证码 */
-      if (!this.user.phone) {
-        this.msg.pop();
-        this.msg.push("手机号不能为空");
+      if (this.regtestPhone) {
+        this.setInfo("填写正确手机号才能发送验证码");
       } else {
         this.$ajax
           .get(
@@ -108,19 +113,16 @@ export default {
               "?json&codetype=1"
           )
           .then(result => {
-            this.msg.pop();
-            this.msg.push(result.data.msg);
+            this.setInfo(result.data.msg);
           })
           .catch(result => {
-            this.msg.pop();
-            this.msg.push("后台错误，验证码发送失败");
+            this.setInfo("后台错误，验证码发送失败");
           });
       }
     },
     test_phone() {
-      if (!/^1[3|4|5|8][0-9]\d{4,8}$/.test(this.user.phone)) {
-        this.msg.pop();
-        this.msg.push("请输入正确的手机号");
+      if (this.regtestPhone) {
+        this.setInfo("请输入正确的手机号");
       }
     }
   },

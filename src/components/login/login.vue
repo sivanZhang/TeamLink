@@ -7,16 +7,16 @@
             <div class="line"></div>
             <!-- <img class="logo" src="../../assets/logo.jpg" alt=""> -->
         </div>
-        <input class="form-control" v-model.lazy="user.phone" @blur="test_phone" type="number" name="phone_number" placeholder="Phone">
-        <input class="form-control" v-model.lazy="user.password" type="password" name="phone_number" placeholder="Password">
-        <button id="submit" @click="submit" type="button" class="black-btn common-btn">Log in</button>
+        <input v-model="user.phone"  @blur="test_phone" class="form-control" type="number" name="phone_number" placeholder="Phone">
+        <input v-model="user.password" class="form-control" type="password" name="phone_number" placeholder="Password">
+        <button id="submit" @click="submit" type="button" class="black-btn common-btn" :disabled='isDisabled'>Log in</button>
         <div class="row">
             <router-link to="/signup" class="col-xs-6 text-left">Create an account</router-link>
             <router-link to="/forgot" class="col-xs-6 text-right">Forgot?</router-link>
         </div>
         <div v-if="msg.length" class="alert alert-warning alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <strong>Warning!</strong> {{message}}
+            {{message}}
         </div>
     </form>
 </div>
@@ -38,36 +38,47 @@ export default {
     };
   },
   computed: {
-    message: function() {
+    message() {
       return this.msg.toString();
+    },
+    isDisabled() {
+      if (!this.user.phone || !this.user.password) {
+        return true;
+      } else {
+        return false;
+      }
     }
   },
   methods: {
+    setInfo(info) {
+      /* 设置提示信息 */
+      this.msg.pop();
+      this.msg.push(info);
+    },
     submit() {
-      if (!this.user.phone || !this.user.password) {
-        this.msg.pop();
-        this.msg.push("phone and password required.");
+      if (!/^1[3|4|5|8][0-9]\d{8}$/.test(this.user.phone)) {
+        this.setInfo("请输入正确的手机号");
       } else {
         this.$ajax
           .post(
             "http://47.95.239.228:9000/users/login/?json",
-            this.$qs.stringify(this.user)
+            this.$qs.stringify(this.user) /* QS处理才能后台接受正确数据 */
           )
           .then(result => {
-            console.log(result);
-            this.msg.pop();
-            this.msg.push(result.data.msg);
+            if (result.data.status == "ok") {
+              this.$router.push("/user-center");
+            } else {
+              this.setInfo(result.data.msg);
+            }
           })
           .catch(result => {
-            this.msg.pop();
-            this.msg.push("server is down!");
+            this.setInfo("server is down!");
           });
       }
     },
     test_phone() {
-      if (!/^1[3|4|5|8][0-9]\d{4,8}$/.test(this.user.phone)) {
-        this.msg.pop();
-        this.msg.push("请输入正确的手机号");
+      if (!/^1[3|4|5|8][0-9]\d{8}$/.test(this.user.phone)) {
+        this.setInfo("请输入正确的手机号");
       }
     }
   },

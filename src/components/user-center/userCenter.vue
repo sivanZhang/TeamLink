@@ -33,7 +33,10 @@ ul.links {
     border-top: 1px solid #e1e4e8;
     border-bottom: 1px solid #e1e4e8;
 }
-
+.links a{
+    display: inline-block;
+    width: 100%;
+}
 li+li {
     border-top: 1px solid #e1e4e8;
 }
