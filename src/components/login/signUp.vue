@@ -4,8 +4,8 @@
         <back></back>
     </div>
     <form class="container">
-        <div class="text-center">
-            <img class="logo" src="../../assets/logo.jpg" alt="">
+        <div class="text-center title">
+            Create your personal account
         </div>
         <input v-model.lazy="user.phone" @blur="test_phone" class="form-control" type="text" autocomplete='tel-national' placeholder="Phone">
         <div class="relative">
@@ -169,11 +169,6 @@ p + p {
   border-top: 1px solid rgba(48, 51, 57, 0.15);
 }
 
-.logo {
-  width: 40%;
-  margin: 15px auto;
-}
-
 input {
   margin-bottom: 15px;
 }
@@ -214,5 +209,10 @@ input:-ms-input-placeholder {
 .form-control,
 .btn {
   border-radius: 3px;
+}
+.title{
+  font-size: 22px;
+  margin-bottom: 30px;
+  font-family:sans-serif;
 }
 </style>

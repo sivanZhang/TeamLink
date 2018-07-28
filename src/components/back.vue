@@ -1,6 +1,6 @@
 <template>
 <div class="text-left back">
-    <span @click="go_back"><i class="fa fa-angle-left" aria-hidden="true"></i></span>
+    <span @click="go_back"><i class="fa fa-2x fa-angle-left" aria-hidden="true"></i></span>
     <router-link class="pull-right" to="/">Home</router-link>
 </div>
 </template>

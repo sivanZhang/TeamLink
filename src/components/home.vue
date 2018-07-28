@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="relative">
-    <input id="search" type="search" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
+    <input id="search" type="search" class="form-control" placeholder="Search" aria-describedby="sizing-addon1">
     <div class="icons">
     <i class="fa fa-search" aria-hidden="true"></i>
     <i class="fa fa-sliders" aria-hidden="true"></i>
@@ -13,6 +13,9 @@
 
 <script>
 export default {
+  mounted: function () {
+    document.querySelector('body').setAttribute('style', 'background-color:#fff')
+  }
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -3,7 +3,7 @@
     <div class="container"><back></back></div>
     <form class="container">
         <div class="text-center title">
-            <div>Welcome</div>
+            <div>Sign in to TEAMLINK</div>
             <div class="line"></div>
             <!-- <img class="logo" src="../../assets/logo.jpg" alt=""> -->
         </div>
@@ -62,11 +62,12 @@ export default {
         this.$ajax
           .post(
             "http://47.95.239.228:9000/users/login/?json",
-            this.$qs.stringify(this.user) /* QS处理才能后台接受正确数据 */
+            this.$qs.stringify(this.user)
           )
           .then(result => {
             if (result.data.status == "ok") {
-              this.$router.push("/user-center");
+            this.$cookie.set('user-name',result.data.phone);
+            this.$router.push("/user-center");
             } else {
               this.setInfo(result.data.msg);
             }
@@ -93,13 +94,14 @@ export default {
 <style scoped>
 .line {
   display: inline-block;
-  width: 50px;
+  width: 100px;
   border-bottom: 2px solid #333;
-  transform: translateY(-36px);
+  transform: translateY(-22px);
 }
 
 .title {
-  font-size: 36px;
+  font-size: 22px;
+  font-family:sans-serif;
 }
 
 .form-control,

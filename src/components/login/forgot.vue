@@ -2,7 +2,9 @@
 <div>
     <div class="container"><back></back></div>
     <form class="container">
-        <div class="text-center"><img class="logo" src="../../assets/logo.jpg" alt=""></div>
+        <div class="text-center title">
+          Reset your password
+          </div>
         <input v-model.lazy="user.phone" @blur="test_phone" class="form-control" type="number" placeholder="Phone">
         <div class="relative">
             <input v-model.lazy="user.phonecode" @blur="test_phonecode" class="form-control" type="text" name="verification" placeholder="Verification code">
@@ -156,9 +158,10 @@ p {
   margin-top: 15px;
   border-top: 1px solid rgba(48, 51, 57, 0.15);
 }
-.logo {
-  width: 40%;
-  margin: 15px auto;
+.title {
+  font-size: 22px;
+  margin-bottom: 30px;
+  font-family:sans-serif;
 }
 
 form input.form-control {

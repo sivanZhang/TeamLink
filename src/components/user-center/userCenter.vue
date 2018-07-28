@@ -1,13 +1,15 @@
 <template>
-<div class="container text-center">
-    <div class="title">More</div>
+<div class="container">
+    <div class="title">
+        <div class="col1"><img class="user-img" src="../../assets/touxiang.jpg" alt=""></div>
+        <div class="col2">Phone:{{phone_number}}</div>
+        <div class="col3 text-right"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+        
+    </div>
     <ul class="text-left row links">
-        <li>
-            <router-link to="/login">Sign in<i class="fa fa-pull-right fa-angle-right" aria-hidden="true"></i></router-link>
-        </li>
         <li>Settings<i class="fa fa-pull-right fa-angle-right" aria-hidden="true"></i></li>
-        <li>Help<i class="fa fa-pull-right fa-angle-right" aria-hidden="true"></i></li>
-        <li>Sign out<i class="fa fa-pull-right fa-angle-right" aria-hidden="true"></i></li>
+        <li ref="li" class="test">Help<i class="fa fa-pull-right fa-angle-right" aria-hidden="true"></i></li>
+        <li @click="sign_out">Sign out<i class="fa fa-pull-right fa-angle-right" aria-hidden="true"></i></li>
     </ul>
     <foote-menu></foote-menu>
 </div>
@@ -15,8 +17,19 @@
 
 <script>
 export default {
+    data(){
+        return{
+            phone_number:this.$cookie.get('user-name')
+        }
+    },
   mounted: function () {
-    document.querySelector('body').setAttribute('style', 'background-color:#fff')
+    document.querySelector('body').setAttribute('style', 'background-color:#fff');
+  },
+  methods:{
+    sign_out(){
+        this.$cookie.delete('user-name');
+        this.$router.push("/login"); 
+    } 
   }
 }
 </script>
@@ -40,14 +53,26 @@ ul.links {
 li+li {
     border-top: 1px solid #e1e4e8;
 }
-.logo{
-  width: 40%;
-  padding-bottom: 9px;
-  margin: 0 auto;
+.user-img{
+    width: 60px;
+    height: 60px;
+    border-radius: 3px;
 }
 .title{
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 10px;
+    padding: 10px 0;
+    width: 100%;
+    display: table;
+}
+.col1,.col2,.col3{
+    display: table-cell;
+}
+.col1{
+    vertical-align: middle;
+    width: 75px;
+}.col2{
+    vertical-align: bottom;
+}
+.col3{
+    vertical-align: middle;
 }
 </style>

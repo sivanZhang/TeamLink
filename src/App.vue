@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import $ from 'jquery'
-console.log($);
 export default {
   name: 'App',
+  methods:{
+  }
 }
 </script>
 
