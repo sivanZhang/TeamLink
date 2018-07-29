@@ -1,6 +1,6 @@
 <template>
 <div class="container">
-    <div class="title">
+    <div class="title" @click="toChange">
         <div class="col1"><img class="user-img" src="../../assets/touxiang.jpg" alt=""></div>
         <div class="col2">Phone:{{phone_number}}</div>
         <div class="col3 text-right"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
@@ -29,7 +29,10 @@ export default {
     sign_out(){
         this.$cookie.delete('user-name');
         this.$router.push("/login"); 
-    } 
+    },
+    toChange(){
+        this.$router.push('/change')
+    }
   }
 }
 </script>
