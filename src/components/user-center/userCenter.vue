@@ -39,7 +39,6 @@ export default {
 li {
     padding: 15px 0;
 }
-
 ul.links {
     background-color: #fff;
     padding: 0px 15px;

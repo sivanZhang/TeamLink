@@ -67,6 +67,7 @@ export default {
           .then(result => {
             if (result.data.status == "ok") {
             this.$cookie.set('user-name',result.data.phone);
+            $().message('登录成功')
             this.$router.push("/user-center");
             } else {
               this.setInfo(result.data.msg);

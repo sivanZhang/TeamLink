@@ -8,7 +8,7 @@
         <input v-model.lazy="user.phone" @blur="test_phone" class="form-control" type="number" placeholder="Phone">
         <div class="relative">
             <input v-model.lazy="user.phonecode" @blur="test_phonecode" class="form-control" type="text" name="verification" placeholder="Verification code">
-            <button @click='send_code' id="send_code" type="button">send</button>
+            <button @click="send_code" id="send_code" type="button">send</button>
         </div>
         <input v-model.lazy="user.password" class="form-control" type="password" name="phone_number" placeholder="New password">
         <button  @click='submit' :disabled="isDisabled" id="submit" type="button" class="black-btn common-btn">Resetting</button>

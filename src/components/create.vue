@@ -2,7 +2,7 @@
   <div class="container">
     <header class="text-center row"><img class="logo" src="../assets/logo.jpg" alt=""></header>
     <div class="black-btn round-btn"><i class="fa fa-plus" aria-hidden="true"></i></div>
-    <foote-menu :actice="1"></foote-menu>
+    <foote-menu></foote-menu>
   </div>
 </template>
 
