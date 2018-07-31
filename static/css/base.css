@@ -146,6 +146,7 @@ input.form-control {
    padding: 1em;
     display: inline-block;
     width: 100%;
+    margin: 0px;
 }
 
 .jquery-message a, .jquery-error-message a {

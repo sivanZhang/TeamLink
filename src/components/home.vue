@@ -23,13 +23,13 @@ export default {
 #search {
     border: none;
     outline: none;
-    border-radius: 6px;
-    box-shadow:0 0 10px 0px rgba(0,0,0,0.16), 0 0 20px 1px rgba(0,0,0,0.08);
+    border-radius: 4px;
+    box-shadow:0 3px 20px -3px rgba(0,0,0,0.16), 1px 2px 0px -1px rgba(0,0,0,0.08);
     margin-top: 15px;
     width: 100%;
     padding-right: 54px;
     color:gray;
-    height: 46px;
+    height: 42px;
 }
 h1,
 h2 {
