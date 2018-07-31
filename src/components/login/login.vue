@@ -57,7 +57,7 @@ export default {
     },
     submit() {
       if (!/^1[3|4|5|8][0-9]\d{8}$/.test(this.user.phone)) {
-        this.setInfo("请输入正确的手机号");
+        this.setInfo("Please enter your correct phone number");
       } else {
         this.$ajax
           .post(
@@ -67,20 +67,20 @@ export default {
           .then(result => {
             if (result.data.status == "ok") {
             this.$cookie.set('user-name',result.data.phone);
-            $().message('登录成功')
+            $().message('Login success')
             this.$router.push("/user-center");
             } else {
               this.setInfo(result.data.msg);
             }
           })
           .catch(result => {
-            this.setInfo("server is down!");
+            this.setInfo("Server is down!");
           });
       }
     },
     test_phone() {
       if (!/^1[3|4|5|8][0-9]\d{8}$/.test(this.user.phone)) {
-        this.setInfo("请输入正确的手机号");
+        this.setInfo("Please enter your correct phone number!");
       }
     }
   },

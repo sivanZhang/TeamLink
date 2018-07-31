@@ -99,52 +99,53 @@ input.form-control {
  *   http://www.gnu.org/licenses/gpl.html
  */
  .jquery-message {
-    font: normal 20px / 30px Helvetica, Arial, Sans-Serif;
     letter-spacing: -1px;
     position: fixed;
-	bottom: 90px;
-    left: 5%;
-    width: 90%;
-    
+	bottom: 50%;
+    left: 25%;
+    transform: translateY(50%);
+    width: 50%;
     color: white;
-    background-color: green;
+    background-color: rgba(0, 0, 0, .8);
     text-align: center;
     display: none;
-    opacity: 0; 
-    border-radius: 10px;
-    box-shadow:  12px 0px 20px -2px #003333;
-    -moz-box-shadow:  12px 0px 20px -2px #003333;
-    -webkit-box-shadow:  5px 5px 20px -2px #003333;
+    opacity: 0;
+    padding: 10px;
+    border-radius: 3px;
+    box-shadow:  1px 3px 20px -3px rgba(0,0,0,0.16);
+    -moz-box-shadow:  1px 3px 20px -3px rgba(0,0,0,0.16);
+    -webkit-box-shadow: 1px 3px 20px -3px rgba(0,0,0,0.16);
     z-index: 100000;
 }
 .jquery-error-message
-{ 
-    font: normal 20px / 30px Helvetica, Arial, Sans-Serif;
+{
     letter-spacing: -1px;
     position: fixed;
-	bottom: 90px;
-    left: 5%;
-    width: 90%;
-    
+	bottom: 50%;
+    left: 25%;
+    transform: translateY(50%);
+    width: 50%;
     color: white;
     background-color: red;
     text-align: center;
     display: none;
     opacity: 0; 
-    border-radius: 10px;
-    box-shadow:  12px 0px 20px -2px #003333;
-    -moz-box-shadow:  12px 0px 20px -2px #003333;
-    -webkit-box-shadow:  5px 5px 20px -2px #003333;
+    padding: 10px;
+    border-radius: 3px;
+    box-shadow:  1px 3px 20px -3px #003333;
+    -moz-box-shadow:  1px 3px 20px -3px #003333;
+    -webkit-box-shadow:  1px 3px 20px -3px #003333;
     z-index: 100000;
 }
 .jquery-message .round, .jquery-error-message .round { 
    font-size: 1px;
-   height: 1px;
+   height: 1px; 
 }
 
-.jquery-message p , .jquery-error-message p{
+.jquery-message p, .jquery-error-message p{
    padding: 1em;
-    display: inline;
+    display: inline-block;
+    width: 100%;
 }
 
 .jquery-message a, .jquery-error-message a {

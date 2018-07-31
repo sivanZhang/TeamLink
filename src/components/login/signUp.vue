@@ -69,7 +69,7 @@ export default {
     },
     submit() {
       if (this.regtestPhone) {
-        this.setInfo("请输入正确的手机号");
+        this.setInfo("Please enter your correct phone number");
       } else {
         this.$ajax
           .post(
@@ -80,14 +80,14 @@ export default {
             this.setInfo(res.data.msg);
           })
           .catch(res => {
-            this.setInfo("server is down!");
+            this.setInfo("Server is down!");
           });
       }
     },
     test_phonecode() {
       /* 验证码是否正确 */
       if (!/^\d{4}$/.test(this.user.phonecode)) {
-        this.setInfo("输入正确的四位验证码!");
+        this.setInfo("Please enter a four-digit verification code!");
       } else {
         this.$ajax
           .get(
@@ -105,14 +105,14 @@ export default {
             }
           })
           .catch(res => {
-            this.setInfo("系统错误，效验验证码失败");
+            this.setInfo("Server is down and verification failure!");
           });
       }
     },
     send_code() {
       /* 发送验证码 */
       if (this.regtestPhone) {
-        this.setInfo("填写正确手机号才能发送验证码");
+        this.setInfo("Please fill in the correct phone number first!");
       } else {
         this.$ajax
           .get(
@@ -124,13 +124,13 @@ export default {
             this.setInfo(result.data.msg);
           })
           .catch(result => {
-            this.setInfo("后台错误，验证码发送失败");
+            this.setInfo("Server is down and send failure");
           });
       }
     },
     test_phone() {
       if (this.regtestPhone) {
-        this.setInfo("请输入正确的手机号");
+        this.setInfo("Please enter your correct phone number");
       }
     }
   },

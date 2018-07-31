@@ -1,8 +1,7 @@
 <template>
 <div class="container">
     <back></back>
-     <div>
-        <div class="row">
+    <div class="row">
             <div class="col-xs-12">
                 <div class="img-container">
                    <img id="image" src="../../assets/touxiang.jpg" alt="Picture">
@@ -16,21 +15,21 @@
                     
                         <!-- 浏览 -->
                         <div class="btn-group">
-                            <button type="button" class="btn orange-bg white" data-method="rotate" data-option="-30" title="Rotate Left">
+                            <button type="button" class="btn" data-method="rotate" data-option="-30" title="Rotate Left">
                                 <span class="fa fa-rotate-left"></span>
                             </button>
-                            <button type="button" class="btn orange-bg white" data-method="rotate" data-option="30" title="Rotate Right">
+                            <button type="button" class="btn" data-method="rotate" data-option="30" title="Rotate Right">
                                 <span class="fa fa-rotate-right"></span>
                             </button>
-                            <label class="btn orange-bg white btn-upload" for="inputImage" title="Upload image file">
+                            <label class="btn btn-upload" for="inputImage" title="Upload image file">
                 
                                 <input type="file" class="sr-only" id="inputImage" name="file" accept="image/*">
                                 <span class="docs-tooltip">
-                                    <span class="fa fa-upload">&nbsp;&nbsp;浏览</span>
+                                    <span class="fa fa-upload">&nbsp;Browse</span>
                                 </span>
                             </label>
-                            <button title="保存" type="button" class="btn orange-bg white" data-method="getCroppedCanvas">
-                                <i class="fa fa-floppy-o"></i>保存
+                            <button title="保存" type="button" class="btn" data-method="getCroppedCanvas">
+                                <i class="fa fa-floppy-o"></i>&nbsp;Save
                             </button>
                         </div>
                 
@@ -40,7 +39,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        <h4 class="modal-title" id="getCroppedCanvasTitle">预览</h4>
+                                        <h4 class="modal-title" id="getCroppedCanvasTitle">Preview</h4>
                                     </div>
                                     <div class="modal-body"></div>
                                     <div class="modal-footer">
@@ -56,7 +55,6 @@
     
             </div>
         </div>
-    </div>
 </div>
 </template>
 
