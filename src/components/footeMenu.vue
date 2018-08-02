@@ -1,39 +1,51 @@
 <template>
   <ul class="row">
-    <router-link class="nav-link " to="/"><li class='col-xs-4'><i class="fa fa-search" aria-hidden="true"></i></li>
-    </router-link>
-    <router-link class="nav-link" to="/create"><li class='col-xs-4'><i class="fa fa-bandcamp" aria-hidden="true"></i></li>
-    </router-link>
-    <li @click="isLogin" class='col-xs-4'><i class="fa fa-ellipsis-h" aria-hidden="true"></i></li>
+    <li class="col-xs-4"
+    v-for="(item, index) in nav"
+    @click="routerLink(index, item.path)"
+    :key="index" v-html="item.icon"
+     :class="navindex == index ? 'active' : ''">
+    </li>
   </ul>
 </template>
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-    }
+      nav: [
+        { icon: '<i class="fa fa-search" aria-hidden="true"></i>', path: "/" },
+        {
+          icon: '<i class="fa fa-bandcamp" aria-hidden="true"></i>',
+          path: "/workspace"
+        },
+        {
+          icon: '<i class="fa fa-ellipsis-h" aria-hidden="true"></i>',
+          path: "/user-center"
+        }
+      ]
+    };
   },
-  methods:{
-    isLogin(){
-      if(this.$cookie.get('user-name')){
-        this.$router.push("/user-center");
-      }else{
-        this.$router.push("/login");
-      }
+  props:['navindex'],
+  methods: {
+    routerLink(index, path) {
+      this.$router.push(path);
     }
   }
-}
+};
 </script>
 
 <style scoped>
-ul{
-  background-color: #000;/* #24292e; */
+ul {
+  background-color: #000; /* #24292e; */
   position: fixed;
   bottom: 0;
   width: 100%;
   padding: 15px 0;
   text-align: center;
   color: gray;
+}
+.active {
+  color: #fff;
 }
 </style>

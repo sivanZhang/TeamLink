@@ -7,7 +7,7 @@
     <i class="fa fa-sliders" aria-hidden="true"></i>
     </div>
     </div>
-     <foote-menu></foote-menu>
+     <foote-menu :navindex='0'></foote-menu>
   </div>
 </template>
 

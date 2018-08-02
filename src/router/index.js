@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import home from '@/components/home'
-import create from '@/components/create'
+import workspace from '@/components/workspace'
+import waiting from '@/components/waiting'
 import userCenter from '@/components/user-center/userCenter'
 import change from '@/components/user-center/change'
 import login from '@/components/login/login'
@@ -15,9 +16,9 @@ const routes = [{
   component: home
 },
 {
-  path: '/create',
-  name: 'create',
-  component: create
+  path: '/workspace',
+  name: 'workspace',
+  component: workspace
 },
 {
   path: '/user-center',
@@ -38,6 +39,10 @@ const routes = [{
 {
   path: '/change',
   component: change
+},
+{
+  path: '/waiting',
+  component: waiting
 }]
 export default new Router({
   routes

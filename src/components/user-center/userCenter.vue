@@ -1,5 +1,6 @@
 <template>
 <div class="container">
+    <header class="text-center row"><span class="h4">More</span></header>
     <div class="title" @click="toChange">
         <div class="col1"><img class="user-img" src="../../assets/touxiang.jpg" alt=""></div>
         <div class="col2">Phone:{{phone_number}}</div>
@@ -7,11 +8,15 @@
         
     </div>
     <ul class="text-left row links">
-        <li>Settings<i class="fa fa-pull-right fa-angle-right" aria-hidden="true"></i></li>
-        <li ref="li" class="test">Help<i class="fa fa-pull-right fa-angle-right" aria-hidden="true"></i></li>
+        <li>
+            <router-link to="/waiting">Settings<i class="fa fa-pull-right fa-angle-right" aria-hidden="true"></i></router-link>
+        </li>
+       <li ref="li" class="test">
+           <router-link to="/waiting">Help<i class="fa fa-pull-right fa-angle-right" aria-hidden="true"></i></router-link>
+        </li>
         <li @click="sign_out">Sign out<i class="fa fa-pull-right fa-angle-right" aria-hidden="true"></i></li>
     </ul>
-    <foote-menu></foote-menu>
+    <foote-menu :navindex='2'></foote-menu>
 </div>
 </template>
 
@@ -24,11 +29,17 @@ export default {
     },
   mounted: function () {
     document.querySelector('body').setAttribute('style', 'background-color:#fff');
+    if(this.$cookie.get('user-name')){
+        this.$router.push("/user-center");
+      }else{
+        this.$router.push("/login");
+      }
   },
   methods:{
     sign_out(){
         this.$cookie.delete('user-name');
-        this.$router.push("/login"); 
+        this.$router.push("/login");
+        $().message('Logged out')
     },
     toChange(){
         this.$router.push('/change')
@@ -39,6 +50,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+header {
+  border-bottom: 1px solid #e1e4e8;
+  height: 50px;
+  line-height: 50px;
+}
 li {
     padding: 15px 0;
 }

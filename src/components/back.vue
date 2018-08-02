@@ -18,8 +18,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .back {
-    padding-top: 15px;
+    line-height: 50px;
     color: grey;
+    height: 50px;
 }
 a {
     color: inherit;
