@@ -15,20 +15,20 @@
                     
                         <!-- 浏览 -->
                         <div class="btn-group">
-                            <button type="button" class="btn" data-method="rotate" data-option="-30" title="Rotate Left">
-                                <span class="fa fa-rotate-left"></span>
-                            </button>
-                            <button type="button" class="btn" data-method="rotate" data-option="30" title="Rotate Right">
-                                <span class="fa fa-rotate-right"></span>
-                            </button>
-                            <label class="btn btn-upload" for="inputImage" title="Upload image file">
+                            <label class="btn black-btn btn-upload" for="inputImage" title="Upload image file">
                 
                                 <input type="file" class="sr-only" id="inputImage" name="file" accept="image/*">
                                 <span class="docs-tooltip">
                                     <span class="fa fa-upload">&nbsp;Browse</span>
                                 </span>
                             </label>
-                            <button title="保存" type="button" class="btn" data-method="getCroppedCanvas">
+                            <button type="button" class="btn black-btn" data-method="rotate" data-option="-30" title="Rotate Left">
+                                <span class="fa fa-rotate-left"></span>
+                            </button>
+                            <button type="button" class="btn black-btn" data-method="rotate" data-option="30" title="Rotate Right">
+                                <span class="fa fa-rotate-right"></span>
+                            </button>
+                            <button title="保存" type="button" class="btn black-btn" data-method="getCroppedCanvas">
                                 <i class="fa fa-floppy-o"></i>&nbsp;Save
                             </button>
                         </div>
@@ -59,10 +59,10 @@
 </template>
 
 <script>
-import "../../../static/cropper/dist/cropper.js";
-import "../../../static/cropper/dist/canvas-to-blob.min.js";
-import "../../../static/cropper/dist/main.js";
-import back from "../back";
+import "../../../static/cropper/dist/cropper.js"
+import "../../../static/cropper/dist/canvas-to-blob.min.js"
+import "../../../static/cropper/dist/main.js"
+import back from "../back"
 export default {
   data() {
     return {};
@@ -70,7 +70,7 @@ export default {
   components: {
     back
   }
-};
+}
 </script>
 
 <style >
