@@ -12,9 +12,14 @@
                 <div class="docs-preview clearfix">
                     <div class="img-preview preview-lg"></div>
                     <div class="docs-buttons">
-                    
                         <!-- 浏览 -->
                         <div class="btn-group">
+                            <button type="button" class="btn black-btn" data-method="rotate" data-option="-30" title="Rotate Left">
+                                <span class="fa fa-rotate-left"></span>
+                            </button>
+                            <button type="button" class="btn black-btn" data-method="rotate" data-option="30" title="Rotate Right">
+                                <span class="fa fa-rotate-right"></span>
+                            </button>
                             <label class="btn black-btn btn-upload" for="inputImage" title="Upload image file">
                 
                                 <input type="file" class="sr-only" id="inputImage" name="file" accept="image/*">
@@ -22,12 +27,6 @@
                                     <span class="fa fa-upload">&nbsp;Browse</span>
                                 </span>
                             </label>
-                            <button type="button" class="btn black-btn" data-method="rotate" data-option="-30" title="Rotate Left">
-                                <span class="fa fa-rotate-left"></span>
-                            </button>
-                            <button type="button" class="btn black-btn" data-method="rotate" data-option="30" title="Rotate Right">
-                                <span class="fa fa-rotate-right"></span>
-                            </button>
                             <button title="保存" type="button" class="btn black-btn" data-method="getCroppedCanvas">
                                 <i class="fa fa-floppy-o"></i>&nbsp;Save
                             </button>
@@ -76,4 +75,7 @@ export default {
 <style >
 @import "../../../static/cropper/dist/cropper.css";
 @import "../../../static/cropper/dist/main.css";
+.black-btn.btn{
+    border-color: #fff;
+}
 </style>
