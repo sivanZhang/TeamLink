@@ -56,7 +56,7 @@ export default {
       this.msg.push(info);
     },
     submit() {
-      if (!/^1[3|4|5|8][0-9]\d{8}$/.test(this.user.phone)) {
+      if (!/[0-9]+/.test(this.user.phone)) {
         this.setInfo("Please enter your correct phone number");
       } else {
         this.$ajax
@@ -79,7 +79,7 @@ export default {
       }
     },
     test_phone() {
-      if (!/^1[3|4|5|8][0-9]\d{8}$/.test(this.user.phone)) {
+      if (!/[0-9]+/.test(this.user.phone)) {
         this.setInfo("Please enter your correct phone number!");
       }
     }

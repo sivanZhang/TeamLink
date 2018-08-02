@@ -52,7 +52,7 @@ export default {
       }
     },
     regtestPhone() {
-      return !/^1[3|4|5|8][0-9]\d{8}$/.test(this.user.phone);
+      return !/[0-9]+/.test(this.user.phone);
     }
   },
   methods: {
