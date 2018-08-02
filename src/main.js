@@ -8,15 +8,14 @@ import VueAxios from 'vue-axios'
 import qs from 'qs'
 import vueCookie from 'vue-cookie'
 import router from './router'
-import 'jquery'
+import $ from 'jquery'
 import '../static/js/jquery.message.js'
 import '../static/bootstrap-3.3.7/js/bootstrap.min.js'
 import '../static/bootstrap-3.3.7/css/bootstrap.min.css'
 import '../static/css/base.css'
 /* 注册全局组件 */
 import footeMenu from './components/footeMenu'
-/* import '../static/font-awesome/css/font-awesome.min.css' */
-Vue.use(VueAxios, axios, vueCookie)
+Vue.use(VueAxios, axios, vueCookie, $)
 Vue.prototype.$cookie = vueCookie
 Vue.prototype.$ajax = axios
 Vue.prototype.$qs = qs
