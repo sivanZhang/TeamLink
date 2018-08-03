@@ -24,11 +24,11 @@ export default {
     border: none;
     outline: none;
     border-radius: 4px;
-    box-shadow:0 3px 20px -3px rgba(0,0,0,0.16), 1px 2px 0px -1px rgba(0,0,0,0.08);
+    box-shadow:0 3px 18px -2px rgba(0,0,0,0.16), 0px 1px 0px -1px rgba(0,0,0,0.08);
     margin-top: 15px;
     width: 100%;
     padding-right: 54px;
-    color:gray;
+    color:#333;
     height: 42px;
 }
 h1,
@@ -56,6 +56,6 @@ li {
 .fa+.fa{
  margin-left: 6px;
  padding-left: 6px;
- border-left: 1px solid #e1e4e8;
+ border-left: 1px solid #ddd;
 }
 </style>

@@ -69,8 +69,12 @@ header {
 	border: 1px solid #ddd;
 	border-radius: 0px;
 	margin-top: 13px;
+  max-width: 100%;
 }
 .message{
-	padding:10px 0 10px 15px;
+	padding:10px 15px 10px 15px;
+}
+.item-footer .col-xs-2{
+  padding-left: 0px;
 }
 </style>
