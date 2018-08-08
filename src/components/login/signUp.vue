@@ -7,7 +7,7 @@
         <div class="text-center title">
             Create your personal account
         </div>
-        <input v-model="user.phone" @blur="test_phone" class="form-control" type="text" autocomplete='tel-national' placeholder="Phone">
+        <input v-model="user.phone" @blur="test_phone" class="form-control" type="number" autocomplete='tel-national' placeholder="Phone">
         <div class="relative">
             <input v-model="user.phonecode" @blur="test_phonecode" class="form-control" type="text" name="verification" placeholder="Verification code">
             <button id="send_code" @click='send_code' type="button">send</button>
@@ -71,16 +71,16 @@ export default {
       if (this.regtestPhone) {
         this.setInfo("Please enter your correct phone number");
       } else {
-        this.$ajax
+        this.axios
           .post(
-            "http://47.95.239.228:9000/users/register/?json",
+            "/users/register/?json",
             this.$qs.stringify(this.user)
           )
-          .then(res => {
-            this.setInfo(res.data.msg);
+          .then(result => {
+            this.setInfo(result.data.msg);
           })
-          .catch(res => {
-            this.setInfo("Server is down!");
+          .catch(error => {
+            this.setInfo(error);
           });
       }
     },
@@ -89,9 +89,9 @@ export default {
       if (!/^\d{4}$/.test(this.user.phonecode)) {
         this.setInfo("Please enter a four-digit verification code!");
       } else {
-        this.$ajax
+        this.axios
           .get(
-            "http://47.95.239.228:9000/users/phonecode/" +
+            "/users/phonecode/" +
               this.user.phone +
               "/" +
               this.user.phonecode +
@@ -104,8 +104,8 @@ export default {
               this.setInfo(result.data.msg);
             }
           })
-          .catch(res => {
-            this.setInfo("Server is down and verification failure!");
+          .catch(error => {
+            this.setInfo(error);
           });
       }
     },
@@ -114,17 +114,17 @@ export default {
       if (this.regtestPhone) {
         this.setInfo("Please fill in the correct phone number first!");
       } else {
-        this.$ajax
+        this.axios
           .get(
-            "http://47.95.239.228:9000/users/phonecode/" +
+            "/users/phonecode/" +
               this.user.phone +
               "?json&codetype=0"
           )
           .then(result => {
             this.setInfo(result.data.msg);
           })
-          .catch(result => {
-            this.setInfo("Server is down and send failure");
+          .catch(error => {
+            this.setInfo(error);
           });
       }
     },

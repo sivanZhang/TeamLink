@@ -7,12 +7,12 @@
             <div class="line"></div>
             <!-- <img class="logo" src="../../assets/logo.jpg" alt=""> -->
         </div>
-        <input v-model="user.phone"  @blur="test_phone" class="form-control" type="number" name="phone_number" placeholder="Phone">
+        <input v-model="user.phone"  @change="test_phone" class="form-control" type="number" id="phone_number" placeholder="Phone">
         <input v-model="user.password" class="form-control" type="password" name="phone_number" placeholder="Password">
         <button id="submit" @click="submit" type="button" class="black-btn common-btn" :disabled='isDisabled'>Log in</button>
         <div class="row">
-            <router-link to="/signup" class="col-xs-6 text-left">Create an account</router-link>
-            <router-link to="/forgot" class="col-xs-6 text-right">Forgot?</router-link>
+            <router-link to="/signup" class="col-xs-6 blue-link text-left">Create an account</router-link>
+            <router-link to="/forgot" class="col-xs-6 blue-link text-right">Forgot?</router-link>
         </div>
         <div v-if="msg.length" class="alert alert-warning alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -56,27 +56,26 @@ export default {
       this.msg.push(info);
     },
     submit() {
-      if (!/[0-9]+/.test(this.user.phone)) {
-        this.setInfo("Please enter your correct phone number");
-      } else {
-        this.$ajax
+        this.axios
           .post(
-            "http://47.95.239.228:9000/users/login/?json",
+            "/users/login/?json",
             this.$qs.stringify(this.user)
           )
           .then(result => {
             if (result.data.status == "ok") {
+            console.log(result);
             this.$cookie.set('user-name',result.data.phone);
+            localStorage.removeItem('newtoken');
             $().message('Login success')
             this.$router.push("/user-center");
+
             } else {
               this.setInfo(result.data.msg);
             }
           })
-          .catch(result => {
-            this.setInfo("Server is down!");
+          .catch(error => {
+            this.setInfo(error);
           });
-      }
     },
     test_phone() {
       if (!/[0-9]+/.test(this.user.phone)) {
@@ -88,6 +87,11 @@ export default {
     document
       .querySelector("body")
       .setAttribute("style", "background-color:#f4f5f9");
+      /* $("#phone_number").keyup(function () {
+        $(this).val().replace(/[^1-9.]/g, '');
+    }).bind("paste", function () {    
+        $(this).val($(this).val().replace(/[^1-9.]/g, ''));
+    }).css("ime-mode", "disabled");  */
   }
 };
 </script>

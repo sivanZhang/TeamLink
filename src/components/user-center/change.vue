@@ -50,7 +50,6 @@
                         <!-- /.modal -->
                     </div>
                     </div>
-    
             </div>
         </div>
 </div>

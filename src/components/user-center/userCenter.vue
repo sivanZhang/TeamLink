@@ -16,6 +16,7 @@
         </li>
         <li @click="sign_out">Sign out<i class="fa fa-pull-right fa-angle-right" aria-hidden="true"></i></li>
     </ul>
+    <span>{{token}}</span>
     <foote-menu :navindex='2'></foote-menu>
 </div>
 </template>
@@ -24,7 +25,8 @@
 export default {
     data(){
         return{
-            phone_number:this.$cookie.get('user-name')
+            phone_number:this.$cookie.get('user-name'),
+            token:localStorage.token
         }
     },
   mounted: function () {

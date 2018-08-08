@@ -24,7 +24,7 @@ export default {
     border: none;
     outline: none;
     border-radius: 4px;
-    box-shadow:0 3px 18px -2px rgba(0,0,0,0.16), 0px 1px 0px -1px rgba(0,0,0,0.08);
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.12), 0px 0px 2px 0px rgba(0, 0, 0, 0.08);
     margin-top: 15px;
     width: 100%;
     padding-right: 54px;

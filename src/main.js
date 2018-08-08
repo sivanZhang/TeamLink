@@ -17,11 +17,10 @@ import '../static/css/base.css'
 import footeMenu from './components/footeMenu'
 Vue.use(VueAxios, axios, vueCookie, $)
 Vue.prototype.$cookie = vueCookie
-Vue.prototype.$ajax = axios
-Vue.prototype.$qs = qs
-Vue.component('foote-menu', footeMenu)
+Vue.prototype.$qs = qs//axios JSON数据处理
 Vue.config.productionTip = false
 /* eslint-disable no-new */
+Vue.component('foote-menu', footeMenu)//引入全局组件
 new Vue({
   el: '#app',
   router,
@@ -30,3 +29,4 @@ new Vue({
   },
   template: '<App/>'
 })
+axios.defaults.baseURL = 'http://47.95.239.228:9000';
