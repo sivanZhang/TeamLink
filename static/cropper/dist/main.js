@@ -2,7 +2,7 @@ $(function () {
 
   'use strict';
 
-  var console = window.console || { log: function () {} };
+  var console = window.console || { log: function () { } };
   var $image = $('#image');
   var $download = $('#download');
   var $dataX = $('#dataX');
@@ -13,18 +13,18 @@ $(function () {
   var $dataScaleX = $('#dataScaleX');
   var $dataScaleY = $('#dataScaleY');
   var options = {
-        aspectRatio: 1 / 1,
-        preview: '.img-preview',
-        crop: function (e) { 
-          $dataX.val(Math.round(e.x));
-          $dataY.val(Math.round(e.y));
-          $dataHeight.val(Math.round(e.height)); 
-          $dataWidth.val(Math.round(e.width));
-          $dataRotate.val(e.rotate);
-          $dataScaleX.val(e.scaleX);
-          $dataScaleY.val(e.scaleY); 
-        },
-      };
+    aspectRatio: 1 / 1,
+    preview: '.img-preview',
+    crop: function (e) {
+      $dataX.val(Math.round(e.x));
+      $dataY.val(Math.round(e.y));
+      $dataHeight.val(Math.round(e.height));
+      $dataWidth.val(Math.round(e.width));
+      $dataRotate.val(e.rotate);
+      $dataScaleX.val(e.scaleX);
+      $dataScaleY.val(e.scaleY);
+    },
+  };
 
 
   // Tooltip
@@ -101,7 +101,7 @@ $(function () {
 
     $image.cropper('destroy').cropper(options);
   });
-    // Methods for moblie
+  // Methods for moblie
   $('.docs-buttons').on('touchstart', '[data-method]', function () {
     var $this = $(this);
     var data = $this.data();
@@ -137,34 +137,38 @@ $(function () {
 
         case 'getCroppedCanvas':
           if (result) {
-                   $image.cropper('getCroppedCanvas').toBlob(function (blob) {
-                        var formData = new FormData(document.querySelector("#csrftocken_form"));
+            $image.cropper('getCroppedCanvas').toBlob(function (blob) {
+              let formData = new FormData(),
+              jsToken =localStorage.token;
+              formData.append('portrain', blob);
+              $.ajax('http://47.95.239.228:9000/users/upload_fake_portrait/?json', {
+                headers:{
+                  'Authorization':jsToken
+                },
+                method: 'post',
+                dataType : 'json',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                  console.log(data)
+                  if (data['status'] == 'OK') {
+                    data['file'] = data['file'].replace('\\', '/');
+                    $('#id_portrait_upload').css("background-image", "url(" + data['file'] + ")");
+                    $('#id_user_portrait').css("background-image", "url(" + data['file'] + ")");
+                    $('#mark').val('1');
+                    $().message(data['msg']);
+                  }
+                  else {
+                    $('.div_err').append('<label class="err_label" >' + data['msg'] + '</label>'); //
+                  }
+                },
+                error: function (error) {
+                  console.log(error);
+                }
+              });
+            });
 
-                        formData.append('pic', blob);
-                        
-                                       $.ajax('/', {
-                                        method: "POST",
-                                        data: formData,
-                                        processData: false,
-                                        contentType: false,
-                                        success: function (data) {
-                                        if (data['status'] == 'OK') {
-                                                data['file'] = data['file'].replace('\\', '/');
-                                                $('#id_portrait_upload').css("background-image", "url(" + data['file'] + ")");
-                                                $('#id_user_portrait').css("background-image", "url(" + data['file'] + ")");
-                                                $('#mark').val('1');
-                                                $().message(data['msg']);
-                                            }
-                                            else {
-                                                $('.div_err').append('<label class="err_label" >' + data['msg'] + '</label>'); //
-                                            }
-                                        },
-                                        error: function () {
-                                        console.log('Upload error');
-                                        }
-                                    });
-                     });      
-          
           }
 
           break;
@@ -180,7 +184,7 @@ $(function () {
 
     }
   });
- 
+
 
   // Methods for PC 
   $('.docs-buttons').on('click', '[data-method]', function () {
@@ -218,30 +222,34 @@ $(function () {
 
         case 'getCroppedCanvas':
           if (result) {
-                   $image.cropper('getCroppedCanvas').toBlob(function (blob) {
-                        var formData = new FormData(document.querySelector("#csrftocken_form"));
-                        var productid = $('#productid').val();
+            $image.cropper('getCroppedCanvas').toBlob(function (blob) {
+              let formData = new FormData(),
+              jsToken =localStorage.token;
+              formData.append('portrain', blob);
+              $.ajax('http://47.95.239.228:9000/users/upload_fake_portrait/?json',{
+                headers:{
+                  'Authorization':jsToken
+                },
+                method: "post",
+                dataType : "json",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                  if (data['status'] == 'OK') {
+                    console.log(data)
+                    $().message(data['msg']);
+                  }
+                  else {
+                    $('body').append('<label class="err_label" >' + data['msg'] + '</label>'); //
+                  }
+                },
+                error: function (error) {
+                  console.log('errorMsg:'+error);
+                }
+              });
+            });
 
-                        formData.append('pic', blob);
-                                       $.ajax('/', {
-                                        method: "POST",
-                                        data: formData,
-                                        processData: false,
-                                        contentType: false,
-                                        success: function (data) {
-                                        if (data['status'] == 'OK') {
-                                                $().message(data['msg']);
-                                            }
-                                            else {
-                                                $('body').append('<label class="err_label" >' + data['msg'] + '</label>'); //
-                                            }
-                                        },
-                                        error: function () {
-                                        console.log('Upload error');
-                                        }
-                                    });
-                     });      
-          
           }
 
           break;

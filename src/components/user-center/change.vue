@@ -55,7 +55,7 @@
 </div>
 </template>
 
-<script>
+<script scoped>
 import "../../../static/cropper/dist/canvas-to-blob.min.js"
 import "../../../static/cropper/dist/cropper.js"
 import "../../../static/cropper/dist/main.js"
@@ -67,7 +67,7 @@ export default {
 }
 </script>
 
-<style >
+<style>
 @import "../../../static/cropper/dist/cropper.css";
 @import "../../../static/cropper/dist/main.css";
 .black-btn.btn{

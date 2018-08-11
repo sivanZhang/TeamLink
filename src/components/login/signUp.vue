@@ -154,6 +154,7 @@ export default {
 #submit {
   width: 100%;
   margin-bottom: 15px;
+  height: 42px;
 }
 
 form {
@@ -195,7 +196,7 @@ input:-ms-input-placeholder {
 #send_code {
   position: absolute;
   right: 6px;
-  top: 6px;
+  top: 10px;
   border: 0px;
   background-color: transparent;
   color: #337ab7;
@@ -205,7 +206,9 @@ input:-ms-input-placeholder {
   border: 0px;
   outline: 0px;
 }
-
+.form-control{
+  height: 42px;
+}
 .form-control,
 .btn {
   border-radius: 3px;

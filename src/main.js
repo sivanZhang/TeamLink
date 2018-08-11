@@ -1,6 +1,4 @@
-// The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-
 import Vue from 'vue'
 import App from './App'
 import axios from 'axios'
@@ -13,14 +11,12 @@ import '../static/js/jquery.message.js'
 import '../static/bootstrap-3.3.7/js/bootstrap.min.js'
 import '../static/bootstrap-3.3.7/css/bootstrap.min.css'
 import '../static/css/base.css'
-/* 注册全局组件 */
 import footeMenu from './components/footeMenu'
 Vue.use(VueAxios, axios, vueCookie, $)
 Vue.prototype.$cookie = vueCookie
 Vue.prototype.$qs = qs//axios JSON数据处理
 Vue.config.productionTip = false
-/* eslint-disable no-new */
-Vue.component('foote-menu', footeMenu)//引入全局组件
+Vue.component('foote-menu', footeMenu)//注册全局组件
 new Vue({
   el: '#app',
   router,
@@ -29,4 +25,34 @@ new Vue({
   },
   template: '<App/>'
 })
-axios.defaults.baseURL = 'http://47.95.239.228:9000';
+axios.defaults.baseURL = 'http://47.95.239.228:9000';//axios 后台公共API设置
+axios.interceptors.request.use(
+  config => {
+    var token =localStorage.token
+    if (token) {
+      config.headers.Authorization =token;
+    }
+    return config;
+  },
+  err => {
+    return Promise.reject(err);
+  });
+// http response 服务器响应拦截器，这里拦截401错误，并重新跳入登页重新获取token
+axios.interceptors.response.use(
+  response => {
+    return response;
+  },
+  error => {
+    if (error.response) {
+      switch (error.response.status) {
+        case 401:
+          // 这里写清除token的代码
+          localStorage.removeItem('token');
+          router.replace({
+            path: '/login',
+            query: {redirect: router.currentRoute.fullPath}  //登录成功后跳入浏览的当前页面
+          })
+      }
+    }
+    return Promise.reject(error.response.data) 
+  });

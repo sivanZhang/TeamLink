@@ -145,7 +145,10 @@ export default {
 }
 #submit {
   width: 100%;
-  margin-top: 15px;
+  height: 42px;
+}
+.form-control{
+  height: 42px;
 }
 form {
   position: absolute;

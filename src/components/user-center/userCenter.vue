@@ -8,15 +8,10 @@
         
     </div>
     <ul class="text-left row links">
-        <li>
-            <router-link to="/waiting">Settings<i class="fa fa-pull-right fa-angle-right" aria-hidden="true"></i></router-link>
-        </li>
-       <li ref="li" class="test">
-           <router-link to="/waiting">Help<i class="fa fa-pull-right fa-angle-right" aria-hidden="true"></i></router-link>
-        </li>
+        <router-link tag="li" to="/waiting">Settings<i class="fa fa-pull-right fa-angle-right" aria-hidden="true"></i></router-link>
+        <router-link tag="li" to="/waiting">Help<i class="fa fa-pull-right fa-angle-right" aria-hidden="true"></i></router-link>
         <li @click="sign_out">Sign out<i class="fa fa-pull-right fa-angle-right" aria-hidden="true"></i></li>
     </ul>
-    <span>{{token}}</span>
     <foote-menu :navindex='2'></foote-menu>
 </div>
 </template>
@@ -25,8 +20,7 @@
 export default {
     data(){
         return{
-            phone_number:this.$cookie.get('user-name'),
-            token:localStorage.token
+            phone_number:this.$cookie.get('user-name')
         }
     },
   mounted: function () {
@@ -40,6 +34,7 @@ export default {
   methods:{
     sign_out(){
         this.$cookie.delete('user-name');
+        localStorage.removeItem('token');
         this.$router.push("/login");
         $().message('Logged out')
     },
@@ -65,10 +60,6 @@ ul.links {
     padding: 0px 15px;
     border-top: 1px solid #e1e4e8;
     border-bottom: 1px solid #e1e4e8;
-}
-.links a{
-    display: inline-block;
-    width: 100%;
 }
 li+li {
     border-top: 1px solid #e1e4e8;

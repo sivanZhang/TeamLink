@@ -14,7 +14,7 @@
             <router-link to="/signup" class="col-xs-6 blue-link text-left">Create an account</router-link>
             <router-link to="/forgot" class="col-xs-6 blue-link text-right">Forgot?</router-link>
         </div>
-        <div v-if="msg.length" class="alert alert-warning alert-dismissible" role="alert">
+        <div v-show="msg.length" class="alert alert-warning alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             {{message}}
         </div>
@@ -50,32 +50,28 @@ export default {
     }
   },
   methods: {
+    /* 设置提示信息*/
     setInfo(info) {
-      /* 设置提示信息 */
-      this.msg.pop();
-      this.msg.push(info);
+      let self = this;
+      self.msg.pop();
+      self.msg.push(info);
     },
     submit() {
-        this.axios
-          .post(
-            "/users/login/?json",
-            this.$qs.stringify(this.user)
-          )
-          .then(result => {
-            if (result.data.status == "ok") {
-            console.log(result);
-            this.$cookie.set('user-name',result.data.phone);
-            localStorage.removeItem('newtoken');
-            $().message('Login success')
+      this.axios
+        .post("/users/login/?json", this.$qs.stringify(this.user))
+        .then(result => {
+          if (result.data.status == "ok") {
+            this.$cookie.set("user-name", result.data.phone);
+            localStorage.setItem("token", "JWT" + " " + result.data.token);
+            $().message("Login success");
             this.$router.push("/user-center");
-
-            } else {
-              this.setInfo(result.data.msg);
-            }
-          })
-          .catch(error => {
-            this.setInfo(error);
-          });
+          } else {
+            this.setInfo(result.data.msg);
+          }
+        })
+        .catch(error => {
+          this.setInfo(error);
+        });
     },
     test_phone() {
       if (!/[0-9]+/.test(this.user.phone)) {
@@ -87,11 +83,6 @@ export default {
     document
       .querySelector("body")
       .setAttribute("style", "background-color:#f4f5f9");
-      /* $("#phone_number").keyup(function () {
-        $(this).val().replace(/[^1-9.]/g, '');
-    }).bind("paste", function () {    
-        $(this).val($(this).val().replace(/[^1-9.]/g, ''));
-    }).css("ime-mode", "disabled");  */
   }
 };
 </script>
@@ -106,14 +97,16 @@ export default {
 
 .title {
   font-size: 22px;
-  font-family:sans-serif;
+  font-family: sans-serif;
 }
 
 .form-control,
 .row {
   margin-top: 15px;
 }
-
+.form-control {
+  height: 42px;
+}
 .row a {
   color: gray;
 }
@@ -121,6 +114,7 @@ export default {
 #submit {
   width: 100%;
   margin-top: 15px;
+  height: 42px;
 }
 
 form {
