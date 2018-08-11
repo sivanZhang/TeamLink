@@ -63,6 +63,9 @@ import back from "../back"
 export default {
   components: {
     back
+  },
+  created() {
+     /*  this.$router.go(0) */
   }
 }
 </script>
