@@ -56,23 +56,23 @@
 </template>
 
 <script scoped>
-import "../../../static/cropper/dist/canvas-to-blob.min.js"
-import "../../../static/cropper/dist/cropper.js"
-import "../../../static/cropper/dist/main.js"
+import "../../../static/cropper/js/canvas-to-blob.min.js"
+import "../../../static/cropper/js/cropper.min.js"
+import "../../../static/cropper/js/main.js"
 import back from "../back"
 export default {
   components: {
     back
   },
-  created() {
-     /*  this.$router.go(0) */
+  mounted:function() {
+     /* this.$router.go(0); */
   }
 }
 </script>
 
 <style>
-@import "../../../static/cropper/dist/cropper.css";
-@import "../../../static/cropper/dist/main.css";
+@import "../../../static/cropper/css/cropper.min.css";
+@import "../../../static/cropper/css/main.css";
 .black-btn.btn{
     border-color: #fff;
 }
