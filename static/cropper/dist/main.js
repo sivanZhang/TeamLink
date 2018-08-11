@@ -1,5 +1,50 @@
 $(function () {
-
+  var CookieUtil = {
+    get: function (name) {
+        var cookieName = encodeURIComponent(name) + "=",
+            cookieStart = document.cookie.indexOf(cookieName),
+            cookieValue = null;
+        if (cookieStart > -1) {
+            var cookieEnd = document.cookie.indexOf(";", cookieStart);
+            if (cookieEnd == -1) {
+                cookieEnd = document.cookie.length;
+            }
+            cookieValue = decodeURIComponent(document.cookie.substring(cookieStart
+                + cookieName.length, cookieEnd));
+        }
+        return cookieValue;
+    },
+    set: function (name,value,expires,path, domain, secure) {
+        var cookieText = encodeURIComponent(name) + "=" +
+            encodeURIComponent(value);
+        if (expires instanceof Date) {
+            cookieText += "; =" + expires.toGMTString();
+        }
+        if (path) {
+            cookieText += "; path=" + path;
+        }
+        if (domain) {
+            cookieText += "; domain=" + domain;
+        }
+        if (secure) {
+            cookieText += "; secure";
+        }
+        document.cookie = cookieText;
+    },
+    unset: function (name, path, domain, secure) {
+        this.set(name, "", new Date(0), path, domain, secure);
+    }
+};
+/* 
+设置cookie
+CookieUtil.set("name", "Nicholas");
+CookieUtil.set("book", "Professional JavaScript");
+读取cookie 的值
+alert(CookieUtil.get("name")); //"Nicholas"
+alert(CookieUtil.get("book")); //"Professional JavaScript"
+删除cookie
+CookieUtil.unset("name");
+CookieUtil.unset("book"); */
   'use strict';
 
   var console = window.console || { log: function () { } };
@@ -151,19 +196,18 @@ $(function () {
                 processData: false,
                 contentType: false,
                 success: function (data) {
-                  console.log(data)
                   if (data['status'] == 'OK') {
                     data['file'] = data['file'].replace('\\', '/');
-                    $('#id_portrait_upload').css("background-image", "url(" + data['file'] + ")");
-                    $('#id_user_portrait').css("background-image", "url(" + data['file'] + ")");
-                    $('#mark').val('1');
+                    $('#image').attr("src", 'http://47.95.239.228:9000'+data.file);
+                    CookieUtil.set("portrain", 'http://47.95.239.228:9000'+data.file);
                     $().message(data['msg']);
                   }
                   else {
-                    $('.div_err').append('<label class="err_label" >' + data['msg'] + '</label>'); //
+                    $().message(data['msg']);
                   }
                 },
                 error: function (error) {
+                  $().message('Server is down');
                   console.log(error);
                 }
               });
@@ -184,88 +228,6 @@ $(function () {
 
     }
   });
-
-
-  // Methods for PC 
-  $('.docs-buttons').on('click', '[data-method]', function () {
-    var $this = $(this);
-    var data = $this.data();
-    var $target;
-    var result;
-
-    if ($this.prop('disabled') || $this.hasClass('disabled')) {
-      return;
-    }
-
-    if ($image.data('cropper') && data.method) {
-      data = $.extend({}, data); // Clone a new one
-
-      if (typeof data.target !== 'undefined') {
-        $target = $(data.target);
-
-        if (typeof data.option === 'undefined') {
-          try {
-            data.option = JSON.parse($target.val());
-          } catch (e) {
-            console.log(e.message);
-          }
-        }
-      }
-
-      result = $image.cropper(data.method, data.option, data.secondOption);
-
-      switch (data.method) {
-        case 'scaleX':
-        case 'scaleY':
-          $(this).data('option', -data.option);
-          break;
-
-        case 'getCroppedCanvas':
-          if (result) {
-            $image.cropper('getCroppedCanvas').toBlob(function (blob) {
-              let formData = new FormData(),
-              jsToken =localStorage.token;
-              formData.append('portrain', blob);
-              $.ajax('http://47.95.239.228:9000/users/upload_fake_portrait/?json',{
-                headers:{
-                  'Authorization':jsToken
-                },
-                method: "post",
-                dataType : "json",
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (data) {
-                  if (data['status'] == 'OK') {
-                    console.log(data)
-                    $().message(data['msg']);
-                  }
-                  else {
-                    $('body').append('<label class="err_label" >' + data['msg'] + '</label>'); //
-                  }
-                },
-                error: function (error) {
-                  console.log('errorMsg:'+error);
-                }
-              });
-            });
-
-          }
-
-          break;
-      }
-
-      if ($.isPlainObject(result) && $target) {
-        try {
-          $target.val(JSON.stringify(result));
-        } catch (e) {
-          console.log(e.message);
-        }
-      }
-
-    }
-  });
-
 
   // Keyboard
   $(document.body).on('keydown', function (e) {
