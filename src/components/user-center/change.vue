@@ -4,7 +4,7 @@
     <div class="row">
             <div class="col-xs-12">
                 <div class="img-container">
-                   <img id="image" src="../../assets/touxiang.jpg" alt="Picture">
+                   <img id="image" :src="image_src" alt="Picture">
                 </div>
             </div>
             <div class="col-xs-12">
@@ -55,29 +55,42 @@
 </div>
 </template>
 
-<script scoped>
-import "../../../static/cropper/js/canvas-to-blob.min.js"
-import "../../../static/cropper/js/cropper.min.js"
-import "../../../static/cropper/js/main.js"
-import back from "../back"
+<script>
+import "../../../static/cropper/js/canvas-to-blob.min.js";
+import "../../../static/cropper/js/cropper.js";
+import "../../../static/cropper/js/main.js";
+
+import back from "../back";
 export default {
+  data() {
+    return {
+        image_src:''
+    };
+  },
   components: {
     back
   },
-  mounted:function() {
-     /* this.$router.go(0); */
-  }
-}
+ mounted(){
+     let portrait = this.$cookie.get("portrait"),
+        portrain = this.$cookie.get("portrait"); //修改头像返回的cookie
+      if (portrain) {
+        this.image_src = portrain;
+      } else {
+        this.image_src = portrait;
+      }
+ }
+};
 </script>
 
 <style>
 @import "../../../static/cropper/css/cropper.min.css";
 @import "../../../static/cropper/css/main.css";
-.black-btn.btn{
-    border-color: #fff;
+.black-btn.btn {
+  border-color: #fff;
 }
-.black-btn.btn:active,.black-btn.btn:hover{
-    color:#fff;
-    outline: none;
+.black-btn.btn:active,
+.black-btn.btn:hover {
+  color: #fff;
+  outline: none;
 }
 </style>

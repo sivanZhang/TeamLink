@@ -62,9 +62,10 @@ export default {
         .then(result => {
           if (result.data.status == "ok") {
             this.$cookie.set("user-name", result.data.phone);
+            this.$cookie.set("portrait",'http://47.95.239.228:9000/'+result.data.portrait);
             localStorage.setItem("token", "JWT" + " " + result.data.token);
             $().message("Login success");
-            this.$router.push("/user-center");
+           this.$router.push("/user-center");
           } else {
             this.setInfo(result.data.msg);
           }

@@ -197,7 +197,6 @@ CookieUtil.unset("book"); */
                 contentType: false,
                 success: function (data) {
                   if (data['status'] == 'OK') {
-                    console.log(data['status'])
                     data['file'] = data['file'].replace('\\', '/');
                     $('#image').attr("src", 'http://47.95.239.228:9000'+data.file);
                     CookieUtil.set("portrain", 'http://47.95.239.228:9000'+data.file);

@@ -21,7 +21,7 @@ export default {
     data(){
         return{
             phone_number:this.$cookie.get('user-name'),
-            image_src:this.$cookie.get('portrain')
+            image_src:''
         }
     },
   mounted: function () {
@@ -30,6 +30,14 @@ export default {
         this.$router.push("/user-center");
       }else{
         this.$router.push("/login");
+      }
+      //头像src判断
+      let portrait = this.$cookie.get('portrait')
+      ,portrain = this.$cookie.get('portrait')//修改头像返回的cookie
+      if(portrain){
+          this.image_src=portrain;
+      }else{
+          this.image_src=portrait;
       }
   },
   methods:{

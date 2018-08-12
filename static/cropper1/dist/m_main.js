@@ -1,53 +1,8 @@
 $(function () {
-  var CookieUtil = {
-    get: function (name) {
-        var cookieName = encodeURIComponent(name) + "=",
-            cookieStart = document.cookie.indexOf(cookieName),
-            cookieValue = null;
-        if (cookieStart > -1) {
-            var cookieEnd = document.cookie.indexOf(";", cookieStart);
-            if (cookieEnd == -1) {
-                cookieEnd = document.cookie.length;
-            }
-            cookieValue = decodeURIComponent(document.cookie.substring(cookieStart
-                + cookieName.length, cookieEnd));
-        }
-        return cookieValue;
-    },
-    set: function (name,value,expires,path, domain, secure) {
-        var cookieText = encodeURIComponent(name) + "=" +
-            encodeURIComponent(value);
-        if (expires instanceof Date) {
-            cookieText += "; =" + expires.toGMTString();
-        }
-        if (path) {
-            cookieText += "; path=" + path;
-        }
-        if (domain) {
-            cookieText += "; domain=" + domain;
-        }
-        if (secure) {
-            cookieText += "; secure";
-        }
-        document.cookie = cookieText;
-    },
-    unset: function (name, path, domain, secure) {
-        this.set(name, "", new Date(0), path, domain, secure);
-    }
-};
-/* 
-设置cookie
-CookieUtil.set("name", "Nicholas");
-CookieUtil.set("book", "Professional JavaScript");
-读取cookie 的值
-alert(CookieUtil.get("name")); //"Nicholas"
-alert(CookieUtil.get("book")); //"Professional JavaScript"
-删除cookie
-CookieUtil.unset("name");
-CookieUtil.unset("book"); */
+
   'use strict';
 
-  var console = window.console || { log: function () { } };
+  var console = window.console || { log: function () {} };
   var $image = $('#image');
   var $download = $('#download');
   var $dataX = $('#dataX');
@@ -58,22 +13,27 @@ CookieUtil.unset("book"); */
   var $dataScaleX = $('#dataScaleX');
   var $dataScaleY = $('#dataScaleY');
   var options = {
-    aspectRatio: 1 / 1,
-    preview: '.img-preview',
-    crop: function (e) {
-      $dataX.val(Math.round(e.x));
-      $dataY.val(Math.round(e.y));
-      $dataHeight.val(Math.round(e.height));
-      $dataWidth.val(Math.round(e.width));
-      $dataRotate.val(e.rotate);
-      $dataScaleX.val(e.scaleX);
-      $dataScaleY.val(e.scaleY);
-    },
-  };
+        aspectRatio: 1 / 1,
+        preview: '.img-preview',
+        crop: function (e) {
+          console.log(e.x);
+          console.log(e.y);
+          console.log(e.width);
+          console.log(Math.round(e.height));
+          console.log(e.rotate);
+          console.log(e.scaleX);
+          console.log(e.scaleY);
+          
+          $dataX.val(Math.round(e.x));
+          $dataY.val(Math.round(e.y));
+          $dataHeight.val(Math.round(e.height)); 
+          $dataWidth.val(Math.round(e.width));
+          $dataRotate.val(e.rotate);
+          $dataScaleX.val(e.scaleX);
+          $dataScaleY.val(e.scaleY); 
+        },
+      };
 
-
-  // Tooltip
-  $('[data-toggle="tooltip"]').tooltip();
 
 
   // Cropper
@@ -146,7 +106,7 @@ CookieUtil.unset("book"); */
 
     $image.cropper('destroy').cropper(options);
   });
-  // Methods for moblie
+    // Methods for moblie
   $('.docs-buttons').on('touchstart', '[data-method]', function () {
     var $this = $(this);
     var data = $this.data();
@@ -182,38 +142,34 @@ CookieUtil.unset("book"); */
 
         case 'getCroppedCanvas':
           if (result) {
-            $image.cropper('getCroppedCanvas').toBlob(function (blob) {
-              let formData = new FormData(),
-              jsToken =localStorage.token;
-              formData.append('portrain', blob);
-              $.ajax('http://47.95.239.228:9000/users/upload_fake_portrait/?json', {
-                headers:{
-                  'Authorization':jsToken
-                },
-                method: 'post',
-                dataType : 'json',
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (data) {
-                  if (data['status'] == 'OK') {
-                    console.log(data['status'])
-                    data['file'] = data['file'].replace('\\', '/');
-                    $('#image').attr("src", 'http://47.95.239.228:9000'+data.file);
-                    CookieUtil.set("portrain", 'http://47.95.239.228:9000'+data.file);
-                    $().message(data['msg']);
-                  }
-                  else {
-                    $().message(data['msg']);
-                  }
-                },
-                error: function (error) {
-                  $().message('Server is down');
-                  console.log(error);
-                }
-              });
-            });
+                   $image.cropper('getCroppedCanvas').toBlob(function (blob) {
+                        var formData = new FormData();
 
+                                    formData.append('thumbnail', blob);
+
+                                    $.ajax('/product/products/4/', {
+                                        method: "POST",
+                                        data: formData,
+                                        processData: false,
+                                        contentType: false,
+                                        success: function (data) {
+                                        if (data['status'] == 'OK') {
+                                                data['file'] = data['file'].replace('\\', '/');
+                                                $('#id_portrait_upload').css("background-image", "url(" + data['file'] + ")");
+                                                $('#id_user_portrait').css("background-image", "url(" + data['file'] + ")");
+                                                $('#mark').val('1');
+                                                $().message(data['msg']);
+                                            }
+                                            else {
+                                                $('.div_err').append('<label class="err_label" >' + data['msg'] + '</label>'); //
+                                            }
+                                        },
+                                        error: function () {
+                                        console.log('Upload error');
+                                        }
+                                    });
+                     });      
+          
           }
 
           break;
@@ -229,6 +185,7 @@ CookieUtil.unset("book"); */
 
     }
   });
+  
 
   // Keyboard
   $(document.body).on('keydown', function (e) {
@@ -296,4 +253,57 @@ CookieUtil.unset("book"); */
     $inputImage.prop('disabled', true).parent().addClass('disabled');
   }
 
-});  
+});
+
+/*
+$(document).ready(function() {
+    function getWidth() {
+        if (self.innerWidth) {
+            return self.innerWidth;
+        }
+        
+        if (document.documentElement && document.documentElement.clientHeight) {
+            return document.documentElement.clientWidth;
+        }
+        
+        if (document.body) {
+            return document.body.clientWidth;
+        }
+    }
+    
+    function getHeight() {
+        if (self.innerHeight) {
+            return self.innerHeight;
+        }
+        
+        if (document.documentElement && document.documentElement.clientHeight) {
+            return document.documentElement.clientHeight;
+        }
+        
+        if (document.body) {
+            return document.body.clientHeight;
+        }
+    }
+    var canvasHeight = window.innerHeight * 0.45;
+    $('.img-container').css('height', canvasHeight.toString()+'px');
+    var screenwidth = window.innerWidth;
+    var menuwidth=screenwidth*0.75;
+    var coinwidth= (menuwidth-30)/3 - 5;
+    menuwidth +=  7;
+    //var left =  (screenwidth - menuwidth)/2-12;
+    var left =  screenwidth * 0.1; 
+        $('#demo_box').popmenu({
+        'controller': true,       // use control button or not
+        'width': menuwidth+'px',        // width of menu 
+        'background': '#34495e',  // background color of menu
+        'focusColor': '#1abc9c',  // hover color of menu's buttons
+        'borderRadius': '10px',   // radian of angles, '0' for right angle
+        'top': '0',              // pixels that move up
+        'left': '-'+left,              // pixels that move left
+        'iconSize': coinwidth+'px',       // size of menu's buttons
+        'color': '#fff',            // color of menu's text
+        'border': '1px solid #000' // border style for the menu box
+     });
+});
+
+*/
