@@ -56,10 +56,12 @@
 </template>
 
 <script>
+/* import "../../../static/cropper/js/cropper.js";
 import "../../../static/cropper/js/canvas-to-blob.min.js";
-import "../../../static/cropper/js/cropper.js";
-import "../../../static/cropper/js/main.js";
-
+import "../../../static/cropper/js/main.js"; */
+require("exports-loader?window.anno!../../../static/cropper/js/cropper.js");
+require("exports-loader?window.anno!../../../static/cropper/js/canvas-to-blob.min.js");
+require("exports-loader?window.anno!../../../static/cropper/js/main.js");
 import back from "../back";
 export default {
   data() {
@@ -72,7 +74,7 @@ export default {
   },
  mounted(){
      let portrait = this.$cookie.get("portrait"),
-        portrain = this.$cookie.get("portrait"); //修改头像返回的cookie
+        portrain = this.$cookie.get("portrain"); //修改头像返回的cookie
       if (portrain) {
         this.image_src = portrain;
       } else {
@@ -83,8 +85,7 @@ export default {
 </script>
 
 <style>
-@import "../../../static/cropper/css/cropper.min.css";
-@import "../../../static/cropper/css/main.css";
+@import "../../../static/cropper/css/cropper.css";
 .black-btn.btn {
   border-color: #fff;
 }

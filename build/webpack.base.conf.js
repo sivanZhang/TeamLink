@@ -77,7 +77,21 @@ module.exports = {
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
-    ]
+    ],
+    loaders: [
+      {
+        test: require.resolve('../static/cropper/js/canvas-to-blob.min.js'),
+        loader: 'exports-loader?window.anno!script-loader'
+      },
+      {
+        test: require.resolve('../static/cropper/js/cropper.js'),
+        loader: 'exports-loader?window.anno!script-loader'
+      },
+      {
+        test: require.resolve('../static/cropper/js/main.js'),
+        loader: 'exports-loader?window.anno!script-loader'
+      },
+   ]
   },
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue

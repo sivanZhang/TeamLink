@@ -26,15 +26,10 @@ export default {
     },
   mounted: function () {
     document.querySelector('body').setAttribute('style', 'background-color:#fff');
-    if(this.$cookie.get('user-name')){
-        this.$router.push("/user-center");
-      }else{
-        this.$router.push("/login");
-      }
-      //头像src判断
+      //头像源文件，如果修改则用修改的头像，否则用登录时接受的头像
       let portrait = this.$cookie.get('portrait')
-      ,portrain = this.$cookie.get('portrait')//修改头像返回的cookie
-      if(portrain){
+      ,portrain = this.$cookie.get('portrain')
+      if(!portrain==''){
           this.image_src=portrain;
       }else{
           this.image_src=portrait;
@@ -54,7 +49,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 header {
   border-bottom: 1px solid #e1e4e8;

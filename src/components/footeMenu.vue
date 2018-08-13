@@ -21,12 +21,13 @@ export default {
         },
         {
           icon: '<i class="fa fa-ellipsis-h" aria-hidden="true"></i>',
-          path: "/user-center"
+          path: this.$cookie.get("user-name") ? "/user-center" : "/login"
+          //如果没有登录，则链接到登录页面
         }
       ]
     };
   },
-  props:['navindex'],
+  props: ["navindex"],
   methods: {
     routerLink(index, path) {
       this.$router.push(path);
@@ -37,7 +38,7 @@ export default {
 
 <style scoped>
 ul {
-  background-color: #000; /* #24292e; */
+  background-color: #000;
   position: fixed;
   bottom: 0;
   width: 100%;
