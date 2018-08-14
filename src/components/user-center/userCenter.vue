@@ -29,7 +29,7 @@ export default {
       //头像源文件，如果修改则用修改的头像，否则用登录时接受的头像
       let portrait = this.$cookie.get('portrait')
       ,portrain = this.$cookie.get('portrain')
-      if(!portrain==''){
+      if(portrain){
           this.image_src=portrain;
       }else{
           this.image_src=portrait;

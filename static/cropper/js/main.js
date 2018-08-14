@@ -114,9 +114,9 @@ CookieUtil.unset("book"); */
 
 
   // Download
-  if (typeof $download[0].download === 'undefined') {
+/*   if (typeof $download[0].download === 'undefined') {
     $download.addClass('disabled');
-  }
+  } */
 
 
   // Options
@@ -201,7 +201,7 @@ CookieUtil.unset("book"); */
                     $('#image').attr("src", 'http://47.95.239.228:9000'+data.file);
                     CookieUtil.set("portrain", 'http://47.95.239.228:9000'+data.file);
                     $().message(data['msg']);
-                    window.location.href='/#/user-center';
+                    window.location.href='/teamlink/#/user-center';
                   }
                   else {
                     $().message(data['msg']);

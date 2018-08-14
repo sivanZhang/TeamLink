@@ -4,7 +4,7 @@
     <div class="row">
             <div class="col-xs-12">
                 <div class="img-container">
-                   <img id="image" :src="image_src" alt="Picture">
+                   <img id="image" src="../../assets/logo.jpg" alt="Picture">
                 </div>
             </div>
             <div class="col-xs-12">
@@ -56,12 +56,8 @@
 </template>
 
 <script>
-/* import "../../../static/cropper/js/cropper.js";
-import "../../../static/cropper/js/canvas-to-blob.min.js";
-import "../../../static/cropper/js/main.js"; */
-require("exports-loader?window.anno!../../../static/cropper/js/cropper.js");
-require("exports-loader?window.anno!../../../static/cropper/js/canvas-to-blob.min.js");
-require("exports-loader?window.anno!../../../static/cropper/js/main.js");
+require("../../../static/cropper/js/cropper.js");
+require("../../../static/cropper/js/canvas-to-blob.js");
 import back from "../back";
 export default {
   data() {
@@ -73,15 +69,12 @@ export default {
     back
   },
  mounted(){
-     let portrait = this.$cookie.get("portrait"),
-        portrain = this.$cookie.get("portrain"); //修改头像返回的cookie
-      if (portrain) {
-        this.image_src = portrain;
-      } else {
-        this.image_src = portrait;
-      }
- }
+     require("../../../static/cropper/js/main.js");
+ },
+
+
 };
+
 </script>
 
 <style>

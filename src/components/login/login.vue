@@ -61,6 +61,7 @@ export default {
         .post("/users/login/?json", this.$qs.stringify(this.user))
         .then(result => {
           if (result.data.status == "ok") {
+            console.log(result)
             this.$cookie.set("user-name", result.data.phone);
             this.$cookie.set("portrait",'http://47.95.239.228:9000/'+result.data.portrait);
             localStorage.setItem("token", "JWT" + " " + result.data.token);

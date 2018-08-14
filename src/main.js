@@ -1,4 +1,3 @@
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
 import axios from 'axios'
@@ -14,7 +13,7 @@ import '../static/css/base.css'
 import footeMenu from './components/footeMenu'
 Vue.use(VueAxios, axios, vueCookie, $)
 Vue.prototype.$cookie = vueCookie
-Vue.prototype.$qs = qs//axios JSON数据处理
+Vue.prototype.$qs = qs
 Vue.config.productionTip = false
 Vue.component('foote-menu', footeMenu)//注册全局组件
 new Vue({
@@ -25,7 +24,7 @@ new Vue({
   },
   template: '<App/>'
 })
-axios.defaults.baseURL = 'http://47.95.239.228:9000';//axios 后台公共API设置
+axios.defaults.baseURL = 'http://47.95.239.228:9000';
 axios.interceptors.request.use(
   config => {
     var token =localStorage.token
