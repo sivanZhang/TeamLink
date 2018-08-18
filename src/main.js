@@ -10,12 +10,15 @@ import '../static/js/jquery.message.js'
 import '../static/bootstrap-3.3.7/js/bootstrap.min.js'
 import '../static/bootstrap-3.3.7/css/bootstrap.min.css'
 import '../static/css/base.css'
-import footeMenu from './components/footeMenu'
+
 Vue.use(VueAxios, axios, vueCookie, $)
 Vue.prototype.$cookie = vueCookie
 Vue.prototype.$qs = qs
 Vue.config.productionTip = false
+
+import footeMenu from './components/footeMenu'
 Vue.component('foote-menu', footeMenu)//注册全局组件
+
 new Vue({
   el: '#app',
   router,
@@ -24,6 +27,7 @@ new Vue({
   },
   template: '<App/>'
 })
+
 axios.defaults.baseURL = 'http://47.95.239.228:9000';
 axios.interceptors.request.use(
   config => {

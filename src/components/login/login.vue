@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import {base_api} from '../../../static/js/api.js'
 import back from "../back";
 export default {
   components: {
@@ -61,9 +62,8 @@ export default {
         .post("/users/login/?json", this.$qs.stringify(this.user))
         .then(result => {
           if (result.data.status == "ok") {
-            console.log(result)
             this.$cookie.set("user-name", result.data.phone);
-            this.$cookie.set("portrait",'http://47.95.239.228:9000/'+result.data.portrait);
+            this.$cookie.set("portrait",base_api+result.data.portrait);
             localStorage.setItem("token", "JWT" + " " + result.data.token);
             $().message("Login success");
            this.$router.push("/user-center");
@@ -81,7 +81,7 @@ export default {
       }
     }
   },
-  mounted: function() {
+  mounted() {
     document
       .querySelector("body")
       .setAttribute("style", "background-color:#f4f5f9");
