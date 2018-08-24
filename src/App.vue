@@ -8,7 +8,7 @@
 export default {
   name: 'App'
 }
-/* require('./js/jquery.tabSwitch.js') */
+
 </script>
 
 <style>

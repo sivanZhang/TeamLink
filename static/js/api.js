@@ -1,4 +1,4 @@
-const base_api = 'http://47.95.239.228:9000/';
+const base_api = 'https://www.chidict.com/';
 export{
     base_api
 }

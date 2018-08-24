@@ -28,7 +28,7 @@ new Vue({
   template: '<App/>'
 })
 
-axios.defaults.baseURL = 'http://47.95.239.228:9000';
+axios.defaults.baseURL = 'https://www.chidict.com/';
 axios.interceptors.request.use(
   config => {
     var token =localStorage.token
