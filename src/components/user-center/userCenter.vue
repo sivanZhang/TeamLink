@@ -20,7 +20,8 @@ export default {
   data() {
     return {
       phone_number: this.$cookie.get("user-name"),
-      image_src: ""
+      image_src: "",
+      title:'More'
     };
   },
   methods: {
@@ -51,6 +52,7 @@ export default {
     document
       .querySelector("body")
       .setAttribute("style", "background-color:#fff");
+      document.title='TeamLink-'+this.title;
   }
 }
 </script>

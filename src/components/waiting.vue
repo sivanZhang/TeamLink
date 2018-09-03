@@ -8,6 +8,11 @@
 <script>
 import back from "./back";
 export default {
+    data(){
+    return{
+      title:'Waiting'
+    }
+    },
     components: {
     back
   },
@@ -15,6 +20,7 @@ export default {
     document
       .querySelector("body")
       .setAttribute("style", "background-color:#f4f5f9");
+      document.title='TeamLink-'+this.title;
   }
 }
 </script>
@@ -22,6 +28,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
-    margin-top:50%;
+  margin-top: 50%;
 }
 </style>

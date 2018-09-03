@@ -70,7 +70,7 @@ a:link,a:visited,a:hover,a:active{
  select:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px white inset!important;
  }
- /* IOs删除input没营养 */
+ /* IOs删除input内阴影 */
  input{
     -webkit-appearance: none;
   }

@@ -18,7 +18,7 @@ Vue.config.productionTip = false
 
 import footeMenu from './components/footeMenu'
 Vue.component('foote-menu', footeMenu)//注册全局组件
-
+console.log('ok')
 new Vue({
   el: '#app',
   router,
@@ -50,6 +50,7 @@ axios.interceptors.response.use(
       switch (error.response.status) {
         case 401:
           // 这里写清除token的代码
+          alert('token401')
           localStorage.removeItem('token');
           router.replace({
             path: '/login',

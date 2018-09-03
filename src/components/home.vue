@@ -13,8 +13,14 @@
 
 <script>
 export default {
+  data(){
+    return{
+      title:'Home'
+    }
+    },
   mounted: function () {
     document.querySelector('body').setAttribute('style', 'background-color:#fff')
+    document.title='TeamLink-'+this.title;
   }
 }
 </script>

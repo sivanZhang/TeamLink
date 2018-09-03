@@ -21,10 +21,16 @@
 <script>
 export default {
   name: "workspace",
-  mounted: function() {
+  data(){
+    return{
+      title:'Workspace'
+    }
+  },
+  mounted() {
     document
       .querySelector("body")
       .setAttribute("style", "background-color:#fff");
+      document.title='TeamLink-'+this.title;
   }
 };
 </script>
