@@ -1,11 +1,10 @@
 <template>
   <ul class="row">
-    <li class="col-xs-4"
+    <router-link class="col-xs-4"
     v-for="(item, index) in nav"
-    @click="routerLink(index, item.path)"
-    :key="index" v-html="item.icon"
-     :class="navindex == index ? 'active' : ''">
-    </li>
+    :to="item.path"
+    :key="index" v-html="item.icon">
+    </router-link>
   </ul>
 </template>
 
@@ -26,12 +25,6 @@ export default {
         }
       ]
     };
-  },
-  props: ["navindex"],
-  methods: {
-    routerLink(index, path) {
-      this.$router.push(path);
-    }
   }
 };
 </script>
@@ -46,7 +39,7 @@ ul {
   text-align: center;
   color: gray;
 }
-.active {
+.router-link-exact-active {
   color: #fff;
 }
 </style>

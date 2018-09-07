@@ -14,7 +14,7 @@
 	<div class="recent">Recent Saced Searches</div>
 	<p>You have no saved searches.</p>
     <div class="black-btn round-btn"><i class="fa fa-plus" aria-hidden="true"></i></div>
-    <foote-menu :navindex='1'></foote-menu>
+    <foote-menu></foote-menu>
   </div>
 </template>
 

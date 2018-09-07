@@ -250,7 +250,7 @@ export default {
               let formData = new FormData(),
               jsToken =localStorage.token;
               formData.append('portrain', blob);
-              $.ajax(base_api+'users/upload_fake_portrait/?json', {
+              $.ajax(base_api+'/users/upload_fake_portrait/?json', {
                 headers:{
                   'Authorization':jsToken
                 },

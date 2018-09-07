@@ -7,7 +7,7 @@
     <i class="fa fa-sliders" aria-hidden="true"></i>
     </div>
     </div>
-     <foote-menu :navindex='0'></foote-menu>
+     <foote-menu></foote-menu>
   </div>
 </template>
 
@@ -19,13 +19,15 @@ export default {
     }
     },
   mounted: function () {
-    document.querySelector('body').setAttribute('style', 'background-color:#fff')
     document.title='TeamLink '+this.title;
   }
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#app{
+  background: red;
+}
 #search {
     border: none;
     outline: none;

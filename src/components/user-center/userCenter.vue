@@ -11,7 +11,7 @@
         <router-link tag="li" to="/waiting">Help<i class="fa fa-pull-right fa-angle-right" aria-hidden="true"></i></router-link>
         <li @click="sign_out">Sign out<i class="fa fa-pull-right fa-angle-right" aria-hidden="true"></i></li>
     </ul>
-    <foote-menu :navindex='2'></foote-menu>
+    <foote-menu></foote-menu>
 </div>
 </template>
 
