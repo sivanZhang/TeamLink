@@ -1,10 +1,10 @@
 <template>
 <div class="text-center container">
     <back></back>
-    <h3>Please look forward to ...</h3>
+    <h3>To be expected ...</h3>
 </div>
 </template>
-
+to be expected
 <script>
 import back from "./back";
 export default {
