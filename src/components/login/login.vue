@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import {base_api} from '../../../static/js/api.js'
 import back from "../back";
 export default {
   components: {
@@ -31,6 +30,7 @@ export default {
   },
   data() {
     return {
+      api:this.axios.defaults.baseURL,
       msg: [],
       user: {
         phone: null,
@@ -63,7 +63,7 @@ export default {
         .then(result => {
           if (result.data.status == "ok") {
             this.$cookie.set("user-name", result.data.phone);
-            this.$cookie.set("portrait",base_api+result.data.portrait);
+            this.$cookie.set("portrait",api+result.data.portrait);
             localStorage.setItem("token", "JWT" + " " + result.data.token);
             $().message("Login success");
            this.$router.push("/user-center");
