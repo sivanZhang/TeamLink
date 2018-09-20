@@ -10,7 +10,7 @@ import login from '@/components/login/login'
 import signUp from '@/components/login/signUp'
 import forgot from '@/components/login/forgot'
 */
-const home = r => require.ensure([], () => r(require('@/components/home')), 'home')
+const home = r => require.ensure([], () => r(require('@/components/home/home')), 'home')
 const workspace = r => require.ensure([], () => r(require('@/components/workspace')), 'workspace')
 const waiting = r => require.ensure([], () => r(require('@/components/waiting')), 'waiting')
 const userCenter = r => require.ensure([], () => r(require('@/components/user-center/userCenter')), 'userCenter')
@@ -21,42 +21,43 @@ const forgot = r => require.ensure([], () => r(require('@/components/login/forgo
 
 Vue.use(Router)
 const routes = [{
-  path: '/',
-  name: 'home',
-  component: home
-},
-{
-  path: '/workspace',
-  name: 'workspace',
-  component: workspace
-},
-{
-  path: '/user-center',
-  meta: {
-            requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
+        path: '/',
+        name: 'home',
+        component: home
+    },
+    {
+        path: '/workspace',
+        name: 'workspace',
+        component: workspace
+    },
+    {
+        path: '/user-center',
+        meta: {
+            requireAuth: true, // 添加该字段，表示进入这个路由是需要登录的
         },
-  component: userCenter
-},
-{
-  path: '/login',
-  component: login
-},
-{
-  path: '/signup',
-  component: signUp
-},
-{
-  path: '/forgot',
-  component: forgot
-},
-{
-  path: '/change',
-  component: change
-},
-{
-  path: '/waiting',
-  component: waiting
-}]
+        component: userCenter
+    },
+    {
+        path: '/login',
+        component: login
+    },
+    {
+        path: '/signup',
+        component: signUp
+    },
+    {
+        path: '/forgot',
+        component: forgot
+    },
+    {
+        path: '/change',
+        component: change
+    },
+    {
+        path: '/waiting',
+        component: waiting
+    }
+]
 export default new Router({
-  routes
+    routes
 })

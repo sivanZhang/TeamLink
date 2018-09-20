@@ -63,7 +63,7 @@ export default {
         .then(result => {
           if (result.data.status == "ok") {
             this.$cookie.set("user-name", result.data.phone);
-            this.$cookie.set("portrait",api+result.data.portrait);
+            this.$cookie.set("portrait",this.api+result.data.portrait);
             localStorage.setItem("token", "JWT" + " " + result.data.token);
             $().message("Login success");
            this.$router.push("/user-center");
