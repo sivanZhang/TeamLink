@@ -1,9 +1,9 @@
 <template>
   <ul class="row">
-    <router-link class="col-xs-4"
+    <router-link
     v-for="(item, index) in nav"
     :to="item.path"
-    :key="index" v-html="item.icon">
+    :key="index" v-html="item.icon" tag='li'>
     </router-link>
   </ul>
 </template>
@@ -13,13 +13,29 @@ export default {
   data() {
     return {
       nav: [
-        { icon: '<i class="fa fa-search" aria-hidden="true"></i>', path: "/" },
         {
-          icon: '<i class="fa fa-bandcamp" aria-hidden="true"></i>',
+          icon: `<i class="fa fa-search" aria-hidden="true"></i>
+        <div>Explore</div>`,
+          path: "/"
+        },
+        {
+          icon: `<i class="fa fa-heart-o" aria-hidden="true"></i>
+          <div>Collection</div>`,
           path: "/workspace"
         },
         {
-          icon: '<i class="fa fa-ellipsis-h" aria-hidden="true"></i>',
+          icon: `<i class="fa fa-bandcamp" aria-hidden="true"></i>
+           <div>Discover</div>`,
+          path: "/workspace"
+        },
+        {
+          icon: `<i class="fa fa-commenting-o" aria-hidden="true"></i>
+           <div>Inbox</div>`,
+          path: "/workspace"
+        },
+        {
+          icon: `<i class="fa fa-user-o" aria-hidden="true"></i>
+          <div>Account</div>`,
           path: this.$cookie.get("user-name") ? "/user-center" : "/login"
           //如果没有登录，则链接到登录页面
         }
@@ -31,15 +47,23 @@ export default {
 
 <style scoped>
 ul {
-  background-color: #000;
+  background-color: #fff;
   position: fixed;
   bottom: 0;
   width: 100%;
-  padding: 15px 0;
+  padding: 10px 0 2px;
   text-align: center;
-  color: gray;
+  color: #333;
+  border-top: 1px solid #ddd;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
-.router-link-exact-active {
-  color: #fff;
+li {
+  flex: 1 1 auto;
+}
+.router-link-exact-active.router-link-active {
+  color: rgb(255, 87, 34);
 }
 </style>

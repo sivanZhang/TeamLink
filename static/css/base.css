@@ -1,6 +1,9 @@
 /* ----------------------------------------复用类----------------------------------- */
-.blue-link{
-    color: #337ab7!important;
+.c_red{
+color: rgb(177, 69, 55);
+}
+.c_orange{
+    color: rgb(255, 87, 34);
 }
 .text-overflow{
     display:block;/*内联对象需加*/

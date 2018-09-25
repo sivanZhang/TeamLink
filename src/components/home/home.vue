@@ -1,23 +1,33 @@
 <template>
-  <div class="container">
-		<div class="tab-group">
-		<button v-for="(tab,index) in tabs"
-		:key="index"
-		:class="[{ active: currentTab === tab.path },'tab-button','btn']"
-		@click="currentTab = tab.path">
-		{{ tab.name }}
-		</button>
+	<div class="container">
+		<div class="search-bg row">
+			<div class="search-warp">
+				<div class="tab-group">
+					<button v-for="(tab,index) in tabs"
+					:key="index"
+					:class="[{ active: currentTab === tab.path },'tab-button','btn']"
+					@click="currentTab = tab.path">
+					{{ tab.name }}
+					</button>
+				</div>
+				<div class="relative" v-show="currentTab=='buy'">
+					<input type="search" class="form-control search" placeholder="buy" key="buy">
+					<i class="fa fa-search" aria-hidden="true"></i>
+				</div>
+				<div class="relative" v-show="currentTab=='rent'">
+					<input type="search" class="form-control search" placeholder="rent" key="buy">
+					<i class="fa fa-search" aria-hidden="true"></i>
+				</div>	
+			</div>
 		</div>
-		<div class="relative" v-show="currentTab=='buy'">
-			<input id="search" type="search" class="form-control" placeholder="buy" key="buy">
-			<i class="fa fa-search" aria-hidden="true"></i>
+		<h4>Recently Viewed</h4>
+		<div class="item-wrap">
+			<div class="item">
+				
+			</div>
 		</div>
-    	<div class="relative" v-show="currentTab=='rent'">
-			<input id="search" type="search" class="form-control" placeholder="rent" key="buy">
-			<i class="fa fa-search" aria-hidden="true"></i>
-		</div>
-     <foote-menu></foote-menu>
-  </div>
+		<foote-menu></foote-menu>
+	</div>
 </template>
 
 <script>
@@ -36,58 +46,66 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
-.tab-button {
-  border-radius: 0px;
-  background: none;
-  box-shadow: unset;
-  border-bottom: transparent 2px solid;
-  &.active {
-    outline: none;
-    background: none;
-	border-bottom: #333 2px solid;
-	font-weight: 600;
-  }
-  &:focus{
-	outline: none;  
-  }
-}
-.tab-group{
+.search-bg{
+	height: 480px;
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	justify-content:center;
+    align-items: center;
+	background-color: green;
+
 }
-#search {
-  border: none;
-  outline: none;
-  border-radius: 4px;
-  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.12),
-    0px 0px 2px 0px rgba(0, 0, 0, 0.08);
-  margin-top: 15px;
+.search-warp {
+	background: #fff;
   width: 100%;
-  padding-right: 54px;
-  color: #333;
-  height: 42px;
+  border-radius: 8px;
+  box-shadow: 0 0 12px 4px rgba(115, 117, 123, 0.12);
+  margin:0 15px;
+  .tab-group {
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .tab-button {
+      width: 30%;
+      height: 54px;
+      border-radius: 0px;
+      background: none;
+      box-shadow: unset;
+      border-bottom: transparent 2px solid;
+      &.active {
+        outline: none;
+        background: none;
+        border-bottom: #333 2px solid;
+        font-weight: 600;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  .relative {
+    .search {
+      border: none;
+      outline: none;
+      width: 100%;
+      padding-left: 54px;
+      color: #333;
+	  height: 54px;
+	  border-radius: 8px;
+    }
+    .fa-search {
+      position: absolute;
+      left: 12px;
+      bottom: 18px;
+    }
+  }
 }
-h1,
-h2 {
-  font-weight: normal;
+h4{
+	margin: 20px 0 15px;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-.fa-search {
-  position: absolute;
-  right: 6px;
-  bottom: 12px;
-}
-#search {
-  font-size: 12px;
-}
-.input-group-lg > .form-control,
-.input-group-lg > .input-group-addon,
-.input-group-lg > .input-group-btn > .btn {
-  padding: 0px 12px;
-  height: 36px;
+.item-wrap{
+	.item{
+
+	}
 }
 </style>
