@@ -1,14 +1,14 @@
 <template>
-<div class="container">
-  <h4>Hello,{{phone_number}}</h4>
-    <div class="Profile">
-        <img class="user-img" :src="image_src" alt="">
-        <i class="fa fa-pencil-square-o fa-lg" @click="toChange" aria-hidden="true"></i>
-    </div>
-    <ul class="text-left row links">
+    <div>
+        <mt-header title="Settings">
+            <router-link to="/user-center" slot="left">
+                 <mt-button icon="back">back</mt-button>
+            </router-link>
+        </mt-header>
+        <ul class="text-left row links">
         <router-link tag="li" to="/waiting">Inspection Planer<i class="fa fa-fw fa-calendar fa-pull-right" aria-hidden="true"></i>
         </router-link>
-        <router-link tag="li" to="/user-center/settings">Settings<i class="fa fa-fw fa-cog fa-pull-right" aria-hidden="true"></i>
+        <router-link tag="li" to="/waiting">Settings<i class="fa fa-fw fa-cog fa-pull-right" aria-hidden="true"></i>
         </router-link>
         <router-link tag="li" to="/waiting">Select Region<i class="fa fa-fw fa-globe fa-pull-right" aria-hidden="true"></i>
         </router-link>
@@ -16,20 +16,16 @@
         </router-link>
         <router-link tag="li" to="/waiting">Switch to Agent<i class="fa fa-fw fa-exchange fa-rotate-90 fa-pull-right" aria-hidden="true"></i>
         </router-link>
-        <router-link tag="li" to="/waiting">Feedback<i class="fa fa-fw fa-commenting-o fa-pull-right" aria-hidden="true"></i>
-        </router-link>
+        <li @click="sign_out">Sign out<i class="fa fa-pull-right fa-sign-out" aria-hidden="true"></i></li>
     </ul>
-    <foote-menu></foote-menu>
-</div>
+    </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      phone_number: this.$store.state.user_name,
-      image_src: this.$store.state.portrait,
-      title: "More"
+      title: "settings"
     };
   },
   methods: {
@@ -39,9 +35,6 @@ export default {
       this.$store.commit("setToken", "");
       $().message("Logged out");
       this.$router.push("/login");
-    },
-    toChange() {
-      this.$router.push("/change");
     }
   },
   created() {
@@ -53,7 +46,7 @@ export default {
 };
 </script>
 
-<style scoped lang="less">
+<style lang="less" scoped>
 ul.links {
   background-color: #fff;
   padding: 0px 15px;
@@ -62,24 +55,6 @@ ul.links {
   }
   li + li {
     border-top: 1px solid #e1e4e8;
-  }
-}
-
-.user-img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-}
-.Profile {
-  position: relative;
-  padding: 15px 0 30px;
-  width: 100%;
-  text-align: center;
-  .fa-pencil-square-o{
-    color: #bbb;
-    position: absolute;
-    bottom: 40px;
-    right: 15%;
   }
 }
 </style>

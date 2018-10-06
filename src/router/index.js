@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import home from '@/components/home/home'
+import search from '@/components/home/search'
 import collections from '@/components/collections/collectionList'
 import discover from '@/components/discover/discover'
 import waiting from '@/components/waiting'
 import userCenter from '@/components/user-center/userCenter'
 import change from '@/components/user-center/change'
+import settings from '@/components/user-center/settings'
 import login from '@/components/login/login'
 import signUp from '@/components/login/signUp'
 import forgot from '@/components/login/forgot'
@@ -17,9 +19,19 @@ const routes = [{
         component: home
     },
     {
+        path: '/search',
+        name: 'search',
+        component: search
+    },
+    {
         path: '/collections',
         name: 'collections',
         component: collections
+    },
+    {
+        path: '/user-center/settings',
+        name: 'settings',
+        component: settings
     },
     {
         path: '/discover',

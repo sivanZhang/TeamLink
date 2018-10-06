@@ -12,11 +12,11 @@
 				</div>
 				<div class="relative" v-show="currentTab=='buy'">
 					<input type="search" class="form-control search" placeholder="buy" key="buy">
-					<i class="fa fa-search" aria-hidden="true"></i>
+					<i class="fa fa-search" @click="search" aria-hidden="true"></i>
 				</div>
 				<div class="relative" v-show="currentTab=='rent'">
 					<input type="search" class="form-control search" placeholder="rent" key="buy">
-					<i class="fa fa-search" aria-hidden="true"></i>
+					<i class="fa fa-search" @click="search" aria-hidden="true"></i>
 				</div>	
 			</div>
 		</div>
@@ -38,6 +38,10 @@ export default {
       currentTab: "buy",
       tabs: [{ path: "buy", name: "Buy" }, { path: "rent", name: "Rent" }]
     };
+  },methods:{
+    search(){
+      this.$router.push('/search');
+    }
   },
   mounted: function() {
     document.title = "TeamLink " + this.title;

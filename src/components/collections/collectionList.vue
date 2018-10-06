@@ -14,18 +14,30 @@
             </div>
 		</div>
     </section>
-
-    <img class="icon-add" src="../../assets/icons/add.svg" alt="">
+    <img @click="openPrompt" class="icon-add" src="../../assets/icons/add.svg" alt="">
     <foote-menu></foote-menu>
   </div>
 </template>
 
 <script>
+import { MessageBox } from 'mint-ui';
 export default {
   data() {
     return {
       title: "Collections"
     };
+  },
+  methods: {
+    openPrompt() {
+      MessageBox({
+        title: "Create a New Collection succeed",
+        message: `Name this new collection`,
+        showCancelButton: true,
+        confirmButtonText:'Create',
+        cancelButtonText:"cancel",
+        showInput:true
+      });
+      }
   },
   mounted() {
     document
@@ -63,7 +75,7 @@ header {
     .fa-pencil-square-o,
     .fa-external-link {
       color: rgb(197, 197, 197);
-      vertical-align:middle;
+      vertical-align: middle;
     }
   }
 }

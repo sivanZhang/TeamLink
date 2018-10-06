@@ -31,7 +31,7 @@ export default {
         {
           icon: `<i class="fa fa-commenting-o" aria-hidden="true"></i>
            <div>Inbox</div>`,
-          path: "/workspace"
+          path: "/waiting"
         },
         {
           icon: `<i class="fa fa-user-o" aria-hidden="true"></i>

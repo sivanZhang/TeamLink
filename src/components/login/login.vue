@@ -5,7 +5,6 @@
         <div class="text-center title">
             <div>Sign in to TEAMLINK</div>
             <div class="line"></div>
-            <!-- <img class="logo" src="../../assets/logo.jpg" alt=""> -->
         </div>
         <input v-model="user.phone"  @change="test_phone" class="form-control" type="number" id="phone_number" placeholder="Phone">
         <input v-model="user.password" class="form-control" type="password" name="phone_number" placeholder="Password">
@@ -30,7 +29,7 @@ export default {
   },
   data() {
     return {
-      api:this.axios.defaults.baseURL,
+      api: this.axios.defaults.baseURL,
       msg: [],
       user: {
         phone: null,
@@ -62,11 +61,11 @@ export default {
         .post("/users/login/?json", this.$qs.stringify(this.user))
         .then(result => {
           if (result.data.status == "ok") {
-            this.$store.commit('setToken',`JWT ${result.data.token}`);
-            this.$store.commit('setUserName',result.data.phone);
-            this.$store.commit('setPortrait',this.api+result.data.portrait);
+            this.$store.commit("setToken", `JWT ${result.data.token}`);
+            this.$store.commit("setUserName", result.data.phone);
+            this.$store.commit("setPortrait", this.api + result.data.portrait);
             $().message("Login success");
-           this.$router.push("/user-center");
+            this.$router.push("/user-center");
           } else {
             this.setInfo(result.data.msg);
           }
@@ -126,10 +125,6 @@ form {
   width: 100%;
 }
 
-.logo {
-  width: 40%;
-  margin: 15px auto;
-}
 input + input {
   margin-top: 15px;
 }

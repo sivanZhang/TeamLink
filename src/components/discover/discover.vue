@@ -1,21 +1,57 @@
 <template>
   <div class="container">
-    <header>Collection</header>
-    <section class="collections-item">
-		<div class="item-img">
-            <img ref="item_img" src="../../assets/icons/c1.png" alt="">
-            <img ref="item_img" src="../../assets/icons/c1.png" alt="">
-        </div>
-		<div class="item-footer">
-			<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-			<div class="flex">
-                <div>A</div>
-                <i class="fa fa-external-link" aria-hidden="true"></i>
-            </div>
-		</div>
-    </section>
+    <mt-swipe class="row" :auto="3000">
+      <mt-swipe-item class="slide1">
+        <img src="../../assets/s1.png" alt="">
+      </mt-swipe-item>
+      <mt-swipe-item @click.native="test" class="slide2">
+        <img src="../../assets/s2.png" alt="">
+      </mt-swipe-item>
+      <mt-swipe-item class="slide3">
+        <img src="../../assets/s3.png" alt="">
+      </mt-swipe-item>
+    </mt-swipe>
+    <div class="group">
+      <div>
+        <img src="../../assets/s1.png" alt="">
+      </div>
+      <div>
+        <img src="../../assets/s1.png" alt="">
+      </div>
+      <div>
+        <img src="../../assets/s1.png" alt="">
+      </div>
+      <div>
+        <img src="../../assets/s1.png" alt="">
+      </div>
+    </div>
+    <h5>Suggestd for you</h5>
+    <div class="suggest">
+      <div class="suggest-title">
+        <i class="fa fa-clock-o" aria-hidden="true"></i>
+        {{postedTime}}
+      </div>
+      <div class="suggest-details">
 
-    <img class="icon-add" src="../../assets/icons/add.svg" alt="">
+      </div>
+      <div class="suggest-info">
+        <div>
+          {{info}}
+        </div>
+        <div>
+          <i class="fa fa-picture-o" aria-hidden="true"></i> {{pictureNumber}}
+       		</div>
+     	</div>
+	 	<div class="container">
+			 <h5>Modern Apartment</h5>
+		<div class="price">${{price}}</div>
+		<div class="outfit">
+			{{outfit.bed}}<i class="fa fa-bed" aria-hidden="true"></i>
+			{{outfit.toilet}}<i class="fa fa-bath" aria-hidden="true"></i>
+			{{outfit.carport}}<i class="fa fa-car" aria-hidden="true"></i>
+		</div>
+		 </div>
+    </div>
     <foote-menu></foote-menu>
   </div>
 </template>
@@ -24,8 +60,22 @@
 export default {
   data() {
     return {
-      title: "Collections"
+      title: "Discover",
+      postedTime:`Today 1:00 PM - 5:00 PM`,
+      info:`Epping Station,NSW,2000`,
+	  pictureNumber:3,
+	  price:7000,
+	  outfit:{
+		  bed:3,
+		  toilet:2,
+		  carport:1
+	  }
     };
+  },
+  methods:{
+    test(){
+      alert('click event')
+    }
   },
   mounted() {
     document
@@ -40,46 +90,63 @@ export default {
 </script>
 
 <style lang="less" scoped>
-header {
-  font-size: 18px;
-  height: 50px;
-  line-height: 50px;
-}
-.collections-item {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.18);
-  .item-img {
+.suggest{
+	.outfit{
+		color: rgb(91, 91, 91);
+		.fa{
+			margin:0 2px 0 6px;
+		}
+	}
+	.price{
+		color:rgb(177, 69, 55);
+	}
+  .suggest-info{
     display: flex;
-    justify-content: center;
-    img {
-      flex: 1 1 auto;
-    }
+    justify-content: space-between;
+    background: #000;
+    color: #fff;
+    padding: 0 15px;
   }
-  .item-footer {
-    padding: 10px 15px;
-    .flex {
-      display: flex;
-      justify-content: space-between;
-    }
-    .fa-pencil-square-o,
-    .fa-external-link {
-      color: rgb(197, 197, 197);
-      vertical-align:middle;
-    }
+  .suggest-details{
+    height: 200px;
+    background: url(../../assets/home.png) no-repeat ;
+        background-size: 100% 100%;
+
+  }
+  .suggest-title{
+    color: #fff;
+    background: rgb(255, 87, 34);
+    padding: 0 15px;
   }
 }
-.collections-item + .collections-item {
-  margin-top: 30px;
-}
-.icon-add {
-  display: inline-block;
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
+.mint-swipe {
+  height: 200px;
+  color: #fff;
+  font-size: 30px;
   text-align: center;
-  position: absolute;
-  right: 15px;
-  bottom: 65px;
-  padding: 6px;
-  border: 1px solid #333;
+  margin-bottom: 20px;
+  .mint-swipe-item {
+    img {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+  }
+}
+.group{
+  height: 200px;
+  display: flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  align-content:space-between;
+  div{
+    width: 48%;
+    
+    img{
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+    }
+  }
 }
 </style>
