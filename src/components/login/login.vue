@@ -62,9 +62,9 @@ export default {
         .post("/users/login/?json", this.$qs.stringify(this.user))
         .then(result => {
           if (result.data.status == "ok") {
-            this.$cookie.set("user-name", result.data.phone);
-            this.$cookie.set("portrait",this.api+result.data.portrait);
-            localStorage.setItem("token", "JWT" + " " + result.data.token);
+            this.$store.commit('setToken',`JWT ${result.data.token}`);
+            this.$store.commit('setUserName',result.data.phone);
+            this.$store.commit('setPortrait',this.api+result.data.portrait);
             $().message("Login success");
            this.$router.push("/user-center");
           } else {

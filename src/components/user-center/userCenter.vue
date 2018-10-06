@@ -19,42 +19,30 @@
 export default {
   data() {
     return {
-      phone_number: this.$cookie.get("user-name"),
-      image_src: "",
-      title:'More'
+      phone_number: this.$store.state.user_name,
+      image_src: this.$store.state.portrait,
+      title: "More"
     };
   },
   methods: {
     sign_out() {
-      this.$cookie.delete("user-name");
-      this.$cookie.delete("portrain");
-      this.$cookie.delete("portrait");
-      localStorage.removeItem("token");
-      this.$router.push("/login");
+      this.$store.commit('setUserName','');
+      this.$store.commit('setPortrait','');
+      this.$store.commit('setToken','');
       $().message("Logged out");
+      this.$router.push("/login");
     },
     toChange() {
       this.$router.push("/change");
     }
   },
-  beforeMount(){
-    //头像源文件，如果修改则用修改的头像，否则用登录时接受的头像
-    let portrait = this.$cookie.get("portrait"),
-      portrain = this.$cookie.get("portrain");
-    if (portrain) {
-      this.image_src = portrain;
-    } else {
-      this.image_src = portrait;
-    }
-  }
-  ,
-  mounted() {
+  created() {
     document
       .querySelector("body")
       .setAttribute("style", "background-color:#fff");
-      document.title='TeamLink-'+this.title;
+    document.title = "TeamLink-" + this.title;
   }
-}
+};
 </script>
 
 <style scoped>

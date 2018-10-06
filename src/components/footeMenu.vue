@@ -21,12 +21,12 @@ export default {
         {
           icon: `<i class="fa fa-heart-o" aria-hidden="true"></i>
           <div>Collection</div>`,
-          path: "/workspace"
+          path: "/collections"
         },
         {
           icon: `<i class="fa fa-bandcamp" aria-hidden="true"></i>
            <div>Discover</div>`,
-          path: "/workspace"
+          path: "/discover"
         },
         {
           icon: `<i class="fa fa-commenting-o" aria-hidden="true"></i>
@@ -36,7 +36,7 @@ export default {
         {
           icon: `<i class="fa fa-user-o" aria-hidden="true"></i>
           <div>Account</div>`,
-          path: this.$cookie.get("user-name") ? "/user-center" : "/login"
+          path: this.$store.state.token ? "/user-center" : "/login"
           //如果没有登录，则链接到登录页面
         }
       ]
@@ -55,7 +55,7 @@ ul {
   text-align: center;
   color: #333;
   border-top: 1px solid #ddd;
-  font-size: 12px;
+  font-size: 10px;
   display: flex;
   justify-content: space-around;
   align-items: center;
