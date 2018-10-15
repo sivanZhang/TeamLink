@@ -266,9 +266,12 @@ export default {
                   contentType: false,
                   success: function(data) {
                     if (data["status"] == "OK") {
-                      self.$store.commit("setPortrait", self.api + data.file.replace("\\", "/"));
+                      self.$store.commit(
+                        "setPortrait",
+                        self.api + data.file.replace("\\", "/")
+                      );
                       $().message(data["msg"]);
-                      self.$router.push("/user-center");
+                      self.$router.push("/user_center");
                     } else {
                       $().message(data["msg"]);
                     }

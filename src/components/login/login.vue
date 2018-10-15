@@ -65,7 +65,7 @@ export default {
             this.$store.commit("setUserName", result.data.phone);
             this.$store.commit("setPortrait", this.api + result.data.portrait);
             $().message("Login success");
-            this.$router.push("/user-center");
+            this.$router.push("/user_center");
           } else {
             this.setInfo(result.data.msg);
           }

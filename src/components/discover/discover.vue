@@ -61,20 +61,20 @@ export default {
   data() {
     return {
       title: "Discover",
-      postedTime:`Today 1:00 PM - 5:00 PM`,
-      info:`Epping Station,NSW,2000`,
-	  pictureNumber:3,
-	  price:7000,
-	  outfit:{
-		  bed:3,
-		  toilet:2,
-		  carport:1
-	  }
+      postedTime: `Today 1:00 PM - 5:00 PM`,
+      info: `Epping Station,NSW,2000`,
+      pictureNumber: 3,
+      price: 7000,
+      outfit: {
+        bed: 3,
+        toilet: 2,
+        carport: 1
+      }
     };
   },
-  methods:{
-    test(){
-      alert('click event')
+  methods: {
+    test() {
+      alert("click event");
     }
   },
   mounted() {
@@ -90,33 +90,32 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.suggest{
-	.outfit{
-		color: rgb(91, 91, 91);
-		.fa{
-			margin:0 2px 0 6px;
-		}
-	}
-	.price{
-		color:rgb(177, 69, 55);
-	}
-  .suggest-info{
+.suggest {
+  .outfit {
+    color: rgb(91, 91, 91);
+    .fa {
+      margin: 0 2px 0 6px;
+    }
+  }
+  .price {
+    color: rgb(177, 69, 55);
+  }
+  .suggest-info {
     display: flex;
     justify-content: space-between;
     background: #000;
     color: #fff;
-    padding: 0 15px;
+    padding: 4px 15px;
   }
-  .suggest-details{
+  .suggest-details {
     height: 200px;
-    background: url(../../assets/home.png) no-repeat ;
-        background-size: 100% 100%;
-
+    background: url(../../../static/image/home.png) no-repeat;
+    background-size: 100% 100%;
   }
-  .suggest-title{
+  .suggest-title {
     color: #fff;
     background: rgb(255, 87, 34);
-    padding: 0 15px;
+    padding: 0 15px; 
   }
 }
 .mint-swipe {
@@ -133,16 +132,16 @@ export default {
     }
   }
 }
-.group{
+.group {
   height: 200px;
   display: flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  align-content:space-between;
-  div{
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-content: space-between;
+  div {
     width: 48%;
-    
-    img{
+
+    img {
       width: 100%;
       height: 100%;
       border-radius: 8px;

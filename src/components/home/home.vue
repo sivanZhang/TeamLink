@@ -11,12 +11,12 @@
 					</button>
 				</div>
 				<div class="relative" v-show="currentTab=='buy'">
-					<input type="search" class="form-control search" placeholder="buy" key="buy">
-					<i class="fa fa-search" @click="search" aria-hidden="true"></i>
+					<input type="search" v-model="searchText" class="form-control search" placeholder="buy" key="buy">
+					<i class="fa fa-search" @click="search('buy')" aria-hidden="true"></i>
 				</div>
 				<div class="relative" v-show="currentTab=='rent'">
-					<input type="search" class="form-control search" placeholder="rent" key="buy">
-					<i class="fa fa-search" @click="search" aria-hidden="true"></i>
+					<input type="search" v-model="searchText" class="form-control search" placeholder="rent" key="rent">
+					<i class="fa fa-search" @click="search('rent')" aria-hidden="true"></i>
 				</div>	
 			</div>
 		</div>
@@ -36,11 +36,18 @@ export default {
     return {
       title: "Home",
       currentTab: "buy",
-      tabs: [{ path: "buy", name: "Buy" }, { path: "rent", name: "Rent" }]
+      tabs: [{ path: "buy", name: "Buy" }, { path: "rent", name: "Rent" }],
+      searchText: ""
     };
-  },methods:{
-    search(){
-      this.$router.push('/search');
+  },
+  methods: {
+    search(val) {
+      if (this.searchText) {
+        this.$store.commit("setSearchText", this.searchText);
+        this.$router.push(`/home/${val}`);
+      } else {
+        this.$router.push(`/home/${val}`);
+      }
     }
   },
   mounted: function() {
@@ -50,20 +57,21 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
-.search-bg{
-	height: 480px;
-	display: flex;
-	justify-content:center;
-    align-items: center;
-	background-color: green;
-
+.search-bg {
+  height: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url(../../../static/image/main.jpg);
+  background-position: left;
+  background-size: cover;
 }
 .search-warp {
-	background: #fff;
+  background: #fff;
   width: 100%;
   border-radius: 8px;
   box-shadow: 0 0 12px 4px rgba(115, 117, 123, 0.12);
-  margin:0 15px;
+  margin: 0 15px;
   .tab-group {
     border-bottom: 1px solid #ddd;
     display: flex;
@@ -94,8 +102,8 @@ export default {
       width: 100%;
       padding-left: 54px;
       color: #333;
-	  height: 54px;
-	  border-radius: 8px;
+      height: 54px;
+      border-radius: 8px;
     }
     .fa-search {
       position: absolute;
@@ -104,12 +112,11 @@ export default {
     }
   }
 }
-h4{
-	margin: 20px 0 15px;
+h4 {
+  margin: 20px 0 15px;
 }
-.item-wrap{
-	.item{
-
-	}
+.item-wrap {
+  .item {
+  }
 }
 </style>

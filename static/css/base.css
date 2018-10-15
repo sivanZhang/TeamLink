@@ -8,6 +8,14 @@
     color: rgb(255, 87, 34);
 }
 
+.price {
+    color: rgb(177, 69, 55);
+}
+
+.pull-right {
+    float: right!important;
+}
+
 .text-overflow {
     display: block;
     /*内联对象需加*/
@@ -62,7 +70,6 @@ h1 {
     user-select: none;
     background-image: none;
     border: 1px solid transparent;
-    border-radius: 3px;
     min-width: 100px;
 }
 
@@ -125,10 +132,11 @@ input {
 /* -----------------------------------替换插件的CSS---------------------------------------- */
 
 input:focus,
+textarea:focus,
 .form-control:focus {
     outline: none;
     box-shadow: unset;
-    border-color: #e1e4e8;
+    border-color: initial;
 }
 
 input.form-control {

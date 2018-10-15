@@ -13,6 +13,11 @@ import '../static/js/jquery.message.js'
 import '../static/bootstrap-3.3.7/js/bootstrap.min.js'
 import '../static/bootstrap-3.3.7/css/bootstrap.min.css'
 import '../static/css/base.css'
+import 'animate.css'
+import iView from 'iview';
+import locale from 'iview/dist/locale/en-US';
+Vue.use(iView, { locale });
+import 'iview/dist/styles/iview.css';
 Vue.use(VueAxios, axios);
 Vue.prototype.$qs = qs;
 Vue.config.productionTip = false;

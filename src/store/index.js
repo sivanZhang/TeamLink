@@ -5,7 +5,8 @@ Vue.use(Vuex);
 const state = {
     'token': '',
     'user_name': '',
-    'portrait': ''
+    'portrait': '',
+    'searchText': ''
 };
 //改变数据的方法
 const mutations = {
@@ -17,6 +18,9 @@ const mutations = {
     },
     setPortrait(state, url) {
         state.portrait = url;
+    },
+    setSearchText(state, text) {
+        state.searchText = text;
     }
 };
 //实例化vuex,暴露方法

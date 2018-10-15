@@ -3,7 +3,11 @@
     <router-link
     v-for="(item, index) in nav"
     :to="item.path"
-    :key="index" v-html="item.icon" tag='li'>
+    :key="index" tag='li'>
+		<img class="icons" :src="$route.path.indexOf(item.path)!=-1?item.src_act:item.src" alt="">
+		<div>
+			{{item.name}}
+		</div>
     </router-link>
   </ul>
 </template>
@@ -14,29 +18,34 @@ export default {
     return {
       nav: [
         {
-          icon: `<i class="fa fa-search" aria-hidden="true"></i>
-        <div>Explore</div>`,
-          path: "/"
+          src: require(`../assets/icons/explore.png`),
+		  src_act: require(`../assets/icons/explore_act.png`),
+          name: "Explore",
+          path: "/home"
         },
         {
-          icon: `<i class="fa fa-heart-o" aria-hidden="true"></i>
-          <div>Collection</div>`,
+          src: require(`../assets/icons/collection.png`),
+		  src_act: require(`../assets/icons/collection_act.png`),
+          name: "Collection",
           path: "/collections"
         },
         {
-          icon: `<i class="fa fa-bandcamp" aria-hidden="true"></i>
-           <div>Discover</div>`,
+          src: require(`../assets/icons/discover.svg`),
+		  src_act: require(`../assets/icons/discover_act.svg`),
+          name: "Discover",
           path: "/discover"
         },
         {
-          icon: `<i class="fa fa-commenting-o" aria-hidden="true"></i>
-           <div>Inbox</div>`,
+          src: require(`../assets/icons/inbox.png`),
+		  src_act: require(`../assets/icons/inbox_act.png`),
+          name: "Inbox",
           path: "/waiting"
         },
         {
-          icon: `<i class="fa fa-user-o" aria-hidden="true"></i>
-          <div>Account</div>`,
-          path: this.$store.state.token ? "/user-center" : "/login"
+          src: require(`../assets/icons/account.png`),
+		  src_act: require(`../assets/icons/account_act.png`),
+          name: "Account",
+          path: this.$store.state.token ? "/user_center" : "/login"
           //如果没有登录，则链接到登录页面
         }
       ]
@@ -51,7 +60,7 @@ ul {
   position: fixed;
   bottom: 0;
   width: 100%;
-  padding: 10px 0 2px;
+  padding: 6px 0 1px;
   text-align: center;
   color: #333;
   border-top: 1px solid #ddd;
@@ -61,9 +70,14 @@ ul {
   align-items: center;
 }
 li {
-  flex: 1 1 auto;
+  width: 20%;
+  font-size: 12px;
 }
-.router-link-exact-active.router-link-active {
+.icons{
+	width: 24px;
+	height: 24px;
+}
+/* .router-link-exact-active.router-link-active {
   color: rgb(255, 87, 34);
-}
+} */
 </style>

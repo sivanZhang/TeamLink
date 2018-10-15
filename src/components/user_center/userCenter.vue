@@ -8,15 +8,15 @@
     <ul class="text-left row links">
         <router-link tag="li" to="/waiting">Inspection Planer<i class="fa fa-fw fa-calendar fa-pull-right" aria-hidden="true"></i>
         </router-link>
-        <router-link tag="li" to="/user-center/settings">Settings<i class="fa fa-fw fa-cog fa-pull-right" aria-hidden="true"></i>
+        <router-link tag="li" to="/user_center/settings">Setting<i class="fa fa-fw fa-cog fa-pull-right" aria-hidden="true"></i>
         </router-link>
-        <router-link tag="li" to="/waiting">Select Region<i class="fa fa-fw fa-globe fa-pull-right" aria-hidden="true"></i>
+        <router-link tag="li" to="/user_center/select_region">Select Region<i class="fa fa-fw fa-globe fa-pull-right" aria-hidden="true"></i>
         </router-link>
         <router-link tag="li" to="/waiting">Refer a Property<i class="fa fa-fw fa-gift fa-pull-right" aria-hidden="true"></i>
         </router-link>
         <router-link tag="li" to="/waiting">Switch to Agent<i class="fa fa-fw fa-exchange fa-rotate-90 fa-pull-right" aria-hidden="true"></i>
         </router-link>
-        <router-link tag="li" to="/waiting">Feedback<i class="fa fa-fw fa-commenting-o fa-pull-right" aria-hidden="true"></i>
+        <router-link tag="li" to="/user_center/feedback">Feedback<i class="fa fa-fw fa-commenting-o fa-pull-right" aria-hidden="true"></i>
         </router-link>
     </ul>
     <foote-menu></foote-menu>

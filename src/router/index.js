@@ -1,27 +1,41 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import home from '@/components/home/home'
-import search from '@/components/home/search'
+import mapExplore from '@/components/home/mapExplore'
+import filters from '@/components/home/filters'
 import collections from '@/components/collections/collectionList'
 import discover from '@/components/discover/discover'
 import waiting from '@/components/waiting'
-import userCenter from '@/components/user-center/userCenter'
-import change from '@/components/user-center/change'
-import settings from '@/components/user-center/settings'
+import userCenter from '@/components/user_center/userCenter'
+import change from '@/components/user_center/change'
+import selectRegion from '@/components/user_center/selectRegion'
+import settings from '@/components/user_center/settings'
+import feedback from '@/components/user_center/feedback'
 import login from '@/components/login/login'
 import signUp from '@/components/login/signUp'
 import forgot from '@/components/login/forgot'
 
 Vue.use(Router);
 const routes = [{
-        path: '/',
+        path: '/home',
         name: 'home',
         component: home
     },
     {
-        path: '/search',
-        name: 'search',
-        component: search
+        path: '/home/:id',
+        name: 'mapExplore',
+        component: mapExplore,
+        meta: {
+            keepAlive: true // 不需要被缓存
+        }
+    },
+    {
+        path: '/filters',
+        name: 'filters',
+        component: filters,
+        meta: {
+            animation: true
+        }
     },
     {
         path: '/collections',
@@ -29,9 +43,19 @@ const routes = [{
         component: collections
     },
     {
-        path: '/user-center/settings',
+        path: '/user_center/settings',
         name: 'settings',
         component: settings
+    },
+    {
+        path: '/user_center/feedback',
+        name: 'feedback',
+        component: feedback
+    },
+    {
+        path: '/user_center/select_region',
+        name: 'selectRegion',
+        component: selectRegion
     },
     {
         path: '/discover',
@@ -39,7 +63,7 @@ const routes = [{
         component: discover
     },
     {
-        path: '/user-center',
+        path: '/user_center',
         meta: {
             requireAuth: true, // 添加该字段，表示进入这个路由是需要登录的
         },
@@ -64,6 +88,9 @@ const routes = [{
     {
         path: '/waiting',
         component: waiting
+    }, {
+        path: '*',
+        redirect: '/home' //匹配不到 默认跳转
     }
 ];
 export default new Router({
