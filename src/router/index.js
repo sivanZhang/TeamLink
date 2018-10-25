@@ -14,6 +14,7 @@ import feedback from '@/components/user_center/feedback'
 import login from '@/components/login/login'
 import signUp from '@/components/login/signUp'
 import forgot from '@/components/login/forgot'
+import inbox from '@/components/inbox/inbox'
 
 Vue.use(Router);
 const routes = [{
@@ -41,6 +42,11 @@ const routes = [{
         path: '/collections',
         name: 'collections',
         component: collections
+    },
+    {
+        path: '/inbox',
+        name: 'inbox',
+        component: inbox
     },
     {
         path: '/user_center/settings',

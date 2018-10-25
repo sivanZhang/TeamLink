@@ -15,7 +15,7 @@
 		</div>
     </section>
     <img @click="openPrompt" class="icon-add" src="../../assets/icons/add.svg" alt="">
-    <foote-menu></foote-menu>
+    <footer-menu></footer-menu>
   </div>
 </template>
 

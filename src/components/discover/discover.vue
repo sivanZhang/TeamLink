@@ -52,7 +52,7 @@
 		</div>
 		 </div>
     </div>
-    <foote-menu></foote-menu>
+    <footer-menu></footer-menu>
   </div>
 </template>
 

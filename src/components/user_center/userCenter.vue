@@ -19,7 +19,7 @@
         <router-link tag="li" to="/user_center/feedback">Feedback<i class="fa fa-fw fa-commenting-o fa-pull-right" aria-hidden="true"></i>
         </router-link>
     </ul>
-    <foote-menu></foote-menu>
+    <footer-menu></footer-menu>
 </div>
 </template>
 

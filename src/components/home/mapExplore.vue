@@ -6,7 +6,7 @@
             <span class="input-group-addon"><i @click="showFilters" class="fa fa-sliders" aria-hidden="true"></i></span>
         </div>
         <filters v-show="filtersShow"></filters>
-        <div class="container"><foote-menu></foote-menu></div>
+        <div class="container"><footer-menu></footer-menu></div>
     </div>
 </template>
 <script>

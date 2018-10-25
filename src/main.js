@@ -22,8 +22,8 @@ Vue.use(VueAxios, axios);
 Vue.prototype.$qs = qs;
 Vue.config.productionTip = false;
 //注册全局组件
-import footeMenu from './components/footeMenu'
-Vue.component('foote-menu', footeMenu);
+import footerMenu from './components/footeMenu'
+Vue.component('footer-menu', footerMenu);
 new Vue({
     el: '#app',
     router,

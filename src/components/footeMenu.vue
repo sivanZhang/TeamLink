@@ -39,7 +39,7 @@ export default {
           src: require(`../assets/icons/inbox.png`),
 		  src_act: require(`../assets/icons/inbox_act.png`),
           name: "Inbox",
-          path: "/waiting"
+          path: "/inbox"
         },
         {
           src: require(`../assets/icons/account.png`),
