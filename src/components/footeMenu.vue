@@ -74,8 +74,8 @@ li {
   font-size: 12px;
 }
 .icons{
-	width: 24px;
-	height: 24px;
+	width: 22px;
+	height: 22px;
 }
 /* .router-link-exact-active.router-link-active {
   color: rgb(255, 87, 34);

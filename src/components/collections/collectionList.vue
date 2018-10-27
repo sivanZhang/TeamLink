@@ -14,6 +14,32 @@
             </div>
 		</div>
     </section>
+    <section class="collections-item">
+		<div class="item-img">
+            <img ref="item_img" src="../../assets/icons/c1.png" alt="">
+            <img ref="item_img" src="../../assets/icons/c1.png" alt="">
+        </div>
+		<div class="item-footer">
+			<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+			<div class="flex">
+                <div>B</div>
+                <i class="fa fa-external-link" aria-hidden="true"></i>
+            </div>
+		</div>
+    </section>
+    <section class="collections-item">
+		<div class="item-img">
+            <img ref="item_img" src="../../assets/icons/c1.png" alt="">
+            <img ref="item_img" src="../../assets/icons/c1.png" alt="">
+        </div>
+		<div class="item-footer">
+			<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+			<div class="flex">
+                <div>C</div>
+                <i class="fa fa-external-link" aria-hidden="true"></i>
+            </div>
+		</div>
+    </section>
     <img @click="openPrompt" class="icon-add" src="../../assets/icons/add.svg" alt="">
     <footer-menu></footer-menu>
   </div>
@@ -88,10 +114,11 @@ header {
   width: 40px;
   border-radius: 50%;
   text-align: center;
-  position: absolute;
+  position: fixed;
   right: 15px;
   bottom: 65px;
   padding: 6px;
-  border: 1px solid #333;
+  box-shadow: 0 1px 6px 3px rgba(0, 0, 0,.16);
+  background: #fff;
 }
 </style>

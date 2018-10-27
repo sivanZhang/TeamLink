@@ -137,10 +137,9 @@ export default {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  align-content: space-between;
   div {
     width: 48%;
-
+    padding-bottom: 15px;
     img {
       width: 100%;
       height: 100%;
