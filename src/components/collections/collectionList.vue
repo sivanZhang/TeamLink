@@ -35,9 +35,9 @@
 		<div class="item-footer">
 			<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 			<div class="flex">
-                <div>C</div>
-                <i class="fa fa-external-link" aria-hidden="true"></i>
-            </div>
+            <div>C</div>
+            <i class="fa fa-external-link" aria-hidden="true"></i>
+      </div>
 		</div>
     </section>
     <img @click="openPrompt" class="icon-add" src="../../assets/icons/add.svg" alt="">
@@ -78,6 +78,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+div /deep/ .mint-msgbox{
+  border-radius: 8px!important;
+}
 header {
   font-size: 18px;
   height: 50px;

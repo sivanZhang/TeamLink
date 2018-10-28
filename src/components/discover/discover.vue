@@ -2,13 +2,13 @@
   <div class="container">
     <mt-swipe class="row" :auto="3000">
       <mt-swipe-item class="slide1">
-        <img src="../../assets/s1.png" alt="">
+        <img src="../../assets/h3.jpg" alt="">
       </mt-swipe-item>
       <mt-swipe-item @click.native="test" class="slide2">
-        <img src="../../assets/s2.png" alt="">
+        <img src="../../assets/h1.jpg" alt="">
       </mt-swipe-item>
       <mt-swipe-item class="slide3">
-        <img src="../../assets/s3.png" alt="">
+        <img src="../../assets/h2.jpg" alt="">
       </mt-swipe-item>
     </mt-swipe>
     <div class="group">
@@ -16,16 +16,16 @@
         <img src="../../assets/s1.png" alt="">
       </div>
       <div>
-        <img src="../../assets/s1.png" alt="">
+        <img src="../../assets/s2.png" alt="">
       </div>
       <div>
-        <img src="../../assets/s1.png" alt="">
+        <img src="../../assets/s3.png" alt="">
       </div>
       <div>
         <img src="../../assets/s1.png" alt="">
       </div>
     </div>
-    <h5>Suggestd for you</h5>
+    <h5 class="suggestd-header">Suggestd for you</h5>
     <div class="suggest">
       <div class="suggest-title">
         <i class="fa fa-clock-o" aria-hidden="true"></i>
@@ -90,6 +90,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.suggestd-header{
+  margin: 0px;
+  padding:0 0 10px 0;
+}
 .suggest {
   .outfit {
     color: rgb(91, 91, 91);
@@ -133,7 +137,6 @@ export default {
   }
 }
 .group {
-  height: 200px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
