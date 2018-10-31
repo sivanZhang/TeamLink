@@ -16,6 +16,18 @@
     float: right!important;
 }
 
+.element::-webkit-scrollbar {
+    width: 0 !important
+}
+
+.element {
+    -ms-overflow-style: none;
+}
+
+.element {
+    overflow: -moz-scrollbars-none;
+}
+
 .text-overflow {
     display: block;
     /*内联对象需加*/

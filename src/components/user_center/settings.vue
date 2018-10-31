@@ -1,6 +1,6 @@
 <template>
-    <div class="container">
-        <mt-header title="Setting" class="row">
+    <div class="container main">
+        <mt-header title="Setting" class="row header">
             <router-link to="/user_center" slot="left">
                  <mt-button icon="back"></mt-button>
             </router-link>
@@ -46,10 +46,33 @@ export default {
 ul.links {
   background-color: #fff;
   padding: 0px 15px;
-  margin-top: 30px;
+  margin-top: 20px;
   li {
     padding: 20px 15px;
     border-bottom: 1px solid #e1e4e8;
   }
+}
+/* 头CSS */
+.header {
+  background-color: #fff;
+  position: fixed;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  top: 0;
+  z-index: 200;
+  height: unset;
+  padding: 0 0 15px;
+}
+.header /deep/ h1 {
+  margin: 0;
+}
+.header /deep/ .mint-button {
+  height: 16px;
+}
+.header /deep/ a {
+  color: inherit;
+}
+.main{
+  padding-top: 31px;
 }
 </style>
