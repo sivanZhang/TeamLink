@@ -1,6 +1,9 @@
 <template>
 <div class="text-center container">
-    <back></back>
+    <mt-header class="row header">
+            <mt-button @click="$router.go(-1)" icon="back" slot="left"></mt-button>
+            <mt-button @click="$router.push(`/home`)" slot="right">home</mt-button>
+    </mt-header>
     <h3>To be expected ...</h3>
 </div>
 </template>
@@ -16,7 +19,7 @@ export default {
     components: {
     back
   },
-  mounted: function() {
+  mounteds() {
     document
       .querySelector("body")
       .setAttribute("style", "background-color:#f4f5f9");

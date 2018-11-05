@@ -1,6 +1,11 @@
 <template>
 <div>
-    <div class="container"><back></back></div>
+    <div class="container">
+      <mt-header title="Login" class="row header">
+            <mt-button @click="$router.go(-1)" icon="back" slot="left"></mt-button>
+            <mt-button @click="$router.push(`/home`)" slot="right">home</mt-button>
+        </mt-header>
+      </div>
     <form class="container">
         <div class="text-center title">
             <div>Sign in to TEAMLINK</div>
@@ -22,11 +27,7 @@
 </template>
 
 <script>
-import back from "../back";
 export default {
-  components: {
-    back
-  },
   data() {
     return {
       api: this.axios.defaults.baseURL,
@@ -101,8 +102,7 @@ export default {
   font-family: sans-serif;
 }
 
-.form-control,
-.row {
+.form-control{
   margin-top: 15px;
 }
 .form-control {

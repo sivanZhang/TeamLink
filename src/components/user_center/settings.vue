@@ -1,9 +1,7 @@
 <template>
     <div class="container main">
         <mt-header title="Setting" class="row header">
-            <router-link to="/user_center" slot="left">
-                 <mt-button icon="back"></mt-button>
-            </router-link>
+            <mt-button @click="$router.go(-1)" icon="back" slot="left"></mt-button>
         </mt-header>
         <ul class="text-left row links">
         <router-link tag="li" to="/waiting">Notifications<i class="fa fa-fw fa-chevron-right fa-pull-right" aria-hidden="true"></i>
@@ -34,11 +32,13 @@ export default {
     }
   },
   created() {
+    document.title = "TeamLink-" + this.title;
+  },
+  mounted() {
     document
       .querySelector("body")
       .setAttribute("style", "background-color:#fff");
-    document.title = "TeamLink-" + this.title;
-  }
+  },
 };
 </script>
 
@@ -51,28 +51,5 @@ ul.links {
     padding: 20px 15px;
     border-bottom: 1px solid #e1e4e8;
   }
-}
-/* 头CSS */
-.header {
-  background-color: #fff;
-  position: fixed;
-  width: 100%;
-  border-bottom: 1px solid #ddd;
-  top: 0;
-  z-index: 200;
-  height: unset;
-  padding: 0 0 15px;
-}
-.header /deep/ h1 {
-  margin: 0;
-}
-.header /deep/ .mint-button {
-  height: 16px;
-}
-.header /deep/ a {
-  color: inherit;
-}
-.main{
-  padding-top: 31px;
 }
 </style>

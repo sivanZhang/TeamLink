@@ -1,6 +1,11 @@
 <template>
 <div>
-    <div class="container"><back></back></div>
+    <div class="container">
+      <mt-header title="Forgot" class="row header">
+            <mt-button @click="$router.go(-1)" icon="back" slot="left"></mt-button>
+            <mt-button @click="$router.push(`/home`)" slot="right">home</mt-button>
+        </mt-header>
+    </div>
     <form class="container">
         <div class="text-center title">
           Reset your password
@@ -137,9 +142,6 @@ export default {
 </script>
 
 <style scoped>
-.row {
-  margin-top: 15px;
-}
 .row a {
   color: gray;
 }

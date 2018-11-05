@@ -1,9 +1,7 @@
 <template>
-    <div class="container">
-        <mt-header title="Select Region" class="row">
-            <router-link to="/user_center" slot="left">
-                 <mt-button icon="back"></mt-button>
-            </router-link>
+    <div class="container main">
+        <mt-header title="Select Region" class="row header">
+            <mt-button @click="$router.go(-1)" icon="back" slot="left"></mt-button>
         </mt-header>
        <ul class="text-left row links">
         <router-link tag="li" to="/waiting">
@@ -37,8 +35,6 @@ export default {
 ul.links {
   background-color: #fff;
   padding: 0px 15px;
-  margin-top: 15px;
-  border-top: 1px solid #e1e4e8;
   li {
     padding: 20px 15px;
     border-bottom: 1px solid #e1e4e8;

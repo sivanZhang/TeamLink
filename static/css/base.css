@@ -16,15 +16,15 @@
     float: right!important;
 }
 
-.element::-webkit-scrollbar {
+#app::-webkit-scrollbar {
     width: 0 !important
 }
 
-.element {
+#app {
     -ms-overflow-style: none;
 }
 
-.element {
+#app {
     overflow: -moz-scrollbars-none;
 }
 

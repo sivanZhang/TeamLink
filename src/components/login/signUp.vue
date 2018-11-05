@@ -1,7 +1,10 @@
 <template>
 <div>
     <div class="container">
-        <back></back>
+      <mt-header title="Sign Up" class="row header">
+            <mt-button @click="$router.go(-1)" icon="back" slot="left"></mt-button>
+            <mt-button @click="$router.push(`/home`)" slot="right">home</mt-button>
+        </mt-header>
     </div>
     <form class="container">
         <div class="text-center title">
@@ -32,11 +35,7 @@
 </template>
 
 <script>
-import back from "../back";
 export default {
-  components: {
-    back
-  },
   data() {
     return {
       msg: [],
@@ -143,9 +142,6 @@ export default {
 </script>
 
 <style scoped>
-.row {
-  margin-top: 15px;
-}
 
 .row a {
   color: gray;

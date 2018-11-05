@@ -1,7 +1,7 @@
 <template>
 	<div class="container main">
     <mt-header title="teamlink" class="row header">
-        </mt-header>
+    </mt-header>
 		<div class="search-bg row">
 			<div class="search-warp">
 				<div class="tab-group">
@@ -87,8 +87,10 @@ export default {
       }
     }
   },
-  mounted: function() {
+  mounted() {
     document.title = "TeamLink " + this.title;
+    /* var Mheight = $(window).height();
+    $(".main").height(`${Mheight - 52}px`); */
   }
 };
 </script>
@@ -179,27 +181,5 @@ h4 {
     background: rgb(255, 87, 34);
     padding: 0 15px;
   }
-}
-.header {
-  background-color: #fff;
-  position: fixed;
-  width: 100%;
-  border-bottom: 1px solid #ddd;
-  top: 0;
-  z-index: 200;
-  height: unset;
-  padding: 0 0 15px;
-}
-.header /deep/ h1 {
-  margin: 0;
-}
-.header /deep/ .mint-button {
-  height: 16px;
-}
-.header /deep/ a {
-  color: inherit;
-}
-.main{
-  padding-top: 31px;
 }
 </style>

@@ -87,6 +87,8 @@ export default {
     /* 设置展图宽高相等 */
     let imgWidth = $(".item-img").width() / 2;
     $(".item-img>img").height(imgWidth);
+   /*  var Mheight = $(window).height();
+    $(".main").height(`${Mheight - 52}px`); */
   }
 };
 </script>
@@ -151,28 +153,5 @@ export default {
       border-radius: 8px;
     }
   }
-}
-/* 头CSS */
-.header {
-  background-color: #fff;
-  position: fixed;
-  width: 100%;
-  border-bottom: 1px solid #ddd;
-  top: 0;
-  z-index: 200;
-  height: unset;
-  padding: 0 0 15px;
-}
-.header /deep/ h1 {
-  margin: 0;
-}
-.header /deep/ .mint-button {
-  height: 16px;
-}
-.header /deep/ a {
-  color: inherit;
-}
-.main{
-  padding-top: 31px;
 }
 </style>
