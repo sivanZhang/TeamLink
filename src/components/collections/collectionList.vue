@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <header>Collection</header>
-    <section class="collections-item">
+    <section class="collections-item" @click="getHtml(`http://www.demo-it.com.au/teamlink1/open-houses/ `)">
 		<div class="item-img">
             <img ref="item_img" src="../../assets/icons/c1.png" alt="">
             <img ref="item_img" src="../../assets/icons/c1.png" alt="">
@@ -14,7 +14,7 @@
             </div>
 		</div>
     </section>
-    <section class="collections-item">
+    <section class="collections-item" @click="getHtml(`http://www.demo-it.com.au/teamlink1/open-houses/ `)">
 		<div class="item-img">
             <img ref="item_img" src="../../assets/icons/c1.png" alt="">
             <img ref="item_img" src="../../assets/icons/c1.png" alt="">
@@ -27,7 +27,7 @@
             </div>
 		</div>
     </section>
-    <section class="collections-item">
+    <section class="collections-item" @click="getHtml(`http://www.demo-it.com.au/teamlink1/open-houses/ `)">
 		<div class="item-img">
             <img ref="item_img" src="../../assets/icons/c1.png" alt="">
             <img ref="item_img" src="../../assets/icons/c1.png" alt="">
@@ -63,7 +63,11 @@ export default {
         cancelButtonText:"cancel",
         showInput:true
       });
-      }
+      },
+      getHtml(val) {
+      this.$store.commit("setUrl", val);
+      this.$router.push("/iframe");
+    }
   },
   mounted() {
     document

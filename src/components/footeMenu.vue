@@ -68,6 +68,7 @@ ul {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  z-index: 300;
 }
 li {
   width: 20%;

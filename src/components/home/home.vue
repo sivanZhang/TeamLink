@@ -13,7 +13,7 @@
 					</button>
 				</div>
 				<div class="relative" v-show="currentTab=='buy'">
-          <i class="fa fa-search" @click.="search('buy')" aria-hidden="true"></i>
+          <i class="fa fa-search" @click="search('buy')" aria-hidden="true"></i>
 					<input type="search" v-model="searchText" @keyup.enter="search('buy')" class="form-control search" placeholder="buy" key="buy">
 				</div>
 				<div class="relative" v-show="currentTab=='rent'">
@@ -28,7 +28,7 @@
         <i class="fa fa-clock-o" aria-hidden="true"></i>
         {{postedTime}}
       </div>
-      <div class="suggest-details">
+      <div class="suggest-details" @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/`)">
 
       </div>
       <div class="suggest-info">
@@ -78,6 +78,10 @@ export default {
     };
   },
   methods: {
+    getHtml(val) {
+      this.$store.commit("setUrl", val);
+      this.$router.push("/iframe");
+    },
     search(val) {
       if (this.searchText) {
         this.$store.commit("setSearchText", this.searchText);

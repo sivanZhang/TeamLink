@@ -15,6 +15,7 @@ import login from '@/components/login/login'
 import signUp from '@/components/login/signUp'
 import forgot from '@/components/login/forgot'
 import inbox from '@/components/inbox/inbox'
+import iframe from '@/components/Iframe'
 
 Vue.use(Router);
 const routes = [{
@@ -74,6 +75,11 @@ const routes = [{
             requireAuth: true, // 添加该字段，表示进入这个路由是需要登录的
         },
         component: userCenter
+    },
+    {
+        path: '/iframe',
+        name: 'Iframe',
+        component: iframe
     },
     {
         path: '/login',

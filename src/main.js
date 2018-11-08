@@ -24,6 +24,8 @@ Vue.use(VueAxios, axios);
 Vue.prototype.$qs = qs;
 Vue.config.productionTip = false;
 //注册全局组件
+import loading from '@/components/loading'
+Vue.component('loading', loading)
 import footerMenu from './components/footeMenu'
 Vue.component('footer-menu', footerMenu);
 new Vue({

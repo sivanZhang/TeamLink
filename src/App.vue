@@ -29,16 +29,18 @@ export default {
 }
 .main {
   width: 100%;
-  margin-top: 32px;
+  position: absolute;
+  overflow: auto;
+  top: 30;
+  padding-bottom: 52px;
 }
 .header {
   background-color: #fff;
-  position: fixed;
+  position: fixed!important;
+  top: 0;
   width: 100%;
   border-bottom: 1px solid #ddd;
-  top: 0;
   z-index: 200;
-  height: unset;
-  padding: 8px 0;
+  height: 30px!important;
 }
 </style>

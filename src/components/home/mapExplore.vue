@@ -5,8 +5,13 @@
             <input class="form-control" v-model="searchText" type="text">
             <span class="input-group-addon"><i @click="showFilters" class="fa fa-sliders" aria-hidden="true"></i></span>
         </div>
+        <div class="container">	<footer-menu></footer-menu></div>
+        <div class="iframe-warp">
+          <iframe id="show-iframe" frameborder="0" scrolling="auto" src="https://snazzymaps.com/" allowfullscreen></iframe>
+        </div>
+    <loading v-if="loading"></loading>
         <filters v-show="filtersShow"></filters>
-        <div class="container"><footer-menu></footer-menu></div>
+        
     </div>
 </template>
 <script>
@@ -18,7 +23,8 @@ export default {
   data() {
     return {
       filtersShow: false,
-      searchText: ""
+      searchText: "",
+      loading: true
     };
   },
   methods: {
@@ -31,17 +37,28 @@ export default {
   },
   created() {
     if (this.$store.state.searchText) {
-      this.searchText=this.$store.state.searchText;
-      this.$store.commit("setSearchText",'');
+      this.searchText = this.$store.state.searchText;
+      this.$store.commit("setSearchText", "");
     }
+  },
+  mounted() {
+    const oIframe = document.getElementById("show-iframe"),
+      deviceWidth = document.documentElement.clientWidth,
+      deviceHeight = document.documentElement.clientHeight;
+    oIframe.style.width = deviceWidth + "px";
+    oIframe.onload = () => {
+      this.loading = false;
+    };
   }
 };
 </script>
 <style lang="less" scoped>
 .input-group {
-  margin-top: 15px;
+  z-index: 200;
   display: table;
-  position: relative;
+  position: absolute;
+  top: 15px;
+  width: 100%;
   .input-group-addon {
     display: table-cell;
     background-color: unset;
@@ -75,5 +92,11 @@ export default {
   cursor: move;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+.iframe-warp {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: scroll;
+  z-index: 99;
+  padding-bottom: 46px;
 }
 </style>

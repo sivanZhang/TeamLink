@@ -4,31 +4,31 @@
         </mt-header>
     <mt-swipe class="row" :auto="3000">
       <mt-swipe-item class="slide1">
-        <img src="../../assets/h3.jpg" alt="">
+        <img src="../../assets/h3.jpg" alt="" @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/`)">
       </mt-swipe-item>
       <mt-swipe-item @click.native="test" class="slide2">
-        <img src="../../assets/h1.jpg" alt="">
+        <img src="../../assets/h1.jpg" alt="" @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/`)">
       </mt-swipe-item>
       <mt-swipe-item class="slide3">
-        <img src="../../assets/h2.jpg" alt="">
+        <img src="../../assets/h2.jpg" alt="" @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/`)">
       </mt-swipe-item>
     </mt-swipe>
     <div class="group">
       <div>
-        <img src="../../assets/s1.png" alt="">
+        <img src="../../assets/s1.png" alt="" @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/ `)">
       </div>
       <div>
-        <img src="../../assets/s2.png" alt="">
+        <img src="../../assets/s2.png" alt="" @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/ `)">
       </div>
       <div>
-        <img src="../../assets/s3.png" alt="">
+        <img src="../../assets/s3.png" alt="" @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/ `)">
       </div>
       <div>
-        <img src="../../assets/s1.png" alt="">
+        <img src="../../assets/s1.png" alt="" @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/ `)">
       </div>
     </div>
     <h5 class="suggestd-header">Suggestd for you</h5>
-    <div class="suggest">
+    <div class="suggest" @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/`)">
       <div class="suggest-title">
         <i class="fa fa-clock-o" aria-hidden="true"></i>
         {{postedTime}}
@@ -75,8 +75,9 @@ export default {
     };
   },
   methods: {
-    test() {
-      alert("click event");
+    getHtml(val) {
+      this.$store.commit("setUrl", val);
+      this.$router.push("/iframe");
     }
   },
   mounted() {
