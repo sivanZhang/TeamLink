@@ -39,7 +39,7 @@ export default {
   position: fixed!important;
   top: 0;
   width: 100%;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #e8eaec;
   z-index: 200;
   height: 30px!important;
 }

@@ -7,6 +7,7 @@
       <iframe id="show-iframe" frameborder="0" scrolling="auto" :src="$store.state.url" allowfullscreen></iframe>
     </div>
     <loading v-if="loading"></loading>
+    <footer-menu></footer-menu>
 	</div>
 </template>
 
