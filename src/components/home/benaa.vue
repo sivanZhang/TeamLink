@@ -5,20 +5,20 @@
         </mt-header>
         <Map></Map>
          <Tag color="success">FOR RENT</Tag>
-         <div><Icon type="ios-pin" />Orland Park, IL 60465, Chicago, IL, United States</div>
-         <h4>Single House Near Orland Park, Chicago</h4>
+         <div><Icon class="green" type="ios-pin" />{{ajaxData[0].attributes.real_estate_property_address}}</div>
+         <h4>{{ajaxData[0].title}}</h4>
          <div class="property-info">
             <div>
                 <div class="iwarp"><i class="fa fa-barcode" aria-hidden="true"></i></div>
                 <div>
-                    771
+                    {{ajaxData[0].propertyId}}
                     <p>property id</p>
                 </div>
             </div>
             <div>
                 <div class="iwarp"><i class="fa fa-crop" aria-hidden="true"></i></div> 
                 <div>
-                    185 sqFt
+                    {{ajaxData[0].attributes.real_estate_property_size}} sqFt
                     <p>SIZE</p>
                 </div>
                 
@@ -26,47 +26,42 @@
             <div>
                 <div class="iwarp"><i class="fa fa-bed" aria-hidden="true"></i></div>
                 <div>
-                    3
+                    {{ajaxData[0].attributes.real_estate_property_bedrooms}}
                     <p>BEDROOMS</p>
                 </div>
             </div>
             <div>
                 <div class="iwarp"><i class="fa fa-bath" aria-hidden="true"></i></div>
                 <div>
-                    2
+                    {{ajaxData[0].attributes.real_estate_property_bathrooms}}
                     <p>BATHROOM</p>
                 </div>
             </div>
             
          </div>
-         <h3 class="text-right">$2.5 thousand
-         </h3>
-        <p class="text-right">/MONTH</p>    
+         <h3 class="text-right">${{ajaxData[0].attributes.real_estate_property_price/1000}} thousand<span class="time">/{{ajaxData[0].attributes.real_estate_property_price_postfix}}</span>
+             
+         </h3>    
         <p class="text-right icons"><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-minus" aria-hidden="true"></i><i class="fa fa-print" aria-hidden="true"></i></p>
-        <mt-swipe :auto="3000">
-            <mt-swipe-item class="slide1">
-                <img src="@/assets/h3.jpg" alt="">1
-            </mt-swipe-item>
-            <mt-swipe-item @click.native="test" class="slide2">
-                <img src="@/assets/h1.jpg" alt="">2
-            </mt-swipe-item>
-            <mt-swipe-item class="slide3">
-                <img src="@/assets/h2.jpg" alt="">3
-            </mt-swipe-item>
+        <mt-swipe :auto="3000" >
+            <template v-for="item in ajaxData[0].images">
+                <mt-swipe-item>
+                    <img :src="item" alt="">
+                </mt-swipe-item>
+            </template>
+            
         </mt-swipe>
-
         <section>
             <div class="card-title">Description</div>
             <div class="car-content">
-                Solum vidisse eum ea. Ei solum essent delicata mei, ad quis quaerendum sit. Usu accumsan iudicabit cu, 
-                an his ferri legere habemus, cu fastidii consequat sit. Ne per augue munere, cibo doming persius ex sit.
+               {{ajaxData[0].content}}
             </div>
         </section>
         <section>
             <div class="card-title">Address</div>
             <div class="car-content">
                 <p><strong>Address:</strong>
-                <span>Orland Park, IL 60465, Chicago, IL, United States</span></p>
+                <span>{{ajaxData[0].attributes.real_estate_property_address}}</span></p>
                 <p>
                     <strong>Country:</strong>
                     <span>United States</span>
@@ -89,61 +84,63 @@
             <Panel name="1">
                 OVERVIEW
                 <p slot="content">
-                    <ul class="list-2-col ere-property-list">
+                    <ul class="">
                         <li>
                             <strong>Property ID</strong>
-                        <span>771</span>
+                            <span>{{ajaxData[0].propertyId}}</span>
                         </li>
-                                                <li>
-                                <strong>Price</strong>
+                        <li>
+                            <strong>Price</strong>
                             <span class="ere-property-price">
-                                                                            $2.5 thousand                                     <span class="property-price-postfix"> / Month</span>                                </span>
-                            </li>
-                                                                    <li>
-                                <strong>Property Type</strong>
-                                <span>Apartment, Bar, House</span>
-                            </li>
-                                                                    <li>
+                                ${{ajaxData[0].attributes.real_estate_property_price_short}} thousand
+                                <span class="property-price-postfix"> / {{ajaxData[0].attributes.real_estate_property_price_postfix}}</span>
+                            </span>
+                        </li>
+                        <li>
+                            <strong>Property Type</strong>
+                            <span>Apartment, Bar, House</span>
+                        </li>
+                        <li>
                                 <strong>Property status</strong>
                                 <span>For Rent</span>
                             </li>
-                                                                    <li>
+                        <li>
                                 <strong>Rooms</strong>
-                                <span>5</span>
+                                <span>{{ajaxData[0].attributes.real_estate_property_rooms}}</span>
                             </li>
-                                                                    <li>
+                        <li>
                                 <strong>Bedrooms</strong>
-                                <span>3</span>
+                                <span>{{ajaxData[0].attributes.real_estate_property_bedrooms}}</span>
                             </li>
-                                                                    <li>
+                         <li>
                                 <strong>Bathrooms</strong>
-                                <span>2</span>
+                                <span>{{ajaxData[0].attributes.real_estate_property_bathrooms}}</span>
                             </li>
-                                                                    <li>
+                        <li>
                                 <strong>Year Built</strong>
-                                <span>2006</span>
+                                <span>{{ajaxData[0].attributes.real_estate_property_year}}</span>
                             </li>
-                                                                    <li>
+                        <li>
                                 <strong>Size</strong>
 
-                                <span>185 SqFt</span>
+                                <span>{{ajaxData[0].attributes.real_estate_property_size}} SqFt</span>
                             </li>
                                                                     <li>
                                 <strong>Land area</strong>
-                        <span>200 SqFt</span>
+                        <span>{{ajaxData[0].attributes.real_estate_property_land}} SqFt</span>
                             </li>
                         
                         
                                                 <li>
                                 <strong>Garages</strong>
-                                <span>1</span>
+                                <span>{{ajaxData[0].attributes.real_estate_property_garage}}</span>
                             </li>
                                                                     <li>
                                 <strong>Garage Size</strong>
-                                <span>50 SqFt</span>
+                                <span>{{ajaxData[0].attributes.real_estate_property_garage_size}} SqFt</span>
                             </li>
                                             
-                                                                                    </ul>
+                  </ul>
                 </p>
             </Panel>
             <Panel name="2">
@@ -154,13 +151,14 @@
             </Panel>
             <Panel name="3">
                 VIDEO
-                <div slot="content" class="embed-responsive embed-responsive-16by9 embed-responsive-full"> https://www.youtube.com/watch?v=iuc9R-3lge8 
+                <div slot="content" class="embed-responsive embed-responsive-16by9 embed-responsive-full">
+                   {{ajaxData[0].attributes.real_estate_property_video_url}}
                 </div>
             </Panel>
             <Panel name="4">
                 <a data-toggle="collapse" href="#ere-virtual_tour_360-collapse" class="js-tabcollapse-panel-heading" data-parent="#ere-features-tabs-accordion" aria-expanded="true">Virtual Tour</a>
-                <div slot="content" class="panel-body js-tabcollapse-panel-body">       
-                        <iframe width="100%" height="500" src="https://my.matterport.com/show/?m=wWcGxjuUuSb&amp;utm_source=hit-content-embed" frameborder="0" allowfullscreen="" allowvr=""></iframe>                </div>
+                <div slot="content" class="panel-body js-tabcollapse-panel-body" v-html="ajaxData[0].attributes.real_estate_property_virtual_tour">
+                </div>
             </Panel>
         </Collapse>
         <section>
@@ -173,6 +171,24 @@
             <div class="card-title">Nearby Places</div>
             <div class="car-content">
                  <Map></Map>
+                 <div style="position: relative; max-height: 475px; overflow: hidden scroll;">
+                     <div class="near-location-info"><span>Food</span>
+                     <ul><li class="dotted-left">Potbelly Sandwich Shop</li><li class="dotted-right"><span>121.43 m</span></li></ul></div>
+                     <div class="near-location-info"><span>Health</span><ul><li class="dotted-left">CVS Pharmacy</li><li class="dotted-right"><span>126.08 m</span></li></ul></div>
+                     <div class="near-location-info"><span>Store</span><ul><li class="dotted-left">Target Mobile</li><li class="dotted-right"><span>126.08 m</span></li></ul></div>
+                     <div class="near-location-info"><span>Food</span><ul><li class="dotted-left">Pizza Hut Express</li><li class="dotted-right"><span>126.08 m</span></li></ul></div>
+                     <div class="near-location-info"><span>Food</span><ul><li class="dotted-left">Target</li><li class="dotted-right"><span>126.08 m</span></li></ul></div>
+                     <div class="near-location-info"><span>Health</span><ul><li class="dotted-left">Carolyn J. Wikstrom, PharmD</li><li class="dotted-right"><span>134.46 m</span></li></ul></div>
+                     <div class="near-location-info"><span>Health</span><ul><li class="dotted-left">Jennifer A. Hansen, PharmD</li><li class="dotted-right"><span>134.46 m</span></li></ul></div>
+                     <div class="near-location-info"><span>Food</span><ul><li class="dotted-left">Five Guys</li><li class="dotted-right"><span>134.59 m</span></li></ul></div>
+                     <div class="near-location-info"><span>Store</span><ul><li class="dotted-left">Rug&amp;Decor</li><li class="dotted-right"><span>166.6 m</span></li></ul></div>
+                     <div class="near-location-info"><span>Food</span><ul><li class="dotted-left">Uncle Julio's Mexican From Scratch</li><li class="dotted-right"><span>167.44 m</span></li></ul></div>
+                     <div class="near-location-info"><span>Store</span><ul><li class="dotted-left">Discovery Clothing</li><li class="dotted-right"><span>185.1 m</span></li></ul></div>
+                     <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div>
+                     <div class="ps-scrollbar-y-rail" style="top: 0px; height: 475px; right: 5px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 325px;"></div>
+                     </div>
+                </div>
+                 
             </div>
         </section>
         <section>
@@ -229,15 +245,13 @@
                   
                 </div>
     </Card>
-    <div class="ere-property-element">
+    <div class="text-center msg">
 	<span class="property-date">
-		<i class="fa fa-calendar"></i> 02/02/2017	</span>
+		<i class="fa fa-calendar green"></i> 02/02/2017	</span>
 	<span class="property-views-count">
-		<i class="fa fa-eye"></i>
+		<i class="fa fa-eye green"></i>
         1,169 views	</span>
     </div>
-    <Rate show-text v-model="valueCustomText">
-    </Rate>
     <BackTop></BackTop>
     </div>
 </template>
@@ -247,11 +261,22 @@ export default {
   data() {
     return {
       value1: "",
-      valueCustomText: 3.8
+      ajaxData: ""
     };
   },
   components: {
     Map
+  },
+  mounted() {
+    this.axios
+      .get("/property/properties/771")
+      .then(res => {
+        console.log(res);
+        this.ajaxData = res.data.property;
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 };
 </script>
@@ -282,6 +307,13 @@ export default {
 }
 
 #property {
+  .msg {
+    margin: 30px auto;
+  }
+  .time {
+    font-size: 14px;
+    color: #727272;
+  }
   .fa-fw {
     margin: 10px 10px 10px 0;
   }
@@ -334,10 +366,59 @@ export default {
       font-size: 18px;
     }
     .car-content {
+      .near-location-info {
+        & > span {
+          font-weight: 600;
+          font-size: 16px;
+          color: #222222;
+          margin-bottom: -1px;
+          display: block;
+        }
+
+        ul {
+          padding: 0;
+          margin-bottom: 5px;
+          position: relative;
+          li.dotted-left + li.dotted-right:before {
+            content: "";
+            width: 100%;
+            display: block;
+            height: 1px;
+            border: 1px dotted;
+            position: absolute;
+            left: 0;
+            bottom: 10px;
+            color: #ddd;
+            z-index: 1;
+          }
+          li {
+            font-size: 13px;
+            font-weight: 600;
+            display: inline-block;
+            color: #222;
+            background: #fff;
+            &.dotted-left {
+              z-index: 2;
+              padding-right: 10px;
+              position: relative;
+            }
+            &.dotted-right {
+              float: right;
+            }
+
+            span {
+              position: relative;
+              z-index: 2;
+              background: #fff;
+              padding-left: 10px;
+            }
+          }
+        }
+      }
       padding: 15px;
-      .agent-social>a{
-          margin-right: 20px;
-          color: #727272;
+      .agent-social > a {
+        margin-right: 20px;
+        color: #727272;
       }
     }
   }
@@ -349,10 +430,11 @@ export default {
     border-radius: 16px;
     margin: 10px auto;
   }
-  & /deep/ .ivu-btn-ghost.ivu-btn-success,& /deep/ .ivu-btn-success{
-      color: @basegreen;
-      border-color: @basegreen;
-      border-width: 2px;
+  & /deep/ .ivu-btn-ghost.ivu-btn-success,
+  & /deep/ .ivu-btn-success {
+    color: @basegreen;
+    border-color: @basegreen;
+    border-width: 2px;
   }
 }
 </style>

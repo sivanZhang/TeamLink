@@ -3,6 +3,7 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
+const config = require("./config");
 
 module.exports = {
     dev: {
@@ -10,12 +11,14 @@ module.exports = {
         assetsPublicPath: '/',
         proxyTable: { // config/index.js文件
             '/api': {
-                target: 'https://www.chidict.com/',
+                target: 'https://www.chidict.com',
                 changeOrigin: true, //跨域
+                secure: false,
                 pathRewrite: {
-                    '^/api': '/'
+                    '^': '/'
                 }
             }
+
         },
         // Various Dev Server settings
         host: '0.0.0.0', // can be overwritten by process.env.HOST

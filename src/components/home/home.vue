@@ -23,38 +23,37 @@
 			</div>
 		</div>
 		<h4>Recently Viewed</h4>
-    <div class="suggest">
+    <router-link to="/benaa" class="suggest" tag="div">
       <div class="suggest-title">
         <i class="fa fa-clock-o" aria-hidden="true"></i>
         {{postedTime}}
       </div>
-      <div class="suggest-details" @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/`)">
-
+      <div class="suggest-details" ><!-- @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/`)" -->
+          <img :src="ajaxData[0].images[0]" alt="">
       </div>
       <div class="suggest-info">
         <div>
-          {{info}}
+          {{ajaxData[0].title}}
         </div>
         <div>
-          <i class="fa fa-picture-o" aria-hidden="true"></i> {{pictureNumber}}
+          <i class="fa fa-picture-o" aria-hidden="true"></i> {{ajaxData[0].images.length}}
        		</div>
      	</div>
 	 	<div class="container">
 			 <h5>Modern Apartment</h5>
-		<div class="price">${{price}}</div>
+		<div class="price">${{ajaxData[0].attributes.real_estate_property_price}}</div>
 		<div class="outfit">
-			{{outfit.bed}}<i class="fa fa-bed" aria-hidden="true"></i>
-			{{outfit.toilet}}<i class="fa fa-bath" aria-hidden="true"></i>
-			{{outfit.carport}}<i class="fa fa-car" aria-hidden="true"></i>
+			{{ajaxData[0].attributes.real_estate_property_bedrooms}}<i class="fa fa-bed" aria-hidden="true"></i>
+			{{ajaxData[0].attributes.real_estate_property_bathrooms}}<i class="fa fa-bath" aria-hidden="true"></i>
+			{{ajaxData[0].attributes.real_estate_property_garage}}<i class="fa fa-car" aria-hidden="true"></i>
 		</div>
 		 </div>
-    </div>
+    </router-link>
 		<!-- <div class="item-wrap">
 			<div class="item">
 				
 			</div>
 		</div> -->
-    <router-link to="/benaa">property</router-link>
 		<footer-menu></footer-menu>
 	</div>
 </template>
@@ -68,14 +67,7 @@ export default {
       tabs: [{ path: "buy", name: "Buy" }, { path: "rent", name: "Rent" }],
       searchText: "",
       postedTime: `Today 1:00 PM - 5:00 PM`,
-      info: `Epping Station,NSW,2000`,
-      pictureNumber: 3,
-      price: 7000,
-      outfit: {
-        bed: 3,
-        toilet: 2,
-        carport: 1
-      }
+      ajaxData:[]
     };
   },
   methods: {
@@ -92,10 +84,14 @@ export default {
       }
     }
   },
-  mounted() {
+  created() {
     document.title = "TeamLink " + this.title;
-    /* var Mheight = $(window).height();
-    $(".main").height(`${Mheight - 52}px`); */
+    this.axios.get('/property/properties/771').then(res=>{
+      console.log(res)
+      this.ajaxData=res.data.property.concat()
+    }).catch(err=>{
+      console.log(err)
+    })
   }
 };
 </script>
@@ -178,8 +174,11 @@ h4 {
   }
   .suggest-details {
     height: 200px;
-    background: url(../../../static/image/home.png) no-repeat;
-    background-size: 100% 100%;
+    overflow: hidden;
+    img{
+      height: auto;
+      width: 100%;
+    }
   }
   .suggest-title {
     color: #fff;

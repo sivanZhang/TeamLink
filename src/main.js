@@ -38,7 +38,8 @@ new Vue({
     template: '<App/>'
 });
 
-axios.defaults.baseURL = 'https://www.chidict.com/';
+axios.defaults.baseURL = 'https://www.chidict.com';
+axios.defaults.withCredentials = true;
 axios.interceptors.request.use(
     config => {
         let token = store.state.token;
