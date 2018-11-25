@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import home from '@/components/home/home'
+import benaa from '@/components/home/benaa'
 import mapExplore from '@/components/home/mapExplore'
 import filters from '@/components/home/filters'
 import collections from '@/components/collections/collectionList'
@@ -22,6 +23,11 @@ const routes = [{
         path: '/home',
         name: 'home',
         component: home
+    },
+    {
+        path: '/benaa',
+        name: 'benaa',
+        component: benaa
     },
     {
         path: '/home/:id',

@@ -54,6 +54,7 @@
 				
 			</div>
 		</div> -->
+    <router-link to="/benaa">property</router-link>
 		<footer-menu></footer-menu>
 	</div>
 </template>
