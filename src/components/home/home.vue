@@ -29,23 +29,23 @@
         {{postedTime}}
       </div>
       <div class="suggest-details" ><!-- @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/`)" -->
-          <img :src="ajaxData[0].images[0]" alt="">
+          <img :src="ajaxData.images[0]" alt="">
       </div>
       <div class="suggest-info">
         <div>
-          {{ajaxData[0].title}}
+          {{ajaxData.title}}
         </div>
         <div>
-          <i class="fa fa-picture-o" aria-hidden="true"></i> {{ajaxData[0].images.length}}
+          <i class="fa fa-picture-o" aria-hidden="true"></i> {{ajaxData.images.length}}
        		</div>
      	</div>
 	 	<div class="container">
 			 <h5>Modern Apartment</h5>
-		<div class="price">${{ajaxData[0].attributes.real_estate_property_price}}</div>
+		<div class="price">${{ajaxData.attributes.real_estate_property_price}}</div>
 		<div class="outfit">
-			{{ajaxData[0].attributes.real_estate_property_bedrooms}}<i class="fa fa-bed" aria-hidden="true"></i>
-			{{ajaxData[0].attributes.real_estate_property_bathrooms}}<i class="fa fa-bath" aria-hidden="true"></i>
-			{{ajaxData[0].attributes.real_estate_property_garage}}<i class="fa fa-car" aria-hidden="true"></i>
+			{{ajaxData.attributes.real_estate_property_bedrooms}}<i class="fa fa-bed" aria-hidden="true"></i>
+			{{ajaxData.attributes.real_estate_property_bathrooms}}<i class="fa fa-bath" aria-hidden="true"></i>
+			{{ajaxData.attributes.real_estate_property_garage}}<i class="fa fa-car" aria-hidden="true"></i>
 		</div>
 		 </div>
     </router-link>
@@ -67,7 +67,9 @@ export default {
       tabs: [{ path: "buy", name: "Buy" }, { path: "rent", name: "Rent" }],
       searchText: "",
       postedTime: `Today 1:00 PM - 5:00 PM`,
-      ajaxData:[]
+      ajaxData:[
+       
+      ]
     };
   },
   methods: {
@@ -85,10 +87,11 @@ export default {
     }
   },
   created() {
-    document.title = "TeamLink " + this.title;
+    document.title = "TeamLink " + this.title;  
+    console.log(111111111111);
     this.axios.get('/property/properties/771').then(res=>{
       console.log(res)
-      this.ajaxData=res.data.property.concat()
+      this.ajaxData=res.data.property[0]
     }).catch(err=>{
       console.log(err)
     })
