@@ -20,7 +20,6 @@ import iView from 'iview';
 import locale from 'iview/dist/locale/en-US';
 Vue.use(iView, { locale });
 import 'iview/dist/styles/iview.css';
-
 Vue.prototype.$qs = qs;
 Vue.config.productionTip = false;
 //注册全局组件
@@ -29,57 +28,31 @@ Vue.component('loading', loading)
 import footerMenu from './components/footeMenu'
 Vue.component('footer-menu', footerMenu);
 Vue.use(VueAxios, axios);
-const prod = require('../config/prod.env')
-
-if (process.env.NODE_ENV !== prod.NODE_ENV) {
-    axios.defaults.baseURL = '/api';
-}else{
-    axios.defaults.baseURL = 'https://www.chidict.com';
-}
+/* const prod = require('../config/prod.env') */
 
 
 
-axios.defaults.withCredentials = true;
+const isPro = Object.is(process.env.NODE_ENV, 'production')
+axios.defaults.baseURL = isPro ? 'https://www.chidict.com/' : 'api/'
 axios.interceptors.request.use(
-  config => {
-    let token = store.state.token;
-    if (token) {
-      console.log('set token');
-      config.headers.Authorization = token;
-    }
-    return config;
-  },
-  err => {
-    return Promise.reject(err);
-  });
+    config => {
+        let token = store.state.token;
+        if (token) {
+            console.log(token);
+            config.headers.Authorization = token;
+        }
+        return config;
+    },
+    err => {
+        return Promise.reject(err);
+    });
 // http response 服务器响应拦截器，这里拦截401错误，并重新跳入登页重新获取token
-axios.interceptors.response.use(
-  response => {
-    return response;
-  },
-  error => {
-    if (error.response) {
-      switch (error.response.status) {
-        case 401:
-          // 这里写清除token的代码
-          console.log('remove token');
-          this.$store.commit('setToken', "")
-          router.replace({
-            path: '/login',
-            query: { redirect: router.currentRoute.fullPath } //登录成功后跳入浏览的当前页面
-          })
-      }
-    }
-    return Promise.reject(error.response.data)
-  });
-
-
 new Vue({
-  el: '#app',
-  router,
-  store,
-  components: {
-    App
-  },
-  template: '<App/>'
+    el: '#app',
+    router,
+    store,
+    components: {
+        App
+    },
+    template: '<App/>'
 });

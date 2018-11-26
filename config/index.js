@@ -13,7 +13,6 @@ module.exports = {
             '/api': {
                 target: 'https://www.chidict.com',
                 changeOrigin: true, //跨域
-                secure: false,
                 pathRewrite: {
                     '^/api': '/'
                 }

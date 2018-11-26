@@ -23,7 +23,7 @@
 			</div>
 		</div>
 		<h4>Recently Viewed</h4>
-    <router-link to="/benaa" class="suggest" tag="div">
+    <router-link to="/benaa/771" class="suggest" tag="div">
       <div class="suggest-title">
         <i class="fa fa-clock-o" aria-hidden="true"></i>
         {{postedTime}}
@@ -49,11 +49,6 @@
 		</div>
 		 </div>
     </router-link>
-		<!-- <div class="item-wrap">
-			<div class="item">
-				
-			</div>
-		</div> -->
 		<footer-menu></footer-menu>
 	</div>
 </template>
@@ -67,9 +62,7 @@ export default {
       tabs: [{ path: "buy", name: "Buy" }, { path: "rent", name: "Rent" }],
       searchText: "",
       postedTime: `Today 1:00 PM - 5:00 PM`,
-      ajaxData:[
-       
-      ]
+      ajaxData:''
     };
   },
   methods: {
@@ -87,8 +80,7 @@ export default {
     }
   },
   created() {
-    document.title = "TeamLink " + this.title;  
-    console.log(111111111111);
+    document.title = "TeamLink " + this.title;
     this.axios.get('/property/properties/771').then(res=>{
       console.log(res)
       this.ajaxData=res.data.property[0]

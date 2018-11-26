@@ -25,7 +25,7 @@ const routes = [{
         component: home
     },
     {
-        path: '/benaa',
+        path: '/benaa/:pid',
         name: 'benaa',
         component: benaa
     },

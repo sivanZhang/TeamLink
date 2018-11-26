@@ -1,24 +1,25 @@
 <template>
-    <div id="property" class="container">
-        <mt-header title="TeamLink" class="row header">
+
+<div id="property" class="container">
+    <mt-header title="TeamLink" class="row header">
             <mt-button @click="$router.go(-1)" icon="back" slot="left"></mt-button>
         </mt-header>
         <Map></Map>
          <Tag color="success">FOR RENT</Tag>
-         <div><Icon class="green" type="ios-pin" />{{ajaxData[0].attributes.real_estate_property_address}}</div>
-         <h4>{{ajaxData[0].title}}</h4>
+         <div><Icon class="green" type="ios-pin" />{{ajaxData.attributes.real_estate_property_address}}</div>
+         <h4>{{ajaxData.title}}</h4>
          <div class="property-info">
             <div>
                 <div class="iwarp"><i class="fa fa-barcode" aria-hidden="true"></i></div>
                 <div>
-                    {{ajaxData[0].propertyId}}
+                    {{ajaxData.propertyId}}
                     <p>property id</p>
                 </div>
             </div>
             <div>
                 <div class="iwarp"><i class="fa fa-crop" aria-hidden="true"></i></div> 
                 <div>
-                    {{ajaxData[0].attributes.real_estate_property_size}} sqFt
+                    {{ajaxData.attributes.real_estate_property_size}} sqFt
                     <p>SIZE</p>
                 </div>
                 
@@ -26,25 +27,25 @@
             <div>
                 <div class="iwarp"><i class="fa fa-bed" aria-hidden="true"></i></div>
                 <div>
-                    {{ajaxData[0].attributes.real_estate_property_bedrooms}}
+                    {{ajaxData.attributes.real_estate_property_bedrooms}}
                     <p>BEDROOMS</p>
                 </div>
             </div>
             <div>
                 <div class="iwarp"><i class="fa fa-bath" aria-hidden="true"></i></div>
                 <div>
-                    {{ajaxData[0].attributes.real_estate_property_bathrooms}}
+                    {{ajaxData.attributes.real_estate_property_bathrooms}}
                     <p>BATHROOM</p>
                 </div>
             </div>
             
          </div>
-         <h3 class="text-right">${{ajaxData[0].attributes.real_estate_property_price/1000}} thousand<span class="time">/{{ajaxData[0].attributes.real_estate_property_price_postfix}}</span>
+         <h3 class="text-right">${{ajaxData.attributes.real_estate_property_price/1000}} thousand<span class="time">/{{ajaxData.attributes.real_estate_property_price_postfix}}</span>
              
          </h3>    
         <p class="text-right icons"><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-minus" aria-hidden="true"></i><i class="fa fa-print" aria-hidden="true"></i></p>
         <mt-swipe :auto="3000" >
-            <template v-for="item in ajaxData[0].images">
+            <template v-for="item in ajaxData.images">
                 <mt-swipe-item>
                     <img :src="item" alt="">
                 </mt-swipe-item>
@@ -54,14 +55,14 @@
         <section>
             <div class="card-title">Description</div>
             <div class="car-content">
-               {{ajaxData[0].content}}
+               {{ajaxData.content}}
             </div>
         </section>
         <section>
             <div class="card-title">Address</div>
             <div class="car-content">
                 <p><strong>Address:</strong>
-                <span>{{ajaxData[0].attributes.real_estate_property_address}}</span></p>
+                <span>{{ajaxData.attributes.real_estate_property_address}}</span></p>
                 <p>
                     <strong>Country:</strong>
                     <span>United States</span>
@@ -87,13 +88,13 @@
                     <ul class="">
                         <li>
                             <strong>Property ID</strong>
-                            <span>{{ajaxData[0].propertyId}}</span>
+                            <span>{{ajaxData.propertyId}}</span>
                         </li>
                         <li>
                             <strong>Price</strong>
                             <span class="ere-property-price">
-                                ${{ajaxData[0].attributes.real_estate_property_price_short}} thousand
-                                <span class="property-price-postfix"> / {{ajaxData[0].attributes.real_estate_property_price_postfix}}</span>
+                                ${{ajaxData.attributes.real_estate_property_price_short}} thousand
+                                <span class="property-price-postfix"> / {{ajaxData.attributes.real_estate_property_price_postfix}}</span>
                             </span>
                         </li>
                         <li>
@@ -106,38 +107,38 @@
                             </li>
                         <li>
                                 <strong>Rooms</strong>
-                                <span>{{ajaxData[0].attributes.real_estate_property_rooms}}</span>
+                                <span>{{ajaxData.attributes.real_estate_property_rooms}}</span>
                             </li>
                         <li>
                                 <strong>Bedrooms</strong>
-                                <span>{{ajaxData[0].attributes.real_estate_property_bedrooms}}</span>
+                                <span>{{ajaxData.attributes.real_estate_property_bedrooms}}</span>
                             </li>
                          <li>
                                 <strong>Bathrooms</strong>
-                                <span>{{ajaxData[0].attributes.real_estate_property_bathrooms}}</span>
+                                <span>{{ajaxData.attributes.real_estate_property_bathrooms}}</span>
                             </li>
                         <li>
                                 <strong>Year Built</strong>
-                                <span>{{ajaxData[0].attributes.real_estate_property_year}}</span>
+                                <span>{{ajaxData.attributes.real_estate_property_year}}</span>
                             </li>
                         <li>
                                 <strong>Size</strong>
 
-                                <span>{{ajaxData[0].attributes.real_estate_property_size}} SqFt</span>
+                                <span>{{ajaxData.attributes.real_estate_property_size}} SqFt</span>
                             </li>
                                                                     <li>
                                 <strong>Land area</strong>
-                        <span>{{ajaxData[0].attributes.real_estate_property_land}} SqFt</span>
+                        <span>{{ajaxData.attributes.real_estate_property_land}} SqFt</span>
                             </li>
                         
                         
                                                 <li>
                                 <strong>Garages</strong>
-                                <span>{{ajaxData[0].attributes.real_estate_property_garage}}</span>
+                                <span>{{ajaxData.attributes.real_estate_property_garage}}</span>
                             </li>
                                                                     <li>
                                 <strong>Garage Size</strong>
-                                <span>{{ajaxData[0].attributes.real_estate_property_garage_size}} SqFt</span>
+                                <span>{{ajaxData.attributes.real_estate_property_garage_size}} SqFt</span>
                             </li>
                                             
                   </ul>
@@ -152,12 +153,12 @@
             <Panel name="3">
                 VIDEO
                 <div slot="content" class="embed-responsive embed-responsive-16by9 embed-responsive-full">
-                   {{ajaxData[0].attributes.real_estate_property_video_url}}
+                   {{ajaxData.attributes.real_estate_property_video_url}}
                 </div>
             </Panel>
             <Panel name="4">
                 <a data-toggle="collapse" href="#ere-virtual_tour_360-collapse" class="js-tabcollapse-panel-heading" data-parent="#ere-features-tabs-accordion" aria-expanded="true">Virtual Tour</a>
-                <div slot="content" class="panel-body js-tabcollapse-panel-body" v-html="ajaxData[0].attributes.real_estate_property_virtual_tour">
+                <div slot="content" class="panel-body js-tabcollapse-panel-body" v-html="ajaxData.attributes.real_estate_property_virtual_tour">
                 </div>
             </Panel>
         </Collapse>
@@ -252,8 +253,12 @@
 		<i class="fa fa-eye green"></i>
         1,169 views	</span>
     </div>
-    <BackTop></BackTop>
+    <BackTop style="bottom:60px;"></BackTop>
+    <footer-menu></footer-menu>
     </div>
+    
+        
+    
 </template>
 <script>
 import Map from "./map";
@@ -269,10 +274,10 @@ export default {
   },
   mounted() {
     this.axios
-      .get("/property/properties/771")
+      .get(`/property/properties/${this.$route.params.pid}`)
       .then(res => {
         console.log(res);
-        this.ajaxData = res.data.property;
+        this.ajaxData = res.data.property[0];
       })
       .catch(err => {
         console.log(err);
