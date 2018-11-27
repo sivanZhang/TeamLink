@@ -1,34 +1,21 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-Vue.use(Vuex);
-//数据
-const state = {
-    'token': '',
-    'user_name': '',
-    'portrait': '',
-    'searchText': '',
-    'url': ''
-};
-//改变数据的方法
-const mutations = {
-    setToken(state, val) {
-        state.token = val;
-    },
-    setUserName(state, name) {
-        state.user_name = name;
-    },
-    setPortrait(state, url) {
-        state.portrait = url;
-    },
-    setSearchText(state, text) {
-        state.searchText = text;
-    },
-    setUrl(state, url) {
-        state.url = url
-    }
-};
-//实例化vuex,暴露方法
-export default new Vuex.Store({
-    state,
-    mutations
-});
+import actions from './actions'
+import getters from './getters'
+import mutations from './mutations'
+import state from './state'
+/* import createLogger from 'vuex/dist/logger' */
+Vue.use(Vuex)
+
+/* const debug = process.env.NODE_ENV !== 'production' */
+
+const store = new Vuex.Store({
+  actions,
+  getters,
+  state,
+  mutations/* ,
+  strict: debug,
+  plugins: debug ? [createLogger()] : [] */
+})
+
+export default store
