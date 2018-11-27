@@ -32,10 +32,7 @@ const routes = [{
     {
         path: '/home/:id',
         name: 'mapExplore',
-        component: mapExplore,
-        meta: {
-            keepAlive: true // 不需要被缓存
-        }
+        component: mapExplore
     },
     {
         path: '/filters',

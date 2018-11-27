@@ -2,13 +2,23 @@
   <div id="search">
     <div class="input-group container">
       <i class="fa fa-chevron-left" @click="back" aria-hidden="true"></i>
-      <input class="form-control" v-model="searchText" type="text">
+      <i class="fa fa-search" @click="search(searchText)" aria-hidden="true"></i>
+      <input class="form-control" v-model="searchText" @keyup.enter="search(searchText)" type="text">
       <span class="input-group-addon">
         <i @click="showFilters" class="fa fa-sliders" aria-hidden="true"></i>
       </span>
     </div>
+    <div class="container keywords">
+      {{axiosData.length||0}} properties found:"{{keyword||' '}}"
+    </div>
     <template v-if="axiosData.length">
-      <router-link tag="div" v-for="(item,index) in axiosData" class="suggest" :key="index" :to="{name:'benaa',params:{pid:item[0].propertyId}}">
+      <router-link
+        tag="div"
+        v-for="(item,index) in axiosData"
+        class="suggest"
+        :key="index"
+        :to="{name:'benaa',params:{pid:item[0].propertyId}}"
+      >
         <div class="suggest-title">
           <i class="fa fa-clock-o" aria-hidden="true"></i>
           {{postedTime}}
@@ -28,11 +38,20 @@
           <div class="price">${{item[0].attributes.real_estate_property_price}}</div>
           <div class="outfit">
             {{item[0].attributes.real_estate_property_bedrooms}}
-            <i class="fa fa-bed" aria-hidden="true"></i>
+            <i
+              class="fa fa-bed"
+              aria-hidden="true"
+            ></i>
             {{item[0].attributes.real_estate_property_bathrooms}}
-            <i class="fa fa-bath" aria-hidden="true"></i>
+            <i
+              class="fa fa-bath"
+              aria-hidden="true"
+            ></i>
             {{item[0].attributes.real_estate_property_garage}}
-            <i class="fa fa-car" aria-hidden="true"></i>
+            <i
+              class="fa fa-car"
+              aria-hidden="true"
+            ></i>
           </div>
         </div>
       </router-link>
@@ -57,35 +76,32 @@
         filtersShow: false,
         searchText: "",
         loading: false,
-        axiosData: ''
+        axiosData: '',
+        keyword:''
       };
     },
     methods: {
-      back() {
-        this.$router.go(-1);
-      },
-      showFilters() {
-        this.$router.push("/filters");
+      search(keyword){
+        let params = {
+        title: keyword
       }
-    },
-    created() {
-      if (this.$store.state.searchText) {
-        this.searchText = this.$store.state.searchText;
-        this.$store.commit("setSearchText", "");
-      }
-    },
-    mounted() {
-      let params = {
-        title: 'new'
-      }
-      let that = this;
-      that.axios.get('/property/properties/', { params }).then(res => {
-        that.loading = false;
-        that.axiosData = res.data.properties.concat()
-        console.log(that.axiosData)
+      this.axios.get('/property/properties/', { params }).then(res => {
+        this.loading = false;
+        this.axiosData = res.data.properties.concat()
+        this.keyword=keyword
       }).catch(err => {
         console.log(err)
       })
+      },
+      back() {
+        this.$router.go(-1);
+      }
+    },
+    mounted() {
+      if (this.$store.state.searchText!='') {
+        this.search(this.$store.state.searchText);
+        this.$store.commit('setSearchText','');
+      }
     }
   };
 </script>
@@ -151,7 +167,7 @@
       width: 100%;
       border-radius: unset;
       border: 0px;
-      padding-left: 30px;
+      padding:6px 30px;
       box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
     }
 
@@ -159,6 +175,12 @@
       position: absolute;
       top: 10px;
       left: 25px;
+      z-index: 4;
+    }
+    .fa-search{
+      position: absolute;
+      top: 10px;
+      right: 65px;
       z-index: 4;
     }
   }
@@ -177,6 +199,9 @@
   }
 
   #search {
-    padding-top: 100px;
+    padding-top: 60px;
+    .keywords{
+      color: #aaa;
+    }
   }
 </style>

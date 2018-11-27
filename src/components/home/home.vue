@@ -1,21 +1,37 @@
 <template>
   <div class="container main">
-    <mt-header title="teamlink" class="row header">
-    </mt-header>
+    <mt-header title="teamlink" class="row header"></mt-header>
     <div class="search-bg row">
       <div class="search-warp">
         <div class="tab-group">
-          <button v-for="(tab,index) in tabs" :key="index" :class="[{ active: currentTab === tab.path },'tab-button','btn']" @click="currentTab = tab.path">
-            {{ tab.name }}
-          </button>
+          <button
+            v-for="(tab,index) in tabs"   
+            :key="index"
+            :class="[{ active: currentTab === tab.path },'tab-button','btn']"
+            @click="currentTab = tab.path"
+          >{{ tab.name }}</button>
         </div>
         <div class="relative" v-show="currentTab=='buy'">
           <i class="fa fa-search" @click="search('buy')" aria-hidden="true"></i>
-          <input type="search" v-model="searchText" @keyup.enter="search('buy')" class="form-control search" placeholder="buy" key="buy">
+          <input
+            type="search"
+            v-model="searchText"
+            @keyup.enter="search('buy')"
+            class="form-control search"
+            placeholder="buy"
+            key="buy"
+          >
         </div>
         <div class="relative" v-show="currentTab=='rent'">
           <i class="fa fa-search" @click="search('rent')" aria-hidden="true"></i>
-          <input type="search" @keyup.enter="search('rent')" v-model="searchText" class="form-control search" placeholder="rent" key="rent">
+          <input
+            type="search"
+            @keyup.enter="search('rent')"
+            v-model="searchText"
+            class="form-control search"
+            placeholder="rent"
+            key="rent"
+          >
         </div>
       </div>
     </div>
@@ -27,23 +43,25 @@
       </div>
       <div class="suggest-details">
         <!-- @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/`)" -->
-        <img :src="ajaxData.images[0]" alt="">
+        <img :src="ajaxData.images[0]" alt>
       </div>
       <div class="suggest-info">
+        <div>{{ajaxData.title}}</div>
         <div>
-          {{ajaxData.title}}
-        </div>
-        <div>
-          <i class="fa fa-picture-o" aria-hidden="true"></i> {{ajaxData.images.length}}
+          <i class="fa fa-picture-o" aria-hidden="true"></i>
+          {{ajaxData.images.length}}
         </div>
       </div>
       <div class="container">
         <h5>Modern Apartment</h5>
         <div class="price">${{ajaxData.attributes.real_estate_property_price}}</div>
         <div class="outfit">
-          {{ajaxData.attributes.real_estate_property_bedrooms}}<i class="fa fa-bed" aria-hidden="true"></i>
-          {{ajaxData.attributes.real_estate_property_bathrooms}}<i class="fa fa-bath" aria-hidden="true"></i>
-          {{ajaxData.attributes.real_estate_property_garage}}<i class="fa fa-car" aria-hidden="true"></i>
+          {{ajaxData.attributes.real_estate_property_bedrooms}}
+          <i class="fa fa-bed" aria-hidden="true"></i>
+          {{ajaxData.attributes.real_estate_property_bathrooms}}
+          <i class="fa fa-bath" aria-hidden="true"></i>
+          {{ajaxData.attributes.real_estate_property_garage}}
+          <i class="fa fa-car" aria-hidden="true"></i>
         </div>
       </div>
     </router-link>
@@ -69,9 +87,10 @@
         this.$router.push("/iframe");
       },
       search(val) {
+        let that=this;
         if (this.searchText) {
-          this.$store.commit("setSearchText", this.searchText);
-          this.$router.push(`/home/${val}`);
+          that.$store.commit("setSearchText", that.searchText);
+          that.$router.push(`/home/${val}`);
         } else {
           this.$router.push(`/home/${val}`);
         }
