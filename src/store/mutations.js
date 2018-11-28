@@ -1,4 +1,4 @@
-const mutations = {
+export default {
     setToken(state, val) {
         state.token = val;
     },
@@ -8,12 +8,10 @@ const mutations = {
     setPortrait(state, url) {
         state.portrait = url;
     },
-    setSearchText(state, text) {
+    set_search(state, text) {
         state.search_text = text;
     },
     setUrl(state, url) {
         state.url = url
     }
 }
-
-export default mutations

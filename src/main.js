@@ -3,8 +3,8 @@ import App from './App'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import qs from 'qs'
-import router from './router'
-import store from './store'
+import router from '@/router'
+import store from '@/store/index.js'
 import $ from 'jquery'
 import MintUI from 'mint-ui'
 Vue.use(MintUI);
@@ -27,7 +27,7 @@ import loading from '@/components/loading'
 Vue.component('loading', loading)
 import footerMenu from './components/footeMenu'
 Vue.component('footer-menu', footerMenu);
-Vue.use(VueAxios, axios);
+
 /* const prod = require('../config/prod.env') */
 
 
@@ -46,6 +46,7 @@ axios.interceptors.request.use(
     err => {
         return Promise.reject(err);
     });
+Vue.use(VueAxios, axios);
 // http response 服务器响应拦截器，这里拦截401错误，并重新跳入登页重新获取token
 new Vue({
     el: '#app',

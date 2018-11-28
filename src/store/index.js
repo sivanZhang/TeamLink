@@ -8,15 +8,9 @@ import state from './state'
 Vue.use(Vuex)
 
 /* const debug = process.env.NODE_ENV !== 'production' */
-
-const store = new Vuex.Store({
-    actions,
-    getters,
+export default new Vuex.Store({
     state,
-    mutations,
-    strict: true
-        /* strict: debug,
-        plugins: debug ? [createLogger()] : []  */
+    mutations
+    /* strict: debug,
+    plugins: debug ? [createLogger()] : []  */
 })
-
-export default store

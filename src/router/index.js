@@ -30,7 +30,7 @@ const routes = [{
         component: benaa
     },
     {
-        path: '/home/:id',
+        path: '/mapExplore/:tid',
         name: 'mapExplore',
         component: mapExplore
     },
