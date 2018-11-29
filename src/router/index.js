@@ -4,7 +4,7 @@ import home from '@/components/home/home'
 import benaa from '@/components/home/benaa'
 import mapExplore from '@/components/home/mapExplore'
 import filters from '@/components/home/filters'
-import collections from '@/components/collections/collectionList'
+import collections from '@/views/collections/collectionList'
 import discover from '@/components/discover/discover'
 import waiting from '@/components/waiting'
 import userCenter from '@/components/user_center/userCenter'
@@ -12,11 +12,12 @@ import change from '@/components/user_center/change'
 import selectRegion from '@/components/user_center/selectRegion'
 import settings from '@/components/user_center/settings'
 import feedback from '@/components/user_center/feedback'
-import login from '@/components/login/login'
+import login from '@/views/login/login'
 import signUp from '@/components/login/signUp'
 import forgot from '@/components/login/forgot'
-import inbox from '@/components/inbox/inbox'
+import inbox from '@/views/inbox/inbox'
 import iframe from '@/components/Iframe'
+import agent from '@/views/agent/agent'
 
 Vue.use(Router);
 const routes = [{
@@ -41,6 +42,11 @@ const routes = [{
         meta: {
             animation: true
         }
+    },
+    {
+        path: '/agent',
+        name: 'agent',
+        component: agent
     },
     {
         path: '/collections',

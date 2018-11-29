@@ -1,7 +1,11 @@
 import axios from 'axios'
+import store from '@/store/index.js'
 const isPro = Object.is(process.env.NODE_ENV, 'production')
-axios.defaults.baseURL = isPro ? 'https://www.chidict.com/' : 'api/'
-axios.interceptors.request.use(
+const Ajax = axios.create({
+    baseURL: isPro ? 'https://www.chidict.com/' : 'api/',
+    timeout: 10000
+});
+Ajax.interceptors.request.use(
     config => {
         let token = store.state.token;
         if (token) {
@@ -13,3 +17,4 @@ axios.interceptors.request.use(
     err => {
         return Promise.reject(err);
     });
+export default Ajax;

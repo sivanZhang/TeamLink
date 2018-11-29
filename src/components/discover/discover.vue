@@ -15,7 +15,7 @@
     </mt-swipe>
     <div class="group">
       <div>
-        <img src="../../assets/s1.png" alt="" @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/ `)">
+        <img src="../../assets/s1.png" alt="" @click="target('/agent')">
       </div>
       <div>
         <img src="../../assets/s2.png" alt="" @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/ `)">
@@ -75,6 +75,9 @@
       };
     },
     methods: {
+      target(url){
+        this.$router.push(url)
+      },
       getHtml(val) {
         this.$store.commit("setUrl", val);
         this.$router.push("/iframe");

@@ -1,20 +1,19 @@
 import Vue from 'vue'
 import App from './App'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
-import qs from 'qs'
 import router from '@/router'
-import store from '@/store/index.js'
+import store from '@/store'
+import qs from 'qs'
 import $ from 'jquery'
 import MintUI from 'mint-ui'
-Vue.use(MintUI);
 import 'mint-ui/lib/style.css'
+Vue.use(MintUI);
 import '../static/js/jquery.message.js'
 import '../static/bootstrap-3.3.7/js/bootstrap.min.js'
 import '../static/bootstrap-3.3.7/css/bootstrap.min.css'
-import '../static/css/base.css'
+import '@/theme.css'
 import 'animate.css'
-import FastClick from 'fastclick' // 解决移动端300毫秒延迟
+// 解决移动端300毫秒延迟
+import FastClick from 'fastclick'
 FastClick.attach(document.body);
 import iView from 'iview';
 import locale from 'iview/dist/locale/en-US';
@@ -27,11 +26,9 @@ import loading from '@/components/loading'
 Vue.component('loading', loading)
 import footerMenu from './components/footeMenu'
 Vue.component('footer-menu', footerMenu);
-
-/* const prod = require('../config/prod.env') */
-
-
-
+//axios
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 const isPro = Object.is(process.env.NODE_ENV, 'production')
 axios.defaults.baseURL = isPro ? 'https://www.chidict.com/' : 'api/'
 axios.interceptors.request.use(
@@ -47,7 +44,7 @@ axios.interceptors.request.use(
         return Promise.reject(err);
     });
 Vue.use(VueAxios, axios);
-// http response 服务器响应拦截器，这里拦截401错误，并重新跳入登页重新获取token
+//vue 实例化
 new Vue({
     el: '#app',
     router,

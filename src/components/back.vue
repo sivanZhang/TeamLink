@@ -1,7 +1,7 @@
 <template>
 <div class="text-left back">
-    <span @click="go_back"><i class="fa fa-2x fa-angle-left" aria-hidden="true"></i></span>
-    <router-link class="pull-right" to="/home">Home</router-link>
+    <span @click="go_back"><i class="fa fa-angle-left" aria-hidden="true"></i></span>
+    <input type="text" slot="inp">
 </div>
 </template>
 
@@ -16,13 +16,28 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="less" scoped>
 .back {
-    line-height: 50px;
+    padding: 0 15px;
+    box-shadow: 0 3px 6px 0px rgba(0, 0, 0, 0.18);
+    line-height: 30px;
     color: grey;
-    height: 50px;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span{
+        flex: 0 0 0;
+        font-size: 16px;
+    }
+    input{
+        display: block;
+        width: 100%;
+        height: 100%;
+        border:none;
+        outline: none;
+        margin-left: 60px;
+    }
 }
-a {
-    color: inherit;
-}
+
 </style>
