@@ -13,7 +13,10 @@
         <i @click="showFilters" class="fa fa-sliders" aria-hidden="true"></i>
       </span>
     </div>
-    <div class="container keywords" v-show="isShow">{{axiosData.length||0}} properties found:"{{keyword||' '}}"</div>
+    <div
+      class="container keywords"
+      v-show="isShow"
+    >{{axiosData.length||0}} properties found:"{{keyword||' '}}"</div>
     <template v-if="axiosData.length">
       <router-link
         tag="div"
@@ -68,11 +71,11 @@
   </div>
 </template>
 <script>
-/* import filters from "./filters"; */
+
 export default {
   data() {
     return {
-      isShow:false,
+      isShow: false,
       postedTime: "",
       /* filtersShow: false, */
       searchText: this.$store.state.search_text
@@ -88,10 +91,10 @@ export default {
       this.$router.push("/filters");
     },
     search(keyword) {
-      if(!keyword){
-        return
+      if (!keyword) {
+        return;
       }
-      this.isShow=true;
+      this.isShow = true;
       let params = {
         title: keyword
       };
@@ -115,7 +118,7 @@ export default {
     if (self.$store.state.search_text != "") {
       let params = self.$store.state.search_text;
       self.search(params);
-      self.$store.commit("set_search",'');
+      self.$store.commit("set_search", "");
       console.log(self.$store.state.search_text);
     }
   }

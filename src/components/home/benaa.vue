@@ -57,6 +57,7 @@
       <div class="card-title">Description</div>
       <div class="car-content">
         {{ajaxData.content}}
+        <Mortage></Mortage>
       </div>
     </section>
     <section>
@@ -260,8 +261,8 @@
           <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;">
             <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
           </div>
-          <div class="ps-scrollbar-y-rail" style="top: 0px; height: 475px; right: 5px;">
-            <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 325px;"></div>
+          <div class="ps-scrollbar-y-rail" style="top: 0px; height: 30px; right: 5px;">
+            <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 30px;"></div>
           </div>
         </div>
 
@@ -336,6 +337,7 @@
 
 </template>
 <script>
+import Mortage from "./mortage";
   import Map from "./map";
   export default {
     data() {
@@ -345,7 +347,8 @@
       };
     },
     components: {
-      Map
+      Map,
+      Mortage
     },
     mounted() {
       this.axios
