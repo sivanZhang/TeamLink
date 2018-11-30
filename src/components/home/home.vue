@@ -107,7 +107,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url(../../../static/image/main.jpg);
+  background: url(../../assets/img/main.jpg);
   background-position: left;
   background-size: cover;
 }

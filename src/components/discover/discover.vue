@@ -126,7 +126,7 @@
 
     .suggest-details {
       height: 200px;
-      background: url(../../../static/image/home.png) no-repeat;
+      background: url(../../assets/img/home.png) no-repeat;
       background-size: 100% 100%;
     }
 

@@ -57,8 +57,8 @@
 </template>
 
 <script>
-require("../../../static/cropper/js/cropper.js");
-require("../../../static/cropper/js/canvas-to-blob.js");
+import "@/plugins/cropper/cropper.js";
+import "@/plugins/cropper/canvas-to-blob.js";
 import back from "../back";
 export default {
   data() {
@@ -369,7 +369,7 @@ export default {
 </script>
 
 <style>
-@import "../../../static/cropper/css/cropper.css";
+@import "../../plugins/cropper/cropper.css";
 .black-btn.btn {
   border-color: #fff;
 }

@@ -1,30 +1,13 @@
-# sivan
-
-> A Vue.js project
-
-## Build Setup
-
 ``` bash
-# install dependencies
-npm install
+# 1.安装NODE.JS环境
+# 2.git代码下载到本地
+# 3.进入到项目文件夹目录打开终端运行"npm install"命令自动安装所有package.json依赖（依赖是默认不上传的）
+# 4.安装好了就可以在目录终端运行下面的命令
 
-# serve with hot reload at localhost:8080
+# 运行本地服务
 npm run dev
 
-# build for production with minification
+# 打包命令打包后的文件在dist文件夹下面
 npm run build
 
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+# 所有的开发文件都在src文件夹下面，包括静态的放在src/assets文件夹下面

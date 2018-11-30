@@ -18,6 +18,7 @@ import forgot from '@/components/login/forgot'
 import inbox from '@/views/inbox/inbox'
 import iframe from '@/components/Iframe'
 import agent from '@/views/agent/agent'
+import agentDetail from '@/views/agent/agentDetail'
 
 Vue.use(Router);
 const routes = [{
@@ -47,6 +48,11 @@ const routes = [{
         path: '/agent',
         name: 'agent',
         component: agent
+    },
+    {
+        path: '/agentDetail/:aid',
+        name: 'agentDetail',
+        component: agentDetail
     },
     {
         path: '/collections',
