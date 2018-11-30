@@ -9,34 +9,42 @@
                 <p>{{`Redfern,Sydney`}}</p>
                 <div>E:{{`sale@home789.com.cn`}}</div>
                 <div>M:{{123456789}}</div>
-            </div>
-            <div class="btn-groups">
+                <div class="btn-groups">
                 <div><i class="fa fa-commenting" aria-hidden="true"></i>Chat</div>
                 <div><i class="fa fa-phone" aria-hidden="true"></i>Call</div>
             </div>
-        </section>
-        <section>
-            <img src="@/assets/touxiang.jpg" alt="">
-            <div class="msg">
-                <div>{{`Home 789 Team`}}</div>
-                <p>{{`Redfern,Sydney`}}</p>
-                <div>E:{{`sale@home789.com.cn`}}</div>
-                <div>M:{{123456789}}</div>
             </div>
-            <div class="btn-groups">
-                <div><i class="fa fa-commenting" aria-hidden="true"></i>Chat</div>
-                <div><i class="fa fa-phone" aria-hidden="true"></i>Call</div>
-            </div>
+            
         </section>
         <div class="container"><footer-menu></footer-menu></div>
     </div>
 </template>
 <script>
 import Menu from '@/components/back'
+import Ajax from '@/api/agent'
 export default {
+    data(){
+        return{
+        agentList:[]
+        }
+    },
     name:`agent`,
     components:{
         Menu
+    },
+    methods:{
+        
+        getAjax(){
+            let params = {
+                agent : 489
+            }
+            Ajax.getAgentDetail(params).then(res=>{
+                close.log(res)
+            })
+        }
+    },
+    created(){
+         this.getAjax()
     }
 }
 </script>
@@ -51,10 +59,9 @@ export default {
         &>img{
             width: 6rem;
             height: 6rem;
-            border-radius: 50%;
         }
         .msg{
-            flex: 0 0 auto;
+            flex: 1 0 auto;
             margin-left: 30px;
             margin-bottom: 10px;
         }

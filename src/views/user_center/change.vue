@@ -250,9 +250,9 @@
             case "getCroppedCanvas":
               if (result) {
                 $image.cropper("getCroppedCanvas").toBlob(function(blob) {
-                  let formData = new FormData(),
-                    jsToken = self.$store.state.token;
+                  let formData = new FormData();
                   formData.append("portrain", blob);
+                  /* let jsToken = self.$store.state.token;
                   $.ajax(self.api + "/users/upload_fake_portrait/?json", {
                     headers: {
                       Authorization: jsToken
@@ -278,7 +278,22 @@
                       $().message("Server is down");
                       console.log(error);
                     }
-                  });
+                  }); */
+                  self.axios.post('/users/upload_fake_portrait/?json',formData).then(res=>{
+                    console.log(data,111111111111111111111)
+                      if (res.status == "OK") {
+                        self.$store.commit(
+                          "setPortrait",
+                          `${self.api}${res.file.replace("\\", "/")}`
+                        );
+                         console.log(data,22222222222)
+                        $().message(data.msg);
+                        self.$router.go(-1);
+                        alert(11111111)
+                      } else {
+                        $().message(data.msg);
+                      }
+                  })
                 });
               }
 

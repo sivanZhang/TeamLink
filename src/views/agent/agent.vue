@@ -2,20 +2,7 @@
 
     <div id="agent">
         <Menu></Menu>
-        <section>
-            <img src="@/assets/touxiang.jpg" alt="">
-            <div class="msg">
-                <div>{{`Home 789 Team`}}</div>
-                <p>{{`Redfern,Sydney`}}</p>
-                <div>E:{{`sale@home789.com.cn`}}</div>
-                <div>M:{{123456789}}</div>
-            </div>
-            <div class="btn-groups">
-                <div><i class="fa fa-commenting" aria-hidden="true"></i>Chat</div>
-                <div><i class="fa fa-phone" aria-hidden="true"></i>Call</div>
-            </div>
-        </section>
-        <section>
+        <section @click="getDetail">
             <img src="@/assets/touxiang.jpg" alt="">
             <div class="msg">
                 <div>{{`Home 789 Team`}}</div>
@@ -33,10 +20,26 @@
 </template>
 <script>
 import Menu from '@/components/back'
+import Ajax from '@/api/agent'
 export default {
     name:`agent`,
     components:{
         Menu
+    },
+    created(){
+        Ajax.getAgent().then(res=>{
+            console.log(res)
+        })
+    },
+    methods:{
+        getDetail(){
+            this.$router.push({
+                name:'agentDetail',
+                params:{
+                    aid:1
+                }
+            })
+        },
     }
 }
 </script>
