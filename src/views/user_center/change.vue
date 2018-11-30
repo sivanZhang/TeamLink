@@ -68,9 +68,6 @@
         api: this.axios.defaults.baseURL
       };
     },
-    components: {
-      back
-    },
     mounted() {
       let self = this;
       var CookieUtil = {
