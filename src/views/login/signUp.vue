@@ -73,7 +73,7 @@ export default {
         this.axios
           .post(
             "/users/register/?json",
-            this.$qs.stringify(this.user)
+            this.user
           )
           .then(result => {
             this.setInfo(result.data.msg);

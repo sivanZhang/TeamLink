@@ -59,7 +59,7 @@ export default {
     },
     submit() {
       this.axios
-        .post("/users/login/?json", this.$qs.stringify(this.user))
+        .post("/users/login/?json", this.user)
         .then(result => {
           if (result.data.status == "ok") {
             this.$store.commit("setToken", `JWT ${result.data.token}`);

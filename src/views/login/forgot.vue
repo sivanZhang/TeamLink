@@ -30,11 +30,7 @@
 </template>
 
 <script>
-import back from "../back";
 export default {
-  components: {
-    back
-  },
   data() {
     return {
       msg: [],
@@ -72,7 +68,7 @@ export default {
         this.axios
           .post(
             "/users/find_password?json",
-            this.$qs.stringify(this.user)
+            this.user
           )
           .then(result => {
             console.log(result);

@@ -2,8 +2,6 @@ import Vue from 'vue'
 import App from '@/App'
 import router from '@/router'
 import store from '@/store'
-import qs from 'qs'
-Vue.prototype.$qs = qs;
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 Vue.use(MintUI);
@@ -35,11 +33,8 @@ import VueAxios from 'vue-axios'
 Vue.use(VueAxios, axios);
 //vue 实例化
 new Vue({
-    el: '#app',
     router,
     store,
-    components: {
-        App
-    },
-    template: '<App/>'
-});
+    render: h => h(App)
+  }).$mount('#app')
+  
