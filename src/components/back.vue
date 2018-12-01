@@ -1,7 +1,7 @@
 <template>
 <div class="text-left back">
     <span @click="go_back"><i class="fa fa-angle-left" aria-hidden="true"></i></span>
-    <input type="text" slot="inp">
+    <slot></slot>
 </div>
 </template>
 
@@ -29,6 +29,7 @@ export default {
     span{
         flex: 0 0 0;
         font-size: 16px;
+        margin-right: 60px;
     }
     input{
         display: block;
@@ -36,7 +37,7 @@ export default {
         height: 100%;
         border:none;
         outline: none;
-        margin-left: 60px;
+        margin-left: 10px;
     }
 }
 

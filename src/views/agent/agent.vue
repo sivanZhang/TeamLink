@@ -1,6 +1,9 @@
 <template>
   <div id="agent">
-    <Menu></Menu>
+    <Menu>
+      <i class="fa fa-search" aria-hidden="true" @click="search()"></i>
+      <input v-model="searchText" type="search" placeholder="search"  @keyup.enter="search()">
+    </Menu>
     <section v-for="(item,index) in agentList" :key="index" @click="getDetail(item[0].agentId)">
       <img :src="item[0].image" alt>
       <div class="msg">
@@ -30,7 +33,8 @@ import Ajax from "@/api/agent";
 export default {
   data(){
     return{
-  agentList: [null]
+  agentList: [null],
+  searchText:''
     }
   },
   name: `agent`,
@@ -38,6 +42,14 @@ export default {
     Menu
   },
   methods: {
+    search(){
+      if(this.searchText!=''){
+        let params ={
+          name:this.searchText
+        }
+        this.getAjax(params)
+      }
+    },
     getDetail(agentid) {
       this.$router.push({
         name: "agentDetail",
@@ -46,10 +58,8 @@ export default {
         }
       });
     },
-    getAjax() {
-      let params ={
-          /* limit:5 */
-        }
+    getAjax(params) {
+      
       Ajax.getAgent(params).then(res => {
         
         this.agentList=JSON.parse(JSON.stringify(res.data.agents))
