@@ -36,10 +36,11 @@ export default {
         
         getAjax(){
             let params = {
-                agent : 489
+                agentID : this.$route.params.aid
             }
-            Ajax.getAgentDetail(params).then(res=>{
-                close.log(res)
+            console.log(params)
+            Ajax.getAgentDetail(this.$route.params.aid).then(res=>{
+                console.log(res)
             })
         }
     },

@@ -5,7 +5,7 @@ const agent = {
         return await axiso.get('/agent/agent/', { params })
     },
     async getAgentDetail(params) {
-        return await axiso.get('/agent/agent/489', { params })
+        return await axiso.get(`/agent/agent/${params}`)
     }
 }
 export default agent
