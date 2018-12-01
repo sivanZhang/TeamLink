@@ -17,8 +17,9 @@
           <i class="fa fa-commenting" aria-hidden="true"></i>Chat
         </div>
         <div>
-          <i class="fa fa-phone" aria-hidden="true"></i>Call
-          <span style=""></span>
+          
+          <span style="white-space:pre"></span>
+          <a :href="`tel://${item[0].attributes.real_estate_agent_office_number}`"><i class="fa fa-phone" aria-hidden="true"></i>Call</a>
         </div>
       </div>
     </section>
