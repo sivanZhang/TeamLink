@@ -1,8 +1,8 @@
 <template>
   <div id="agent">
-      <div class="container">
-        <i class="fa fa-angle-left fa-2x" aria-hidden="true" @click="back"></i>
-      </div>
+    <div class="container">
+      <i class="fa fa-angle-left fa-2x" aria-hidden="true" @click="back"></i>
+    </div>
     <section>
       <img :src="agentData[0].image" alt>
       <div class="msg">
@@ -33,22 +33,25 @@
           aria-hidden="true"
         ></i>
       </div>
-      <!-- <div class="p-data">
+
+
+      <div class="p-data" v-for="(item,index) in properties" @click="target(item[0].propertyId)">
         <div class="left">
-          <img src="@/assets/h1.jpg" alt>
+          <img :src="item[0].images[0]" alt>
           <i class="fa fa-heart-o" aria-hidden="true"></i>
         </div>
         <div class="right">
-          <div>Epping Station,NSW ,2000</div>
+          <div>{{item[0].title}}</div>
           <div class="adress">Modern Apartment</div>
-          <div class="money">$ 700000</div>4
+          <div class="money">$ {{item[0].attributes.real_estate_property_price}}</div>
+          {{item[0].attributes.real_estate_property_bedrooms}}
           <i class="fa fa-bed" aria-hidden="true"></i>
-          2
+          {{item[0].attributes.real_estate_property_bathrooms}}
           <i class="fa fa-bath" aria-hidden="true"></i>
-          1
+          {{item[0].attributes.real_estate_property_garage}}
           <i class="fa fa-car" aria-hidden="true"></i>
         </div>
-      </div> -->
+      </div>
       <footer-menu></footer-menu>
     </section>
   </div>
@@ -59,7 +62,8 @@ import Ajax from "@/api/agent";
 export default {
   data() {
     return {
-      agentData: [null]
+      agentData: [null],
+      properties:[null]
     };
   },
   name: `agent`,
@@ -67,15 +71,24 @@ export default {
     Menu
   },
   methods: {
-      back(){
-          this.$router.go(-1);
-      },
+    target(id){
+      this.$router.push({
+        name:'benaa',
+        params:{
+          pid:id
+        }
+      })
+    },
+    back() {
+      this.$router.go(-1);
+    },
     getAjax() {
       let params = {
         agentID: this.$route.params.aid
       };
       Ajax.getAgentDetail(this.$route.params.aid).then(res => {
         this.agentData = res.data.agent;
+        this.properties = res.data.properties;
       });
     }
   },
@@ -87,7 +100,6 @@ export default {
 <style lang="less" scoped>
 #agent {
   section {
-
     .p-data {
       box-shadow: 0 3px 5px 0px rgba(0, 0, 0, 0.18);
       display: flex;
