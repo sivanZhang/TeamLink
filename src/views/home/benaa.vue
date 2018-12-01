@@ -343,7 +343,65 @@ import Mortage from "./mortage";
     data() {
       return {
         value1: "",
-        ajaxData: ""
+        //初始化默认字典
+        ajaxData: {
+        "title":"-----",
+        "propertyId":"",
+        "attributes":{
+        "real_estate_property_views_count": "",
+        "real_estate_property_garage_size": "",
+        "real_estate_property_size": "",
+        "real_estate_property_land": "",
+        "real_estate_additional_feature_value": "",
+
+        "real_estate_property_featured": "",
+        "real_estate_property_zip": "",
+        "real_estate_property_rooms": "",
+        "real_estate_property_author": "",
+        "real_estate_floors": "",
+
+        "real_estate_property_other_contact_phone": "",
+        "real_estate_property_bathrooms": "",
+        "real_estate_property_images": "",
+        "real_estate_property_year": "",
+        "real_estate_private_note": "",
+
+         "_thumbnail_id":"2539",
+              "real_estate_property_other_contact_name":"",
+              "real_estate_property_identity":"771",
+              "real_estate_property_video_image":"770",
+              "real_estate_property_price_on_call":"0",
+              "real_estate_property_virtual_tour":"",
+              "real_estate_property_video_url":"",
+              "real_estate_property_garage":"1",
+              "real_estate_additional_feature_title":"",
+              "real_estate_property_price_unit":"1000",
+              "real_estate_property_virtual_tour_type":"1",
+              "real_estate_property_attachments":"",
+              "real_estate_additional_features":"1",
+              "slide_template":"default",
+              "real_estate_property_price_prefix":"",
+              "real_estate_property_location":"",
+              "real_estate_property_price_postfix":"Month",
+              "real_estate_property_other_contact_description":"",
+              "real_estate_property_price_short":"2.5",
+              "real_estate_property_price":"2500",
+              "ma_data":"",
+              "real_estate_property_other_contact_mail":"",
+              "real_estate_agent_display_option":"agent_info",
+              "real_estate_property_address":"Orland Park, IL 60465, Chicago, IL, United States",
+              "real_estate_package_key":"5aacc33fd34af",
+              "_wpb_vc_js_status":"false",
+              "real_estate_floors_enable":"0",
+              "real_estate_property_agent":"471",
+              "real_estate_property_country":"US",
+              "_edit_lock":"1543042932:1",
+              "real_estate_property_image_360":"",
+              "real_estate_property_bedrooms":"3"
+
+
+                   }
+        }
       };
     },
     components: {
