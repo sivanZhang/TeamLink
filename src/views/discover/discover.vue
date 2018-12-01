@@ -18,13 +18,13 @@
         <img src="../../assets/s1.png" alt="" @click="target('/agent')">
       </div>
       <div>
-        <img src="../../assets/s2.png" alt="" @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/ `)">
+        <img src="../../assets/s4.png" alt="" @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/ `)">
       </div>
       <div>
         <img src="../../assets/s3.png" alt="" @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/ `)">
       </div>
       <div>
-        <img src="../../assets/s1.png" alt="" @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/ `)">
+        <img src="../../assets/s2.png" alt="" @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/ `)">
       </div>
     </div>
     <h5 class="suggestd-header">Suggestd for you</h5>
