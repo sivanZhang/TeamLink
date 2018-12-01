@@ -4,7 +4,6 @@
         <i class="fa fa-angle-left fa-2x" aria-hidden="true" @click="back"></i>
       </div>
     <section>
-      
       <img :src="agentData[0].image" alt>
       <div class="msg">
         <div>{{agentData[0].attributes.real_estate_agent_company}}</div>
@@ -34,7 +33,7 @@
           aria-hidden="true"
         ></i>
       </div>
-      <div class="p-data">
+      <!-- <div class="p-data">
         <div class="left">
           <img src="@/assets/h1.jpg" alt>
           <i class="fa fa-heart-o" aria-hidden="true"></i>
@@ -49,7 +48,7 @@
           1
           <i class="fa fa-car" aria-hidden="true"></i>
         </div>
-      </div>
+      </div> -->
       <footer-menu></footer-menu>
     </section>
   </div>
