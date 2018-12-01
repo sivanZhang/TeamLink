@@ -1,32 +1,54 @@
 <template>
-<div>
+  <div>
     <div class="container">
       <mt-header title="Login" class="row header">
-            <mt-button @click="$router.go(-1)" icon="back" slot="left"></mt-button>
-            <mt-button @click="$router.push(`/home`)" slot="right">home</mt-button>
-        </mt-header>
-      </div>
+        <mt-button @click="$router.go(-1)" icon="back" slot="left"></mt-button>
+        <mt-button @click="$router.push(`/home`)" slot="right">home</mt-button>
+      </mt-header>
+    </div>
     <form class="container">
-        <div class="text-center title">
-            <div>Sign in to TEAMLINK</div>
-            <div class="line"></div>
-        </div>
-        <input v-model="user.phone"  @change="test_phone" class="form-control" type="number" id="phone_number" placeholder="Phone">
-        <input v-model="user.password" class="form-control" type="password" name="phone_number" placeholder="Password">
-        <button id="submit" @click="submit" type="button" class="black-btn common-btn" :disabled='isDisabled'>Log in</button>
-        <div class="row">
-            <router-link to="/signup" class="col-xs-6 blue-link text-left">Create an account</router-link>
-            <router-link to="/forgot" class="col-xs-6 blue-link text-right">Forgot?</router-link>
-        </div>
-        <div v-show="msg.length" class="alert alert-warning alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            {{message}}
-        </div>
+      <div class="text-center title">
+        <div>Sign in to TEAMLINK</div>
+        <div class="line"></div>
+      </div>
+      <input
+        v-model="user.phone"
+        class="form-control"
+        type="text"
+        id="phone_number"
+        placeholder="Phone"
+      >
+      <!-- @change="test_phone"  -->
+      <input
+        v-model="user.password"
+        class="form-control"
+        type="password"
+        name="phone_number"
+        placeholder="Password"
+      >
+      <button
+        id="submit"
+        @click="submit"
+        type="button"
+        class="black-btn common-btn"
+        :disabled="isDisabled"
+      >Log in</button>
+      <div class="row">
+        <router-link to="/signup" class="col-xs-6 blue-link text-left">Create an account</router-link>
+        <router-link to="/forgot" class="col-xs-6 blue-link text-right">Forgot?</router-link>
+      </div>
+      <div v-show="msg.length" class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        {{message}}
+      </div>
     </form>
-</div>
+  </div>
 </template>
 
 <script>
+import Ajax from "@/api/login";
 export default {
   data() {
     return {
@@ -58,7 +80,26 @@ export default {
       self.msg.push(info);
     },
     submit() {
+      /* let data={
+        username :this.user.phone,
+        password :this.user.password
+      } */
+      /* Ajax.getLogin().then(res=>{
+        console.log(res)
+      }) */
       this.axios
+        .post("/wpuser/login/", {
+            username: 'bensom1989',
+            password: '123QWEasd@'
+        })
+        .then(result => {
+          console.log(res)
+        })
+        .catch(error => {
+          this.setInfo(error);
+        });
+
+      /* this.axios
         .post("/users/login/?json", this.user)
         .then(result => {
           if (result.data.status == "ok") {
@@ -73,13 +114,13 @@ export default {
         })
         .catch(error => {
           this.setInfo(error);
-        });
-    },
+        }); */
+    } /* ,
     test_phone() {
       if (!/[0-9]+/.test(this.user.phone)) {
         this.setInfo("Please enter your correct phone number!");
       }
-    }
+    } */
   },
   mounted() {
     document
@@ -102,7 +143,7 @@ export default {
   font-family: sans-serif;
 }
 
-.form-control{
+.form-control {
   margin-top: 15px;
 }
 .form-control {

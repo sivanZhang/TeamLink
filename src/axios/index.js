@@ -3,7 +3,7 @@ import store from '@/store'
 import qs from 'qs'
 const isPro = Object.is(process.env.NODE_ENV, 'production')
 let Ajax = axios.create({
-    baseURL: isPro ? 'https://www.chidict.com/' : 'api/',
+    baseURL: isPro ? 'https://www.chidict.com/' : '/api',
     timeout: 10000,
     ransformRequest: [data => {
         // 对 data 进行任意转换处理

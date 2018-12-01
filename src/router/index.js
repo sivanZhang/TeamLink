@@ -34,7 +34,10 @@ const routes = [{
     {
         path: '/mapExplore/:tid',
         name: 'mapExplore',
-        component: mapExplore
+        component: mapExplore,
+        meta: {
+            keepAlive: true // 需要被缓存
+        }
     },
     {
         path: '/filters',
