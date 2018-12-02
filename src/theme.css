@@ -141,23 +141,6 @@ input {
 }
 
 
-/* -----------------------------------替换插件的CSS---------------------------------------- */
-
-input:focus,
-textarea:focus,
-.form-control:focus {
-    outline: none;
-    box-shadow: unset;
-    border-color: initial;
-}
-
-input.form-control {
-    border-color: #e1e4e8;
-    box-shadow: unset;
-    border-radius: 3px;
-}
-
-
 /* -----------------------------------jQuery message plug-in 1.0-------------------------------------- */
 
 

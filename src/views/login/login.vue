@@ -1,9 +1,8 @@
 <template>
   <div>
     <div class="container">
-      <mt-header title="Login" class="row header">
+      <mt-header title class="row header">
         <mt-button @click="$router.go(-1)" icon="back" slot="left"></mt-button>
-        <mt-button @click="$router.push(`/home`)" slot="right">home</mt-button>
       </mt-header>
     </div>
     <form class="container">
@@ -13,15 +12,15 @@
       </div>
       <input
         v-model="user.phone"
-        class="form-control"
+        class="inp form-control"
         type="text"
         id="phone_number"
-        placeholder="Phone"
+        placeholder="username"
       >
       <!-- @change="test_phone"  -->
       <input
         v-model="user.password"
-        class="form-control"
+        class="inp form-control"
         type="password"
         name="phone_number"
         placeholder="Password"
@@ -37,23 +36,17 @@
         <router-link to="/signup" class="col-xs-6 blue-link text-left">Create an account</router-link>
         <router-link to="/forgot" class="col-xs-6 blue-link text-right">Forgot?</router-link>
       </div>
-      <div v-show="msg.length" class="alert alert-warning alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        {{message}}
-      </div>
     </form>
   </div>
 </template>
 
 <script>
+import { Toast } from "mint-ui";
 import Ajax from "@/api/login";
 export default {
   data() {
     return {
       api: this.axios.defaults.baseURL,
-      msg: [],
       user: {
         phone: null,
         password: null
@@ -61,9 +54,6 @@ export default {
     };
   },
   computed: {
-    message() {
-      return this.msg.toString();
-    },
     isDisabled() {
       if (!this.user.phone || !this.user.password) {
         return true;
@@ -73,48 +63,38 @@ export default {
     }
   },
   methods: {
-    /* 设置提示信息*/
-    setInfo(info) {
-      let self = this;
-      self.msg.pop();
-      self.msg.push(info);
-    },
     submit() {
-      /* let data={
-        username :this.user.phone,
-        password :this.user.password
-      } */
-      /* Ajax.getLogin().then(res=>{
-        console.log(res)
-      }) */
-      this.axios
-        .post("/wpuser/login/", {
-            username: 'bensom1989',
-            password: '123QWEasd@'
-        })
-        .then(result => {
-          console.log(res)
-        })
-        .catch(error => {
-          this.setInfo(error);
-        });
-
-      /* this.axios
-        .post("/users/login/?json", this.user)
-        .then(result => {
-          if (result.data.status == "ok") {
-            this.$store.commit("setToken", `JWT ${result.data.token}`);
-            this.$store.commit("setUserName", result.data.phone);
-            this.$store.commit("setPortrait", this.api + result.data.portrait);
-            $().message("Login success");
+      let data = {
+        username: this.user.phone,
+        password: this.user.password
+      };
+      Ajax.getLogin(data)
+        .then(res => {
+          if (res.data.status == "ok") {
+            Toast({
+              message: res.data.msg,
+              position: "bottom",
+              duration: 3000
+            });
+            this.$store.commit("setToken", `JWT ${res.data.token}`);
+            this.$store.commit("setUserName", res.data.username);
+            this.$store.commit("setPortrait", this.api + res.data.portrait);
             this.$router.push("/user_center");
-          } else {
-            this.setInfo(result.data.msg);
+          } else if (res.data.status == "error") {
+            Toast({
+              message: res.data.msg,
+              position: "bottom",
+              duration: 3000
+            });
           }
         })
         .catch(error => {
-          this.setInfo(error);
-        }); */
+          Toast({
+            message: error,
+            position: "bottom",
+            duration: 3000
+          });
+        });
     } /* ,
     test_phone() {
       if (!/[0-9]+/.test(this.user.phone)) {
@@ -131,6 +111,15 @@ export default {
 </script>
 
 <style scoped>
+.header {
+  background-color: #f4f5f9;
+  position: fixed !important;
+  top: 0;
+  width: 100%;
+  border-bottom: 1px solid transparent;
+  z-index: 200;
+  height: 30px !important;
+}
 .line {
   display: inline-block;
   width: 100px;
@@ -143,11 +132,18 @@ export default {
   font-family: sans-serif;
 }
 
-.form-control {
-  margin-top: 15px;
-}
-.form-control {
+
+.inp {
+  display: block;
+  width: 100%;
+  border-bottom:solid #333;
+  outline: none;
+  border-width: 0 0 1px 0;
   height: 42px;
+ margin: 15px auto;
+ padding: 0 6px;
+ background-color: #f4f5f9;
+ border-radius: 0px;
 }
 .row a {
   color: gray;
@@ -155,7 +151,7 @@ export default {
 
 #submit {
   width: 100%;
-  margin-top: 15px;
+  margin: 15px auto;
   height: 42px;
 }
 
@@ -171,21 +167,21 @@ input + input {
 }
 
 input::-webkit-input-placeholder {
-  color: #ccc;
+  color: #aaa;
 }
 
 input::-moz-placeholder {
   /* Mozilla Firefox 19+ */
-  color: #ccc;
+  color: #aaa;
 }
 
 input:-moz-placeholder {
   /* Mozilla Firefox 4 to 18 */
-  color: #ccc;
+  color: #aaa;
 }
 
 input:-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  color: #ccc;
+  color: #aaa;
 }
 </style>
