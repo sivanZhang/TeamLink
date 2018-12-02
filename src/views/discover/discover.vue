@@ -146,7 +146,7 @@
     justify-content: space-between;
     background: #000;
     color: #fff;
-    padding: 4px 15px;
+    padding: 6px 12px;
   }
 
   .suggest-details {
