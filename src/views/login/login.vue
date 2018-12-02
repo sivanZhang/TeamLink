@@ -12,7 +12,7 @@
       </div>
       <input
         v-model="user.phone"
-        class="inp form-control"
+        class="inp"
         type="text"
         id="phone_number"
         placeholder="username"
@@ -20,7 +20,7 @@
       <!-- @change="test_phone"  -->
       <input
         v-model="user.password"
-        class="inp form-control"
+        class="inp"
         type="password"
         name="phone_number"
         placeholder="Password"
@@ -33,8 +33,8 @@
         :disabled="isDisabled"
       >Log in</button>
       <div class="row">
-        <router-link to="/signup" class="col-xs-6 blue-link text-left">Create an account</router-link>
-        <router-link to="/forgot" class="col-xs-6 blue-link text-right">Forgot?</router-link>
+        <router-link to="" class="col-xs-6 blue-link text-left">Create an account</router-link><!-- /signup -->
+        <router-link to="" class="col-xs-6 blue-link text-right">Forgot?</router-link><!-- /forgot -->
       </div>
     </form>
   </div>
@@ -144,6 +144,8 @@ export default {
  padding: 0 6px;
  background-color: #f4f5f9;
  border-radius: 0px;
+ color:#333;
+ box-shadow: unset;
 }
 .row a {
   color: gray;
@@ -168,6 +170,10 @@ input + input {
 
 input::-webkit-input-placeholder {
   color: #aaa;
+}
+input:-webkit-autofill,
+select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #f4f5f9 inset!important;
 }
 
 input::-moz-placeholder {

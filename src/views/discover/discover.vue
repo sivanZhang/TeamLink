@@ -8,18 +8,18 @@
       </mt-swipe-item>
     </mt-swipe>
     <div class="group">
+      <router-link tag="div" to="/agent">
+        <img src="../../assets/s1.png" alt="">
+      </router-link>
       <div>
-        <img src="../../assets/s1.png" alt="" @click="target('/agent')">
+        <img src="../../assets/s4.png" alt="" @click="getHtml(`http://www.demo-it.com.au/teamlink1/open-houses/`)">
       </div>
       <div>
-        <img src="../../assets/s4.png" alt="" @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/ `)">
+        <img src="../../assets/s3.png" alt="" @click="getHtml(`http://www.home789.com/gfembed/?f=86`)">
       </div>
-      <div>
-        <img src="../../assets/s3.png" alt="" @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/ `)">
-      </div>
-      <div>
-        <img src="../../assets/s2.png" alt="" @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/ `)">
-      </div>
+      <router-link tag="div" to="/agent">
+        <img src="../../assets/s2.png" alt="">
+      </router-link>
     </div>
     <h5 class="suggestd-header">Suggestd for you</h5>
     <router-link

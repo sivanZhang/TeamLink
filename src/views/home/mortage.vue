@@ -8,7 +8,7 @@ table {
   & /deep/ .ivu-input {
     border-radius: 0px;
   }
-}
+}/*  */
 </style>
 
 <template>
@@ -79,6 +79,9 @@ export default {
 
       /*  [this.arr.apr,this.arr.amt,this.arr.trm]=['','',''] */
     }
-  }
+  },
+  mounted() {
+    //js 在这些
+  },
 };
 </script>

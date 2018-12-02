@@ -8,6 +8,7 @@
             v-for="(tab,index) in tabs"
             :class="[{ active: currentTab == tab.name },'tab-button','btn']"
             @click="currentTab = tab.name"
+            :key="index"
           >{{ tab.name }}</button>
         </div>
         <div class="relative">
