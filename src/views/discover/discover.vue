@@ -150,7 +150,7 @@
   }
 
   .suggest-details {
-    height: 200px;
+    height: 180px;
     overflow: hidden;
 
     img {
