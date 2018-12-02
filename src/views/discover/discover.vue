@@ -3,14 +3,8 @@
     <mt-header title="teamlink" class="row header">
     </mt-header>
     <mt-swipe class="row" :auto="3000">
-      <mt-swipe-item class="slide1">
-        <img src="../../assets/h3.jpg" alt="" @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/`)">
-      </mt-swipe-item>
-      <mt-swipe-item @click.native="test" class="slide2">
-        <img src="../../assets/h1.jpg" alt="" @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/`)">
-      </mt-swipe-item>
-      <mt-swipe-item class="slide3">
-        <img src="../../assets/h2.jpg" alt="" @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/`)">
+      <mt-swipe-item  v-for="(item,index) in agentList" :key="index" @click.native="target(item[0].propertyId)">
+        <img :src="item[0].images[0]" alt="">
       </mt-swipe-item>
     </mt-swipe>
     <div class="group">
@@ -28,7 +22,50 @@
       </div>
     </div>
     <h5 class="suggestd-header">Suggestd for you</h5>
-    <div class="suggest" @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/`)">
+    <router-link
+        tag="div"
+        v-for="(item,index) in agentList"
+        class="suggest"
+        :key="index"
+        :to="{name:'benaa',params:{pid:item[0].propertyId}}"
+      >
+        <div class="suggest-title">
+          <i class="fa fa-clock-o" aria-hidden="true"></i>
+          {{postedTime}}
+        </div>
+        <div class="suggest-details">
+          <img :src="item[0].images[0]" alt>
+        </div>
+        <div class="suggest-info">
+          <div>{{item[0].title}}</div>
+          <div>
+            <i class="fa fa-picture-o" aria-hidden="true"></i>
+            {{item[0].images.length}}
+          </div>
+        </div>
+        <div class="container">
+          <h5>Modern Apartment</h5>
+          <div class="price">${{item[0].attributes.real_estate_property_price}}</div>
+          <div class="outfit">
+            {{item[0].attributes.real_estate_property_bedrooms}}
+            <i
+              class="fa fa-bed"
+              aria-hidden="true"
+            ></i>
+            {{item[0].attributes.real_estate_property_bathrooms}}
+            <i
+              class="fa fa-bath"
+              aria-hidden="true"
+            ></i>
+            {{item[0].attributes.real_estate_property_garage}}
+            <i
+              class="fa fa-car"
+              aria-hidden="true"
+            ></i>
+          </div>
+        </div>
+      </router-link>
+    <!-- <div class="suggest" @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/`)">
       <div class="suggest-title">
         <i class="fa fa-clock-o" aria-hidden="true"></i>
         {{postedTime}}
@@ -53,7 +90,7 @@
           {{outfit.carport}}<i class="fa fa-car" aria-hidden="true"></i>
         </div>
       </div>
-    </div>
+    </div> -->
     <footer-menu></footer-menu>
   </div>
 </template>
@@ -74,10 +111,20 @@
         }
       };
     },
+    computed:{
+      agentList(){
+        return this.$store.state.agents.slice(0,3)
+      }
+    },
     methods: {
-      target(url){
-        this.$router.push(url)
-      },
+      target(id) {
+      this.$router.push({
+        name: "benaa",
+        params: {
+          pid: id
+        }
+      });
+    },
       getHtml(val) {
         this.$store.commit("setUrl", val);
         this.$router.push("/iframe");
@@ -103,39 +150,47 @@
     padding: 0 0 10px 0;
   }
 
-  .suggest {
-    .outfit {
-      color: rgb(91, 91, 91);
+.suggest {
+  & {
+    margin: 15px 0;
+  }
 
-      .fa {
-        margin: 0 2px 0 6px;
-      }
-    }
+  .outfit {
+    color: rgb(91, 91, 91);
 
-    .price {
-      color: rgb(177, 69, 55);
-    }
-
-    .suggest-info {
-      display: flex;
-      justify-content: space-between;
-      background: #000;
-      color: #fff;
-      padding: 4px 15px;
-    }
-
-    .suggest-details {
-      height: 200px;
-      background: url(../../assets/img/home.png) no-repeat;
-      background-size: 100% 100%;
-    }
-
-    .suggest-title {
-      color: #fff;
-      background: rgb(255, 87, 34);
-      padding: 0 15px;
+    .fa {
+      margin: 0 2px 0 6px;
     }
   }
+
+  .price {
+    color: rgb(177, 69, 55);
+  }
+
+  .suggest-info {
+    display: flex;
+    justify-content: space-between;
+    background: #000;
+    color: #fff;
+    padding: 4px 15px;
+  }
+
+  .suggest-details {
+    height: 200px;
+    overflow: hidden;
+
+    img {
+      height: auto;
+      width: 100%;
+    }
+  }
+
+  .suggest-title {
+    color: #fff;
+    background: rgb(255, 87, 34);
+    padding: 0 15px;
+  }
+}
 
   .mint-swipe {
     height: 200px;

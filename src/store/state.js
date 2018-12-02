@@ -3,5 +3,6 @@ export default {
     user_name: '',
     portrait: '',
     search_text: '',
-    url: ''
+    url: '',
+    agents: [null]
 }

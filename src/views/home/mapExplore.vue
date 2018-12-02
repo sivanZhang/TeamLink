@@ -71,16 +71,13 @@
   </div>
 </template>
 <script>
-
 export default {
   data() {
     return {
       isShow: false,
       postedTime: "",
       /* filtersShow: false, */
-      searchText: this.$store.state.search_text
-        ? this.$store.state.search_text
-        : "",
+      searchText: '',
       loading: false,
       axiosData: "",
       keyword: ""
@@ -113,6 +110,11 @@ export default {
       this.$router.go(-1);
     }
   },
+  created(){
+    let params = this.$store.state.search_text;
+    this.search(params);
+  }
+  ,
   mounted() {
     let self = this;
     if (self.$store.state.search_text != "") {

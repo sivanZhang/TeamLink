@@ -13,5 +13,8 @@ export default {
     },
     setUrl(state, url) {
         state.url = url
+    },
+    setAgents(state, arr) {
+        state.agents = arr
     }
 }
