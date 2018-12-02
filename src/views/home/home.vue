@@ -23,48 +23,11 @@
       </div>
     </div>
     <h4>Recently Viewed</h4>
-    <!-- <router-link to="/benaa/771" class="suggest" tag="div">
-      <div class="suggest-title">
-        <i class="fa fa-clock-o" aria-hidden="true"></i>
-        {{postedTime}}
-      </div>
-      <div class="suggest-details">
-        <img :src="ajaxData.images[0]" alt>
-      </div>
-      <div class="suggest-info">
-        <div>{{ajaxData.title}}</div>
-        <div>
-          <i class="fa fa-picture-o" aria-hidden="true"></i>
-          {{ajaxData.images.length}}
-        </div>
-      </div>
-      <div class="container">
-        <h5>Modern Apartment</h5>
-        <div class="price">${{ajaxData.attributes.real_estate_property_price}}</div>
-        <div class="outfit">
-          {{ajaxData.attributes.real_estate_property_bedrooms}}
-          <i
-            class="fa fa-bed"
-            aria-hidden="true"
-          ></i>
-          {{ajaxData.attributes.real_estate_property_bathrooms}}
-          <i
-            class="fa fa-bath"
-            aria-hidden="true"
-          ></i>
-          {{ajaxData.attributes.real_estate_property_garage}}
-          <i
-            class="fa fa-car"
-            aria-hidden="true"
-          ></i>
-        </div>
-      </div>
-    </router-link>-->
     <div class="data-warp">
       <div
         class="p-data"
         v-for="(item,index) in ajaxData"
-        @touchstart="target(item[0].propertyId)"
+        @click="target(item[0].propertyId)"
         :key="index"
       >
         <div class="left">
@@ -136,8 +99,8 @@ export default {
     this.axios
       .get("/property/properties/")
       .then(res => {
-        this.ajaxData = res.data.properties;
-        this.$store.commit("setAgents", res.data.properties);
+        this.ajaxData = res.data.properties.slice(0,3);
+        this.$store.commit("setAgents", res.data.properties.slice(0,3));
       })
       .catch(err => {
         console.log(err);

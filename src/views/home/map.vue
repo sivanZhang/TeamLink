@@ -1,5 +1,5 @@
 <template>
-  <div id="map-property-single" style="height: 450px; position: relative; overflow: hidden;" class="text-center row">
+  <div id="map-property-single" style="height: 450px; position: relative; overflow: hidden;" class="text-center">
     <div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(229, 227, 223);">
       <div class="gm-style" style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px;">
         <div tabindex="0" style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; cursor: url(&quot;http://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;), default;">

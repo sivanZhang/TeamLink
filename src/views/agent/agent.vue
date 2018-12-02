@@ -1,7 +1,7 @@
 <template>
   <div id="agent">
     <Menu>
-      <i class="fa fa-search" aria-hidden="true" @touchstart.native="search()"></i>
+      <i class="fa fa-search" aria-hidden="true" @touchstart="search()"></i>
       <input v-model="searchText" type="search" placeholder="search"  @keyup.enter="search()">
     </Menu>
     <section v-for="(item,index) in agentList" :key="index" @touchstart="getDetail(item[0].agentId)">
@@ -60,11 +60,8 @@ export default {
       });
     },
     getAjax(params) {
-      
       Ajax.getAgent(params).then(res => {
-        
         this.agentList=JSON.parse(JSON.stringify(res.data.agents))
-        console.log(this.agentList);
       });
     }
   },

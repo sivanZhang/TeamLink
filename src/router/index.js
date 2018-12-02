@@ -24,7 +24,10 @@ Vue.use(Router);
 const routes = [{
         path: '/home',
         name: 'home',
-        component: home
+        component: home,
+        meta: {
+            keepAlive: true // 需要被缓存
+        }
     },
     {
         path: '/benaa/:pid',
@@ -44,7 +47,8 @@ const routes = [{
         name: 'filters',
         component: filters,
         meta: {
-            animation: true
+            animation: true,
+            keepAlive: true // 需要被缓存
         }
     },
     {

@@ -65,32 +65,6 @@
           </div>
         </div>
       </router-link>
-    <!-- <div class="suggest" @touchstart="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/`)">
-      <div class="suggest-title">
-        <i class="fa fa-clock-o" aria-hidden="true"></i>
-        {{postedTime}}
-      </div>
-      <div class="suggest-details">
-
-      </div>
-      <div class="suggest-info">
-        <div>
-          {{info}}
-        </div>
-        <div>
-          <i class="fa fa-picture-o" aria-hidden="true"></i> {{pictureNumber}}
-        </div>
-      </div>
-      <div class="container">
-        <h5>Modern Apartment</h5>
-        <div class="price">${{price}}</div>
-        <div class="outfit">
-          {{outfit.bed}}<i class="fa fa-bed" aria-hidden="true"></i>
-          {{outfit.toilet}}<i class="fa fa-bath" aria-hidden="true"></i>
-          {{outfit.carport}}<i class="fa fa-car" aria-hidden="true"></i>
-        </div>
-      </div>
-    </div> -->
     <footer-menu></footer-menu>
   </div>
 </template>
@@ -113,7 +87,7 @@
     },
     computed:{
       agentList(){
-        return this.$store.state.agents.slice(0,3)
+        return this.$store.state.agents
       }
     },
     methods: {

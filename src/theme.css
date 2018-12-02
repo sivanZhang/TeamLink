@@ -92,6 +92,11 @@ h1 {
 
 /* ----------------------------------------更改默认样式----------------------------------- */
 
+
+/* * {
+    touch-action: pan-y;
+} */
+
 .common-btn[disabled],
 #send_code[disabled] {
     cursor: not-allowed;

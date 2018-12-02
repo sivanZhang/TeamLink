@@ -1,69 +1,14 @@
 <template>
 
-  <div id="property">
-    <mt-header title="Mordern Apartment" class="header">
+  <div id="property" class="container">
+    <mt-header title="Mordern Apartment" class="row header">
       <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
     </mt-header>
-    <!-- 轮播图 -->
-    <mt-swipe :auto="3000">
-        <mt-swipe-item v-for="(item,index) in ajaxData.images" :key="index">
-          <img :src="item" alt="">
-        </mt-swipe-item>
-    </mt-swipe>
-  <div class="title">{{ajaxData.title}}
-    <div>
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-            {{ajaxData.images.length}}
-          </div>
-  </div>
-  <div class="number">
-              <span>$ {{ajaxData.attributes.real_estate_property_price_short}}</span>
-
-              <div>
-                {{ajaxData.attributes.real_estate_property_bedrooms}}<i class="fa fa-bed" aria-hidden="true"></i>
-                {{ajaxData.attributes.real_estate_property_bathrooms}}<i class="fa fa-bath" aria-hidden="true"></i>
-                {{ajaxData.attributes.real_estate_property_garage}}<i
-              class="fa fa-car"
-              aria-hidden="true"
-            ></i>
-              </div>
-  </div>
-<div>
-
-</div>
-    <Map style="height:240px;width:100%;"></Map>
-
-
-<section class="card">
-  <header>Key Details</header>
-  <div>Property ID:<span>{{ajaxData.propertyId}}</span></div>
-  <div>Property Type:<span>{{`Apt`}}</span></div>
-  <div>Land Size:<span>{{ajaxData.attributes.real_estate_property_land}}{{ajaxData.attributes.real_estate_property_land_postfix}}</span></div>
-  <div>Deposit:<span>{{`20%`}}</span></div>
-  <div>Strata:<span>{{`2000 pre quatre`}}</span></div>
-  <div>Region:<span>{{`Epping`}}</span></div>
-  <div>City:<span>{{`Chicago`}}</span></div>
-</section>
-<section class="card">
-  <header>Description</header>
-  {{ajaxData.content}}
-</section>
-<section class="card">
-  <header>Features</header>
-  <p><a href="http://101.200.35.253/wordpress/?property-feature=air-conditioning" class="feature-checked">Air Conditioning</a></p>
-  <p>Intercom</p>
-  <p>Built in wardrobes</p>
-  <p>Gas store</p>
-  <p>Study</p>
-</section>
-
-<Mortage></Mortage>
-
-
-
-
+    <Map></Map>
+    <Tag color="success">FOR RENT</Tag>
     <div>
       <Icon class="green" type="ios-pin" />{{ajaxData.attributes.real_estate_property_address}}</div>
+    <h4>{{ajaxData.title}}</h4>
     <div class="property-info">
       <div>
         <div class="iwarp"><i class="fa fa-barcode" aria-hidden="true"></i></div>
@@ -81,10 +26,17 @@
 
       </div>
       <div>
-        <div class="iwarp"></div>
+        <div class="iwarp"><i class="fa fa-bed" aria-hidden="true"></i></div>
         <div>
-          
+          {{ajaxData.attributes.real_estate_property_bedrooms}}
           <p>BEDROOMS</p>
+        </div>
+      </div>
+      <div>
+        <div class="iwarp"><i class="fa fa-bath" aria-hidden="true"></i></div>
+        <div>
+          {{ajaxData.attributes.real_estate_property_bathrooms}}
+          <p>BATHROOM</p>
         </div>
       </div>
 
@@ -93,12 +45,17 @@
 
     </h3>
     <p class="text-right icons"><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-minus" aria-hidden="true"></i><i class="fa fa-print" aria-hidden="true"></i></p>
-    
+    <mt-swipe :auto="3000">
+        <mt-swipe-item v-for="(item,index) in ajaxData.images" :key="index">
+          <img :src="item" alt="">
+        </mt-swipe-item>
+
+    </mt-swipe>
     <section>
       <div class="card-title">Description</div>
       <div class="car-content">
         {{ajaxData.content}}
-        
+        <Mortage></Mortage>
       </div>
     </section>
     <section>
@@ -130,8 +87,15 @@
         <p slot="content">
           <ul class="">
             <li>
+              <strong>Property ID</strong>
+              <span>{{ajaxData.propertyId}}</span>
+            </li>
+            <li>
               <strong>Price</strong>
-              
+              <span class="ere-property-price">
+                ${{ajaxData.attributes.real_estate_property_price_short}} thousand
+                <span class="property-price-postfix"> / {{ajaxData.attributes.real_estate_property_price_postfix}}</span>
+              </span>
             </li>
             <li>
               <strong>Property Type</strong>
@@ -180,7 +144,29 @@
           </ul>
         </p>
       </Panel>
-      
+      <Panel name="2">
+        FEATURES
+        <div slot="content" class="panel-body js-tabcollapse-panel-body">
+          <div class="row">
+            <div class="col-xs-12"><a href="http://101.200.35.253/wordpress/?property-feature=air-conditioning" class="feature-checked"><i class="fa fa-check-square-o"></i> Air Conditioning</a></div>
+            <div class="col-xs-12"><a href="http://101.200.35.253/wordpress/?property-feature=central-heating" class="feature-unchecked"><i class="fa fa-square-o"></i> Central Heating</a></div>
+            <div class="col-xs-12"><a href="http://101.200.35.253/wordpress/?property-feature=electric-range" class="feature-checked"><i class="fa fa-check-square-o"></i> Electric Range</a></div>
+            <div class="col-xs-12"><a href="http://101.200.35.253/wordpress/?property-feature=fire-alarm" class="feature-checked"><i class="fa fa-check-square-o"></i> Fire Alarm</a></div>
+            <div class="col-xs-12"><a href="http://101.200.35.253/wordpress/?property-feature=gym" class="feature-unchecked"><i class="fa fa-square-o"></i> Gym</a></div>
+            <div class="col-xs-12"><a href="http://101.200.35.253/wordpress/?property-feature=home-theater" class="feature-unchecked"><i class="fa fa-square-o"></i> Home Theater</a></div>
+            <div class="col-xs-12"><a href="http://101.200.35.253/wordpress/?property-feature=laundry" class="feature-unchecked"><i class="fa fa-square-o"></i> Laundry</a></div>
+            <div class="col-xs-12"><a href="http://101.200.35.253/wordpress/?property-feature=laundry-room" class="feature-unchecked"><i class="fa fa-square-o"></i> Laundry Room</a></div>
+            <div class="col-xs-12"><a href="http://101.200.35.253/wordpress/?property-feature=marble-floors" class="feature-checked"><i class="fa fa-check-square-o"></i> Marble Floors</a></div>
+            <div class="col-xs-12"><a href="http://101.200.35.253/wordpress/?property-feature=microwave" class="feature-checked"><i class="fa fa-check-square-o"></i> Microwave</a></div>
+            <div class="col-xs-12"><a href="http://101.200.35.253/wordpress/?property-feature=refrigerator" class="feature-unchecked"><i class="fa fa-square-o"></i> Refrigerator</a></div>
+            <div class="col-xs-12"><a href="http://101.200.35.253/wordpress/?property-feature=sauna" class="feature-unchecked"><i class="fa fa-square-o"></i> Sauna</a></div>
+            <div class="col-xs-12"><a href="http://101.200.35.253/wordpress/?property-feature=swimming-pool" class="feature-checked"><i class="fa fa-check-square-o"></i> Swimming Pool</a></div>
+            <div class="col-xs-12"><a href="http://101.200.35.253/wordpress/?property-feature=tv-cable" class="feature-checked"><i class="fa fa-check-square-o"></i> TV Cable</a></div>
+            <div class="col-xs-12"><a href="http://101.200.35.253/wordpress/?property-feature=washer" class="feature-checked"><i class="fa fa-check-square-o"></i> Washer</a></div>
+            <div class="col-xs-12"><a href="http://101.200.35.253/wordpress/?property-feature=wifi" class="feature-checked"><i class="fa fa-check-square-o"></i> WiFi</a></div>
+          </div>
+        </div>
+      </Panel>
       <Panel name="3">
         VIDEO
         <div slot="content" class="embed-responsive embed-responsive-16by9 embed-responsive-full">
@@ -393,6 +379,7 @@ import Mortage from "./mortage";
     color: #fff;
     font-size: 30px;
     text-align: center;
+    margin-bottom: 20px;
 
     .mint-swipe-item {
       img {
@@ -404,46 +391,6 @@ import Mortage from "./mortage";
   }
 
   #property {
-    .title{
-      display: flex;
-      justify-content: space-between;
-      background-color: #000;
-      color:#fff;
-      padding: 6px 12px;
-    }
-    .number{
-      padding: 15px;
-      &>span{
-        color: rgb(177, 69, 55);
-      }
-      &>div{
-        .fa{
-          margin: 0 20px 0 10px;
-        }
-      }
-    }.card{
-      padding: 15px;
-      header{
-        font-size: 16px;
-        font-weight: 600;
-        margin-bottom: 6px;
-      }
-      &>div{
-        .flex(space-between, flex-start);
-      }
-      &>p{
-        margin: auto;
-      }
-    }
-
-
-
-
-
-
-
-
-
     .msg {
       margin: 30px auto;
     }
@@ -458,6 +405,11 @@ import Mortage from "./mortage";
     }
 
     padding-top: 30px;
+
+    #map-property-single {
+      margin-bottom: 30px;
+    }
+
     .property-info {
       margin-top: 20px;
       .flex(space-around, inherit);
@@ -504,7 +456,13 @@ import Mortage from "./mortage";
     section {
       margin: 15px auto;
 
-    
+      .card-title {
+        padding: 10px 28px;
+        color: #fff;
+        background-color: rgb(34, 34, 34);
+        font-weight: 600;
+        font-size: 18px;
+      }
 
       .car-content {
         .near-location-info {
