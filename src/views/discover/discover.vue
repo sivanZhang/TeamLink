@@ -3,7 +3,7 @@
     <mt-header title="teamlink" class="row header">
     </mt-header>
     <mt-swipe class="row" :auto="3000">
-      <mt-swipe-item  v-for="(item,index) in agentList" :key="index" @click.native="target(item[0].propertyId)">
+      <mt-swipe-item  v-for="(item,index) in agentList" :key="index" @touchstart.native="target(item[0].propertyId)">
         <img :src="item[0].images[0]" alt="">
       </mt-swipe-item>
     </mt-swipe>
@@ -12,10 +12,10 @@
         <img src="../../assets/s1.png" alt="">
       </router-link>
       <div>
-        <img src="../../assets/s4.png" alt="" @click="getHtml(`http://www.demo-it.com.au/teamlink1/open-houses/`)">
+        <img src="../../assets/s4.png" alt="" @touchstart="getHtml(`http://www.demo-it.com.au/teamlink1/open-houses/`)">
       </div>
       <div>
-        <img src="../../assets/s3.png" alt="" @click="getHtml(`http://www.home789.com/gfembed/?f=86`)">
+        <img src="../../assets/s3.png" alt="" @touchstart="getHtml(`http://www.home789.com/gfembed/?f=86`)">
       </div>
       <router-link tag="div" to="/agent">
         <img src="../../assets/s2.png" alt="">
@@ -65,7 +65,7 @@
           </div>
         </div>
       </router-link>
-    <!-- <div class="suggest" @click="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/`)">
+    <!-- <div class="suggest" @touchstart="getHtml(`http://www.demo-it.com.au/teamlink/property/single-house-near-orland-park-chicago/`)">
       <div class="suggest-title">
         <i class="fa fa-clock-o" aria-hidden="true"></i>
         {{postedTime}}

@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <mt-header title class="row header">
-        <mt-button @click="$router.go(-1)" icon="back" slot="left"></mt-button>
+        <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
       </mt-header>
     </div>
     <form class="container">
@@ -27,7 +27,7 @@
       >
       <button
         id="submit"
-        @click="submit"
+        @touchstart="submit"
         type="button"
         class="black-btn common-btn"
         :disabled="isDisabled"

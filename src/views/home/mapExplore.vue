@@ -1,8 +1,8 @@
 <template>
   <div id="search">
     <div class="input-group container">
-      <i class="fa fa-chevron-left" @click="back" aria-hidden="true"></i>
-      <i class="fa fa-search" @click="search(searchText)" aria-hidden="true"></i>
+      <i class="fa fa-chevron-left" @touchstart="back" aria-hidden="true"></i>
+      <i class="fa fa-search" @touchstart="search(searchText)" aria-hidden="true"></i>
       <input
         class="form-control"
         v-model="searchText"
@@ -10,7 +10,7 @@
         type="text"
       >
       <span class="input-group-addon">
-        <i @click="showFilters" class="fa fa-sliders" aria-hidden="true"></i>
+        <i @touchstart="showFilters" class="fa fa-sliders" aria-hidden="true"></i>
       </span>
     </div>
     <div

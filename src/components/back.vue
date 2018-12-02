@@ -1,6 +1,6 @@
 <template>
 <div class="text-left back">
-    <span @click="go_back"><i class="fa fa-angle-left" aria-hidden="true"></i></span>
+    <span @touchstart.native="go_back"><i class="fa fa-angle-left" aria-hidden="true"></i></span>
     <slot></slot>
 </div>
 </template>

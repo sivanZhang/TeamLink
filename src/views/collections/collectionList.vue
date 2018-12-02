@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <header>Collection</header>
-    <section class="collections-item" @click="getHtml(`http://www.demo-it.com.au/teamlink1/open-houses/ `)">
+    <section class="collections-item" @touchstart="getHtml(`http://www.demo-it.com.au/teamlink1/open-houses/ `)">
 		<div class="item-img">
             <img ref="item_img" src="../../assets/icons/c1.png" alt="">
             <img ref="item_img" src="../../assets/icons/c1.png" alt="">
@@ -14,7 +14,7 @@
             </div>
 		</div>
     </section>
-    <section class="collections-item" @click="getHtml(`http://www.demo-it.com.au/teamlink1/open-houses/ `)">
+    <section class="collections-item" @touchstart="getHtml(`http://www.demo-it.com.au/teamlink1/open-houses/ `)">
 		<div class="item-img">
             <img ref="item_img" src="../../assets/icons/c1.png" alt="">
             <img ref="item_img" src="../../assets/icons/c1.png" alt="">
@@ -27,7 +27,7 @@
             </div>
 		</div>
     </section>
-    <section class="collections-item" @click="getHtml(`http://www.demo-it.com.au/teamlink1/open-houses/ `)">
+    <section class="collections-item" @touchstart="getHtml(`http://www.demo-it.com.au/teamlink1/open-houses/ `)">
 		<div class="item-img">
             <img ref="item_img" src="../../assets/icons/c1.png" alt="">
             <img ref="item_img" src="../../assets/icons/c1.png" alt="">
@@ -40,7 +40,7 @@
       </div>
 		</div>
     </section>
-    <img @click="openPrompt" class="icon-add" src="../../assets/icons/add.svg" alt="">
+    <img @touchstart="openPrompt" class="icon-add" src="../../assets/icons/add.svg" alt="">
     <footer-menu></footer-menu>
   </div>
 </template>

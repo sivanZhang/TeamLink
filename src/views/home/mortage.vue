@@ -35,7 +35,7 @@ table {
       </tr>
       <tr>
         <td>
-          <Button @click="getValues()" type="success" ghost :disabled="isDisabled">compute</Button>
+          <Button @touchstart.native="getValues()" type="success" ghost :disabled="isDisabled">compute</Button>
         </td>
         <td>{{arr.pmt}}</td>
       </tr>

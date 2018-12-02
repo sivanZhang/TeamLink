@@ -1,7 +1,7 @@
 <template>
   <div id="agent">
     <div class="container">
-      <i class="fa fa-angle-left fa-2x" aria-hidden="true" @click="back"></i>
+      <i class="fa fa-angle-left fa-2x" aria-hidden="true" @touchstart="back"></i>
     </div>
     <section>
       <img :src="agentData[0].image" alt>
@@ -35,7 +35,7 @@
       </div>
 
 
-      <div class="p-data" v-for="(item,index) in properties" @click="target(item[0].propertyId)">
+      <div class="p-data" v-for="(item,index) in properties" @touchstart="target(item[0].propertyId)">
         <div class="left">
           <img :src="item[0].images[0]" alt>
           <i class="fa fa-heart-o" aria-hidden="true"></i>

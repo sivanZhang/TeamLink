@@ -2,17 +2,17 @@
 <transition enter-active-class="animated slideInUp" leave-active-class="animated slideOutDown"><!-- mode="in-out" -->
   <div class="container filter">
         <header>
-            <div @click="cancel">Cancel</div>
+            <div @touchstart="cancel">Cancel</div>
             <div class="title">
                 Filters
             </div>
-            <div @click="clear">Clear</div>
+            <div @touchstart="clear">Clear</div>
         </header>
         <div class="tab-group row">
 					<button v-for="(tab,index) in tabs"
 					:key="index"
 					:class="[{ active: currentTab === tab.path },'tab-button','btn']"
-					@click="currentTab = tab.path">
+					@touchstart="currentTab = tab.path">
 					{{ tab.name }}
 					</button>
 		</div>
@@ -44,7 +44,7 @@
 					<button v-for="(bedroom,index) in bedrooms"
 					:key="index"
 					:class="[{ active: selectBedroom == bedroom.content },'tab-button','btn']"
-					@click="chooseBedroom(bedroom.content)">
+					@touchstart="chooseBedroom(bedroom.content)">
 					{{ bedroom.content }}
 					</button>
 		        </div>
@@ -53,7 +53,7 @@
 					<button v-for="(bathroom,index) in bathrooms"
 					:key="index"
 					:class="[{ active: selectBathroom == bathroom.content },'tab-button','btn']"
-					@click="chooseBathroom(bathroom.content)">
+					@touchstart="chooseBathroom(bathroom.content)">
 					{{ bathroom.content }}
 					</button>
 		        </div>
@@ -63,7 +63,7 @@
 					<button v-for="(item,index) in parking"
 					:key="index"
 					:class="[{ active: selectParking == item.content },'tab-button','btn']"
-					@click="chooseParking(item.content)">
+					@touchstart="chooseParking(item.content)">
 					{{ item.content }}
 					</button>
 		        </div>
@@ -78,7 +78,7 @@
           Exclude under contract/offer <Checkbox class="pull-right" v-model="single"></Checkbox>
         </section>
         <div class="row">
-          <button @click="apply()" class="apply black-btn common-btn">
+          <button @touchstart="apply()" class="apply black-btn common-btn">
           Apply
         </button>
         </div>

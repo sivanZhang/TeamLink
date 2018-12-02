@@ -2,7 +2,7 @@
 
   <div id="property" class="container">
     <mt-header title="TeamLink" class="row header">
-      <mt-button @click="$router.go(-1)" icon="back" slot="left"></mt-button>
+      <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
     </mt-header>
     <Map></Map>
     <Tag color="success">FOR RENT</Tag>
@@ -46,11 +46,9 @@
     </h3>
     <p class="text-right icons"><i class="fa fa-star-o" aria-hidden="true"></i><i class="fa fa-minus" aria-hidden="true"></i><i class="fa fa-print" aria-hidden="true"></i></p>
     <mt-swipe :auto="3000">
-      <template v-for="item in ajaxData.images">
-        <mt-swipe-item>
+        <mt-swipe-item v-for="(item,index) in ajaxData.images" :key="index">
           <img :src="item" alt="">
         </mt-swipe-item>
-      </template>
 
     </mt-swipe>
     <section>
@@ -412,7 +410,6 @@ import Mortage from "./mortage";
       this.axios
         .get(`/property/properties/${this.$route.params.pid}`)
         .then(res => {
-          console.log(res);
           this.ajaxData = res.data.property[0];
         })
         .catch(err => {

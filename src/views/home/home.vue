@@ -7,12 +7,12 @@
           <button
             v-for="(tab,index) in tabs"
             :class="[{ active: currentTab == tab.name },'tab-button','btn']"
-            @click="currentTab = tab.name"
+            @touchstart="currentTab = tab.name"
             :key="index"
           >{{ tab.name }}</button>
         </div>
         <div class="relative">
-          <i class="fa fa-search" @click="search(currentTab)" aria-hidden="true"></i>
+          <i class="fa fa-search" @touchstart="search(currentTab)" aria-hidden="true"></i>
           <input
             type="search"
             v-model="searchText"
@@ -64,7 +64,7 @@
       <div
         class="p-data"
         v-for="(item,index) in ajaxData"
-        @click="target(item[0].propertyId)"
+        @touchstart="target(item[0].propertyId)"
         :key="index"
       >
         <div class="left">

@@ -1,7 +1,7 @@
 <template>
     <div class="container main">
         <mt-header title="Setting" class="row header">
-            <mt-button @click="$router.go(-1)" icon="back" slot="left"></mt-button>
+            <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
         </mt-header>
         <ul class="text-left row links">
         <router-link tag="li" to="/waiting">Notifications<i class="fa fa-fw fa-chevron-right fa-pull-right" aria-hidden="true"></i>
@@ -10,7 +10,7 @@
         </router-link>
         <router-link tag="li" to="/waiting">Version
         </router-link>
-        <li @click="sign_out">Log Out</li>
+        <li @touchstart="sign_out">Log Out</li>
     </ul>
     </div>
 </template>

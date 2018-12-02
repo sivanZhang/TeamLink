@@ -2,8 +2,8 @@
 <div>
     <div class="container">
       <mt-header title="Forgot" class="row header">
-            <mt-button @click="$router.go(-1)" icon="back" slot="left"></mt-button>
-            <mt-button @click="$router.push(`/home`)" slot="right">home</mt-button>
+            <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
+            <mt-button @touchstart.native="$router.push(`/home`)" slot="right">home</mt-button>
         </mt-header>
     </div>
     <form class="container">
@@ -13,10 +13,10 @@
         <input v-model.lazy="user.phone" @blur="test_phone" class="form-control" type="number" placeholder="Phone">
         <div class="relative">
             <input v-model.lazy="user.phonecode" @blur="test_phonecode" class="form-control" type="text" name="verification" placeholder="Verification code">
-            <button @click="send_code" id="send_code" type="button">send</button>
+            <button @touchstart="send_code" id="send_code" type="button">send</button>
         </div>
         <input v-model.lazy="user.password" class="form-control" type="password" name="phone_number" placeholder="New password">
-        <button  @click='submit' :disabled="isDisabled" id="submit" type="button" class="black-btn common-btn">Resetting</button>
+        <button  @touchstart='submit' :disabled="isDisabled" id="submit" type="button" class="black-btn common-btn">Resetting</button>
         <p class="text-center">
             After successful reset to
             <router-link to="/login" class="blue-link">Sign in</router-link>

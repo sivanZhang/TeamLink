@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <mt-header title="Login" class="row header">
-      <mt-button @click="$router.go(-1)" icon="back" slot="left"></mt-button>
-      <mt-button @click="$router.push(`/home`)" slot="right">home</mt-button>
+      <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
+      <mt-button @touchstart.native="$router.push(`/home`)" slot="right">home</mt-button>
     </mt-header>
     <div class="row">
       <div class="col-xs-12">

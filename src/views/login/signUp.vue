@@ -2,8 +2,8 @@
 <div>
     <div class="container">
       <mt-header title="Sign Up" class="row header">
-            <mt-button @click="$router.go(-1)" icon="back" slot="left"></mt-button>
-            <mt-button @click="$router.push(`/home`)" slot="right">home</mt-button>
+            <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
+            <mt-button @touchstart.native="$router.push(`/home`)" slot="right">home</mt-button>
         </mt-header>
     </div>
     <form class="container">
@@ -13,10 +13,10 @@
         <input v-model="user.phone" @blur="test_phone" class="form-control" type="number" autocomplete='tel-national' placeholder="Phone">
         <div class="relative">
             <input v-model="user.phonecode" @blur="test_phonecode" class="form-control" type="text" name="verification" placeholder="Verification code">
-            <button id="send_code" @click='send_code' type="button">send</button>
+            <button id="send_code" @touchstart='send_code' type="button">send</button>
         </div>
         <input v-model="user.password" class="form-control" type="password" autocomplete='tel-national' placeholder="Password">
-        <button id="submit" @click='submit' :disabled="isDisabled" type="button" class="black-btn common-btn">Create an account</button>
+        <button id="submit" @touchstart='submit' :disabled="isDisabled" type="button" class="black-btn common-btn">Create an account</button>
         <p class="text-center">
             By signing up you acknowledge that you have read and agree to the
             <a class="cx-textLink cx-textLink--brand" href="/legal/terms-of-service" target="_blank" data-tn="registerForm-link-termsOfService">Terms of Service</a> and

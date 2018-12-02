@@ -1,7 +1,7 @@
 <template>
     <div class="container main">
         <mt-header title="Select Region" class="row header">
-            <mt-button @click="$router.go(-1)" icon="back" slot="left"></mt-button>
+            <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
         </mt-header>
        <ul class="text-left row links">
         <router-link tag="li" to="/waiting">

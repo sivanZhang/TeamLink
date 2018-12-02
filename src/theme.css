@@ -130,6 +130,10 @@ input {
     -webkit-appearance: none;
 }
 
+.form-control:focus {
+    box-shadow: unset;
+}
+
 
 /* -----------------------------------jQuery message plug-in 1.0-------------------------------------- */
 
