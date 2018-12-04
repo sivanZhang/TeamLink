@@ -1,52 +1,61 @@
 <template>
   <div class="container">
     <header>Collection</header>
-    <section class="collections-item" @touchstart="getHtml(`http://www.demo-it.com.au/teamlink1/open-houses/ `)">
-		<div class="item-img">
-            <img ref="item_img" src="../../assets/icons/c1.png" alt="">
-            <img ref="item_img" src="../../assets/icons/c1.png" alt="">
-        </div>
-		<div class="item-footer">
-			<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-			<div class="flex">
-                <div>A</div>
-                <i class="fa fa-external-link" aria-hidden="true"></i>
-            </div>
-		</div>
-    </section>
-    <section class="collections-item" @touchstart="getHtml(`http://www.demo-it.com.au/teamlink1/open-houses/ `)">
-		<div class="item-img">
-            <img ref="item_img" src="../../assets/icons/c1.png" alt="">
-            <img ref="item_img" src="../../assets/icons/c1.png" alt="">
-        </div>
-		<div class="item-footer">
-			<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-			<div class="flex">
-                <div>B</div>
-                <i class="fa fa-external-link" aria-hidden="true"></i>
-            </div>
-		</div>
-    </section>
-    <section class="collections-item" @touchstart="getHtml(`http://www.demo-it.com.au/teamlink1/open-houses/ `)">
-		<div class="item-img">
-            <img ref="item_img" src="../../assets/icons/c1.png" alt="">
-            <img ref="item_img" src="../../assets/icons/c1.png" alt="">
-        </div>
-		<div class="item-footer">
-			<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-			<div class="flex">
-            <div>C</div>
-            <i class="fa fa-external-link" aria-hidden="true"></i>
+    <section
+      class="collections-item"
+      @touchstart="getHtml(`http://www.demo-it.com.au/teamlink1/open-houses/ `)"
+    >
+      <div class="item-img">
+        <img ref="item_img" src="../../assets/icons/c1.png" alt>
+        <img ref="item_img" src="../../assets/icons/c1.png" alt>
       </div>
-		</div>
+      <div class="item-footer">
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        <div class="flex">
+          <div>A</div>
+          <i class="fa fa-external-link" aria-hidden="true"></i>
+        </div>
+      </div>
     </section>
-    <img @touchstart="openPrompt" class="icon-add" src="../../assets/icons/add.svg" alt="">
+    <section
+      class="collections-item"
+      @touchstart="getHtml(`http://www.demo-it.com.au/teamlink1/open-houses/ `)"
+    >
+      <div class="item-img">
+        <img ref="item_img" src="../../assets/icons/c1.png" alt>
+        <img ref="item_img" src="../../assets/icons/c1.png" alt>
+      </div>
+      <div class="item-footer">
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        <div class="flex">
+          <div>B</div>
+          <i class="fa fa-external-link" aria-hidden="true"></i>
+        </div>
+      </div>
+    </section>
+    <section
+      class="collections-item"
+      @touchstart="getHtml(`http://www.demo-it.com.au/teamlink1/open-houses/ `)"
+    >
+      <div class="item-img">
+        <img ref="item_img" src="../../assets/icons/c1.png" alt>
+        <img ref="item_img" src="../../assets/icons/c1.png" alt>
+      </div>
+      <div class="item-footer">
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        <div class="flex">
+          <div>C</div>
+          <i class="fa fa-external-link" aria-hidden="true"></i>
+        </div>
+      </div>
+    </section>
+    <img @touchstart="openPrompt" class="icon-add" src="../../assets/icons/add.svg" alt>
     <footer-menu></footer-menu>
   </div>
 </template>
 
 <script>
-import { MessageBox } from 'mint-ui';
+import { MessageBox } from "mint-ui";
 export default {
   data() {
     return {
@@ -59,12 +68,12 @@ export default {
         title: "Create a New Collection succeed",
         message: `Name this new collection`,
         showCancelButton: true,
-        confirmButtonText:'Create',
-        cancelButtonText:"cancel",
-        showInput:true
+        confirmButtonText: "Create",
+        cancelButtonText: "cancel",
+        showInput: true
       });
-      },
-      getHtml(val) {
+    },
+    getHtml(val) {
       this.$store.commit("setUrl", val);
       this.$router.push("/iframe");
     }
@@ -82,8 +91,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
-div /deep/ .mint-msgbox{
-  border-radius: 8px!important;
+div /deep/ .mint-msgbox {
+  border-radius: 8px !important;
 }
 header {
   font-size: 18px;
@@ -125,7 +134,7 @@ header {
   right: 15px;
   bottom: 65px;
   padding: 6px;
-  box-shadow: 0 1px 6px 3px rgba(0, 0, 0,.16);
+  box-shadow: 0 1px 6px 3px rgba(0, 0, 0, 0.16);
   background: #fff;
 }
 </style>

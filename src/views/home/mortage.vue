@@ -1,14 +1,19 @@
 
 <style lang="less" scoped>
 #mortage {
-  margin-top: 30px;
+  h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  & /deep/ .ivu-input {
+    border-radius: 0px !important;
+    margin: 6px auto;
+  }
 }
 table {
   width: 100%;
-  & /deep/ .ivu-input {
-    border-radius: 0px;
-  }
-}/*  */
+} /*  */
 </style>
 
 <template>
@@ -35,7 +40,12 @@ table {
       </tr>
       <tr>
         <td>
-          <Button @touchstart.native="getValues()" type="success" ghost :disabled="isDisabled">compute</Button>
+          <Button
+            @touchstart.native="getValues()"
+            type="success"
+            ghost
+            :disabled="isDisabled"
+          >compute</Button>
         </td>
         <td>{{arr.pmt}}</td>
       </tr>
@@ -55,22 +65,22 @@ export default {
       }
     };
   },
-  watch:{
-    arr:{
-      handler:()=>{
-      this.isDisabled= false
-    },
-    immediate: true,
- deep: true
+  watch: {
+    arr: {
+      handler: () => {
+        this.isDisabled = false;
+      },
+      immediate: true,
+      deep: true
     }
-  }
-  ,
+  },
   methods: {
     getValues() {
       this.arr.apr /= 1200;
       this.arr.trm *= 12;
       let payment =
-        (this.arr.amt * (this.arr.apr * Math.pow(1 + this.arr.apr, this.arr.trm))) /
+        (this.arr.amt *
+          (this.arr.apr * Math.pow(1 + this.arr.apr, this.arr.trm))) /
         (Math.pow(1 + this.arr.apr, this.arr.trm) - 1);
       if (this.arr.apr != "" && this.arr.trm != "" && this.arr.amt != "") {
         this.arr.pmt = `$ ${payment.toFixed(2)} /Month`;
@@ -82,6 +92,6 @@ export default {
   },
   mounted() {
     //js 在这些
-  },
+  }
 };
 </script>
