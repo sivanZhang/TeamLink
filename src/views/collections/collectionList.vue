@@ -55,6 +55,7 @@
 </template>
 
 <script>
+import Ajax from '@/api/collections'
 import { MessageBox } from "mint-ui";
 export default {
   data() {
@@ -77,6 +78,13 @@ export default {
       this.$store.commit("setUrl", val);
       this.$router.push("/iframe");
     }
+  },
+  created() {
+    Ajax.getCollections().then(res=>{
+
+    }).catch(err=>{
+
+    })
   },
   mounted() {
     document
