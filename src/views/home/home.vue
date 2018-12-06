@@ -32,7 +32,8 @@
       >
         <div class="left">
           <img :src="item[0].images[0]" alt>
-          <i class="fa fa-heart-o" aria-hidden="true"></i>
+          <i @click.stop="collections(item[0].propertyId)" :class="['fa',item[0].collection=='Yes'?`fa-heart-o`:`fa-heart`]" class="fa" aria-hidden="true"></i>
+         <!--  <i v-if="item[0].collection=='No'" @click.stop="collections(item[0].propertyId)" class="fa fa-heart" aria-hidden="true"></i> -->
         </div>
         <div class="right">
           <div>{{item[0].title}}</div>
@@ -40,10 +41,7 @@
           <div class="money">$ {{item[0].attributes.real_estate_property_price}}</div>
           <div>
             {{item[0].attributes.real_estate_property_bedrooms}}
-            <i
-              class="fa fa-bed"
-              aria-hidden="true"
-            ></i>
+            <i class="fa fa-bed" aria-hidden="true"></i>
             {{item[0].attributes.real_estate_property_bathrooms}}
             <i
               class="fa fa-bath"
@@ -64,6 +62,7 @@
 </template>
 
 <script>
+import Ajax from "@/api/collections";
 export default {
   data() {
     return {
@@ -72,10 +71,20 @@ export default {
       tabs: [{ name: "Buy" }, { name: "Rent" }],
       searchText: "",
       postedTime: `Today 1:00 PM - 5:00 PM`,
-      ajaxData: ""
+      ajaxData: "",
+      isShow:true
     };
   },
   methods: {
+    collections(pid) {
+      let data = {
+        propertyid: pid
+      };
+      Ajax.postCollections(data).then(res => {
+        this.isShow=!this.isShow
+        this.getAjax();
+      });
+    },
     search(val) {
       this.$store.commit("set_search", this.searchText);
       this.$router.push({
@@ -92,23 +101,28 @@ export default {
           pid: id
         }
       });
-    }
-  },
-  created() {
-    document.title = "TeamLink " + this.title;
-    this.axios
+    },getAjax(){
+      this.axios
       .get("/property/properties/")
       .then(res => {
-        this.ajaxData = res.data.properties.slice(0,3);
-        this.$store.commit("setAgents", res.data.properties.slice(0,3));
+        this.ajaxData = res.data.properties.slice(0, 3);
+        this.$store.commit("setAgents", res.data.properties.slice(0, 3));
       })
       .catch(err => {
         console.log(err);
       });
+    }
+  },
+  created() {
+    document.title = "TeamLink " + this.title;
+    this.getAjax()
   }
 };
 </script>
 <style scoped lang="less">
+.fa-heart{
+  color: red!important;
+}
 .data-warp {
   display: flex;
   justify-content: flex-start;

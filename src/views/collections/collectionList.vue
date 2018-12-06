@@ -2,68 +2,49 @@
   <div class="container">
     <header>Collection</header>
     <section
+      v-for="(item,index) in dataList"
+      :key="index"
       class="collections-item"
-      @touchstart="getHtml(`http://www.demo-it.com.au/teamlink1/open-houses/ `)"
+      @touchstart="target(item[0].propertyId)"
     >
       <div class="item-img">
-        <img ref="item_img" src="../../assets/icons/c1.png" alt>
-        <img ref="item_img" src="../../assets/icons/c1.png" alt>
+        <div class="img_warp">
+          <img :src="item[0].images[0]" alt>
+        </div>
+        <div class="img_warp">
+          <img :src="item[0].images[1]" alt>
+        </div>
       </div>
       <div class="item-footer">
-        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        <!-- <i class="fa fa-pencil-square-o" aria-hidden="true"></i> -->
         <div class="flex">
-          <div>A</div>
-          <i class="fa fa-external-link" aria-hidden="true"></i>
+          <div>{{item[0].title}}</div>
+          <!-- <i class="fa fa-external-link" aria-hidden="true"></i> -->
         </div>
       </div>
     </section>
-    <section
-      class="collections-item"
-      @touchstart="getHtml(`http://www.demo-it.com.au/teamlink1/open-houses/ `)"
-    >
-      <div class="item-img">
-        <img ref="item_img" src="../../assets/icons/c1.png" alt>
-        <img ref="item_img" src="../../assets/icons/c1.png" alt>
-      </div>
-      <div class="item-footer">
-        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-        <div class="flex">
-          <div>B</div>
-          <i class="fa fa-external-link" aria-hidden="true"></i>
-        </div>
-      </div>
-    </section>
-    <section
-      class="collections-item"
-      @touchstart="getHtml(`http://www.demo-it.com.au/teamlink1/open-houses/ `)"
-    >
-      <div class="item-img">
-        <img ref="item_img" src="../../assets/icons/c1.png" alt>
-        <img ref="item_img" src="../../assets/icons/c1.png" alt>
-      </div>
-      <div class="item-footer">
-        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-        <div class="flex">
-          <div>C</div>
-          <i class="fa fa-external-link" aria-hidden="true"></i>
-        </div>
-      </div>
-    </section>
-    <img @touchstart="openPrompt" class="icon-add" src="../../assets/icons/add.svg" alt>
+    <img @click="openPrompt" class="icon-add" src="../../assets/icons/add.svg" alt>
     <footer-menu></footer-menu>
   </div>
 </template>
 
 <script>
-import Ajax from '@/api/collections'
+import Ajax from "@/api/collections";
 import { MessageBox } from "mint-ui";
 export default {
   data() {
     return {
-      title: "Collections"
+      title: "Collections",
+      dataList: []
     };
   },
   methods: {
+    target(pid) {
+      this.$router.push({
+        name: `benaa`,
+        params: { pid }
+      });
+    },
     openPrompt() {
       MessageBox({
         title: "Create a New Collection succeed",
@@ -73,33 +54,31 @@ export default {
         cancelButtonText: "cancel",
         showInput: true
       });
-    },
+    } /* ,
     getHtml(val) {
       this.$store.commit("setUrl", val);
       this.$router.push("/iframe");
-    }
+    } */
   },
   created() {
-    Ajax.getCollections().then(res=>{
-
-    }).catch(err=>{
-
-    })
+    Ajax.getCollections()
+      .then(res => {
+        this.dataList = res.data.msg;
+      })
+      .catch(err => {});
   },
   mounted() {
     document
       .querySelector("body")
       .setAttribute("style", "background-color:#fff");
     document.title = "TeamLink " + this.title;
-    /* 设置展图宽高相等 */
-    let imgWidth = $(".item-img").width() / 2;
-    $(".item-img>img").height(imgWidth);
+    console.log($('body').height())
   }
 };
 </script>
 
 <style lang="less" scoped>
-div /deep/ .mint-msgbox {
+.mint-msgbox {
   border-radius: 8px !important;
 }
 header {
@@ -109,11 +88,20 @@ header {
 }
 .collections-item {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.18);
+  width: 100%;
   .item-img {
     display: flex;
+    width: 100%;
     justify-content: center;
-    img {
-      flex: 1 1 auto;
+    & > div {
+      width: 50%;
+      height: 172px;
+      overflow: hidden;
+      img {
+        height: 100%;
+        width: auto;
+        
+      }
     }
   }
   .item-footer {
