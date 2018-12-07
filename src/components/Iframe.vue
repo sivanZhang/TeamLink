@@ -35,7 +35,6 @@ export default {
 <style scoped>
 header {
   padding: 10px 0;
-  background-color: #fefefe;
   position: fixed;
   top: 0;
   width: 100%;

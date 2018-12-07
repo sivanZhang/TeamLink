@@ -134,9 +134,6 @@ export default {
     }
   },
   mounted: function() {
-    document
-      .querySelector("body")
-      .setAttribute("style", "background-color:#f4f5f9");
   }
 };
 </script>

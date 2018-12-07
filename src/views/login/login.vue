@@ -103,16 +103,12 @@ export default {
     } */
   },
   mounted() {
-    document
-      .querySelector("body")
-      .setAttribute("style", "background-color:#f4f5f9");
   }
 };
 </script>
 
 <style scoped>
 .header {
-  background-color: #f4f5f9;
   position: fixed !important;
   top: 0;
   width: 100%;

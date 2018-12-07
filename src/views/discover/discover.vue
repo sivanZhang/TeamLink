@@ -105,9 +105,6 @@
       }
     },
     mounted() {
-      document
-        .querySelector("body")
-        .setAttribute("style", "background-color:#fff");
       document.title = "TeamLink " + this.title;
       /* 设置展图宽高相等 */
       let imgWidth = $(".item-img").width() / 2;

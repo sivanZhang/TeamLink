@@ -68,11 +68,7 @@ export default {
       .catch(err => {});
   },
   mounted() {
-    document
-      .querySelector("body")
-      .setAttribute("style", "background-color:#fff");
     document.title = "TeamLink " + this.title;
-    console.log($('body').height())
   }
 };
 </script>

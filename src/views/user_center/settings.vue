@@ -35,9 +35,6 @@ export default {
     document.title = "TeamLink-" + this.title;
   },
   mounted() {
-    document
-      .querySelector("body")
-      .setAttribute("style", "background-color:#fff");
   },
 };
 </script>

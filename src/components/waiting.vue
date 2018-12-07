@@ -20,9 +20,6 @@ export default {
     back
   },
   mounteds() {
-    document
-      .querySelector("body")
-      .setAttribute("style", "background-color:#f4f5f9");
       document.title='TeamLink-'+this.title;
   }
 }

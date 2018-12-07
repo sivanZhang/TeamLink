@@ -45,9 +45,6 @@ export default {
     }
   },
   created() {
-    document
-      .querySelector("body")
-      .setAttribute("style", "background-color:#fff");
     document.title = "TeamLink-" + this.title;
   }
 };

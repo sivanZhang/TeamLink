@@ -1,6 +1,8 @@
 <template>
 <div id="app">
-
+<mt-header title="TeamLink" class="row header">
+            <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
+        </mt-header>
 <keep-alive>
     <router-view v-if="$route.meta.keepAlive">
         <!-- 这里是会被缓存的视图组件，比如 Home！ -->
@@ -23,13 +25,13 @@ export default {
 #app {
     padding-bottom: 52px;
 }
-.header /deep/ h1 {
+.header h1 {
   margin: 0;
 }
-.header /deep/ .mint-button {
+.header .mint-button {
   height: 16px;
 }
-.header /deep/ a {
+.header a {
   color: inherit;
 }
 .main {

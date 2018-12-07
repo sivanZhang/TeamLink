@@ -53,9 +53,6 @@ export default {
     }
   },
   mounted() {
-    document
-      .querySelector("body")
-      .setAttribute("style", "background-color:#fff");
   }
 };
 </script>
