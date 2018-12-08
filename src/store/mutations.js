@@ -1,6 +1,5 @@
 export default {
     setToken(state, val) {
-        localStorage.setItem('token', val)
         state.token = val;
     },
     setUserName(state, name) {

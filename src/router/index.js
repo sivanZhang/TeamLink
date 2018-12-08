@@ -6,10 +6,7 @@ const routes = [{
         path: '/home',
         name: 'home',
         component: () =>
-            import ('@/views/home/home'),
-        meta: {
-            keepAlive: true // 需要被缓存
-        }
+            import ('@/views/home/home')
     },
     {
         path: '/benaa/:pid',
@@ -51,10 +48,11 @@ const routes = [{
         path: '/collections',
         name: 'collections',
         component: () =>
-            import ('@/views/collections/collectionList'),
-        meta: {
-            requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
-        }
+            import ('@/views/collections/collectionList')
+            /* ,
+                    meta: {
+                        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
+                    } */
     },
     {
         path: '/inbox',
@@ -132,9 +130,6 @@ const routes = [{
         redirect: '/home' //匹配不到 默认跳转
     }
 ];
-if (!store.state.token && window.localStorage.getItem('token')) {
-    store.commit('setToken', window.localStorage.getItem('token'))
-}
 const ROUTER = new Router({
     routes
 });

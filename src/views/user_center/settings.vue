@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import AJAX from '@/api/login'
 import { Toast } from "mint-ui";
 export default {
   data() {
@@ -25,6 +26,7 @@ export default {
   },
   methods: {
     sign_out() {
+      this.axios.get('/users/logout/').then(res=>{});
       this.$store.commit("setUserName", "");
       this.$store.commit("setPortrait", "");
       this.$store.commit("setToken", "");
@@ -33,7 +35,7 @@ export default {
               position: "bottom",
               duration: 3000
             });
-      this.$router.push("/login");
+      this.$router.replace("/home");
     }
   },
   created() {

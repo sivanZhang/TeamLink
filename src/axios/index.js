@@ -14,6 +14,14 @@ let Ajax = axios.create({
 
 Ajax.interceptors.request.use(
     config => {
+        /* if (!store.state.token) {
+            authToken = window.btoa("nucleus" + ":" + "nucleus-secret");
+            config.headers.Authorization = `Basic ` + authToken;
+            config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+        } else {
+            config.headers.Authorization = store.state.token;
+        } */
+
         if (store.state.token) {
             config.headers.Authorization = store.state.token;
             console.log(store.state.token, '加TOKEN');
@@ -34,10 +42,10 @@ Ajax.interceptors.response.use(
             switch (error.response.status) {
                 case 403:
                     // 返回 403 清除token信息并跳转到登录页面
-                    store.commit('setToken', '');
+                    store.commit('setToken');
                     console.log(store.state.token, '删除TOKEN');
                     router.replace({
-                        path: 'login',
+                        path: '/login',
                         query: { redirect: router.currentRoute.fullPath }
                     })
             }

@@ -45,8 +45,7 @@ export default {
           src: require(`../assets/icons/account.png`),
 		  src_act: require(`../assets/icons/account_act.png`),
           name: "Account",
-          path: this.$store.state.token ? "/user_center" : "/login"
-          //如果没有登录，则链接到登录页面
+          path: "/user_center"
         }
       ]
     };
