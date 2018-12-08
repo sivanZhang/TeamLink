@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <mt-header title="Login" class="row header">
+    <mt-header title="profile" class="row header">
       <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
       <mt-button @touchstart.native="$router.push(`/home`)" slot="right">home</mt-button>
     </mt-header>

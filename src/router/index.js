@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import store from '@/store'
+import { Toast } from "mint-ui";
 Vue.use(Router);
 const routes = [{
         path: '/home',
@@ -85,7 +86,10 @@ const routes = [{
         path: '/discover',
         name: 'discover',
         component: () =>
-            import ('@/views/discover/discover')
+            import ('@/views/discover/discover'),
+        meta: {
+            keepAlive: true
+        }
     },
     {
         path: '/user_center',
@@ -139,6 +143,11 @@ ROUTER.beforeEach((to, from, next) => {
         if (store.state.token) {
             next();
         } else {
+            Toast({
+                message: "Please login first",
+                position: "bottom",
+                duration: 3000
+            });
             next({
                 path: '/login',
                 query: { redirect: to.fullPath }

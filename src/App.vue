@@ -31,13 +31,6 @@ export default {
 .header a {
   color: inherit;
 }
-.main {
-  width: 100%;
-  position: absolute;
-  overflow: auto;
-  top: 30;
-  padding-bottom: 52px;
-}
 .header {
   background-color: #fff;
   position: fixed!important;

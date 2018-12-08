@@ -50,7 +50,6 @@ export default {
 ul.links {
   background-color: #fff;
   padding: 0px 15px;
-  margin-top: 20px;
   li {
     padding: 20px 15px;
     border-bottom: 1px solid #e1e4e8;

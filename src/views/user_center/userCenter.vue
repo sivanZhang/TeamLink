@@ -86,7 +86,7 @@ ul.links {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background-color: #ccc;
+  background-color: #000;
   color: #fff;
   font-size: 30px;
 }

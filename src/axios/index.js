@@ -2,6 +2,9 @@ import axios from 'axios'
 import store from '@/store'
 import qs from 'qs'
 import router from '@/router'
+import { Toast } from "mint-ui";
+
+
 const isPro = Object.is(process.env.NODE_ENV, 'production')
 let Ajax = axios.create({
     baseURL: isPro ? 'https://www.chidict.com' : 'api/',
@@ -34,6 +37,11 @@ Ajax.interceptors.response.use(
             switch (error.response.status) {
                 case 403:
                     // 返回 403 清除token信息并跳转到登录页面
+                    Toast({
+                        message: "Please login first",
+                        position: "bottom",
+                        duration: 3000
+                    });
                     store.commit('setToken');
                     console.log(store.state.token, '删除TOKEN');
                     router.replace({
