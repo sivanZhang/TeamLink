@@ -1,8 +1,5 @@
 <template>
-<div id="app">
-<mt-header title="TeamLink" class="row header">
-            <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
-        </mt-header>
+<div id="app"> 
 <keep-alive>
     <router-view v-if="$route.meta.keepAlive">
         <!-- 这里是会被缓存的视图组件，比如 Home！ -->
