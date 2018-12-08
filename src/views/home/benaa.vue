@@ -17,7 +17,7 @@
       </div>
     </div>
     <div class="number">
-      <span>$ {{ajaxData.attributes.real_estate_property_price_short}}</span>
+      <span>$ {{ajaxData.attributes.real_estate_property_price}}</span>
 
       <div>
         {{ajaxData.attributes.real_estate_property_bedrooms}}

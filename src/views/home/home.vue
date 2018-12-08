@@ -190,6 +190,7 @@ export default {
   border-radius: 8px;
   box-shadow: 0 0 12px 4px rgba(115, 117, 123, 0.12);
   margin: 0 15px;
+ 
 
   .tab-group {
     border-bottom: 1px solid #ddd;
@@ -214,6 +215,7 @@ export default {
 
       &:focus {
         outline: none;
+        
       }
     }
   }
@@ -227,6 +229,7 @@ export default {
       padding-right: 26px;
       height: 54px;
       border-radius: 8px;
+      padding-left: 35px;
     }
 
     .fa-search {
