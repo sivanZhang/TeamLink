@@ -11,7 +11,7 @@
         </section>
         <section>
             <h4>Email</h4>
-            <input type="text">
+            <input type="email">
         </section>
         <section>
             <h4>Feedback</h4>
