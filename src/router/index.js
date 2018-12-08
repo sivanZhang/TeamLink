@@ -7,7 +7,10 @@ const routes = [{
         path: '/home',
         name: 'home',
         component: () =>
-            import ('@/views/home/home')
+            import ('@/views/home/home'),
+        meta: {
+            keepAlive: true
+        }
     },
     {
         path: '/benaa/:pid',
@@ -129,7 +132,7 @@ const routes = [{
         path: '/version',
         component: () =>
             import ('@/components/version')
-    }, 
+    },
     {
         path: '/services',
         component: () =>
@@ -139,7 +142,7 @@ const routes = [{
         path: '/waiting',
         component: () =>
             import ('@/components/waiting')
-    }, 
+    },
     {
         path: '*',
         redirect: '/home' //匹配不到 默认跳转

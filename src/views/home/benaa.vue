@@ -159,8 +159,9 @@
     <section class="card feature">
       <div>
         <div>
-          <button>
-            <i class="fa fa-heart-o" aria-hidden="true"></i>
+          <button @click="collections(ajaxData.propertyId)">
+            <i v-if="ajaxData.collection=='No'" class="fa fa-heart-o" aria-hidden="true"></i>
+            <i v-else class="fa fa-heart" aria-hidden="true"></i>
           </button>
           <button>
             <i class="fa fa-external-link" aria-hidden="true"></i>
@@ -175,6 +176,7 @@
   </div>
 </template>
 <script>
+import Ajax from "@/api/collections";
 import Mortage from "./mortage";
 import Map from "./map";
 export default {
@@ -191,6 +193,22 @@ export default {
         { name: "College&Unicersity" }
       ]
     };
+  },
+  methods: {
+    collections(pid) {
+      let data = {
+        propertyid: pid
+      };
+      Ajax.postCollections(data).then(res => {
+        console.log(res.data.msg)
+        if (res.data.msg=="add") {
+          this.ajaxData.collection = "Yes";
+        }
+        if (res.data.msg=="cancel") {
+          this.ajaxData.collection = "No";
+        }
+      });
+    }
   },
   components: {
     Map,
@@ -285,7 +303,7 @@ export default {
     padding: 6px 12px;
   }
   .number {
-    padding: 15px;
+    padding:10px 15px 15px;
     & > span {
       color: rgb(177, 69, 55);
     }
@@ -296,17 +314,22 @@ export default {
     }
   }
   .card {
+    &+.card{
+      border-top: 1px solid #ccc;
+    }
     &.feature {
       padding: 30px 15px;
-      background: #ddd;
       button {
         height: 34px;
+        .fa-heart {
+          color: red;
+        }
       }
       & > div > div {
         button {
           padding: 6px 12px;
           background: #fff;
-          border: 1px solid #aaa;
+          border: 1px solid #000;
           color: #000;
         }
       }
