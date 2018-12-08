@@ -1,5 +1,6 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import router from 'vue-router'
+import store from '@/store'
 import home from '@/views/home/home'
 import benaa from '@/views/home/benaa'
 import mapExplore from '@/views/home/mapExplore'
@@ -20,12 +21,13 @@ import iframe from '@/components/Iframe'
 import agent from '@/views/agent/agent'
 import agentDetail from '@/views/agent/agentDetail'
 
-Vue.use(Router);
+Vue.use(router);
 const routes = [{
         path: '/home',
         name: 'home',
         component: home,
         meta: {
+            requireAuth: true, // 添加该字段，表示进入这个路由是需要登录的
             keepAlive: true // 需要被缓存
         }
     },
@@ -39,7 +41,7 @@ const routes = [{
         name: 'mapExplore',
         component: mapExplore,
         meta: {
-            keepAlive: true // 需要被缓存
+            keepAlive: true
         }
     },
     {
@@ -64,12 +66,18 @@ const routes = [{
     {
         path: '/collections',
         name: 'collections',
-        component: collections
+        component: collections,
+        meta: {
+            requireAuth: true
+        }
     },
     {
         path: '/inbox',
         name: 'inbox',
-        component: inbox
+        component: inbox,
+        meta: {
+            requireAuth: true
+        }
     },
     {
         path: '/user_center/settings',
@@ -127,6 +135,21 @@ const routes = [{
         redirect: '/home' //匹配不到 默认跳转
     }
 ];
-export default new Router({
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(r => r.meta.requireAuth)) {
+        if (store.state.token) {
+            next();
+        } else {
+            next({
+                path: '/login',
+                query: { redirect: to.fullPath }
+            })
+        }
+    } else {
+        next();
+    }
+})
+const ROUTER = new Router({
     routes
 })
+export default ROUTER

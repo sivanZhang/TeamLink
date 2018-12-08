@@ -13,8 +13,8 @@ import '@/theme.css'
 import 'animate.css'
 import 'font-awesome/css/font-awesome.min.css'
 // 解决移动端300毫秒延迟
-import FastClick from 'fastclick'
-FastClick.attach(document.body);
+/* import FastClick from 'fastclick'
+FastClick.attach(document.body); */
 //iView框架
 import iView from 'iview';
 import locale from 'iview/dist/locale/en-US';

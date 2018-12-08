@@ -10,13 +10,7 @@
         <div>Sign in to TEAMLINK</div>
         <div class="line"></div>
       </div>
-      <input
-        v-model="user.phone"
-        class="inp"
-        type="text"
-        id="phone_number"
-        placeholder="username"
-      >
+      <input v-model="user.phone" class="inp" type="text" id="phone_number" placeholder="username">
       <!-- @change="test_phone"  -->
       <input
         v-model="user.password"
@@ -33,8 +27,10 @@
         :disabled="isDisabled"
       >Log in</button>
       <div class="row">
-        <router-link to="" class="col-xs-6 blue-link text-left">Create an account</router-link><!-- /signup -->
-        <router-link to="" class="col-xs-6 blue-link text-right">Forgot?</router-link><!-- /forgot -->
+        <router-link to class="col-xs-6 blue-link text-left">Create an account</router-link>
+        <!-- /signup -->
+        <router-link to class="col-xs-6 blue-link text-right">Forgot?</router-link>
+        <!-- /forgot -->
       </div>
     </form>
   </div>
@@ -79,7 +75,7 @@ export default {
             this.$store.commit("setToken", `JWT ${res.data.token}`);
             this.$store.commit("setUserName", res.data.username);
             this.$store.commit("setPortrait", this.api + res.data.portrait);
-            this.$router.push("/user_center");
+            this.$router.go(-1);
           } else if (res.data.status == "error") {
             Toast({
               message: res.data.msg,
@@ -102,8 +98,7 @@ export default {
       }
     } */
   },
-  mounted() {
-  }
+  mounted() {}
 };
 </script>
 
@@ -128,20 +123,19 @@ export default {
   font-family: sans-serif;
 }
 
-
 .inp {
   display: block;
   width: 100%;
-  border-bottom:solid #333;
+  border-bottom: solid #333;
   outline: none;
   border-width: 0 0 1px 0;
   height: 42px;
- margin: 15px auto;
- padding: 0 6px;
- background-color: #f4f5f9;
- border-radius: 0px;
- color:#333;
- box-shadow: unset;
+  margin: 15px auto;
+  padding: 0 6px;
+  background-color: #f4f5f9;
+  border-radius: 0px;
+  color: #333;
+  box-shadow: unset;
 }
 .row a {
   color: gray;
@@ -169,7 +163,7 @@ input::-webkit-input-placeholder {
 }
 input:-webkit-autofill,
 select:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px #f4f5f9 inset!important;
+  -webkit-box-shadow: 0 0 0px 1000px #f4f5f9 inset !important;
 }
 
 input::-moz-placeholder {
