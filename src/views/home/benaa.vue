@@ -1,6 +1,6 @@
 <template>
   <div id="property" class="container">
-    <mt-header title="Mordern Apartment" class="header">
+    <mt-header title="Mordern Apartment" class="header row">
       <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
     </mt-header>
     <!-- 轮播图 -->
@@ -40,7 +40,7 @@
     <div></div>
     <Map style="height:240px;width:100%;"></Map>
 
-    <section class="card">
+    <section class="card key">
       <header>Key Details</header>
       <div>
         Property ID:
@@ -88,9 +88,7 @@
       <p>Gas store</p>
       <p>Study</p>
     </section>
-    <div class="container">
-      <Mortage></Mortage>
-    </div>
+    <Mortage></Mortage>
     <section class="card">
       <header>Inspections</header>
       <div>
@@ -174,16 +172,19 @@
     </section>
 
     <BackTop style="bottom:60px;"></BackTop>
+    <ShowMore></ShowMore>
     <footer-menu></footer-menu>
   </div>
 </template>
 <script>
 import Ajax from "@/api/collections";
 import Mortage from "./mortage";
+import ShowMore from "./ShowMore";
 import Map from "./map";
 export default {
   data() {
     return {
+      showHeight: 200,
       value1: "",
       //初始化默认字典
       currentTab: "All",
@@ -202,11 +203,11 @@ export default {
         propertyid: pid
       };
       Ajax.postCollections(data).then(res => {
-        console.log(res.data.msg)
-        if (res.data.msg=="add") {
+        console.log(res.data.msg);
+        if (res.data.msg == "add") {
           this.ajaxData.collection = "Yes";
         }
-        if (res.data.msg=="cancel") {
+        if (res.data.msg == "cancel") {
           this.ajaxData.collection = "No";
         }
       });
@@ -214,7 +215,8 @@ export default {
   },
   components: {
     Map,
-    Mortage
+    Mortage,
+    ShowMore
   },
   mounted() {
     this.axios
@@ -256,7 +258,7 @@ export default {
   }
 }
 #agent {
-  padding: 15px;
+  padding: 15px 0;
   margin: 15px auto;
   display: flex;
   justify-content: flex-start;
@@ -291,6 +293,12 @@ export default {
   }
 }
 #property {
+  .key {
+    span {
+      display: inline-block;
+      width: 50%;
+    }
+  }
   header {
     font-size: 16px;
     font-weight: 600 !important;
@@ -305,7 +313,7 @@ export default {
     padding: 6px 12px;
   }
   .number {
-    padding:10px 15px 15px;
+    padding: 10px 15px 15px;
     & > span {
       color: rgb(177, 69, 55);
     }
@@ -326,28 +334,30 @@ export default {
       border: none;
       padding: 6px 12px;
     }
-      padding: 30px 15px;
-      button {
-        height: 34px;
-        .fa-heart {
-          color: red;
-        }
-      }
-      & > div > div {
-        button {
-          padding: 6px 12px;
-          background: #fff;
-          border: 1px solid #000;
-          color: #000;
-        }
+    padding: 30px 15px;
+    button {
+      height: 34px;
+      .fa-heart {
+        color: red;
       }
     }
+    & > div > div {
+      button {
+        padding: 6px 12px;
+        background: #fff;
+        border: 1px solid #000;
+        color: #000;
+      }
+    }
+  }
   .card {
-    .more{
+    
+    border-bottom: 1px solid #ccc;
+    .more {
       margin-top: 30px;
     }
-    &:not(:last-child){
-      border-bottom: 1px solid #ccc;
+    &:last-child {
+      border-bottom-width: 0px;
     }
     .black-btn {
       border: none;
@@ -400,7 +410,7 @@ export default {
         }
       }
     }
-    padding: 15px;
+    padding: 15px 0;
     header {
       font-size: 16px;
       font-weight: 600;
@@ -443,16 +453,10 @@ export default {
     background-color: rgb(34, 34, 34);
   }
 
-  .ivu-input {
+  
+}
+.ivu-input {
     border-radius: 16px;
     margin: 10px auto;
   }
-
-  .ivu-btn-ghost.ivu-btn-success,
-  .ivu-btn-success {
-    color: @basegreen;
-    border-color: @basegreen;
-    border-width: 2px;
-  }
-}
 </style>

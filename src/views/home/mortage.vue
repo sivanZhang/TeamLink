@@ -1,10 +1,17 @@
 
 <style lang="less" scoped>
 #mortage {
+  padding-bottom: 15px;
+  border-bottom:1px solid #ccc; 
+  .ivu-btn-ghost.ivu-btn-success{
+      border-radius: 0px;
+    }
   h4 {
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 6px;
+    text-align: left;
+    margin-top: 15px;
   }
   & /deep/ .ivu-input {
     border-radius: 0px !important;
