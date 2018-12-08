@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import router from 'vue-router'
+import Router from 'vue-router'
 import store from '@/store'
 import home from '@/views/home/home'
 import benaa from '@/views/home/benaa'
@@ -21,7 +21,7 @@ import iframe from '@/components/Iframe'
 import agent from '@/views/agent/agent'
 import agentDetail from '@/views/agent/agentDetail'
 
-Vue.use(router);
+Vue.use(Router);
 const routes = [{
         path: '/home',
         name: 'home',
@@ -135,21 +135,6 @@ const routes = [{
         redirect: '/home' //匹配不到 默认跳转
     }
 ];
-router.beforeEach((to, from, next) => {
-    if (to.matched.some(r => r.meta.requireAuth)) {
-        if (store.state.token) {
-            next();
-        } else {
-            next({
-                path: '/login',
-                query: { redirect: to.fullPath }
-            })
-        }
-    } else {
-        next();
-    }
-})
-const ROUTER = new Router({
+export default new Router({
     routes
 })
-export default ROUTER
