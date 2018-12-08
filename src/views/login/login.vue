@@ -10,7 +10,14 @@
         <div>Sign in to TEAMLINK</div>
         <div class="line"></div>
       </div>
-      <input v-model="user.phone" class="inp" type="text" id="phone_number" placeholder="username">
+      <input
+        v-model="user.phone"
+        class="inp"
+        type="text"
+        id="phone_number"
+        placeholder="username"
+        style="background-color:white"
+      >
       <!-- @change="test_phone"  -->
       <input
         v-model="user.password"
@@ -18,6 +25,7 @@
         type="password"
         name="phone_number"
         placeholder="Password"
+        style="background-color:white"
       >
       <button
         id="submit"
@@ -26,12 +34,12 @@
         class="black-btn common-btn"
         :disabled="isDisabled"
       >Log in</button>
+      <!--
       <div class="row">
-        <router-link to class="col-xs-6 blue-link text-left">Create an account</router-link>
-        <!-- /signup -->
-        <router-link to class="col-xs-6 blue-link text-right">Forgot?</router-link>
-        <!-- /forgot -->
-      </div>
+        <router-link to="" class="col-xs-6 blue-link text-left">Create an account</router-link> 
+        <router-link to="" class="col-xs-6 blue-link text-right">Forgot?</router-link> 
+       
+      </div> -->
     </form>
   </div>
 </template>
@@ -149,7 +157,7 @@ export default {
 
 form {
   position: absolute;
-  bottom: 50%;
+  bottom: 57%;
   transform: translateY(45%);
   width: 100%;
 }
@@ -158,26 +166,18 @@ input + input {
   margin-top: 15px;
 }
 
-input::-webkit-input-placeholder {
+input::-webkit-input-placeholder,
+input::-moz-placeholder ,
+input:-moz-placeholder,
+input:-ms-input-placeholder
+ {
   color: #aaa;
 }
+ 
 input:-webkit-autofill,
 select:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px #f4f5f9 inset !important;
+    -webkit-box-shadow: 0 0 0px 1000px white inset!important;
+     
 }
-
-input::-moz-placeholder {
-  /* Mozilla Firefox 19+ */
-  color: #aaa;
-}
-
-input:-moz-placeholder {
-  /* Mozilla Firefox 4 to 18 */
-  color: #aaa;
-}
-
-input:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
-  color: #aaa;
-}
+ 
 </style>

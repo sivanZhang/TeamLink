@@ -1,5 +1,5 @@
 <template>
-  <div id="property">
+  <div id="property" class="container">
     <mt-header title="Mordern Apartment" class="header">
       <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
     </mt-header>
