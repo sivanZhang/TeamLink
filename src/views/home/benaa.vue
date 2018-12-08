@@ -103,7 +103,7 @@
     </section>
 
     <div id="agent">
-      <header>Inspections</header>
+      <header>List Agent</header>
       <img src="@/assets/agent.jpg" alt>
       <div class="msg">
         <div class="name">{{`2434 Alcott Ct Point Loma`}}</div>
@@ -163,9 +163,11 @@
             <i v-if="ajaxData.collection=='No'" class="fa fa-heart-o" aria-hidden="true"></i>
             <i v-else class="fa fa-heart" aria-hidden="true"></i>
           </button>
+          <!--
           <button>
             <i class="fa fa-external-link" aria-hidden="true"></i>
           </button>
+          -->
         </div>
         <button class="black-btn">Make an Enquiry</button>
       </div>
