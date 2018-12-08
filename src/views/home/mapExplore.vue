@@ -173,7 +173,7 @@ export default {
   z-index: 100;
   display: table;
   position: absolute;
-  top: 35px;
+  top: 10px;
   width: 100%;
 
   .input-group-addon {
@@ -220,7 +220,7 @@ export default {
 }
 
 #search {
-  padding-top: 70px;
+  padding-top: 60px;
   .keywords {
     color: #aaa;
   }
