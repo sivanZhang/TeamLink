@@ -1,31 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import store from '@/store'
-import home from '@/views/home/home'
-import benaa from '@/views/home/benaa'
-import mapExplore from '@/views/home/mapExplore'
-import filters from '@/views/home/filters'
-import collections from '@/views/collections/collectionList'
-import discover from '@/views/discover/discover'
-import waiting from '@/components/waiting'
-import userCenter from '@/views/user_center/userCenter'
-import change from '@/views/user_center/change'
-import selectRegion from '@/views/user_center/selectRegion'
-import settings from '@/views/user_center/settings'
-import feedback from '@/views/user_center/feedback'
-import login from '@/views/login/login'
-import signUp from '@/views/login/signUp'
-import forgot from '@/views/login/forgot'
-import inbox from '@/views/inbox/inbox'
-import iframe from '@/components/Iframe'
-import agent from '@/views/agent/agent'
-import agentDetail from '@/views/agent/agentDetail'
-
 Vue.use(Router);
 const routes = [{
         path: '/home',
         name: 'home',
-        component: home,
+        component: () =>
+            import ('@/views/home/home'),
         meta: {
             requireAuth: true, // 添加该字段，表示进入这个路由是需要登录的
             keepAlive: true // 需要被缓存
@@ -34,12 +15,14 @@ const routes = [{
     {
         path: '/benaa/:pid',
         name: 'benaa',
-        component: benaa
+        component: () =>
+            import ('@/views/home/benaa')
     },
     {
         path: '/mapExplore/:tid',
         name: 'mapExplore',
-        component: mapExplore,
+        component: () =>
+            import ('@/views/home/mapExplore'),
         meta: {
             keepAlive: true
         }
@@ -47,26 +30,29 @@ const routes = [{
     {
         path: '/filters',
         name: 'filters',
-        component: filters,
+        component: () =>
+            import ('@/views/home/filters'),
         meta: {
-            animation: true,
-            keepAlive: true // 需要被缓存
+            keepAlive: true
         }
     },
     {
         path: '/agent',
         name: 'agent',
-        component: agent
+        component: () =>
+            import ('@/views/agent/agent')
     },
     {
         path: '/agentDetail/:aid',
         name: 'agentDetail',
-        component: agentDetail
+        component: () =>
+            import ('@/views/agent/agentDetail')
     },
     {
         path: '/collections',
         name: 'collections',
-        component: collections,
+        component: () =>
+            import ('@/views/collections/collectionList'),
         meta: {
             requireAuth: true
         }
@@ -74,7 +60,8 @@ const routes = [{
     {
         path: '/inbox',
         name: 'inbox',
-        component: inbox,
+        component: () =>
+            import ('@/views/inbox/inbox'),
         meta: {
             requireAuth: true
         }
@@ -82,59 +69,87 @@ const routes = [{
     {
         path: '/user_center/settings',
         name: 'settings',
-        component: settings
+        component: () =>
+            import ('@/views/user_center/settings')
     },
     {
         path: '/user_center/feedback',
         name: 'feedback',
-        component: feedback
+        component: () =>
+            import ('@/views/user_center/feedback')
     },
     {
         path: '/user_center/select_region',
         name: 'selectRegion',
-        component: selectRegion
+        component: () =>
+            import ('@/views/user_center/selectRegion')
     },
     {
         path: '/discover',
         name: 'discover',
-        component: discover
+        component: () =>
+            import ('@/views/discover/discover')
     },
     {
         path: '/user_center',
         meta: {
-            requireAuth: true, // 添加该字段，表示进入这个路由是需要登录的
+            requireAuth: true
         },
-        component: userCenter
+        component: () =>
+            import ('@/views/user_center/userCenter')
     },
     {
         path: '/iframe',
         name: 'Iframe',
-        component: iframe
+        component: () =>
+            import ('@/components/Iframe')
     },
     {
         path: '/login',
-        component: login
+        component: () =>
+            import ('@/views/login/login')
     },
     {
         path: '/signup',
-        component: signUp
+        component: () =>
+            import ('@/views/login/signUp')
     },
     {
         path: '/forgot',
-        component: forgot
+        component: () =>
+            import ('@/views/login/forgot')
     },
     {
         path: '/change',
-        component: change
+        component: () =>
+            import ('@/views/user_center/change')
     },
     {
         path: '/waiting',
-        component: waiting
+        component: () =>
+            import ('@/components/waiting')
     }, {
         path: '*',
         redirect: '/home' //匹配不到 默认跳转
     }
 ];
-export default new Router({
+const router = new Router({
     routes
+});
+//未登录跳转登录页
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(r => r.meta.requireAuth)) {
+        if (store.state.token) {
+            next();
+        } else {
+            next({
+                path: '/login',
+                query: { redirect: to.fullPath }
+            })
+        }
+    } else {
+        next();
+    }
 })
+
+export default router;
