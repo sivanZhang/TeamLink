@@ -1,7 +1,7 @@
 <template>
   <div id="search">
     <div class="input-group container">
-      <i class="fa fa-chevron-left" @touchstart="back" aria-hidden="true"></i>
+     <!-- <i class="fa fa-chevron-left" @touchstart="back" aria-hidden="true"></i>-->
       <i class="fa fa-search" @touchstart="search(searchText)" aria-hidden="true"></i>
       <input
         class="form-control"
@@ -170,10 +170,10 @@ export default {
 }
 
 .input-group {
-  z-index: 200;
+  z-index: 100;
   display: table;
   position: absolute;
-  top: 15px;
+  top: 35px;
   width: 100%;
 
   .input-group-addon {
@@ -220,7 +220,7 @@ export default {
 }
 
 #search {
-  padding-top: 60px;
+  padding-top: 70px;
   .keywords {
     color: #aaa;
   }
