@@ -68,7 +68,7 @@ export default {
   watch: {
     arr: {
       handler: () => {
-        this.isDisabled = false;
+        //this.isDisabled = false;
       },
       immediate: true,
       deep: true
@@ -84,8 +84,10 @@ export default {
         (Math.pow(1 + this.arr.apr, this.arr.trm) - 1);
       if (this.arr.apr != "" && this.arr.trm != "" && this.arr.amt != "") {
         this.arr.pmt = `$ ${payment.toFixed(2)} /Month`;
-        this.isDisabled = true;
+        //this.isDisabled = true;
       }
+      this.arr.apr *= 1200;
+      this.arr.trm /= 12;
 
       /*  [this.arr.apr,this.arr.amt,this.arr.trm]=['','',''] */
     }
