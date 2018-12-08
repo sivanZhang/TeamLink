@@ -151,12 +151,12 @@
           <div class="tag">NG</div>
         </li>
       </ul>
-      <div>
+      <div class="more">
         View 35 more schools
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
       </div>
     </section>
-    <section class="card feature">
+    <section class="feature">
       <div>
         <div>
           <button @click="collections(ajaxData.propertyId)">
@@ -313,11 +313,17 @@ export default {
       }
     }
   }
-  .card {
-    &+.card{
-      border-top: 1px solid #ccc;
+  .feature {
+    & > div {
+      .flex(space-between, flex-start);
+      .fa-calendar-plus-o {
+        margin-left: 15px;
+      }
     }
-    &.feature {
+    .black-btn {
+      border: none;
+      padding: 6px 12px;
+    }
       padding: 30px 15px;
       button {
         height: 34px;
@@ -333,6 +339,13 @@ export default {
           color: #000;
         }
       }
+    }
+  .card {
+    .more{
+      margin-top: 30px;
+    }
+    &:not(:last-child){
+      border-bottom: 1px solid #ccc;
     }
     .black-btn {
       border: none;
