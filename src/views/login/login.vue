@@ -159,7 +159,7 @@ export default {
 
 form {
   position: absolute;
-  bottom: 50%;
+  bottom: 57%;
   transform: translateY(45%);
   width: 100%;
 }
