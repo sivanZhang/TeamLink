@@ -23,7 +23,9 @@
         </div>
       </div>
     </section>
+    <!--
     <img @click="openPrompt" class="icon-add" src="../../assets/icons/add.svg" alt>
+    -->
     <footer-menu></footer-menu>
   </div>
 </template>
