@@ -8,7 +8,6 @@ const routes = [{
         component: () =>
             import ('@/views/home/home'),
         meta: {
-            /*  requireAuth: true,  */ // 添加该字段，表示进入这个路由是需要登录的
             keepAlive: true // 需要被缓存
         }
     },
@@ -54,7 +53,7 @@ const routes = [{
         component: () =>
             import ('@/views/collections/collectionList'),
         meta: {
-            requireAuth: true
+            requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
         }
     },
     {
