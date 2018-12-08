@@ -6,9 +6,9 @@
         <ul class="text-left row links">
         <router-link tag="li" to="/waiting">Notifications<i class="fa fa-fw fa-chevron-right fa-pull-right" aria-hidden="true"></i>
         </router-link>
-        <router-link tag="li" to="/waiting">Terms of services<i class="fa fa-fw fa-chevron-right fa-pull-right" aria-hidden="true"></i>
+        <router-link tag="li" to="/services">Terms of services<i class="fa fa-fw fa-chevron-right fa-pull-right" aria-hidden="true"></i>
         </router-link>
-        <router-link tag="li" to="/waiting">Version
+        <router-link tag="li" to="/version">Version
         </router-link>
         <li @touchstart="sign_out">Log Out</li>
     </ul>

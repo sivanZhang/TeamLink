@@ -126,10 +126,21 @@ const routes = [{
             import ('@/views/user_center/change')
     },
     {
+        path: '/version',
+        component: () =>
+            import ('@/components/version')
+    }, 
+    {
+        path: '/services',
+        component: () =>
+            import ('@/components/services')
+    },
+    {
         path: '/waiting',
         component: () =>
             import ('@/components/waiting')
-    }, {
+    }, 
+    {
         path: '*',
         redirect: '/home' //匹配不到 默认跳转
     }
