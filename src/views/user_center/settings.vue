@@ -27,7 +27,11 @@ export default {
       this.$store.commit("setUserName", "");
       this.$store.commit("setPortrait", "");
       this.$store.commit("setToken", "");
-      $().message("Logged out");
+      Toast({
+              message: "Logged out",
+              position: "bottom",
+              duration: 3000
+            });
       this.$router.push("/login");
     }
   },

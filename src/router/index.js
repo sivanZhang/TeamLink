@@ -8,7 +8,7 @@ const routes = [{
         component: () =>
             import ('@/views/home/home'),
         meta: {
-            requireAuth: true, // 添加该字段，表示进入这个路由是需要登录的
+            /*  requireAuth: true,  */ // 添加该字段，表示进入这个路由是需要登录的
             keepAlive: true // 需要被缓存
         }
     },
@@ -133,11 +133,14 @@ const routes = [{
         redirect: '/home' //匹配不到 默认跳转
     }
 ];
-const router = new Router({
+if (!store.state.token && window.localStorage.getItem('token')) {
+    store.commit('setToken', window.localStorage.getItem('token'))
+}
+const ROUTER = new Router({
     routes
 });
 //未登录跳转登录页
-router.beforeEach((to, from, next) => {
+ROUTER.beforeEach((to, from, next) => {
     if (to.matched.some(r => r.meta.requireAuth)) {
         if (store.state.token) {
             next();
@@ -152,4 +155,4 @@ router.beforeEach((to, from, next) => {
     }
 })
 
-export default router;
+export default ROUTER;

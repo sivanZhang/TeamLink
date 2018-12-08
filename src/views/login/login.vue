@@ -50,7 +50,6 @@ import Ajax from "@/api/login";
 export default {
   data() {
     return {
-      api: this.axios.defaults.baseURL,
       user: {
         phone: null,
         password: null
@@ -82,8 +81,11 @@ export default {
             });
             this.$store.commit("setToken", `JWT ${res.data.token}`);
             this.$store.commit("setUserName", res.data.username);
-            this.$store.commit("setPortrait", this.api + res.data.portrait);
-            this.$router.go(-1);
+            this.$store.commit("setPortrait", res.data.portrait);
+            let redirect = decodeURIComponent(this.$route.query.redirect || '/');
+            this.$router.push({
+            path: redirect
+          })
           } else if (res.data.status == "error") {
             Toast({
               message: res.data.msg,

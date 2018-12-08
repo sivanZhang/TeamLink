@@ -37,7 +37,7 @@ Ajax.interceptors.response.use(
                     store.commit('setToken', '');
                     console.log(store.state.token, '删除TOKEN');
                     router.replace({
-                        path: '/login',
+                        path: 'login',
                         query: { redirect: router.currentRoute.fullPath }
                     })
             }

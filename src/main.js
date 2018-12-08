@@ -6,7 +6,6 @@ import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 Vue.use(MintUI);
 import $ from 'jquery'
-import '@/plugins/message/jquery.message'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '@/theme.css'

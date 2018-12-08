@@ -32,7 +32,7 @@
       >
         <div class="left">
           <img :src="item[0].images[0]" alt>
-          <i @click.stop="collections(item[0].propertyId)" :class="['fa',item[0].collection=='Yes'?`fa-heart-o`:`fa-heart`]" class="fa" aria-hidden="true"></i>
+          <i @click.stop="collections(item[0].propertyId)" :class="['fa',item[0].collection=='Yes'?`fa-heart`:`fa-heart-o`]" class="fa" aria-hidden="true"></i>
          <!--  <i v-if="item[0].collection=='No'" @click.stop="collections(item[0].propertyId)" class="fa fa-heart" aria-hidden="true"></i> -->
         </div>
         <div class="right">
