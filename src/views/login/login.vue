@@ -27,13 +27,7 @@
         placeholder="Password"
         style="background-color:white"
       >
-      <button
-        id="submit"
-        @touchstart="submit"
-        type="button"
-        class="black-btn common-btn"
-        :disabled="isDisabled"
-      >Log in</button>
+       <Button :loading="loading"  @click="submit" :disabled="isDisabled" ghost>Log in</Button>
       <!--
       <div class="row">
         <router-link to="" class="col-xs-6 blue-link text-left">Create an account</router-link> 
@@ -50,6 +44,7 @@ import Ajax from "@/api/login";
 export default {
   data() {
     return {
+      loading:false,
       user: {
         phone: null,
         password: null
@@ -71,8 +66,10 @@ export default {
         username: this.user.phone,
         password: this.user.password
       };
+      this.loading=true;
       Ajax.getLogin(data)
         .then(res => {
+          this.loading=false;
           if (res.data.status == "ok") {
             Toast({
               message: res.data.msg,
@@ -95,6 +92,7 @@ export default {
           }
         })
         .catch(error => {
+          this.loading=false;
           Toast({
             message: error,
             position: "bottom",
@@ -151,10 +149,17 @@ export default {
   color: gray;
 }
 
-#submit {
+.ivu-btn {
   width: 100%;
   margin: 15px auto;
   height: 42px;
+  border-radius: 0px;
+  background: #000;
+  color: #fff;
+  background-color: #000;
+}.ivu-btn-ghost.ivu-btn-dashed[disabled], .ivu-btn-ghost.ivu-btn-default[disabled], .ivu-btn-ghost.ivu-btn-error[disabled], .ivu-btn-ghost.ivu-btn-info[disabled], .ivu-btn-ghost.ivu-btn-primary[disabled], .ivu-btn-ghost.ivu-btn-success[disabled], .ivu-btn-ghost.ivu-btn-warning[disabled]{
+  background-color: rgba(0, 0, 0, .8);
+  color: #fff;
 }
 
 form {
