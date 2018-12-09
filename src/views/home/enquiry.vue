@@ -1,9 +1,7 @@
 <template>
-  <div class="container">
-    <mt-header title="Make an Enquiry" class="row">
-      <router-link to="/user_center" slot="left">
-        <mt-button icon="back"></mt-button>
-      </router-link>
+  <div class="container"> 
+     <mt-header title="Make an Enquiry" class="header row">
+      <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
     </mt-header>
     <section>
       <h4>Name</h4>
