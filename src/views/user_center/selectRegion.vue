@@ -19,12 +19,11 @@
         </div>
       </li>
     </ul>
-    <mt-picker :slots="slots" @change="onValuesChange"></mt-picker>
-    <input type="text" class="layui-input" id="test1">
+  <!--   <mt-picker :slots="slots" @change="onValuesChange"></mt-picker> -->
   </div>
 </template>
 <script>
-import laydate from "layui-laydate";
+
 export default {
   methods: {
     onValuesChange(picker, values) {
@@ -71,12 +70,6 @@ export default {
         }
       ]
     };
-  },
-  mounted() {
-    laydate.render({
-      elem: "#test29",
-      theme: "molv"
-    });
   }
 };
 </script>

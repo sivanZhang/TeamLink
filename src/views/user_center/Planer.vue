@@ -8,7 +8,15 @@
 </template>
 
 <script>
-export default {};
+import laydate from "layui-laydate";
+export default {
+  mounted() {
+    laydate.render({
+      elem: "#test29",
+      theme: "molv"
+    });
+  }
+};
 </script>
 
 <style lang="less" scoped>
