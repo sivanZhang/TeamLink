@@ -4,7 +4,7 @@
             <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
         </mt-header>
         <ul class="text-left row links">
-        <router-link tag="li" to="/waiting">Notifications<i class="fa fa-fw fa-chevron-right fa-pull-right" aria-hidden="true"></i>
+        <router-link tag="li" to="/user_center/settings/notifications">Notifications<i class="fa fa-fw fa-chevron-right fa-pull-right" aria-hidden="true"></i>
         </router-link>
         <router-link tag="li" to="/services">Terms of services<i class="fa fa-fw fa-chevron-right fa-pull-right" aria-hidden="true"></i>
         </router-link>

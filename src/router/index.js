@@ -4,6 +4,23 @@ import store from '@/store'
 import { Toast } from "mint-ui";
 Vue.use(Router);
 const routes = [{
+        path: '/user_center/settings/planer',
+        name: 'Planer',
+        component: () =>
+            import ('@/views/user_center/Planer'),
+        meta: {
+            keepAlive: true
+        }
+    }, {
+        path: '/user_center/settings/notifications',
+        name: 'notifications',
+        component: () =>
+            import ('@/views/user_center/Notifications'),
+        meta: {
+            keepAlive: true
+        }
+    },
+    {
         path: '/home',
         name: 'home',
         component: () =>

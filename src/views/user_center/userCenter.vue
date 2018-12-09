@@ -15,7 +15,7 @@
       <i class="fa fa-pencil-square-o fa-lg" @touchstart="toChange" aria-hidden="true"></i>
     </div>
     <ul class="text-left row links">
-      <router-link tag="li" to="/waiting">
+      <router-link tag="li" to="/user_center/settings/planer">
         Inspection Planer
         <i class="fa fa-fw fa-calendar fa-pull-right" aria-hidden="true"></i>
       </router-link>
