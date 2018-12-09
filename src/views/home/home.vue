@@ -1,6 +1,6 @@
 <template>
   <div class="container main">
-    <mt-header title="teamlink" class="row header"></mt-header>
+    <mt-header title="Teamlink" class="row header"></mt-header>
     <div class="search-bg row">
       <div class="search-warp">
         <div class="tab-group">
