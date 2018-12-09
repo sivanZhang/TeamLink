@@ -1,6 +1,6 @@
 <template>
   <div class="container main">
-    <mt-header title="teamlink" class="row header">
+    <mt-header title="Teamlink" class="row header">
     </mt-header>
     <mt-swipe class="row" :auto="3000">
       <mt-swipe-item  v-for="(item,index) in agentList" :key="index" @touchstart.native="target(item[0].propertyId)">

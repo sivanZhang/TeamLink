@@ -21,6 +21,10 @@
 table {
   width: 100%;
 } /*  */
+button.ivu-btn.ivu-btn-success.ivu-btn-ghost, .darkred {
+    border-color: #B22222;
+    color: #B22222;
+}
 </style>
 
 <template>
@@ -54,7 +58,7 @@ table {
             :disabled="isDisabled"
           >compute</Button>
         </td>
-        <td>{{arr.pmt}}</td>
+        <td class="darkred">{{arr.pmt}}</td>
       </tr>
     </table>
   </div>
