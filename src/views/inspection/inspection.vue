@@ -1,7 +1,12 @@
 <template>
   <div class="main container">
-    <header>
-      <i @touchstart.native="$router.go(-1)" class="fa fa-2x fa-angle-left" aria-hidden="true"></i>
+    <mt-header title="Feedback" class="row">
+      
+    </mt-header>
+    <header> 
+      <router-link to="/discover" slot="left">
+        <mt-button icon="back" class="mybtn"></mt-button>
+      </router-link>
       <template v-for="item in week">
         <div :key="item.datenumber" :class="[{ active: classactive == item.weekname }]" @touchstart="classactive = item.weekname" @click="getAjax">
           <div>{{item.weekname}}</div>
@@ -154,6 +159,15 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+.mybtn{
+  color: #656b79;
+    background-color: white;
+    border-color: white;
+    border: none;
+    padding-left: 0px !important;
+    -webkit-box-shadow: None; 
+    box-shadow: none; 
+}
 .active{
   font-weight: 600;
 }
