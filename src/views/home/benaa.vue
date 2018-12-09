@@ -173,19 +173,16 @@
 
     <BackTop style="bottom:60px;"></BackTop>
     <ShowMore></ShowMore>
-    <footer-menu></footer-menu>
+    <footer-menu></footer-menu><!--  -->
   </div>
 </template>
 <script>
 import Ajax from "@/api/collections";
 import Mortage from "./mortage";
-import ShowMore from "./ShowMore";
 import Map from "./map";
 export default {
   data() {
     return {
-      showHeight: 200,
-      value1: "",
       //初始化默认字典
       currentTab: "All",
       ajaxData: null,
@@ -215,8 +212,7 @@ export default {
   },
   components: {
     Map,
-    Mortage,
-    ShowMore
+    Mortage
   },
   mounted() {
     this.axios
