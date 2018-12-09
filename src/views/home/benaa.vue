@@ -90,12 +90,11 @@
     </section>
     <Mortage></Mortage>
     <section class="card">
-      <header>Inspections</header>
-      <div>
-        Thu Today
-        <span>
-          1:00PM-5:00PM
-          <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
+      <header>Inspections</header> 
+      <div v-for="(inspection,index) in ajaxData.inspections" :key="index">
+        <label class="inspection">{{inspection}}</label> 
+        <span> 
+          <i class="fa fa-calendar-plus-o" :time="inspection" aria-hidden="true"></i>
         </span>
       </div>
     </section>
