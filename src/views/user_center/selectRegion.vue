@@ -19,19 +19,12 @@
         </div>
       </li>
     </ul>
-    <mt-picker :slots="slots" @change="onValuesChange"></mt-picker>-
-
-<select name="" id="">
-    <option value="">1</option>
-     <option value="">1</option>
-      <option value="">1</option>
-       <option value="">1</option>
-</select>
-
+    <mt-picker :slots="slots" @change="onValuesChange"></mt-picker>
+    <input type="text" class="layui-input" id="test1">
   </div>
 </template>
 <script>
-
+import laydate from "layui-laydate";
 export default {
   methods: {
     onValuesChange(picker, values) {
@@ -42,27 +35,48 @@ export default {
   },
   data() {
     return {
-
-        country: "Australia",
+      country: "Australia",
       city: "Sydney",
       slots: [
         {
           flex: 1,
-          values: ['2015-01', '2015-02', '2015-03', '2015-04', '2015-05', '2015-06'],
-          className: 'slot1',
-          textAlign: 'right'
-        }, {
+          values: [
+            "2015-01",
+            "2015-02",
+            "2015-03",
+            "2015-04",
+            "2015-05",
+            "2015-06"
+          ],
+          className: "slot1",
+          textAlign: "right"
+        },
+        {
           divider: true,
-          content: '-',
-          className: 'slot2'
-        }, {
+          content: "-",
+          className: "slot2"
+        },
+        {
           flex: 1,
-          values: ['2015-01', '2015-02', '2015-03', '2015-04', '2015-05', '2015-06'],
-          className: 'slot3',
-          textAlign: 'left'
+          values: [
+            "2015-01",
+            "2015-02",
+            "2015-03",
+            "2015-04",
+            "2015-05",
+            "2015-06"
+          ],
+          className: "slot3",
+          textAlign: "left"
         }
       ]
     };
+  },
+  mounted() {
+    laydate.render({
+      elem: "#test29",
+      theme: "molv"
+    });
   }
 };
 </script>

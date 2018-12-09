@@ -1,11 +1,16 @@
 <template>
-  <div class="main">
-    <mt-header title="Inspection" class="header">
-      <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
-    </mt-header>
-222
+  <div class="main container">
+    <header>
+      <i @touchstart.native="$router.go(-1)" class="fa fa-2x fa-angle-left" aria-hidden="true"></i>
+      <template v-for="item in week">
+        <div :key="item.datenumber" :class="[{ active: classactive == item.weekname }]" @touchstart="classactive = item.weekname" @click="getAjax">
+          <div>{{item.weekname}}</div>
+          {{item.datenumber}}
+        </div>
+      </template>
+    </header>
     <router-link
-    v-if="agentList"
+      v-if="agentList"
       tag="div"
       v-for="(item,index) in agentList"
       class="suggest"
@@ -14,7 +19,7 @@
     >
       <div class="suggest-title">
         <i class="fa fa-clock-o" aria-hidden="true"></i>
-        {{postedTime}}
+        {{new Date()}}
       </div>
       <div class="suggest-details">
         <img :src="item[0].images[0]" alt>
@@ -51,15 +56,124 @@
   </div>
 </template>
 <script>
+import AJAX from "@/api/inspection";
 export default {
-    data(){
-        return{
-            agentList:''
+  data() {
+    return {
+      agentList: "",
+      classactive:'Today'
+    };
+  },
+  computed: {
+    week() {
+      let now = new Date();
+      let nowtime = new Date().getTime();
+      const DAY = 1000 * 60 * 60 * 24;
+      let after1 = new Date(now.setTime(nowtime + DAY));
+      let after2 = new Date(now.setTime(nowtime + DAY*2));
+      let after3 = new Date(now.setTime(nowtime + DAY*3));
+      let after4 = new Date(now.setTime(nowtime + DAY*4));
+      let after5 = new Date(now.setTime(nowtime + DAY*5));
+      let after6 = new Date(now.setTime(nowtime + DAY*6));
+      let  arr = [
+        {
+          weekname: new Date().getDay(),
+          datenumber: new Date().getDate()
+        },
+        {
+          weekname: after1.getDay(),
+          datenumber: after1.getDate()
         }
+        ,{
+          weekname: after2.getDay(),
+          datenumber: after2.getDate()
+        } 
+        ,{
+          weekname: after3.getDay(),
+          datenumber: after3.getDate()
+        } ,
+        {
+          weekname: after4.getDay(),
+          datenumber: after4.getDate()
+        } ,
+        {
+          weekname: after5.getDay(),
+          datenumber: after5.getDate()
+        } ,
+        {
+          weekname: after6.getDay(),
+          datenumber: after6.getDate()
+        }
+      ];
+      arr.forEach((item,index)=>{
+        if(index==0){
+          item.weekname=`Today`
+        }else{
+          switch (item.weekname){
+            case 0 :
+            item.weekname=`Sun`;
+            break;
+            case 1 :
+            item.weekname=`Mon`;
+            break;
+            case 2 :
+            item.weekname=`Tue`;
+            break;
+            case 3 :
+            item.weekname=`Wed`;
+            break;
+            case 4 :
+            item.weekname=`Thu`;
+            break;
+            case 5 :
+            item.weekname=`Fri`;
+            break;
+            case 6 :
+            item.weekname=`Sat`;
+            break;
+          }
+
+        }
+
+      });
+      return arr
     }
+  },
+  methods:{
+    getAjax(){
+      AJAX.getInspections().then(res => {
+      this.agentList = res.data.msg;
+    });
+    }
+  },
+  created() {
+    AJAX.getInspections().then(res => {
+      this.agentList = res.data.msg;
+    });
+  }
 };
 </script>
 <style lang="less" scoped>
+.active{
+  font-weight: 600;
+}
+header{
+  padding: 0 15px ;
+  position: fixed;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row nowrap;
+  overflow: scroll;
+  width: 100%;
+  i,&>div{
+flex: 1 1 auto;
+  }
+}
 .suggest {
   & {
     margin: 15px 0;
