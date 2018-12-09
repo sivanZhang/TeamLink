@@ -36,6 +36,12 @@ const routes = [{
             import ('@/views/home/benaa')
     },
     {
+        path: '/home/benaa/enquiry',
+        name: 'enquiry',
+        component: () =>
+            import ('@/views/home/enquiry')
+    },
+    {
         path: '/mapExplore/:tid',
         name: 'mapExplore',
         component: () =>

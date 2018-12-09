@@ -1,34 +1,69 @@
 <template>
-    <div class="container main">
-        <mt-header title="Select Region" class="row header">
-            <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
-        </mt-header>
-       <ul class="text-left row links">
-        <router-link tag="li" to="/waiting">
-            <div>Country</div>
-            <div>
-                {{country}}
-                <i class="fa fa-fw fa-chevron-right" aria-hidden="true"></i>
-            </div>
-        </router-link>
-        <router-link tag="li" to="/waiting">
-            <div>City</div>
-            <div>
-                {{city}}
-                <i class="fa fa-fw fa-chevron-right" aria-hidden="true"></i>
-            </div>
-        </router-link>
+  <div class="container main">
+    <mt-header title="Select Region" class="row header">
+      <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
+    </mt-header>
+    <ul class="text-left row links">
+      <li>
+        <div>Country</div>
+        <div>
+          {{country}}
+          <i class="fa fa-fw fa-chevron-right" aria-hidden="true"></i>
+        </div>
+      </li>
+      <li>
+        <div>City</div>
+        <div>
+          {{city}}
+          <i class="fa fa-fw fa-chevron-right" aria-hidden="true"></i>
+        </div>
+      </li>
     </ul>
-    </div>
+    <mt-picker :slots="slots" @change="onValuesChange"></mt-picker>-
+
+<select name="" id="">
+    <option value="">1</option>
+     <option value="">1</option>
+      <option value="">1</option>
+       <option value="">1</option>
+</select>
+
+  </div>
 </template>
 <script>
+
 export default {
-    data(){
-        return{
-            country:'Australia',
-            city:'Sydney'
-        }
+  methods: {
+    onValuesChange(picker, values) {
+      if (values[0] > values[1]) {
+        picker.setSlotValue(1, values[0]);
+      }
     }
+  },
+  data() {
+    return {
+
+        country: "Australia",
+      city: "Sydney",
+      slots: [
+        {
+          flex: 1,
+          values: ['2015-01', '2015-02', '2015-03', '2015-04', '2015-05', '2015-06'],
+          className: 'slot1',
+          textAlign: 'right'
+        }, {
+          divider: true,
+          content: '-',
+          className: 'slot2'
+        }, {
+          flex: 1,
+          values: ['2015-01', '2015-02', '2015-03', '2015-04', '2015-05', '2015-06'],
+          className: 'slot3',
+          textAlign: 'left'
+        }
+      ]
+    };
+  }
 };
 </script>
 <style lang="less" scoped>
@@ -42,18 +77,18 @@ ul.links {
     justify-content: space-between;
     align-items: center;
     text-align: left;
-    div{
-        flex: 1 1 auto;
-        display: flex;
-        align-items: center;
-        &:last-of-type{
-            justify-content: flex-end;
-            text-align: right;
-            color: rgb(146, 146, 146);//灰色字体
-            i{
-                margin-left: 10px;
-            }
+    div {
+      flex: 1 1 auto;
+      display: flex;
+      align-items: center;
+      &:last-of-type {
+        justify-content: flex-end;
+        text-align: right;
+        color: rgb(146, 146, 146); //灰色字体
+        i {
+          margin-left: 10px;
         }
+      }
     }
   }
 }

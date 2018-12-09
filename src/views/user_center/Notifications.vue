@@ -48,11 +48,7 @@
   </div>
 </template>
 <script>
-import { Switch } from "mint-ui";
 export default {
-  components: {
-    Switch
-  },
   data() {
     return {
       switch1: true,
