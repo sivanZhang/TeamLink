@@ -95,13 +95,10 @@ export default {
       var success = function(message) { alert("Success: " + JSON.stringify("Event has been added !")); };
       var error = function(message) { alert("Error: " + message); };
     
-      if (window.plugins !== undefined)
+      if (window.plugins !== undefined)// 设备中执行的代码
       {
           window.plugins.calendar.createEvent(title,eventLocation,notes,startDate,endDate,success,error);
-      }
-      else{
-        alert("hahah");
-      } 
+      }  
 
       this.$store.commit("set_search", this.searchText);
       this.$router.push({
