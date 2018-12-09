@@ -4,6 +4,15 @@ import store from '@/store'
 import { Toast } from "mint-ui";
 Vue.use(Router);
 const routes = [{
+        path: '/inspection',
+        name: 'inspection',
+        component: () =>
+            import ('@/views/inspection/inspection'),
+        meta: {
+            keepAlive: true
+        }
+    },
+    {
         path: '/user_center/settings/planer',
         name: 'Planer',
         component: () =>
@@ -34,6 +43,12 @@ const routes = [{
         name: 'benaa',
         component: () =>
             import ('@/views/home/benaa')
+    },
+    {
+        path: '/home/benaa/enquiry',
+        name: 'enquiry',
+        component: () =>
+            import ('@/views/home/enquiry')
     },
     {
         path: '/mapExplore/:tid',

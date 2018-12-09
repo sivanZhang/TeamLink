@@ -148,7 +148,10 @@ export default {
 .row a {
   color: gray;
 }
-
+.ivu-btn-ghost.ivu-btn-dashed:hover, .ivu-btn-ghost.ivu-btn-default:hover {
+    color: #fff;
+    border-color: #000;
+}
 .ivu-btn {
   width: 100%;
   margin: 15px auto;

@@ -17,7 +17,8 @@ FastClick.attach(document.body); */
 //iView框架
 import iView from 'iview';
 import locale from 'iview/dist/locale/en-US';
-Vue.use(iView, { locale });
+Vue.use(iView)
+Vue.use({ locale });
 import 'iview/dist/styles/iview.css';
 //设置为 false 以阻止 vue 在启动时生成生产提示。
 Vue.config.productionTip = false;

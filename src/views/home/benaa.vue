@@ -166,7 +166,7 @@
           </button>
           -->
         </div>
-        <button class="black-btn">Make an Enquiry</button>
+        <button class="black-btn" @click="$router.push('/home/benaa/enquiry')">Make an Enquiry</button>
       </div>
     </section>
 
