@@ -86,20 +86,7 @@ export default {
       });
     },
     search(val) {
-      // prep some variables
-      var startDate = new Date(2018,11,15,18,30,12,0,0); // beware: month 0 = january, 11 = december 这个日期指的是2018-12-15 18:30:12 
-      var endDate = new Date(2018,11,15,19,30,12,0,0);
-      var title = "My Inspections";
-      var eventLocation = "Home";
-      var notes = "There is an inspection event here.";
-      var success = function(message) { alert("Success: " + JSON.stringify("Event has been added !")); };
-      var error = function(message) { alert("Error: " + message); };
-    
-      if (window.plugins !== undefined)// 设备中执行的代码
-      {
-          window.plugins.calendar.createEvent(title,eventLocation,notes,startDate,endDate,success,error);
-      }  
-
+      // prep some variables  
       this.$store.commit("set_search", this.searchText);
       this.$router.push({
         name: "mapExplore",
