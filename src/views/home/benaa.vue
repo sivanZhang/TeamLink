@@ -171,7 +171,6 @@
     </section>
 
     <BackTop style="bottom:60px;"></BackTop>
-    <ShowMore></ShowMore>
     <footer-menu></footer-menu><!--  -->
   </div>
 </template>
