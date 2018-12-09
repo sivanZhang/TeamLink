@@ -2,7 +2,7 @@
   <div id="agent">
     <Menu>
       <i class="fa fa-search" aria-hidden="true" @touchstart="search()"></i>
-      <input v-model="searchText" type="search" placeholder="search"  @keyup.enter="search()">
+      <input v-model="searchText" type="search" class="search" placeholder="search"  @keyup.enter="search()">
     </Menu>
     <section v-for="(item,index) in agentList" :key="index" @touchstart="getDetail(item[0].agentId)">
       <img :src="item[0].image" alt>
@@ -72,6 +72,9 @@ export default {
 </script>
 <style lang="less" scoped>
 #agent {
+  input.search{
+      font-size: 16px;
+    }
   section {
     padding: 0 15px;
     margin: 20px auto;
@@ -91,6 +94,7 @@ export default {
           font-weight: 600;
       }
     }
+    
     .btn-groups {
       border-top: 1px solid #ddd;
       border-bottom: 1px solid #ddd;
