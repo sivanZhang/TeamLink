@@ -77,12 +77,7 @@
     </section>
     <section class="card">
       <header>Features</header>
-      <p>
-        <a
-          href="http://101.200.35.253/wordpress/?property-feature=air-conditioning"
-          class="feature-checked"
-        >Air Conditioning</a>
-      </p>
+      <p> Air Conditionin</p>
       <p>Intercom</p>
       <p>Built in wardrobes</p>
       <p>Gas store</p>
