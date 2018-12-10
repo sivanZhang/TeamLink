@@ -2,13 +2,18 @@
 
 <style lang="less" scoped>
 .main {
-  & /deep/ .__vev_calendar-wrapper .events-wrapper .event-item .title{
-  overflow: hidden;
-  font-size: 14px;
-}
+  & /deep/ .__vev_calendar-wrapper .events-wrapper .event-item .title {
+    overflow: hidden;
+    font-size: 14px;
+  }
+  & /deep/ .events-wrapper {
+    background: #fff!important;
+  }
+  & /deep/ .__vev_calendar-wrapper .events-wrapper .date{
+    display: none;
+  }
 }
 </style>
-
 <template>
   <div class="main">
     <mt-header title="Inspection Planer" class="header">
@@ -18,7 +23,15 @@
       :events="demoEvents"
       @day-changed="handleDayChanged"
       @month-changed="handleMonthChanged"
-    ></vue-event-calendar>
+    >
+    </vue-event-calendar>
+    <!--  <vue-event-calendar :events="demoEvents">
+      <template scope="props">
+        <div v-for="(event, index) in props.showEvents" class="event-item">
+          {{event}}
+        </div>
+      </template>
+    </vue-event-calendar>-->
   </div>
 </template>
 

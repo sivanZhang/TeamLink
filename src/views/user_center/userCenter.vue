@@ -4,14 +4,12 @@
     <div class="Profile">
       <template v-if="!image_src">
         <div class="df-img">
-          <div>B</div>
+          <div>{{profile[0]}}</div>
         </div>
-       
       </template>
       <template v-else>
          <img class="user-img" :src="image_src" alt>
       </template>
-
       <i class="fa fa-pencil-square-o fa-lg" @touchstart="toChange" aria-hidden="true"></i>
     </div>
     <ul class="text-left row links">
@@ -56,6 +54,11 @@ export default {
       api: this.axios.defaults.baseURL,
       title: "More"
     };
+  },
+  computed:{
+    profile(){
+      return[...this.phone_number]
+    }
   },
   methods: {
     toChange() {
