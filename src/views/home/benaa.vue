@@ -77,12 +77,7 @@
     </section>
     <section class="card">
       <header>Features</header>
-      <p>
-        <a
-          href="http://101.200.35.253/wordpress/?property-feature=air-conditioning"
-          class="feature-checked"
-        >Air Conditioning</a>
-      </p>
+      <p> Air Conditionin</p>
       <p>Intercom</p>
       <p>Built in wardrobes</p>
       <p>Gas store</p>
@@ -199,8 +194,18 @@ export default {
         var title = "My Inspections";
         var eventLocation = "Home";
         var notes = "There is an inspection event here.";
-        var success = function(message) { alert("Success: " + JSON.stringify("Event has been added !")); };
-        var error = function(message) { alert("Error: " + message); };
+        var success = function(message) { 
+          Toast({
+                message: "Success: Event has been added!",
+                position: "bottom",
+                duration: 3000
+            }); };
+        var error = function(message) { 
+          Toast({
+                message: "Error:" + message,
+                position: "bottom",
+                duration: 3000
+            });  };
       
         if (window.plugins !== undefined)// 设备中执行的代码
         {
