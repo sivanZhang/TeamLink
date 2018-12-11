@@ -155,7 +155,7 @@
   .suggest-title {
     color: #fff;
     background: rgb(255, 87, 34);
-    padding: 4px 15px;
+    padding: 2px 15px;
   }
 }
 

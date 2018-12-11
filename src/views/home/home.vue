@@ -279,7 +279,7 @@ h4 {
   .suggest-title {
     color: #fff;
     background: rgb(255, 87, 34);
-    padding: 0 15px;
+    padding: 2px 15px;
   }
 }
 </style>

@@ -96,7 +96,9 @@
 
     <div id="agent">
       <header>List Agent</header>
-      <img src="@/assets/agent.jpg" alt>
+      <div class="img-warp">
+        <img src="@/assets/agent.jpg" alt>
+      </div>
       <div class="msg">
         <div class="name">{{`2434 Alcott Ct Point Loma`}}</div>
         <p>{{`Redfern,Sydney`}}</p>
@@ -120,7 +122,7 @@
       <div class="tab-group">
         <button
           v-for="(tab,index) in tabs"
-          :class="[{ active: currentTab == tab.name },'tab-button','btn']"
+          :class="[{ active: currentTab == tab.name },'tab-button','common-btn']"
           @touchstart="currentTab = tab.name"
           :key="index"
         >{{ tab.name }}</button>
@@ -280,15 +282,22 @@ export default {
   display: flex;
   justify-content: flex-start;
   flex-flow: row wrap;
-  & > img {
-    width: 6rem;
-    height: 6rem;
+  & > .img-warp {
+    img{
+      height: 100%;
+      width: auto;
+    }
+    text-align: center;
+    width: 5rem;
+    height: 5rem;
     border-radius: 50%;
+    border: 1px solid #ddd;
+    padding: 1px;
+    overflow: hidden;
   }
   .msg {
     flex: 0 0 auto;
     margin-left: 30px;
-    margin-bottom: 10px;
   }
   .btn-groups {
     border-top: 1px solid #ddd;
@@ -297,6 +306,7 @@ export default {
     display: flex;
     justify-content: center;
     padding: 6px 0;
+    margin-top: 10px;
     & > div {
       width: 50%;
       text-align: center;
