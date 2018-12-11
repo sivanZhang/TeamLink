@@ -6,7 +6,7 @@
         <div class="tab-group">
           <button
             v-for="(tab,index) in tabs"
-            :class="[{ active: currentTab == tab.name },'tab-button','btn']"
+            :class="[{ active: currentTab == tab.name },'tab-button','common-btn']"
             @touchstart="currentTab = tab.name"
             :key="index"
           >{{ tab.name }}</button>
@@ -148,8 +148,8 @@ export default {
       position: relative;
       margin-right: 15px;
       img {
-        width: 8rem;
-        height: 8rem;
+        width: 6rem;
+        height: 6rem;
       }
       .fa {
         position: absolute;

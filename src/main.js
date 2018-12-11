@@ -14,8 +14,8 @@ import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 Vue.use(MintUI);
 import $ from 'jquery'
-import 'bootstrap/dist/js/bootstrap.min.js'
-import 'bootstrap/dist/css/bootstrap.min.css'
+/* import 'bootstrap/dist/js/bootstrap.min.js'
+import 'bootstrap/dist/css/bootstrap.min.css' */
 import '@/theme.css'
 import 'animate.css'
 import 'font-awesome/css/font-awesome.min.css'
@@ -35,8 +35,9 @@ import loading from '@/components/loading'
 Vue.component('loading', loading)
 import footerMenu from './components/footeMenu'
 Vue.component('footer-menu', footerMenu);
-import { Button} from 'iview';
+import { Button, Input } from 'iview';
 Vue.component('Button', Button);
+Vue.component('Input', Input);
 //axios
 import axios from '@/axios'
 import VueAxios from 'vue-axios'

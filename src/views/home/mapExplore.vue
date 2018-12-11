@@ -1,7 +1,7 @@
 <template>
   <div id="search">
     <div class="input-group container">
-     <!-- <i class="fa fa-chevron-left" @touchstart="back" aria-hidden="true"></i>-->
+     <i class="fa fa-chevron-left" @touchstart="back" aria-hidden="true"></i>
       <i class="fa fa-search" @touchstart="search(searchText)" aria-hidden="true"></i>
       <input
         class="form-control"
@@ -171,16 +171,17 @@ export default {
 
 .input-group {
   z-index: 100;
-  display: table;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: absolute;
   top: 10px;
   width: 100%;
 
   .input-group-addon {
-    display: table-cell;
+    margin-left: 15px;
     background-color: unset;
     border: unset;
-    width: 1%;
   }
 
   input.form-control {
@@ -188,20 +189,20 @@ export default {
     width: 100%;
     border-radius: unset;
     border: 0px;
-    padding: 6px 30px;
+    padding: 10px 30px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
   }
 
   .fa-chevron-left {
     position: absolute;
-    top: 10px;
+    top: 13px;
     left: 25px;
     z-index: 4;
   }
   .fa-search {
     position: absolute;
-    top: 10px;
-    right: 65px;
+    top: 13px;
+    right: 50px;
     z-index: 4;
   }
 }

@@ -173,7 +173,11 @@
 import Ajax from "@/api/collections";
 import Mortage from "./mortage";
 import Map from "./map";
+import {BackTop} from 'iview'
 export default {
+  components:{
+    BackTop
+  },
   data() {
     return {
       //初始化默认字典
