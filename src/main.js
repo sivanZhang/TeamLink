@@ -23,10 +23,10 @@ import 'font-awesome/css/font-awesome.min.css'
 /* import FastClick from 'fastclick'
 FastClick.attach(document.body); */
 //iView框架
-import iView from 'iview';
+/* import iView from 'iview';
 import locale from 'iview/dist/locale/en-US';
 Vue.use(iView)
-Vue.use({ locale });
+Vue.use({ locale }); */
 import 'iview/dist/styles/iview.css';
 //设置为 false 以阻止 vue 在启动时生成生产提示。
 Vue.config.productionTip = false;
@@ -35,6 +35,8 @@ import loading from '@/components/loading'
 Vue.component('loading', loading)
 import footerMenu from './components/footeMenu'
 Vue.component('footer-menu', footerMenu);
+import { Button} from 'iview';
+Vue.component('Button', Button);
 //axios
 import axios from '@/axios'
 import VueAxios from 'vue-axios'

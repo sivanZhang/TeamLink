@@ -22,21 +22,4 @@ export default {
 #app {
     padding-bottom: 52px;
 }
-.header h1 {
-  margin: 0;
-}
-.header .mint-button {
-  height: 16px;
-}
-.header a {
-  color: inherit;
-}
-.header {
-  background-color: #fff;
-  position: fixed!important;
-  top: 0;
-  width: 100%;
-  z-index: 200;
-  height: 30px!important;
-}
 </style>
