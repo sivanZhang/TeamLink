@@ -87,6 +87,7 @@
 </template>
 
 <script>
+import $ from 'jquery'
 import { Toast } from "mint-ui";
 import "@/plugins/cropper/cropper.js";
 import "@/plugins/cropper/canvas-to-blob.js";

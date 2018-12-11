@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from '@/App'
 import router from '@/router'
 import store from '@/store'
+
 import 'vue-event-calendar/dist/style.css' //1.1.10之后的版本，css被放在了单独的文件中，方便替换
 import vueEventCalendar from 'vue-event-calendar'
 Vue.use(vueEventCalendar, {
@@ -9,18 +10,18 @@ Vue.use(vueEventCalendar, {
         color: '#009999',
         className: 'Custom className for current clicked date'
     }) //可以设置语言，支持中文和英文
+
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 Vue.use(MintUI);
-import $ from 'jquery'
 
-import { Popup } from 'vant';
+import { Popup, Locale } from 'vant';
 Vue.use(Popup);
+import enUS from 'vant/lib/locale/lang/en-US';
+Locale.use('en-US', enUS);
+
 /* import 'bootstrap/dist/js/bootstrap.min.js'
 import 'bootstrap/dist/css/bootstrap.min.css' */
-import '@/theme.css'
-import 'animate.css'
-import 'font-awesome/css/font-awesome.min.css'
 // 解决移动端300毫秒延迟
 /* import FastClick from 'fastclick'
 FastClick.attach(document.body); */
@@ -31,8 +32,10 @@ Vue.use(iView)
 import locale from 'iview/dist/locale/en-US';
 Vue.use({ locale });
 import 'iview/dist/styles/iview.css';
+
 //设置为 false 以阻止 vue 在启动时生成生产提示。
 Vue.config.productionTip = false;
+
 //注册全局组件
 import loading from '@/components/loading'
 Vue.component('loading', loading)
@@ -41,6 +44,10 @@ Vue.component('footer-menu', footerMenu);
 import { Button, Input } from 'iview';
 Vue.component('Button', Button);
 Vue.component('Input', Input);
+
+import '@/theme.css'
+import 'animate.css'
+import 'font-awesome/css/font-awesome.min.css'
 //axios
 import axios from '@/axios'
 import VueAxios from 'vue-axios'

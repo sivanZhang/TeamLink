@@ -1,8 +1,11 @@
 import Axios from '@/axios'
 
-const api = {
+export default {
     async getInspections() {
         return await Axios.get('/inspections/inspections/')
-    }
+    },
+    async getDate(params) {
+        return await Axios.get('/inspections/inspections/', params)
+    },
+
 }
-export default api
