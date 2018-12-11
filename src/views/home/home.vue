@@ -148,8 +148,8 @@ export default {
       position: relative;
       margin-right: 15px;
       img {
-        width: 6rem;
-        height: 6rem;
+        width: 5.8rem;
+        height: 5.8rem;
       }
       .fa {
         position: absolute;

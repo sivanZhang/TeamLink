@@ -1,12 +1,12 @@
 <template>
     <div class="container">
-        <h4>
+        <h2>
             Inbox
             <div class="">
                 <i class="fa fa-trash" aria-hidden="true"></i>
                 <i class="fa fa-search" aria-hidden="true"></i>
             </div>
-        </h4>
+        </h2>
         <section v-for="(item,index) in msgList" @touchstart="getHtml(`http://www.demo-it.com.au/teamlink/wp-admin/edit.php?post_type=notification`)"
         :key="index">
             <div class="profile-phone">
@@ -64,8 +64,9 @@ export default {
   display: flex;
   justify-content: space-between;
 }
-h4 {
+h2 {
   .flex;
+  align-items: center;
   text-align: left;
   div {
     text-align: right;

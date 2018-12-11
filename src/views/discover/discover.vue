@@ -3,7 +3,7 @@
     <mt-header title="Teamlink" class="row header">
     </mt-header>
     <mt-swipe class="row" :auto="3000">
-      <mt-swipe-item  v-for="(item,index) in agentList" :key="index" @touchstart.native="target(item[0].propertyId)">
+      <mt-swipe-item  v-for="(item,index) in agentList" :key="index" @click.native="target(item[0].propertyId)">
         <img :src="item[0].images[0]" alt="">
       </mt-swipe-item>
     </mt-swipe>
@@ -21,7 +21,7 @@
         <img src="../../assets/s2.png" alt="">
       </router-link>
     </div>
-    <h5 class="suggestd-header">Suggestd for you</h5>
+    <h3 class="suggestd-header">Suggestd for you</h3>
     <router-link
         tag="div"
         v-for="(item,index) in agentList"
@@ -116,10 +116,6 @@
 </script>
 
 <style lang="less" scoped>
-  .suggestd-header {
-    margin: 0px;
-    padding: 0 0 10px 0;
-  }
 
 .suggest {
   & {
@@ -159,7 +155,7 @@
   .suggest-title {
     color: #fff;
     background: rgb(255, 87, 34);
-    padding: 0 15px;
+    padding: 4px 15px;
   }
 }
 
