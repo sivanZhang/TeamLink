@@ -11,7 +11,7 @@
     font-size: 14px;
   }
   & /deep/ .events-wrapper {
-    background: #fff !important;
+    display: none;
   }
   & /deep/ .__vev_calendar-wrapper .events-wrapper .date {
     display: none;
@@ -24,7 +24,14 @@
     padding: 20px;
     font-size: 14px;
   }
+
+  .selectDate{
+    color:  rgb(0, 153, 153);
+    font-size: 14px;
+    padding: 15px;
+  }
   .plan {
+    margin-bottom: 15px;
     height: 100px;
     padding: 0 15px;
     display: flex;
@@ -44,6 +51,10 @@
       width: 80%;
       background-color: rgba(0, 153, 153, 0.4);
       display: flex;
+      flex-wrap: wrap;
+      &>div{
+width: 100%;
+      }
       align-items: center;
       padding: 15px;
     }
@@ -56,13 +67,18 @@
       <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
     </mt-header>
     <vue-event-calendar @day-changed="handleDayChanged" @month-changed="handleMonthChanged"></vue-event-calendar>
+
+
+    <div class="selectDate">{{SelectDate||new Date().toDateString()}}</div>
     <div v-if="isPlan" class="nothing">nothing planned yet</div>
     <template v-else>
-      <div class="plan">
-        <div class="plan-date text-center">20
-          <br>AUG
+      <div v-for="(item,index) in planeList" :key="index" class="plan">
+        <div class="plan-date text-center">{{item.date}}
+          <br>{{item.mouth}}
         </div>
-        <div class="plan-detail">2222</div>
+        <div class="plan-detail">
+          <div>{{item.title}}</div> <div>{{item.desc}}</div>
+        </div>
       </div>
     </template>
   </div>
@@ -74,35 +90,37 @@ export default {
   data() {
     return {
       planeList: [],
-      isPlan: true
+      isPlan: true,
+      SelectDate:''
     };
   },
   methods: {
     getAjax() {
       let self = this;
-      AJAX.getInspections().then(res => {
-        let arr = res.data.msg;
-        arr.forEach(item => {
-          self.demoEvents.push({
-            date: "",
-            title: item[0].attributes.real_estate_property_address,
-            desc: item[0].title
-          });
-        });
-      });
+      AJAX.getInspections().then(res => {});
     },
     handleDayChanged(month) {
-      console.log(month.date);
+      this.SelectDate = new Date(month.date).toDateString();
+           let selectDate =this.SelectDate.split(" ")
       AJAX.getDate({
         params: {
           date: `${month.date}`.replace(/\//g, "-")
         }
       }).then(res => {
-        console.log(res.data.msg);
-        if (res.data.msg.length<1) {
-          this.isPlan = true;
-        } else {
+        let arr = res.data.msg;
+        if (arr.length > 0) {
+          this.planeList = [];
+          arr[0][0].inspections.forEach(item => {
+            this.planeList.push({
+              date: selectDate[2],
+              mouth:selectDate[1],
+              title: item,
+              desc: arr[0][0].title
+            });
+          });
           this.isPlan = false;
+        } else {
+          this.isPlan = true;
         }
       });
     },
