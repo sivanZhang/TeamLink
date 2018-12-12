@@ -122,6 +122,9 @@ export default {
 .teamlinklogin{
   background-color: #000;
 }
+button.teamlinklogin.ivu-btn.ivu-btn-default.ivu-btn-ghost {
+    background-color: #000;
+}
 .line {
   display: inline-block;
   width: 100px;
