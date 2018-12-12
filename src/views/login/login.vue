@@ -27,7 +27,7 @@
         placeholder="Password"
         style="background-color:white"
       >
-       <Button :loading="loading"  @click="submit" :disabled="isDisabled" ghost>Log in</Button>
+       <Button :loading="loading" class="teamlinklogin"  @click="submit" :disabled="isDisabled" ghost>Log in</Button>
       <!--
       <div class="row">
         <router-link to="" class="col-xs-6 blue-link text-left">Create an account</router-link> 
@@ -118,6 +118,9 @@ export default {
   border-bottom: 1px solid transparent;
   z-index: 200;
   height: 30px !important;
+}
+.teamlinklogin{
+  background-color: #000;
 }
 .line {
   display: inline-block;
