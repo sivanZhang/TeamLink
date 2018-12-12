@@ -52,7 +52,7 @@ button.ivu-btn.ivu-btn-success.ivu-btn-ghost, .darkred {
       <tr>
         <td>
           <Button
-            @touchstart.native="getValues()"
+            @click="getValues()"
             type="success"
             ghost
             :disabled="isDisabled"

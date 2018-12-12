@@ -35,7 +35,7 @@
       </div>
 
 
-      <div class="p-data" v-for="(item,index) in properties" @touchstart="target(item[0].propertyId)">
+      <div class="p-data" v-for="(item,index) in properties" @click="target(item[0].propertyId)" :key="index">
         <div class="left">
           <img :src="item[0].images[0]" alt>
           <i class="fa fa-heart-o" aria-hidden="true"></i>

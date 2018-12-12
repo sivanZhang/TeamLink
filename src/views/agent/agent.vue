@@ -4,7 +4,7 @@
       <i class="fa fa-search" aria-hidden="true" @touchstart="search()"></i>
       <input v-model="searchText" type="search" class="search" placeholder="search"  @keyup.enter="search()">
     </Menu>
-    <section v-for="(item,index) in agentList" :key="index" @touchstart="getDetail(item[0].agentId)">
+    <section v-for="(item,index) in agentList" :key="index" @click="getDetail(item[0].agentId)">
       <img :src="item[0].image" alt>
       <div class="msg">
         <div class="name">{{item[0].attributes.real_estate_agent_company}}</div>

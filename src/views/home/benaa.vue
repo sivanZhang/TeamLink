@@ -123,7 +123,7 @@
         <button
           v-for="(tab,index) in tabs"
           :class="[{ active: currentTab == tab.name },'tab-button','common-btn']"
-          @touchstart="currentTab = tab.name"
+          @click="currentTab = tab.name"
           :key="index"
         >{{ tab.name }}</button>
       </div>
