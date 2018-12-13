@@ -1,21 +1,22 @@
 <template>
   <div class="main container">
-    <mt-header title="Feedback" class="row"></mt-header>
     <header>
       <router-link to="/discover" slot="left">
         <mt-button icon="back" class="mybtn"></mt-button>
       </router-link>
-      <template v-for="item in week">
-        <div
-          :key="item.datenumber"
-          :class="[item.active?'plan':'',{ active: classactive == item.weekname }]"
-          @touchstart="classactive = item.weekname"
-          @click="getAjax(item.date)"
-        >
-          <div>{{item.weekname}}</div>
-          {{item.datenumber}}
-        </div>
-      </template>
+      <div class="datewarp">
+        <template v-for="item in week">
+          <div
+            :key="item.datenumber"
+            :class="[item.active?'plan':'',{ active: classactive == item.weekname }]"
+            :style="item.active?'color: rgb(255, 87, 34);':''"
+            @click="getAjax(item.date),classactive = item.weekname"
+          >
+            <div>{{item.weekname}}</div>
+            {{item.datenumber}}
+          </div>
+        </template>
+      </div>
     </header>
     <div v-if="isPlan" class="nothing">nothing planned yet</div>
     <template v-else>
@@ -74,7 +75,7 @@ export default {
       dates: [],
       agentList: "",
       classactive: "Today",
-      isPlan: true,
+      isPlan: true
     };
   },
   computed: {
@@ -189,7 +190,7 @@ export default {
   },
   mounted() {
     /* //S事件日期列表 */
-    /* AJAX.getInspections().then(res => {
+    AJAX.getInspections().then(res => {
       const DATEARR = res.data.msg;
       this.week.forEach(item2 => {
         DATEARR.forEach(item1 => {
@@ -198,15 +199,12 @@ export default {
           }
         });
       });
-    }) */
+    });
   }
 };
 </script>
 <style lang="less" scoped>
-.plan {
-  color: rgb(255, 87, 34);
-}
-.main{
+.main {
   margin-top: 50px;
   .nothing {
     background-color: rgb(245, 245, 245);
@@ -238,13 +236,20 @@ header {
   text-align: center;
   width: 100%;
   display: flex;
-  justify-content: flex-start;
-  flex-flow: row nowrap;
-  overflow: scroll;
+  justify-content: space-between;
   width: 100%;
   i,
   & > div {
     flex: 1 1 auto;
+  }
+  .datewarp {
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row nowrap;
+    overflow: scroll;
+    & > div {
+      width: 100/5%;
+    }
   }
 }
 .suggest {
