@@ -1,14 +1,17 @@
 <template>
   <div class="main container">
-    <mt-header title="Feedback" class="row">
-      
-    </mt-header>
-    <header> 
+    <mt-header title="Feedback" class="row"></mt-header>
+    <header>
       <router-link to="/discover" slot="left">
         <mt-button icon="back" class="mybtn"></mt-button>
       </router-link>
       <template v-for="item in week">
-        <div :key="item.datenumber" :class="[{ active: classactive == item.weekname }]" @touchstart="classactive = item.weekname" @click="getAjax(item.date)">
+        <div
+          :key="item.datenumber"
+          :class="[item.active?'plan':'',{ active: classactive == item.weekname }]"
+          @touchstart="classactive = item.weekname"
+          @click="getAjax(item.date)"
+        >
           <div>{{item.weekname}}</div>
           {{item.datenumber}}
         </div>
@@ -65,9 +68,9 @@ import AJAX from "@/api/inspection";
 export default {
   data() {
     return {
-      dates:[],
+      dates: [],
       agentList: "",
-      classactive:'Today',
+      classactive: "Today"
     };
   },
   computed: {
@@ -76,115 +79,138 @@ export default {
       let nowtime = new Date().getTime();
       const DAY = 1000 * 60 * 60 * 24;
       let after1 = new Date(now.setTime(nowtime + DAY));
-      let after2 = new Date(now.setTime(nowtime + DAY*2));
-      let after3 = new Date(now.setTime(nowtime + DAY*3));
-      let after4 = new Date(now.setTime(nowtime + DAY*4));
-      let after5 = new Date(now.setTime(nowtime + DAY*5));
-      let after6 = new Date(now.setTime(nowtime + DAY*6));
-      let  arr = [
+      let after2 = new Date(now.setTime(nowtime + DAY * 2));
+      let after3 = new Date(now.setTime(nowtime + DAY * 3));
+      let after4 = new Date(now.setTime(nowtime + DAY * 4));
+      let after5 = new Date(now.setTime(nowtime + DAY * 5));
+      let after6 = new Date(now.setTime(nowtime + DAY * 6));
+      let arr = [
         {
           weekname: new Date().getDay(),
           datenumber: new Date().getDate(),
-          date:new Date().toLocaleDateString().replace(/\//g, "-"),
+          date: new Date().toLocaleDateString().replace(/\//g, "-"),
+          Sdate: new Date().toLocaleDateString(),
+          active: false
         },
         {
           weekname: after1.getDay(),
           datenumber: after1.getDate(),
-          date:after1.toLocaleDateString().replace(/\//g, "-"),
-        }
-        ,{
+          date: after1.toLocaleDateString().replace(/\//g, "-"),
+          Sdate: after1.toLocaleDateString(),
+          active: false
+        },
+        {
           weekname: after2.getDay(),
           datenumber: after2.getDate(),
-          date:after2.toLocaleDateString().replace(/\//g, "-"),
-        } 
-        ,{
+          date: after2.toLocaleDateString().replace(/\//g, "-"),
+          Sdate: after2.toLocaleDateString(),
+          active: false
+        },
+        {
           weekname: after3.getDay(),
           datenumber: after3.getDate(),
-          date:after3.toLocaleDateString().replace(/\//g, "-"),
-        } ,
+          date: after3.toLocaleDateString().replace(/\//g, "-"),
+          Sdate: after3.toLocaleDateString(),
+          active: false
+        },
         {
           weekname: after4.getDay(),
           datenumber: after4.getDate(),
-          date:after4.toLocaleDateString().replace(/\//g, "-"),
-        } ,
+          date: after4.toLocaleDateString().replace(/\//g, "-"),
+          Sdate: after4.toLocaleDateString(),
+          active: false
+        },
         {
           weekname: after5.getDay(),
           datenumber: after5.getDate(),
-          date:after5.toLocaleDateString().replace(/\//g, "-"),
-        } ,
+          date: after5.toLocaleDateString().replace(/\//g, "-"),
+          Sdate: after5.toLocaleDateString(),
+          active: false
+        },
         {
           weekname: after6.getDay(),
           datenumber: after6.getDate(),
-          date:after6.toLocaleDateString().replace(/\//g, "-"),
+          date: after6.toLocaleDateString().replace(/\//g, "-"),
+          Sdate: after6.toLocaleDateString(),
+          active: false
         }
       ];
-      arr.forEach((item,index)=>{
-        if(index==0){
-          item.weekname=`Today`
-        }else{
-          switch (item.weekname){
-            case 0 :
-            item.weekname=`Sun`;
-            break;
-            case 1 :
-            item.weekname=`Mon`;
-            break;
-            case 2 :
-            item.weekname=`Tue`;
-            break;
-            case 3 :
-            item.weekname=`Wed`;
-            break;
-            case 4 :
-            item.weekname=`Thu`;
-            break;
-            case 5 :
-            item.weekname=`Fri`;
-            break;
-            case 6 :
-            item.weekname=`Sat`;
-            break;
+      arr.forEach((item, index) => {
+        if (index == 0) {
+          item.weekname = `Today`;
+        } else {
+          switch (item.weekname) {
+            case 0:
+              item.weekname = `Sun`;
+              break;
+            case 1:
+              item.weekname = `Mon`;
+              break;
+            case 2:
+              item.weekname = `Tue`;
+              break;
+            case 3:
+              item.weekname = `Wed`;
+              break;
+            case 4:
+              item.weekname = `Thu`;
+              break;
+            case 5:
+              item.weekname = `Fri`;
+              break;
+            case 6:
+              item.weekname = `Sat`;
+              break;
           }
-
         }
-
       });
-      return arr
+      return arr;
     }
   },
-  methods:{
-    getAjax(date){
+  methods: {
+    getAjax(date) {
       AJAX.getDate({
         params: {
           date
         }
       }).then(res => {
-      this.agentList = res.data.msg;
-    });
+        this.agentList = res.data.msg;
+      });
     }
   },
-  created() {
-    /* AJAX.getInspections().then(res => {
-      this.agentList = res.data.msg;
-    }); */ //S事件日期列表
+  mounted() {
+    /* //S事件日期列表 */
+     /* AJAX.getInspections().then(res => {
+      const DATEARR = res.data.msg;
+      this.week.forEach(item2 => {
+        DATEARR.forEach(item1 => {
+          if (item1 == item2.Sdate) {
+            item2.active = true;
+          }
+        });
+      });
+    }) */
   }
 };
 </script>
 <style lang="less" scoped>
-.mybtn{
-  color: #656b79;
-    background-color: white;
-    border-color: white;
-    border: none;
-    padding-left: 0px !important;
-    -webkit-box-shadow: None; 
-    box-shadow: none; 
+.plan {
+  color: rgb(255, 87, 34);
 }
-.active{
+.mybtn {
+  color: #656b79;
+  background-color: white;
+  border-color: white;
+  border: none;
+  padding-left: 0px !important;
+  -webkit-box-shadow: None;
+  box-shadow: none;
+}
+.active {
   font-weight: 600;
 }
-header{
-  padding: 0 15px ;
+header {
+  padding: 0 15px;
   position: fixed;
   background-color: #fff;
   top: 0;
@@ -196,8 +222,9 @@ header{
   flex-flow: row nowrap;
   overflow: scroll;
   width: 100%;
-  i,&>div{
-flex: 1 1 auto;
+  i,
+  & > div {
+    flex: 1 1 auto;
   }
 }
 .suggest {

@@ -120,7 +120,7 @@ export default {
             });
           });
           arr[0][0].inspections_calendar.forEach(item => {
-            this.addcalendar(item.starday.replace(/\s+/g,","),item.endday.replace(/\s+/g,","))
+            this.addcalendar(item.startday,item.endday)
           });
           this.isPlan = false;
         } else {
@@ -130,7 +130,7 @@ export default {
       console.log(data); //选中某天
     },
     addcalendar(StartDate,EndDate) {
-      console.log(StartDate,EndDate)
+      
       var startDate = new Date(StartDate); 
       var endDate = new Date(EndDate);
       console.log(startDate,endDate)
