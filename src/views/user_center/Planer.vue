@@ -1,54 +1,56 @@
 <style lang="less" scoped>
-  .main {
-    .nothing {
-      background-color: rgb(245, 245, 245);
-      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
-      margin: 0 15px;
+.main {
+  overflow: unset;
+  .nothing {
+    background-color: rgb(245, 245, 245);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    margin: 0 15px;
+    border-radius: 6px;
+    padding: 20px;
+    font-size: 14px;
+  }
+
+  .selectDate {
+    color: rgb(0, 153, 153);
+    font-size: 14px;
+    padding: 15px;
+  }
+
+  .plan {
+    margin-bottom: 15px;
+    height: 100px;
+    padding: 0 15px;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    color: #fff;
+
+    .plan-date {
       border-radius: 6px;
-      padding: 20px;
-      font-size: 14px;
+      width: 20%;
+      background-color: rgb(0, 153, 153);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .selectDate {
-      color: rgb(0, 153, 153);
-      font-size: 14px;
+    .plan-detail {
+      border-radius: 6px;
+      width: 80%;
+      background-color: rgb(155, 207, 216);
+      display: flex;
+      margin-left: 1px;
+      flex-wrap: wrap;
+
+      & > div {
+        width: 100%;
+      }
+
+      align-items: center;
       padding: 15px;
     }
-
-    .plan {
-      margin-bottom: 15px;
-      height: 100px;
-      padding: 0 15px;
-      display: flex;
-      align-items: stretch;
-      justify-content: center;
-      color: #fff;
-
-      .plan-date {
-        border-radius: 6px;
-        width: 20%;
-        background-color: rgb(0, 153, 153);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .plan-detail {
-        border-radius: 6px;
-        width: 80%;
-        background-color: rgb(155, 207, 216);
-        display: flex;
-        flex-wrap: wrap;
-
-        &>div {
-          width: 100%;
-        }
-
-        align-items: center;
-        padding: 15px;
-      }
-    }
   }
+}
 </style>
 <template>
   <div class="main">
@@ -61,8 +63,10 @@
     <div v-if="isPlan" class="nothing">nothing planned yet</div>
     <template v-else>
       <div v-for="(item,index) in planeList" :key="index" class="plan">
-        <div class="plan-date text-center">{{item.date}}
-          <br>{{item.mouth}}
+        <div class="plan-date text-center">
+          {{item.date}}
+          <br>
+          {{item.mouth}}
         </div>
         <div class="plan-detail">
           <div>{{item.title}}</div>
@@ -74,60 +78,100 @@
 </template>
 
 <script>
-  import Calendar from '@/plugins/calendar';
-  import AJAX from "@/api/inspection";
-  export default {
-    components: {
-      Calendar
+import { Toast } from "mint-ui";
+import Calendar from "@/plugins/calendar";
+import AJAX from "@/api/inspection";
+export default {
+  components: {
+    Calendar
+  },
+  data() {
+    return {
+      dates: [],
+      planeList: [],
+      isPlan: true,
+      SelectDate: ""
+    };
+  },
+  methods: {
+    getAjax() {
+      let self = this;
+      AJAX.getInspections().then(res => {
+        this.dates = res.data.msg;
+      });
     },
-    data() {
-      return {
-        dates:[],
-        planeList: [],
-        isPlan: true,
-        SelectDate: ''
-      };
-    },
-    methods: {
-      getAjax() {
-        let self = this;
-        AJAX.getInspections().then(res => {
-          this.dates=res.data.msg
-        });
-      },
-      clickDay(data) {
-        this.SelectDate = new Date(data).toDateString();
-        let selectDate = this.SelectDate.split(" ")
-        AJAX.getDate({
-          params: {
-            date: `${data}`.replace(/\//g, "-")
-          }
-        }).then(res => {
-          let arr = res.data.msg;
-          if (arr.length > 0) {
-            this.planeList = [];
-            arr[0][0].inspections.forEach(item => {
-              this.planeList.push({
-                date: selectDate[2],
-                mouth: selectDate[1],
-                title: item,
-                desc: arr[0][0].title
-              });
+    clickDay(data) {
+      this.SelectDate = new Date(data).toDateString();
+      let selectDate = this.SelectDate.split(" ");
+      AJAX.getDate({
+        params: {
+          date: `${data}`.replace(/\//g, "-")
+        }
+      }).then(res => {
+        let arr = res.data.msg;
+        if (arr.length > 0) {
+          this.planeList = [];
+          arr[0][0].inspections.forEach(item => {
+            this.planeList.push({
+              date: selectDate[2],
+              mouth: selectDate[1],
+              title: item,
+              desc: arr[0][0].title
             });
-            this.isPlan = false;
-          } else {
-            this.isPlan = true;
-          }
+          });
+          arr[0][0].inspections_calendar.forEach(item => {
+            this.addcalendar(item.starday.replace(/\s+/g,","),item.endday.replace(/\s+/g,","))
+          });
+          this.isPlan = false;
+        } else {
+          this.isPlan = true;
+        }
+      });
+      console.log(data); //选中某天
+    },
+    addcalendar(StartDate,EndDate) {
+      console.log(StartDate,EndDate)
+      var startDate = new Date(StartDate); 
+      var endDate = new Date(EndDate);
+      console.log(startDate,endDate)
+      var title = "My Inspections";
+      var eventLocation = "Home";
+      var notes = "There is an inspection event here.";
+      var success = function(message) {
+        Toast({
+          message: "Success: Event has been added!",
+          position: "bottom",
+          duration: 3000
         });
-        console.log(data); //选中某天
-      },
-      changeDate(data) {
-        console.log(data); //左右点击切换月份
+      };
+      var error = function(message) {
+        Toast({
+          message: "Error:" + message,
+          position: "bottom",
+          duration: 3000
+        });
+      };
+
+      if (window.plugins !== undefined) {
+        // 设备中执行的代码
+        window.plugins.calendar.createEvent(
+          title,
+          eventLocation,
+          notes,
+          startDate,
+          endDate,
+          success,
+          error
+        );
       }
     },
-    created() {
-      this.getAjax();
-      this.clickDay(new Date().toLocaleDateString());
+    changeDate(data) {
+      console.log(data); //左右点击切换月份
     }
-  };
+  },
+  created() {
+    this.getAjax();
+    this.clickDay(new Date().toLocaleDateString());
+  }
+};
 </script>

@@ -8,7 +8,7 @@
         <mt-button icon="back" class="mybtn"></mt-button>
       </router-link>
       <template v-for="item in week">
-        <div :key="item.datenumber" :class="[{ active: classactive == item.weekname }]" @touchstart="classactive = item.weekname" @click="getAjax">
+        <div :key="item.datenumber" :class="[{ active: classactive == item.weekname }]" @touchstart="classactive = item.weekname" @click="getAjax(item.date)">
           <div>{{item.weekname}}</div>
           {{item.datenumber}}
         </div>
@@ -65,8 +65,9 @@ import AJAX from "@/api/inspection";
 export default {
   data() {
     return {
+      dates:[],
       agentList: "",
-      classactive:'Today'
+      classactive:'Today',
     };
   },
   computed: {
@@ -83,31 +84,38 @@ export default {
       let  arr = [
         {
           weekname: new Date().getDay(),
-          datenumber: new Date().getDate()
+          datenumber: new Date().getDate(),
+          date:new Date().toLocaleDateString().replace(/\//g, "-"),
         },
         {
           weekname: after1.getDay(),
-          datenumber: after1.getDate()
+          datenumber: after1.getDate(),
+          date:after1.toLocaleDateString().replace(/\//g, "-"),
         }
         ,{
           weekname: after2.getDay(),
-          datenumber: after2.getDate()
+          datenumber: after2.getDate(),
+          date:after2.toLocaleDateString().replace(/\//g, "-"),
         } 
         ,{
           weekname: after3.getDay(),
-          datenumber: after3.getDate()
+          datenumber: after3.getDate(),
+          date:after3.toLocaleDateString().replace(/\//g, "-"),
         } ,
         {
           weekname: after4.getDay(),
-          datenumber: after4.getDate()
+          datenumber: after4.getDate(),
+          date:after4.toLocaleDateString().replace(/\//g, "-"),
         } ,
         {
           weekname: after5.getDay(),
-          datenumber: after5.getDate()
+          datenumber: after5.getDate(),
+          date:after5.toLocaleDateString().replace(/\//g, "-"),
         } ,
         {
           weekname: after6.getDay(),
-          datenumber: after6.getDate()
+          datenumber: after6.getDate(),
+          date:after6.toLocaleDateString().replace(/\//g, "-"),
         }
       ];
       arr.forEach((item,index)=>{
@@ -145,16 +153,20 @@ export default {
     }
   },
   methods:{
-    getAjax(){
-      AJAX.getInspections().then(res => {
+    getAjax(date){
+      AJAX.getDate({
+        params: {
+          date
+        }
+      }).then(res => {
       this.agentList = res.data.msg;
     });
     }
   },
   created() {
-    AJAX.getInspections().then(res => {
+    /* AJAX.getInspections().then(res => {
       this.agentList = res.data.msg;
-    });
+    }); */ //S事件日期列表
   }
 };
 </script>

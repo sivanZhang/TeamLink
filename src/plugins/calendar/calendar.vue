@@ -29,7 +29,7 @@
     cursor: pointer;
     display: flex;
     color: rgb(0, 153, 153);
-    font-size: 18px;
+    font-size: 16px;
     flex: 1;
     justify-content: center;
     align-items: center;

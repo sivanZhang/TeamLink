@@ -176,6 +176,7 @@ import Ajax from "@/api/collections";
 import Mortage from "./mortage";
 import Map from "./map";
 import {BackTop} from 'iview'
+import { Toast } from "mint-ui";
 export default {
   components:{
     BackTop
