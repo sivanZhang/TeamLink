@@ -9,7 +9,8 @@
 
 body,
 html {
-    color: #333!important;
+    color: #000;
+    font-family: 'SFNSDisplay-Regular'
 }
 
 .c_red {

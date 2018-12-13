@@ -127,13 +127,11 @@ export default {
           this.isPlan = true;
         }
       });
-      console.log(data); //选中某天
     },
     addcalendar(StartDate,EndDate) {
       
       var startDate = new Date(StartDate); 
       var endDate = new Date(EndDate);
-      console.log(startDate,endDate)
       var title = "My Inspections";
       var eventLocation = "Home";
       var notes = "There is an inspection event here.";

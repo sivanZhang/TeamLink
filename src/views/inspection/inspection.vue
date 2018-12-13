@@ -17,50 +17,53 @@
         </div>
       </template>
     </header>
-    <router-link
-      v-if="agentList"
-      tag="div"
-      v-for="(item,index) in agentList"
-      class="suggest"
-      :key="index"
-      :to="{name:'benaa',params:{pid:item[0].propertyId}}"
-    >
-      <div class="suggest-title">
-        <i class="fa fa-clock-o" aria-hidden="true"></i>
-        {{new Date()}}
-      </div>
-      <div class="suggest-details">
-        <img :src="item[0].images[0]" alt>
-      </div>
-      <div class="suggest-info">
-        <div>{{item[0].title}}</div>
-        <div>
-          <i class="fa fa-picture-o" aria-hidden="true"></i>
-          {{item[0].images.length}}
+    <div v-if="isPlan" class="nothing">nothing planned yet</div>
+    <template v-else>
+      <router-link
+        v-if="agentList"
+        tag="div"
+        v-for="(item,index) in agentList"
+        class="suggest"
+        :key="index"
+        :to="{name:'benaa',params:{pid:item[0].propertyId}}"
+      >
+        <div class="suggest-title">
+          <i class="fa fa-clock-o" aria-hidden="true"></i>
+          {{new Date()}}
         </div>
-      </div>
-      <div class="container">
-        <h5>Modern Apartment</h5>
-        <div class="price">${{item[0].attributes.real_estate_property_price}}</div>
-        <div class="outfit">
-          {{item[0].attributes.real_estate_property_bedrooms}}
-          <i
-            class="fa fa-bed"
-            aria-hidden="true"
-          ></i>
-          {{item[0].attributes.real_estate_property_bathrooms}}
-          <i
-            class="fa fa-bath"
-            aria-hidden="true"
-          ></i>
-          {{item[0].attributes.real_estate_property_garage}}
-          <i
-            class="fa fa-car"
-            aria-hidden="true"
-          ></i>
+        <div class="suggest-details">
+          <img :src="item[0].images[0]" alt>
         </div>
-      </div>
-    </router-link>
+        <div class="suggest-info">
+          <div>{{item[0].title}}</div>
+          <div>
+            <i class="fa fa-picture-o" aria-hidden="true"></i>
+            {{item[0].images.length}}
+          </div>
+        </div>
+        <div class="container">
+          <h5>Modern Apartment</h5>
+          <div class="price">${{item[0].attributes.real_estate_property_price}}</div>
+          <div class="outfit">
+            {{item[0].attributes.real_estate_property_bedrooms}}
+            <i
+              class="fa fa-bed"
+              aria-hidden="true"
+            ></i>
+            {{item[0].attributes.real_estate_property_bathrooms}}
+            <i
+              class="fa fa-bath"
+              aria-hidden="true"
+            ></i>
+            {{item[0].attributes.real_estate_property_garage}}
+            <i
+              class="fa fa-car"
+              aria-hidden="true"
+            ></i>
+          </div>
+        </div>
+      </router-link>
+    </template>
   </div>
 </template>
 <script>
@@ -70,7 +73,8 @@ export default {
     return {
       dates: [],
       agentList: "",
-      classactive: "Today"
+      classactive: "Today",
+      isPlan: true,
     };
   },
   computed: {
@@ -175,12 +179,17 @@ export default {
         }
       }).then(res => {
         this.agentList = res.data.msg;
+        if (this.agentList.length > 0) {
+          this.isPlan = false;
+        } else {
+          this.isPlan = true;
+        }
       });
     }
   },
   mounted() {
     /* //S事件日期列表 */
-     /* AJAX.getInspections().then(res => {
+    /* AJAX.getInspections().then(res => {
       const DATEARR = res.data.msg;
       this.week.forEach(item2 => {
         DATEARR.forEach(item1 => {
@@ -196,6 +205,17 @@ export default {
 <style lang="less" scoped>
 .plan {
   color: rgb(255, 87, 34);
+}
+.main{
+  margin-top: 50px;
+  .nothing {
+    background-color: rgb(245, 245, 245);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    margin: 0 15px;
+    border-radius: 6px;
+    padding: 20px;
+    font-size: 14px;
+  }
 }
 .mybtn {
   color: #656b79;
