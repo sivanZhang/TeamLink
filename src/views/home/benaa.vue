@@ -21,20 +21,11 @@
 
       <div>
         {{ajaxData.attributes.real_estate_property_bedrooms}}
-        <i
-          class="fa fa-bed"
-          aria-hidden="true"
-        ></i>
+        <i class="fa fa-bed" aria-hidden="true"></i>
         {{ajaxData.attributes.real_estate_property_bathrooms}}
-        <i
-          class="fa fa-bath"
-          aria-hidden="true"
-        ></i>
+        <i class="fa fa-bath" aria-hidden="true"></i>
         {{ajaxData.attributes.real_estate_property_garage}}
-        <i
-          class="fa fa-car"
-          aria-hidden="true"
-        ></i>
+        <i class="fa fa-car" aria-hidden="true"></i>
       </div>
     </div>
     <div></div>
@@ -77,7 +68,7 @@
     </section>
     <section class="card">
       <header>Features</header>
-      <p> Air Conditionin</p>
+      <p>Air Conditionin</p>
       <p>Intercom</p>
       <p>Built in wardrobes</p>
       <p>Gas store</p>
@@ -85,11 +76,11 @@
     </section>
     <Mortage></Mortage>
     <section class="card">
-      <header>Inspections</header> 
+      <header>Inspections</header>
       <div v-for="(inspection,index) in ajaxData.inspections" :key="index">
-        <label class="inspection">{{inspection}}</label> 
-        <span> 
-          <i class="fa fa-calendar-plus-o" :time="inspection" aria-hidden="true"  @touchstart="addcalendar(currentTab)" ></i>
+        <label class="inspection">{{inspection}}</label>
+        <span>
+          <i class="fa fa-calendar-plus-o" :time="inspection" aria-hidden="true" @touchstart="addcalendar(currentTab)"></i>
         </span>
       </div>
     </section>
@@ -120,12 +111,7 @@
     <section class="card">
       <header>School Information</header>
       <div class="tab-group">
-        <button
-          v-for="(tab,index) in tabs"
-          :class="[{ active: currentTab == tab.name },'tab-button','common-btn']"
-          @click="currentTab = tab.name"
-          :key="index"
-        >{{ tab.name }}</button>
+        <button v-for="(tab,index) in tabs" :class="[{ active: currentTab == tab.name },'tab-button','common-btn']" @click="currentTab = tab.name" :key="index">{{ tab.name }}</button>
       </div>
       <ul>
         <li>
@@ -166,257 +152,339 @@
         <button class="black-btn" @click="$router.push('/home/benaa/enquiry')">Make an Enquiry</button>
       </div>
     </section>
-
-    <BackTop style="bottom:60px;"></BackTop>
-    <footer-menu></footer-menu><!--  -->
+    <footer-menu></footer-menu>
+    <!--  -->
   </div>
 </template>
 <script>
-import Ajax from "@/api/collections";
-import Mortage from "./mortage";
-import Map from "./map";
-import {BackTop} from 'iview'
-import { Toast } from "mint-ui";
-export default {
-  components:{
-    BackTop
-  },
-  data() {
-    return {
-      //初始化默认字典
-      currentTab: "All",
-      ajaxData: null,
-      tabs: [
-        { name: "All" },
-        { name: "Elementary" },
-        { name: "High" },
-        { name: "College&Unicersity" }
-      ]
-    };
-  },
-  methods: {
-    addcalendar(val){
-        var startDate = new Date(2018,11,15,18,30,12,0,0); // beware: month 0 = january, 11 = december 这个日期指的是2018-12-15 18:30:12 
-        var endDate = new Date(2018,11,15,19,30,12,0,0);
+  import Ajax from "@/api/collections";
+  import Mortage from "./mortage";
+  import Map from "./map";
+  import { Toast } from "mint-ui";
+  export default {
+    data() {
+      return {
+        //初始化默认字典
+        currentTab: "All",
+        ajaxData: null,
+        tabs: [
+          { name: "All" },
+          { name: "Elementary" },
+          { name: "High" },
+          { name: "College&Unicersity" }
+        ]
+      };
+    },
+    methods: {
+      addcalendar(StartDate, EndDate) {
+        var startDate = new Date(StartDate);
+        var endDate = new Date(EndDate);
         var title = "My Inspections";
         var eventLocation = "Home";
         var notes = "There is an inspection event here.";
-        var success = function(message) { 
+        var success = function(message) {
           Toast({
-                message: "Success: Event has been added!",
-                position: "bottom",
-                duration: 3000
-            }); };
-        var error = function(message) { 
+            message: "Success: Event has been added!",
+            position: "bottom",
+            duration: 3000
+          });
+        };
+        var error = function(message) {
           Toast({
-                message: "Error:" + message,
-                position: "bottom",
-                duration: 3000
-            });  };
-      
-        if (window.plugins !== undefined)// 设备中执行的代码
-        {
-            window.plugins.calendar.createEvent(title,eventLocation,notes,startDate,endDate,success,error);
-        }  
+            message: "Error:" + message,
+            position: "bottom",
+            duration: 3000
+          });
+        };
+
+        if (window.plugins !== undefined) {
+          // 设备中执行的代码
+          window.plugins.calendar.createEvent(
+            title,
+            eventLocation,
+            notes,
+            startDate,
+            endDate,
+            success,
+            error
+          );
+        }
+      },
+      collections(pid) {
+        let data = {
+          propertyid: pid
+        };
+        Ajax.postCollections(data).then(res => {
+          console.log(res.data.msg);
+          if (res.data.msg == "add") {
+            this.ajaxData.collection = "Yes";
+          }
+          if (res.data.msg == "cancel") {
+            this.ajaxData.collection = "No";
+          }
+        });
+      }
     },
-    collections(pid) {
-      let data = {
-        propertyid: pid
-      };
-      Ajax.postCollections(data).then(res => {
-        console.log(res.data.msg);
-        if (res.data.msg == "add") {
-          this.ajaxData.collection = "Yes";
-        }
-        if (res.data.msg == "cancel") {
-          this.ajaxData.collection = "No";
-        }
-      });
+    components: {
+      Map,
+      Mortage
+    },
+    mounted() {
+      this.axios
+        .get(`/property/properties/${this.$route.params.pid}`)
+        .then(res => {
+          this.ajaxData = res.data.property[0];
+          this.addcalendar(this.ajaxData.inspections_calendar[0].startday, this.ajaxData.inspections_calendar[0].endday);
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
-  },
-  components: {
-    Map,
-    Mortage
-  },
-  mounted() {
-    this.axios
-      .get(`/property/properties/${this.$route.params.pid}`)
-      .then(res => {
-        this.ajaxData = res.data.property[0];
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
-};
+  };
 </script>
 <style lang="less" scoped>
-@basegreen: rgb(146, 200, 0);
+  @basegreen: rgb(146, 200, 0);
 
-.green {
-  color: @basegreen;
-}
+  .green {
+    color: @basegreen;
+  }
 
-.flex(@way, @way2) {
-  display: flex;
-  justify-content: @way;
-  align-items: @way2;
-}
+  .flex(@way, @way2) {
+    display: flex;
+    justify-content: @way;
+    align-items: @way2;
+  }
 
-.mint-swipe {
-  height: 200px;
-  color: #fff;
-  font-size: 30px;
-  text-align: center;
+  .mint-swipe {
+    height: 200px;
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
 
-  .mint-swipe-item {
-    img {
-      height: 100%;
-      width: 100%;
+    .mint-swipe-item {
+      img {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+      }
+    }
+  }
+
+  #agent {
+    padding: 15px 0;
+    margin: 15px auto;
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row wrap;
+
+    &>.img-warp {
+      img {
+        height: 100%;
+        width: auto;
+      }
+
+      text-align: center;
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+      border: 1px solid #ddd;
+      padding: 1px;
       overflow: hidden;
     }
-  }
-}
-#agent {
-  padding: 15px 0;
-  margin: 15px auto;
-  display: flex;
-  justify-content: flex-start;
-  flex-flow: row wrap;
-  & > .img-warp {
-    img{
-      height: 100%;
-      width: auto;
+
+    .msg {
+      flex: 0 0 auto;
+      margin-left: 30px;
     }
-    text-align: center;
-    width: 5rem;
-    height: 5rem;
-    border-radius: 50%;
-    border: 1px solid #ddd;
-    padding: 1px;
-    overflow: hidden;
-  }
-  .msg {
-    flex: 0 0 auto;
-    margin-left: 30px;
-  }
-  .btn-groups {
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 6px 0;
-    margin-top: 10px;
-    & > div {
-      width: 50%;
-      text-align: center;
-      .fa {
-        margin-right: 10px;
-      }
-      &:last-of-type {
-        border-left: 1px solid #ddd;
+
+    .btn-groups {
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 6px 0;
+      margin-top: 10px;
+
+      &>div {
+        width: 50%;
+        text-align: center;
+
+        .fa {
+          margin-right: 10px;
+        }
+
+        &:last-of-type {
+          border-left: 1px solid #ddd;
+        }
       }
     }
   }
-}
-#property {
-  .key {
-    span {
-      display: inline-block;
-      width: 50%;
-    }
-  }
-  header {
-    font-size: 16px;
-    font-weight: 600 !important;
-    margin-bottom: 10px;
-    width: 100%;
-  }
-  .title {
-    display: flex;
-    justify-content: space-between;
-    background-color: #000;
-    color: #fff;
-    padding: 6px 12px;
-  }
-  .number {
-    padding: 10px 15px 15px;
-    & > span {
-      color: rgb(177, 69, 55);
-    }
-    & > div {
-      .fa {
-        margin: 0 20px 0 10px;
+
+  #property {
+    .key {
+      span {
+        display: inline-block;
+        width: 50%;
       }
     }
-  }
-  .feature {
-    & > div {
-      .flex(space-between, flex-start);
-      .fa-calendar-plus-o {
-        margin-left: 15px;
-      }
+
+    header {
+      font-size: 16px;
+      font-weight: 600 !important;
+      margin-bottom: 10px;
+      width: 100%;
     }
-    .black-btn {
-      border: none;
+
+    .title {
+      display: flex;
+      justify-content: space-between;
+      background-color: #000;
+      color: #fff;
       padding: 6px 12px;
     }
-    padding: 30px 15px;
-    button {
-      height: 34px;
-      .fa-heart {
-        color: red;
+
+    .number {
+      padding: 10px 15px 15px;
+
+      &>span {
+        color: rgb(177, 69, 55);
+      }
+
+      &>div {
+        .fa {
+          margin: 0 20px 0 10px;
+        }
       }
     }
-    & > div > div {
-      button {
+
+    .feature {
+      &>div {
+        .flex(space-between, flex-start);
+
+        .fa-calendar-plus-o {
+          margin-left: 15px;
+        }
+      }
+
+      .black-btn {
+        border: none;
         padding: 6px 12px;
-        background: #fff;
-        border: 1px solid #000;
-        color: #000;
+      }
+
+      padding: 30px 15px;
+
+      button {
+        height: 34px;
+
+        .fa-heart {
+          color: red;
+        }
+      }
+
+      &>div>div {
+        button {
+          padding: 6px 12px;
+          background: #fff;
+          border: 1px solid #000;
+          color: #000;
+        }
       }
     }
-  }
-  .card {
-    
-    border-bottom: 1px solid #ccc;
-    .more {
-      margin-top: 30px;
-    }
-    &:last-child {
-      border-bottom-width: 0px;
-    }
-    .black-btn {
-      border: none;
-      padding: 6px 12px;
-    }
-    ul {
-      li {
+
+    .card {
+      border-bottom: 1px solid #ccc;
+
+      .more {
+        margin-top: 30px;
+      }
+
+      &:last-child {
+        border-bottom-width: 0px;
+      }
+
+      .black-btn {
+        border: none;
+        padding: 6px 12px;
+      }
+
+      ul {
+        li {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px 0;
+          font-size: 12px;
+
+          .link-title {
+            font-size: 14px;
+          }
+
+          .tag {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: grey;
+            line-height: 24px;
+            text-align: center;
+          }
+
+          &+li {
+            border-top: 1px solid #ddd;
+          }
+        }
+      }
+
+      .tab-group {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 10px 0;
-        font-size: 12px;
-        .link-title {
-          font-size: 14px;
-        }
-        .tag {
-          width: 24px;
-          height: 24px;
-          border-radius: 50%;
-          background-color: grey;
-          line-height: 24px;
-          text-align: center;
-        }
-        & + li {
-          border-top: 1px solid #ddd;
+
+        .tab-button {
+          height: 54px;
+          border-radius: 0px;
+          background: none;
+          box-shadow: unset;
+          border-bottom: transparent 2px solid;
+
+          &.active {
+            outline: none;
+            background: none;
+            border-bottom: #333 2px solid;
+            font-weight: 600;
+          }
+
+          &:focus {
+            outline: none;
+          }
         }
       }
+
+      padding: 15px 0;
+
+      header {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+
+      &>div {
+        .flex(space-between, flex-start);
+
+        .fa-calendar-plus-o {
+          margin-left: 15px;
+        }
+      }
+
+      &>p {
+        margin: auto;
+      }
     }
+
     .tab-group {
+      border-bottom: 1px solid #ddd;
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       align-items: center;
 
       .tab-button {
@@ -438,52 +506,14 @@ export default {
         }
       }
     }
-    padding: 15px 0;
-    header {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 6px;
+
+    .ivu-collapse>.ivu-collapse-item>.ivu-collapse-header {
+      color: #fff;
+      background-color: rgb(34, 34, 34);
     }
-    & > div {
-      .flex(space-between, flex-start);
-      .fa-calendar-plus-o {
-        margin-left: 15px;
-      }
-    }
-    & > p {
-      margin: auto;
-    }
-  }
-  .tab-group {
-    border-bottom: 1px solid #ddd;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    .tab-button {
-      height: 54px;
-      border-radius: 0px;
-      background: none;
-      box-shadow: unset;
-      border-bottom: transparent 2px solid;
-      &.active {
-        outline: none;
-        background: none;
-        border-bottom: #333 2px solid;
-        font-weight: 600;
-      }
-      &:focus {
-        outline: none;
-      }
-    }
-  }
-  .ivu-collapse > .ivu-collapse-item > .ivu-collapse-header {
-    color: #fff;
-    background-color: rgb(34, 34, 34);
   }
 
-  
-}
-.ivu-input {
+  .ivu-input {
     border-radius: 16px;
     margin: 10px auto;
   }
