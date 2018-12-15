@@ -180,7 +180,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url(../../assets/img/main.jpg);
+  background: url(../../assets/img/main.png);
   background-position: left;
   background-size: cover;
 }
