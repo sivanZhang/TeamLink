@@ -119,16 +119,16 @@ export default {
               desc: arr[0][0].title
             });
           });
-          arr[0][0].inspections_calendar.forEach(item => {
+          /* arr[0][0].inspections_calendar.forEach(item => {
             this.addcalendar(item.startday,item.endday)
-          });
+          }); */
           this.isPlan = false;
         } else {
           this.isPlan = true;
         }
       });
     },
-    addcalendar(StartDate,EndDate) {
+    /* addcalendar(StartDate,EndDate) {
       
       var startDate = new Date(StartDate); 
       var endDate = new Date(EndDate);
@@ -162,7 +162,7 @@ export default {
           error
         );
       }
-    },
+    }, */
     changeDate(data) {
       console.log(data); //左右点击切换月份
     }
