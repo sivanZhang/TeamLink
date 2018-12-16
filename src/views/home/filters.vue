@@ -10,7 +10,7 @@
         <div @touchstart="clear">Clear</div>
       </header>
       <div class="tab-group row">
-        <button v-for="(tab,index) in tabs" :key="index" :class="[{ active: currentTab === tab.path },'tab-button','btn']" @click="currentTab = tab.path">
+        <button v-for="(tab,index) in tabs" :key="index" :class="[{ active: currentTab === tab.path },'tab-button','common-btn']" @click="currentTab = tab.path">
           {{ tab.name }}
         </button>
       </div>
@@ -57,12 +57,12 @@
           </button>
         </div>
       </section>
-      <section class="features">
+      <router-link tag="section" to="/map" class="features">
         <div>
           Features
         </div>
         <i class="fa fa-chevron-right" aria-hidden="true"></i>
-      </section>
+      </router-link>
       <section>
         Exclude under contract/offer <Checkbox class="pull-right" v-model="single"></Checkbox>
       </section>
@@ -75,12 +75,13 @@
   </transition>
 </template>
 <script>
-  import { Select, Slider } from 'iview'
+  import { Select, Slider,Checkbox } from 'iview'
   export default {
     name: "filters",
     components: {
       Select,
-      Slider
+      Slider,
+      Checkbox
     },
     data() {
       return {

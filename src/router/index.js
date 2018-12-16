@@ -4,6 +4,15 @@ import store from '@/store'
 import { Toast } from "mint-ui";
 Vue.use(Router);
 const routes = [{
+        path: '/map',
+        name: 'MAP',
+        component: () =>
+            import ('@/views/home/gmap'),
+        meta: {
+            keepAlive: true
+        }
+    },
+    {
         path: '/inspection',
         name: 'inspection',
         component: () =>
