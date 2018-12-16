@@ -6,7 +6,12 @@
 
 
 <template>
-  <div><div id="map"></div></div>
+  <div class="main">
+      <mt-header title="MAP" class="header">
+      <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
+    </mt-header>
+    <div id="map"></div>
+  </div>
 </template>
   
 <script>
