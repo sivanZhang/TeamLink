@@ -11,12 +11,16 @@
       <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
     </mt-header>
     <div id="map"></div>
+    <div @click="reload">刷新</div>
   </div>
 </template>
   
 <script>
 export default {
-  created() {},
-  mounted() {}
+  methods:{
+    reload(){
+      window.location.reload();
+    }
+  }
 };
 </script>
