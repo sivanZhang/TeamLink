@@ -77,10 +77,10 @@
     <Mortage></Mortage>
     <section class="card">
       <header>Inspections</header>
-      <div v-for="(inspection,index) in ajaxData.inspections" :key="index">
-        <label class="inspection">{{inspection}}</label>
+      <div v-for="(item,index) in ajaxData.inspections_calendar" :key="index">
+        <label class="inspection">{{item.inspection}}</label>
         <span>
-          <i class="fa fa-calendar-plus-o" :time="inspection" aria-hidden="true" @touchstart="addcalendar(currentTab)"></i>
+          <i class="fa fa-calendar-plus-o" aria-hidden="true" @touchstart="addcalendar(ajaxData.propertyId,item.startday,item.endday)"></i>
         </span>
       </div>
     </section>
@@ -176,9 +176,22 @@
       };
     },
     methods: {
-      addcalendar(StartDate, EndDate) {
-        var startDate = new Date(StartDate);
-        var endDate = new Date(EndDate);
+      addcalendar(propertyId,startdate,enddate) {
+        
+        let data={
+          propertyId,
+          startdate,
+          enddate,
+        }
+         Ajax.postPlan(data).then(res=>{
+          Toast({
+            message: res.data.msg,
+            position: "bottom",
+            duration: 3000,
+          });
+        }).catch();
+       var startDate = new Date(startdate);
+        var endDate = new Date(enddate);
         var title = "My Inspections";
         var eventLocation = "Home";
         var notes = "There is an inspection event here.";
@@ -186,7 +199,7 @@
           Toast({
             message: "Success: Event has been added!",
             position: "bottom",
-            duration: 3000
+            duration: 3000,
           });
         };
         var error = function(message) {
@@ -207,7 +220,7 @@
             endDate,
             success,
             error
-          );
+          ); 
         }
       },
       collections(pid) {
@@ -215,7 +228,6 @@
           propertyid: pid
         };
         Ajax.postCollections(data).then(res => {
-          console.log(res.data.msg);
           if (res.data.msg == "add") {
             this.ajaxData.collection = "Yes";
           }
@@ -223,6 +235,9 @@
             this.ajaxData.collection = "No";
           }
         });
+      },
+      addPlan(propertyId,startdate,enddate){
+        
       }
     },
     components: {

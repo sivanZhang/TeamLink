@@ -6,6 +6,9 @@ const agent = {
     },
     async postCollections(data) {
         return await axiso.post('/collection/collection/', data)
-    }
+    },
+    async postPlan(paylaod) {
+        return await axiso.post('/property/calendar/', paylaod)
+    },
 }
 export default agent
