@@ -19,44 +19,43 @@
       </div>
     </header>
     <div v-if="isPlan" class="nothing">nothing planned yet</div>
-    <template v-else>
       <router-link
-        v-if="agentList"
+      v-else
         tag="div"
         v-for="(item,index) in agentList"
         class="suggest"
         :key="index"
-        :to="{name:'benaa',params:{pid:item[0].propertyId}}"
+        :to="{name:'benaa',params:{pid:item.propertyId}}"
       >
         <div class="suggest-title">
           <i class="fa fa-clock-o" aria-hidden="true"></i>
-          {{new Date()}}
+          {{item.start_time}}~{{item.end_time}}
         </div>
         <div class="suggest-details">
-          <img :src="item[0].images[0]" alt>
+          <img :src="item.images[0]" alt>
         </div>
         <div class="suggest-info">
-          <div>{{item[0].title}}</div>
+          <div>{{item.title}}</div>
           <div>
             <i class="fa fa-picture-o" aria-hidden="true"></i>
-            {{item[0].images.length}}
+            {{item.images.length}}
           </div>
         </div>
         <div class="container">
           <h5>Modern Apartment</h5>
-          <div class="price">${{item[0].attributes.real_estate_property_price}}</div>
+          <div class="price">${{item.attributes.real_estate_property_price}}</div>
           <div class="outfit">
-            {{item[0].attributes.real_estate_property_bedrooms}}
+            {{item.attributes.real_estate_property_bedrooms}}
             <i
               class="fa fa-bed"
               aria-hidden="true"
             ></i>
-            {{item[0].attributes.real_estate_property_bathrooms}}
+            {{item.attributes.real_estate_property_bathrooms}}
             <i
               class="fa fa-bath"
               aria-hidden="true"
             ></i>
-            {{item[0].attributes.real_estate_property_garage}}
+            {{item.attributes.real_estate_property_garage}}
             <i
               class="fa fa-car"
               aria-hidden="true"
@@ -64,7 +63,6 @@
           </div>
         </div>
       </router-link>
-    </template>
   </div>
 </template>
 <script>

@@ -249,7 +249,6 @@
         .get(`/property/properties/${this.$route.params.pid}`)
         .then(res => {
           this.ajaxData = res.data.property[0];
-          this.addcalendar(this.ajaxData.inspections_calendar[0].startday, this.ajaxData.inspections_calendar[0].endday);
         })
         .catch(err => {
           console.log(err);

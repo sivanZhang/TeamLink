@@ -62,7 +62,7 @@
     <div class="selectDate">{{SelectDate||new Date().toDateString()}}</div>
     <div v-if="isPlan" class="nothing">nothing planned yet</div>
     <template v-else>
-      <div v-for="(item,index) in planeList" :key="index" class="plan">
+      <div v-for="(item,index) in planeList" :key="index" class="plan" @click="target(item.propertyId)">
         <div class="plan-date text-center">
           {{item.date}}
           <br>
@@ -94,6 +94,14 @@ export default {
     };
   },
   methods: {
+    target(id){
+      this.$router.push({
+        name:'benaa',
+        params:{
+          pid:id
+        }
+      })
+    },
     getAjax() {
       let self = this;
       AJAX.getInspections().then(res => {
@@ -108,16 +116,12 @@ export default {
           date: `${data}`.replace(/\//g, "-")
         }
       }).then(res => {
-        let arr = res.data.msg;
-        if (arr.length > 0) {
-          this.planeList = [];
-          arr[0][0].inspections.forEach(item => {
-            this.planeList.push({
-              date: selectDate[2],
-              mouth: selectDate[1],
-              title: item,
-              desc: arr[0][0].title
-            });
+        this.planeList = res.data.msg;
+        if (this.planeList.length > 0) {
+          this.planeList.forEach(item => {
+            item.date= selectDate[2],
+             item.mouth= selectDate[1],
+              item.desc= `${item.start_time}~${item.end_time}`
           });
           /* arr[0][0].inspections_calendar.forEach(item => {
             this.addcalendar(item.startday,item.endday)
