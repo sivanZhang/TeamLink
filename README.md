@@ -11,3 +11,5 @@ npm run dev
 npm run build
 
 # 所有的开发文件都在src文件夹下面，包括静态的放在src/assets文件夹下面
+
+＃日历https://www.npmjs.com/package/vue-calendar-component
