@@ -190,9 +190,8 @@
             duration: 3000,
           });
         }).catch();
-       let startDate = new Date(startdate*1000);
-        let endDate = new Date(enddate*1000);
-        console.log(startDate,endDate)
+       let startDate = new Date(startdate);
+        let endDate = new Date(enddate);
         let title = "My Inspections";
         let eventLocation = "Home";
         let notes = "There is an inspection event here.";
