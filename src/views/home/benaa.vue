@@ -259,7 +259,10 @@
 </script>
 <style lang="less" scoped>
   @basegreen: rgb(146, 200, 0);
-
+.fa-calendar-plus-o{
+  color: #2d8cf0;
+  font-size: 14px;
+}
   .green {
     color: @basegreen;
   }
