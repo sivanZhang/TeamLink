@@ -190,19 +190,20 @@
             duration: 3000,
           });
         }).catch();
-       var startDate = new Date(startdate);
-        var endDate = new Date(enddate);
-        var title = "My Inspections";
-        var eventLocation = "Home";
-        var notes = "There is an inspection event here.";
-        var success = function(message) {
+       let startDate = new Date(startdate*1000);
+        let endDate = new Date(enddate*1000);
+        console.log(startDate,endDate)
+        let title = "My Inspections";
+        let eventLocation = "Home";
+        let notes = "There is an inspection event here.";
+        let success = function(message) {
           Toast({
             message: "Success: Event has been added!",
             position: "bottom",
             duration: 3000,
           });
         };
-        var error = function(message) {
+        let error = function(message) {
           Toast({
             message: "Error:" + message,
             position: "bottom",
