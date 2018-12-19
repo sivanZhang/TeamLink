@@ -16,5 +16,8 @@ export default {
     },
     setAgents(state, arr) {
         state.agents = arr
-    }
+    },
+    setBASE_URL(state, url) {
+        state.BASE_URL = url
+    },
 }

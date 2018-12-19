@@ -41,10 +41,6 @@ Vue.component('footer-menu', footerMenu);
 import '@/theme.css'
 import 'animate.css'
 import 'font-awesome/css/font-awesome.min.css'
-//axios
-import axios from '@/axios'
-import VueAxios from 'vue-axios'
-Vue.use(VueAxios, axios);
 //vue 实例化
 new Vue({
     router,

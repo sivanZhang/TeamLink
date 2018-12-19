@@ -14,7 +14,7 @@ let Ajax = axios.create({
         return qs.stringify(data);
     }]
 });
-
+store.commit('setBASE_URL', 'https://www.chidict.com');
 Ajax.interceptors.request.use(
     config => {
         if (store.state.token) {

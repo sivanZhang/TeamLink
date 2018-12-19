@@ -51,7 +51,7 @@ export default {
     return {
       phone_number: this.$store.state.user_name,
       image_src: this.$store.state.portrait,
-      api: this.axios.defaults.baseURL,
+      api: this.$store.state.BASE_URL,
       title: "More"
     };
   },

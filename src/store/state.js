@@ -4,5 +4,6 @@ export default {
     portrait: '',
     search_text: '',
     url: '',
-    agents: [null]
+    agents: [null],
+    BASE_URL: '',
 }
