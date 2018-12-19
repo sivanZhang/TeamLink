@@ -1,16 +1,18 @@
 # TeamLink
 
-> A Vue(WebApp) project
-
+> A Vue.js project
 ## 项目结构
 
 > 所有开发的源代码都在src文件夹下
 
 ``` bash
+│
+├── dist
+│   └── ...         # 打包后的放到生产环境的文件
 ├── src
-    ├── main.js     # 入口JS文件
+│   ├── main.js     # 入口JS文件
     ├── theme.css   # 公共样式
-    ├── App.vue     # 挂载点
+    ├── App.vue     # 根组件
     ├── api
     │   └── ...     # 抽取出API请求
     ├── assets
