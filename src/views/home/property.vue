@@ -149,7 +149,7 @@
           </button>
           -->
         </div>
-        <button class="black-btn" @click="$router.push('/home/benaa/enquiry')">Make an Enquiry</button>
+        <button class="black-btn" @click="$router.push('/home/property/enquiry')">Make an Enquiry</button>
       </div>
     </section>
     <footer-menu></footer-menu>

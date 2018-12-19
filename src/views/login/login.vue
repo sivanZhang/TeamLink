@@ -80,7 +80,7 @@ export default {
             this.$store.commit("setUserName", res.data.username);
             this.$store.commit("setPortrait", res.data.portrait);
             let redirect = decodeURIComponent(this.$route.query.redirect || '/');
-            this.$router.push({
+            this.$router.replace({
             path: redirect
           })
           } else if (res.data.status == "error") {

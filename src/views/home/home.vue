@@ -77,7 +77,7 @@
       },
       target(id) {
         this.$router.push({
-          name: "benaa",
+          name: "property",
           params: {
             pid: id
           }

@@ -11,7 +11,7 @@ export const routes = [{
         path: '/inspection',
         name: 'inspection',
         component: () =>
-            import ('@/views/inspection/inspection'),
+            import ('@/views/discover/inspection'),
         meta: {
             keepAlive: true
         }
@@ -43,13 +43,13 @@ export const routes = [{
         }
     },
     {
-        path: '/benaa/:pid',
-        name: 'benaa',
+        path: '/property/:pid',
+        name: 'property',
         component: () =>
-            import ('@/views/home/benaa')
+            import ('@/views/home/property')
     },
     {
-        path: '/home/benaa/enquiry',
+        path: '/home/property/enquiry',
         name: 'enquiry',
         component: () =>
             import ('@/views/home/enquiry')
@@ -76,13 +76,13 @@ export const routes = [{
         path: '/agent',
         name: 'agent',
         component: () =>
-            import ('@/views/agent/agent')
+            import ('@/views/discover/agent')
     },
     {
         path: '/agentDetail/:aid',
         name: 'agentDetail',
         component: () =>
-            import ('@/views/agent/agentDetail')
+            import ('@/views/discover/agentDetail')
     },
     {
         path: '/collections',

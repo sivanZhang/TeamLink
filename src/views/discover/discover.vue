@@ -27,7 +27,7 @@
         v-for="(item,index) in agentList"
         class="suggest"
         :key="index"
-        :to="{name:'benaa',params:{pid:item[0].propertyId}}"
+        :to="{name:'property',params:{pid:item[0].propertyId}}"
       >
         <div class="suggest-title">
           <i class="fa fa-clock-o" aria-hidden="true"></i>
@@ -93,7 +93,7 @@
     methods: {
       target(id) {
       this.$router.push({
-        name: "benaa",
+        name: "property",
         params: {
           pid: id
         }

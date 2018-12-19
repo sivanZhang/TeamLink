@@ -10,7 +10,7 @@
     </div>
     <div class="container keywords" v-show="isShow">{{axiosData.length||0}} properties found:"{{keyword||' '}}"</div>
     <template v-if="axiosData.length">
-      <router-link tag="div" v-for="(item,index) in axiosData" class="suggest" :key="index" :to="{name:'benaa',params:{pid:item[0].propertyId}}">
+      <router-link tag="div" v-for="(item,index) in axiosData" class="suggest" :key="index" :to="{name:'property',params:{pid:item[0].propertyId}}">
         <div class="suggest-title">
           <i class="fa fa-clock-o" aria-hidden="true"></i>
           {{postedTime}}

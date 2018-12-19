@@ -43,7 +43,7 @@ export default {
   methods: {
     target(pid) {
       this.$router.push({
-        name: `benaa`,
+        name: `property`,
         params: { pid }
       });
     },
