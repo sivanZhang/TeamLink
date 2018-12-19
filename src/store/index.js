@@ -13,10 +13,8 @@ Vue.use(Vuex)
 /* const debug = process.env.NODE_ENV !== 'production' */
 export default new Vuex.Store({
     state,
+    getters,
     mutations,
-    modules
-    /* modules: {
-        cart,
-        products
-      }, */
+    actions,
+    modules,
 })

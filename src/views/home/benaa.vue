@@ -158,6 +158,7 @@
 </template>
 <script>
   import Ajax from "@/api/collections";
+  import { getProperty } from "@/api/home"
   import Mortage from "./mortage";
   import Map from "./map";
   import { Toast } from "mint-ui";
@@ -245,9 +246,7 @@
       Mortage
     },
     mounted() {
-      this.axios
-        .get(`/property/properties/${this.$route.params.pid}`)
-        .then(res => {
+      getProperty(this.$route.params.pid).then(res => {
           this.ajaxData = res.data.property[0];
         })
         .catch(err => {
