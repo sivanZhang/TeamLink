@@ -27,7 +27,7 @@
         └── ...    # 状态管理
 ```
 
-## Build Setup
+## 常用命令
 
 ``` bash
 # install dependencies based on package.json
