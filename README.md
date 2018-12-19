@@ -1,7 +1,4 @@
-# TeamLink
-
-> A Vue.js project
-## 项目结构
+### 项目结构
 
 > 所有开发的源代码都在src文件夹下
 
@@ -30,7 +27,7 @@
     └── store
         └── ...     # 状态管理
 ```
-## Build Setup
+### Build Setup
 
 ``` bash
 # install dependencies
