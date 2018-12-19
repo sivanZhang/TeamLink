@@ -1,33 +1,34 @@
-### 项目结构
+## 项目结构
 
 > 所有开发的源代码都在src文件夹下
 
 ``` bash
 │
 ├── dist
-│   └── ...         # 打包后的放到生产环境的文件
+│   └── ...        # 打包后的放到生产环境的文件
 ├── src
-│   ├── main.js     # 入口JS文件
-    ├── theme.css   # 公共样式
-    ├── App.vue     # 根组件
+│   ├── main.js    # 入口JS文件
+    ├── theme.css  # 公共样式
+    ├── App.vue    # 根组件
     ├── api
-    │   └── ...     # 抽取出API请求
+    │   └── ...    # 抽取出API请求
     ├── assets
-    │   └── ...     # 静态文件
+    │   └── ...    # 静态文件
     ├── axios
-    │   └── ...     # 封装AXIOS
+    │   └── ...    # 封装AXIOS
     ├── components
-    │   └── ...     # 抽取复用类组件
+    │   └── ...    # 抽取复用类组件
     ├── plugins
-    │   └── ...     # 插件
+    │   └── ...    # 插件
     ├── router
-    │   └── ...     # 路由封装
+    │   └── ...    # 路由封装
     ├── views
-    │   └── ...     # 页面
+    │   └── ...    # 页面
     └── store
-        └── ...     # 状态管理
+        └── ...    # 状态管理
 ```
-### Build Setup
+
+## Build Setup
 
 ``` bash
 # install dependencies
@@ -50,4 +51,5 @@ npm run e2e
 
 # run all tests
 npm test
+
 ```
