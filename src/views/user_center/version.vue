@@ -12,7 +12,6 @@
 </template>
 to be expected
 <script>
-import back from "./back";
 export default {
     data(){
     return{
@@ -20,7 +19,6 @@ export default {
     }
     },
     components: {
-    back
   },
   mounteds() {
       document.title='TeamLink-'+this.title;
