@@ -20,9 +20,6 @@
       </li>
     </ul>
   <!--   <mt-picker :slots="slots" @change="onValuesChange"></mt-picker> -->
-  <van-popup v-model="show" position="bottom" :overlay="false">
-  内容
-</van-popup>
   </div>
 </template>
 <script>
