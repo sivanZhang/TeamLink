@@ -52,7 +52,6 @@ export default {
       phone_number: this.$store.state.user_name,
       image_src: this.$store.state.portrait,
       api: this.$store.state.BASE_URL,
-      title: "More"
     };
   },
   computed:{
@@ -66,7 +65,6 @@ export default {
     }
   },
   created() {
-    document.title = "TeamLink-" + this.title;
   }
 };
 </script>

@@ -1,27 +1,17 @@
 <template>
 <div class="text-center container">
-    <mt-header class="row header">
-            <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
-            <mt-button @touchstart.native="$router.push(`/home`)" slot="right">home</mt-button>
-    </mt-header>
+    <van-nav-bar left-arrow @click-left="$router.go(-1)" fixed>
+    </van-nav-bar>
     <h3>To be expected ...</h3>
 </div>
 </template>
 to be expected
 <script>
-import back from "./back";
 export default {
     data(){
     return{
-      title:'Waiting'
     }
     },
-    components: {
-    back
-  },
-  mounteds() {
-      document.title='TeamLink-'+this.title;
-  }
 }
 </script>
 

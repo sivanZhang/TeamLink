@@ -1,9 +1,6 @@
 <template>
-  <div class="container">
-    <mt-header title="profile" class="row header">
-      <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
-      <mt-button @touchstart.native="$router.push(`/home`)" slot="right">home</mt-button>
-    </mt-header>
+  <div class="container main">
+    <van-nav-bar title="Profile" left-arrow @click-left="$router.go(-1)" fixed/>
     <div class="row">
       <div class="col-xs-12">
         <div class="img-container">
@@ -88,7 +85,6 @@
 
 <script>
 import $ from 'jquery'
-import { Toast } from "mint-ui";
 import "@/plugins/cropper/cropper.js";
 import "@/plugins/cropper/canvas-to-blob.js";
 export default {
@@ -297,25 +293,19 @@ export default {
                         "setPortrait",
                         data.file.replace("\\", "/")
                       );
-                      Toast({
+                      this.$toast({
                         message: data["msg"],
-                        position: "bottom",
-                        duration: 3000
                       });
                       self.$router.push("/user_center");
                     } else {
-                      Toast({
+                      this.$toast({
                         message: data["msg"],
-                        position: "bottom",
-                        duration: 3000
                       });
                     }
                   },
                   error: function(error) {
-                    Toast({
+                    this.$toast({
                         message:"Server is down",
-                        position: "bottom",
-                        duration: 3000
                       });
                   }
                 });

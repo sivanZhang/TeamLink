@@ -32,11 +32,9 @@
 
 <script>
 import Ajax from "@/api/collections";
-import { MessageBox } from "mint-ui";
 export default {
   data() {
     return {
-      title: "Collections",
       dataList: []
     };
   },
@@ -48,14 +46,6 @@ export default {
       });
     },
     openPrompt() {
-      MessageBox({
-        title: "Create a New Collection succeed",
-        message: `Name this new collection`,
-        showCancelButton: true,
-        confirmButtonText: "Create",
-        cancelButtonText: "cancel",
-        showInput: true
-      });
     } /* ,
     getHtml(val) {
       this.$store.commit("setUrl", val);
@@ -70,7 +60,6 @@ export default {
       .catch(err => {});
   },
   mounted() {
-    document.title = "TeamLink " + this.title;
   }
 };
 </script>

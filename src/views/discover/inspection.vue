@@ -1,8 +1,8 @@
 <template>
   <div class="main container">
     <header>
-      <router-link to="/discover" slot="left">
-        <mt-button icon="back" class="mybtn"></mt-button>
+      <router-link :to="$router.go(-1)" slot="left">
+        <i class="fa fa-angle-left fa-2x" aria-hidden="true"></i>
       </router-link>
       <div class="datewarp">
         <template v-for="item in week">

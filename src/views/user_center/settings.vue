@@ -1,8 +1,6 @@
 <template>
     <div class="container main">
-        <mt-header title="Setting" class="row header">
-            <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
-        </mt-header>
+        <van-nav-bar title="Setting" left-arrow @click-left="$router.go(-1)" fixed/>
         <ul class="text-left row links">
         <router-link tag="li" to="/user_center/settings/notifications">Notifications<i class="fa fa-fw fa-chevron-right fa-pull-right" aria-hidden="true"></i>
         </router-link>
@@ -17,11 +15,9 @@
 
 <script>
 import { getLogout } from "@/api/userCenter"
-import { Toast } from "mint-ui";
 export default {
   data() {
     return {
-      title: "settings"
     };
   },
   methods: {
@@ -30,16 +26,13 @@ export default {
       this.$store.commit("setUserName", "");
       this.$store.commit("setPortrait", "");
       this.$store.commit("setToken", "");
-      Toast({
+      this.$toast({
               message: "Logged out",
-              position: "bottom",
-              duration: 3000
             });
       this.$router.replace("/home");
     }
   },
   created() {
-    document.title = "TeamLink-" + this.title;
   },
   mounted() {
   },

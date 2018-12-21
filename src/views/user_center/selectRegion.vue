@@ -1,8 +1,6 @@
 <template>
   <div class="container main">
-    <mt-header title="Select Region" class="row header">
-      <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
-    </mt-header>
+     <van-nav-bar title="Select Region" left-arrow @click-left="$router.go(-1)" fixed/>
     <ul class="text-left row links">
       <li>
         <div>Country</div>
@@ -19,7 +17,6 @@
         </div>
       </li>
     </ul>
-  <!--   <mt-picker :slots="slots" @change="onValuesChange"></mt-picker> -->
   </div>
 </template>
 <script>

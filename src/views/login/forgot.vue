@@ -1,11 +1,6 @@
 <template>
-<div>
-    <div class="container">
-      <mt-header title="Forgot" class="row header">
-            <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
-            <mt-button @touchstart.native="$router.push(`/home`)" slot="right">home</mt-button>
-        </mt-header>
-    </div>
+<div class="main">
+    <van-nav-bar title="Forgot" left-arrow @click-left="$router.go(-1)" fixed/>
     <form class="container">
         <div class="text-center title">
           Reset your password
@@ -128,8 +123,6 @@ export default {
         this.setInfo("Please enter your correct phone number");
       }
     }
-  },
-  mounted: function() {
   }
 };
 </script>

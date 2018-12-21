@@ -1,186 +1,240 @@
+/* 
+ *
+ *meta.keepAlive {Boolean}  是否缓存页面
+ *meta.requireAuth {Boolean}  是否拦截登录
+ *meta.title {String}  网页title
+ *
+ */
+
+
 export const routes = [{
-        path: '/map',
-        name: 'MAP',
-        component: () =>
-            import ('@/views/home/gmap'),
-        meta: {
-            keepAlive: true
-        }
-    },
-    {
-        path: '/inspection',
-        name: 'inspection',
-        component: () =>
-            import ('@/views/discover/inspection'),
-        meta: {
-            keepAlive: true
-        }
-    },
-    {
-        path: '/user_center/settings/planer',
-        name: 'Planer',
-        component: () =>
-            import ('@/views/user_center/Planer'),
-        meta: {
-            keepAlive: true
-        }
-    }, {
-        path: '/user_center/settings/notifications',
-        name: 'notifications',
-        component: () =>
-            import ('@/views/user_center/Notifications'),
-        meta: {
-            keepAlive: true
-        }
-    },
-    {
-        path: '/home',
-        name: 'home',
-        component: () =>
-            import ('@/views/home/home'),
-        meta: {
-            keepAlive: true
-        }
-    },
-    {
-        path: '/property/:pid',
-        name: 'property',
-        component: () =>
-            import ('@/views/home/property')
-    },
-    {
-        path: '/home/property/enquiry',
-        name: 'enquiry',
-        component: () =>
-            import ('@/views/home/enquiry')
-    },
-    {
-        path: '/mapExplore/:tid',
-        name: 'mapExplore',
-        component: () =>
-            import ('@/views/home/mapExplore'),
-        meta: {
-            keepAlive: true
-        }
-    },
-    {
-        path: '/filters',
-        name: 'filters',
-        component: () =>
-            import ('@/views/home/filters'),
-        meta: {
-            keepAlive: true
-        }
-    },
-    {
-        path: '/agent',
-        name: 'agent',
-        component: () =>
-            import ('@/views/discover/agent')
-    },
-    {
-        path: '/agentDetail/:aid',
-        name: 'agentDetail',
-        component: () =>
-            import ('@/views/discover/agentDetail')
-    },
-    {
-        path: '/collections',
-        name: 'collections',
-        component: () =>
-            import ('@/views/collections/collectionList')
-            /* ,
-                    meta: {
-                        requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
-                    } */
-    },
-    {
-        path: '/inbox',
-        name: 'inbox',
-        component: () =>
-            import ('@/views/inbox/inbox'),
-        meta: {
-            requireAuth: true
-        }
-    },
-    {
-        path: '/user_center/settings',
-        name: 'settings',
-        component: () =>
-            import ('@/views/user_center/settings')
-    },
-    {
-        path: '/user_center/feedback',
-        name: 'feedback',
-        component: () =>
-            import ('@/views/user_center/feedback')
-    },
-    {
-        path: '/user_center/select_region',
-        name: 'selectRegion',
-        component: () =>
-            import ('@/views/user_center/selectRegion')
-    },
-    {
-        path: '/discover',
-        name: 'discover',
-        component: () =>
-            import ('@/views/discover/discover'),
-        meta: {
-            keepAlive: true
-        }
-    },
-    {
-        path: '/user_center',
-        meta: {
-            requireAuth: true
-        },
-        component: () =>
-            import ('@/views/user_center/userCenter')
-    },
-    {
-        path: '/iframe',
-        name: 'Iframe',
-        component: () =>
-            import ('@/components/Iframe')
-    },
-    {
-        path: '/login',
-        component: () =>
-            import ('@/views/login/login')
-    },
-    {
-        path: '/signup',
-        component: () =>
-            import ('@/views/login/signUp')
-    },
-    {
-        path: '/forgot',
-        component: () =>
-            import ('@/views/login/forgot')
-    },
-    {
-        path: '/change',
-        component: () =>
-            import ('@/views/user_center/change')
-    },
-    {
-        path: '/version',
-        component: () =>
-            import ('@/views/user_center/version')
-    },
-    {
-        path: '/services',
-        component: () =>
-            import ('@/views/user_center/services')
-    },
-    {
-        path: '/waiting',
-        component: () =>
-            import ('@/components/waiting')
-    },
-    {
-        path: '*',
-        redirect: '/home' //匹配不到 默认跳转
+    path: '/map',
+    name: 'MAP',
+    component: () =>
+      import('@/views/home/gmap'),
+    meta: {
+      keepAlive: true,
     }
+  },
+  {
+    path: '/inspection',
+    name: 'inspection',
+    component: () =>
+      import('@/views/discover/inspection'),
+    meta: {
+      keepAlive: true,
+      title: 'TeamLink Inspection',
+    }
+  },
+  {
+    path: '/user_center/settings/planer',
+    name: 'Planer',
+    component: () =>
+      import('@/views/user_center/Planer'),
+    meta: {
+      keepAlive: true,
+      title: 'TeamLink Planer',
+    }
+  }, {
+    path: '/user_center/settings/notifications',
+    name: 'notifications',
+    component: () =>
+      import('@/views/user_center/Notifications'),
+    meta: {
+      keepAlive: true,
+      title: 'TeamLink Notifications',
+    }
+  },
+  {
+    path: '/home',
+    name: 'home',
+    component: () =>
+      import('@/views/home/home'),
+    meta: {
+      keepAlive: true,
+      title: 'TeamLink Home',
+    }
+  },
+  {
+    path: '/property/:pid',
+    name: 'property',
+    component: () =>
+      import('@/views/home/property'),
+    meta: {
+      title: 'TeamLink Property',
+    },
+  },
+  {
+    path: '/home/property/enquiry',
+    name: 'enquiry',
+    component: () =>
+      import('@/views/home/enquiry'),
+    meta: {
+      title: 'TeamLink Enquiry',
+    }
+  },
+  {
+    path: '/mapExplore/:tid',
+    name: 'mapExplore',
+    component: () =>
+      import('@/views/home/mapExplore'),
+    meta: {
+      keepAlive: true,
+      title: 'TeamLink MapExplore',
+    },
+  },
+  {
+    path: '/filters',
+    name: 'filters',
+    component: () =>
+      import('@/views/home/filters'),
+    meta: {
+      keepAlive: true,
+      title: 'TeamLink Filters',
+    },
+  },
+  {
+    path: '/agent',
+    name: 'agent',
+    component: () =>
+      import('@/views/discover/agent'),
+    meta: {
+      title: 'TeamLink Agent',
+    },
+  },
+  {
+    path: '/agentDetail/:aid',
+    name: 'agentDetail',
+    component: () =>
+      import('@/views/discover/agentDetail'),
+    meta: {
+      title: 'TeamLink AgentDetail',
+    },
+  },
+  {
+    path: '/collections',
+    name: 'collections',
+    component: () =>
+      import('@/views/collections/collectionList'),
+    meta: {
+      title: 'TeamLink Collections',
+    },
+  },
+  {
+    path: '/inbox',
+    name: 'Inbox',
+    component: () =>
+      import('@/views/inbox/inbox'),
+    meta: {
+      requireAuth: true,
+      title: 'TeamLink Inbox'
+    },
+  },
+  {
+    path: '/user_center/settings',
+    name: 'settings',
+    component: () =>
+      import('@/views/user_center/settings'),
+    meta: {
+      title: 'TeamLink Settings',
+    },
+  },
+  {
+    path: '/user_center/feedback',
+    name: 'feedback',
+    component: () =>
+      import('@/views/user_center/feedback'),
+    meta: {
+      title: 'TeamLink Feedback',
+    },
+  },
+  {
+    path: '/user_center/select_region',
+    name: 'selectRegion',
+    component: () =>
+      import('@/views/user_center/selectRegion'),
+    meta: {
+      requireAuth: true,
+      title: 'TeamLink SelectRegion',
+    },
+  },
+  {
+    path: '/discover',
+    name: 'discover',
+    component: () =>
+      import('@/views/discover/discover'),
+    meta: {
+      keepAlive: true,
+      title: 'TeamLink Discover',
+    },
+  },
+  {
+    path: '/user_center',
+    meta: {
+      requireAuth: true,
+      title: 'TeamLink UserCenter',
+    },
+    component: () =>
+      import('@/views/user_center/userCenter'),
+  },
+  {
+    path: '/iframe',
+    name: 'Iframe',
+    component: () =>
+      import('@/components/Iframe'),
+  },
+  {
+    path: '/login',
+    component: () =>
+      import('@/views/login/login'),
+    meta: {
+      title: 'TeamLink Login',
+    },
+  },
+  {
+    path: '/signup',
+    component: () =>
+      import('@/views/login/signUp'),
+  },
+  {
+    path: '/forgot',
+    component: () =>
+      import('@/views/login/forgot'),
+  },
+  {
+    path: '/change',
+    component: () =>
+      import('@/views/user_center/change'),
+    meta: {
+      title: 'TeamLink Change',
+    },
+  },
+  {
+    path: '/version',
+    component: () =>
+      import('@/views/user_center/version'),
+    meta: {
+      title: 'TeamLink Version',
+    },
+  },
+  {
+    path: '/services',
+    component: () =>
+      import('@/views/user_center/services'),
+    meta: {
+      title: 'TeamLink Services',
+    },
+  },
+  {
+    path: '/waiting',
+    component: () =>
+      import('@/components/waiting'),
+    meta: {
+      title: 'TeamLink Waiting',
+    },
+  },
+  {
+    path: '*',
+    redirect: '/home' //匹配不到 默认跳转
+  }
 ];

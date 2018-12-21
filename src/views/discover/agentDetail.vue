@@ -1,8 +1,6 @@
 <template>
   <div id="agent">
-    <div class="container">
-      <i class="fa fa-angle-left fa-2x" aria-hidden="true" @touchstart="back"></i>
-    </div>
+    <van-nav-bar left-arrow @click-left="$router.go(-1)"/>
     <section>
       <img :src="agentData[0].image" alt>
       <div class="msg">

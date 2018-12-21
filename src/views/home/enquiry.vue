@@ -1,8 +1,6 @@
 <template>
-  <div class="container"> 
-     <mt-header title="Make an Enquiry" class="header row">
-      <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
-    </mt-header>
+  <div class="container">
+    <van-nav-bar title="Make an Enquiry" left-arrow @click-left="$router.go(-1)" fixed/>
     <section>
       <h4>Name</h4>
       <input v-model="
@@ -26,78 +24,75 @@
   </div>
 </template>
 <script>
-import { Toast } from "mint-ui";
-export default {
-  data() {
-    return {
-      name: "",
-      Email: "",
-      content: "",
-      phone:''
-    };
-  },
-  methods: {
-    confirm() {
-      const REG = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-      if (this.name == "" || this.Email == "" || this.content == ""||this.phone =="") {
-        Toast({
-          message: "The form cannot be empty",
-          position: "bottom",
-          duration: 3000
+  export default {
+    data() {
+      return {
+        name: "",
+        Email: "",
+        content: "",
+        phone: ''
+      };
+    },
+    methods: {
+      confirm() {
+        const REG = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+        if (this.name == "" || this.Email == "" || this.content == "" || this.phone == "") {
+          this.$toast({
+            message: "The form cannot be empty",
+          });
+          return;
+        }
+        debugger
+        if (!REG.test(this.Email)) {
+          this.$toast({
+            message: "Mailbox format error",
+          });
+          return;
+        }
+        this.$toast.success({
+          message: "Success",
         });
-        return;
+        this.$router.go(-1);
       }
-      debugger
-      if (!REG.test(this.Email)) {
-        Toast({
-          message: "Mailbox format error",
-          position: "bottom",
-          duration: 3000
-        });
-        return;
-      }
-      Toast({
-        message: "Success",
-        position: "bottom",
-        duration: 3000
-      });
-      this.$router.go(-1);
     }
-  }
-};
+  };
 </script>
 <style lang="less" scoped>
-section {
-  h4 {
-    margin-bottom: 15px;
-    color: #000;
+  section {
+    h4 {
+      margin-bottom: 15px;
+      color: #000;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid #c5c5c5;
+      padding: 12px;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    &+section {
+      margin-top: 30px;
+    }
+
+    &:first-of-type {
+      margin-top: 30px;
+    }
   }
-  input,
-  textarea {
+
+  .container.row {
+    display: block;
     width: 100%;
-    border: 1px solid #c5c5c5;
-    padding: 12px;
+    position: fixed;
+    bottom: 0;
+
+    button {
+      width: 100%;
+      height: 46px;
+    }
   }
-  textarea {
-    resize: none;
-  }
-  & + section {
-    margin-top: 30px;
-  }
-  &:first-of-type {
-    margin-top: 30px;
-  }
-}
-.container.row {
-  display: block;
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  button {
-    width: 100%;
-    height: 46px;
-  }
-}
 </style>
-
-

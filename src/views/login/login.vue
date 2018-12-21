@@ -1,10 +1,6 @@
 <template>
-  <div>
-    <div class="container">
-      <mt-header title class="row header">
-        <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
-      </mt-header>
-    </div>
+  <div class="main">
+    <van-nav-bar left-arrow @click-left="$router.go(-1)" fixed/>
     <form class="container">
       <div class="text-center title">
         <div>Sign in to TEAMLINK</div>
@@ -39,7 +35,6 @@
 </template>
 
 <script>
-import { Toast } from "mint-ui";
 import Ajax from "@/api/login";
 export default {
   data() {
@@ -71,10 +66,8 @@ export default {
         .then(res => {
           this.loading=false;
           if (res.data.status == "ok") {
-            Toast({
+            this.$toast({
               message: res.data.msg,
-              position: "bottom",
-              duration: 3000
             });
             this.$store.commit("setToken", `JWT ${res.data.token}`);
             this.$store.commit("setUserName", res.data.username);
@@ -84,19 +77,15 @@ export default {
             path: redirect
           })
           } else if (res.data.status == "error") {
-            Toast({
+            this.$toast({
               message: res.data.msg,
-              position: "bottom",
-              duration: 3000
             });
           }
         })
         .catch(error => {
           this.loading=false;
-          Toast({
+          this.$toast({
             message: error,
-            position: "bottom",
-            duration: 3000
           });
         });
     } /* ,

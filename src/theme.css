@@ -195,3 +195,13 @@ input {
 img {
     vertical-align: middle;
 }
+/* vant */
+.van-nav-bar--fixed,.van-nav-bar{
+    height:30px;
+}
+.van-nav-bar{
+    line-height: 30px;
+}
+.van-nav-bar .van-icon{
+    color: #000;
+}

@@ -1,8 +1,6 @@
 <template>
-	<div class="container text-center">
-    <mt-header title="TeamLink" class="row header">
-            <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
-        </mt-header>
+	<div class="container text-center main">
+        <van-nav-bar title="TeamLink" left-arrow @click-left="$router.go(-1)" fixed />
     <div class="iframe-warp row">
       <iframe id="show-iframe" frameborder="0" scrolling="auto" :src="$store.state.url" allowfullscreen></iframe>
     </div>

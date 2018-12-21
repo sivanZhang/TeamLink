@@ -1,9 +1,6 @@
 <template>
-<div class="text-center container">
-    <mt-header class="row header">
-            <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
-            <mt-button @touchstart.native="$router.push(`/home`)" slot="right">home</mt-button>
-    </mt-header>
+<div class="text-center container main">
+    <van-nav-bar title="Services" left-arrow @click-left="$router.go(-1)" fixed/>
     <h3>Terms of Services</h3> 
     <br/>
     <br/> 
@@ -33,13 +30,9 @@ to be expected
 export default {
     data(){
     return{
-      title:'version'
     }
     },
     components: {
-  },
-  mounteds() {
-      document.title='TeamLink-'+this.title;
   }
 }
 </script>

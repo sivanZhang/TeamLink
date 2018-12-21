@@ -1,17 +1,20 @@
 <template>
   <div class="container main">
-    <mt-header title="Teamlink" class="row header"></mt-header>
+    <van-nav-bar title="Teamlink" fixed>
+    </van-nav-bar>
     <div class="search-bg row">
       <div class="search-warp">
-        <div class="tab-group">
-          <button v-for="(tab,index) in tabs" :class="[{ active: currentTab == tab.name },'tab-button','common-btn']" @touchstart="currentTab = tab.name" :key="index">{{ tab.name }}</button>
-        </div>
-        <div class="relative">
-          <i class="fa fa-search" @touchstart="search(currentTab)" aria-hidden="true"></i>
-          <input type="search" v-model="searchText" @keyup.enter="search(currentTab)" class="form-control search">
-        </div>
+        <van-tabs>
+          <van-tab v-for="(tab,index) in tabs" @touchstart="currentTab = tab.name" :key="index" :title="tab.name">
+            <div class="relative">
+              <i class="fa fa-search" @click="search(tab.name)" aria-hidden="true"></i>
+              <input type="search" v-model="searchText" @keyup.enter="search(tab.name)" class="form-control search">
+            </div>
+          </van-tab>
+        </van-tabs>
       </div>
     </div>
+
     <h4>Recently Viewed</h4>
     <div class="data-warp">
       <div class="p-data" v-for="(item,index) in ajaxData" @click="target(item[0].propertyId)" :key="index">
@@ -46,7 +49,6 @@
   export default {
     data() {
       return {
-        title: "Home",
         currentTab: "Buy",
         tabs: [{ name: "Buy" }, { name: "Rent" }],
         searchText: "",
@@ -94,7 +96,6 @@
       }
     },
     created() {
-      document.title = "TeamLink " + this.title;
       this.getAjax()
     }
   };
@@ -176,9 +177,13 @@
     background: #fff;
     width: 100%;
     border-radius: 8px;
+    padding: 4px;
     box-shadow: 0 0 12px 4px rgba(115, 117, 123, 0.12);
     margin: 0 15px;
 
+    & /deep/ .van-tabs__line {
+      background: #000 !important;
+    }
 
     .tab-group {
       border-bottom: 1px solid #ddd;

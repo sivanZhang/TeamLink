@@ -2,7 +2,7 @@ import axios from 'axios'
 import store from '@/store'
 import qs from 'qs'
 import router from '@/router'
-import { Toast } from "mint-ui";
+import { Toast } from "vant";
 
 
 const isPro = Object.is(process.env.NODE_ENV, 'production')
@@ -39,8 +39,6 @@ Ajax.interceptors.response.use(
                     // 返回 403 清除token信息并跳转到登录页面
                     Toast({
                         message: "Please login first",
-                        position: "bottom",
-                        duration: 3000
                     });
                     store.commit('setToken');
                     console.log(store.state.token, '删除TOKEN');

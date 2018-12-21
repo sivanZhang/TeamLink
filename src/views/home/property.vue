@@ -1,14 +1,13 @@
 <template>
-  <div id="property" class="container">
-    <mt-header title="Mordern Apartment" class="header row">
-      <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
-    </mt-header>
+  <div id="property" class="container main">
+    <van-nav-bar title="Mordern Apartment" left-arrow @click-left="$router.go(-1)" fixed/>
     <!-- 轮播图 -->
-    <mt-swipe :auto="3000">
-      <mt-swipe-item v-for="(item,index) in ajaxData.images" :key="index">
-        <img :src="item" alt>
-      </mt-swipe-item>
-    </mt-swipe>
+
+    <van-swipe :autoplay="3000" indicator-color="#009999" height="200">
+        <van-swipe-item v-for="(item, index) in ajaxData.images" :key="index">
+          <img class="swipe-img" :src="item">
+        </van-swipe-item>
+      </van-swipe>
     <div class="title">
       {{ajaxData.title}}
       <div>
@@ -161,7 +160,6 @@
   import { getProperty } from "@/api/home"
   import Mortage from "./mortage";
   import Map from "./map";
-  import { Toast } from "mint-ui";
   export default {
     data() {
       return {
@@ -185,10 +183,8 @@
           enddate,
         }
          Ajax.postPlan(data).then(res=>{
-          Toast({
+          this.$toast({
             message: res.data.msg,
-            position: "bottom",
-            duration: 3000,
           });
         }).catch();
        let startDate = new Date(startdate);
@@ -197,17 +193,13 @@
         let eventLocation = "Home";
         let notes = "There is an inspection event here.";
         let success = function(message) {
-          Toast({
+          this.$toast({
             message: "Success: Event has been added!",
-            position: "bottom",
-            duration: 3000,
           });
         };
         let error = function(message) {
-          Toast({
+          this.$toast({
             message: "Error:" + message,
-            position: "bottom",
-            duration: 3000
           });
         };
 
@@ -257,6 +249,15 @@
 </script>
 <style lang="less" scoped>
   @basegreen: rgb(146, 200, 0);
+ /*  .van-swipe-item {
+    height: 100%;
+    width: 100%;
+  } */
+
+  .swipe-img {
+    height: 100%;
+    width: 100%;
+  }
 .fa-calendar-plus-o{
   color: #2d8cf0;
   font-size: 14px;
@@ -270,22 +271,6 @@
     justify-content: @way;
     align-items: @way2;
   }
-
-  .mint-swipe {
-    height: 200px;
-    color: #fff;
-    font-size: 30px;
-    text-align: center;
-
-    .mint-swipe-item {
-      img {
-        height: 100%;
-        width: 100%;
-        overflow: hidden;
-      }
-    }
-  }
-
   #agent {
     padding: 15px 0;
     margin: 15px auto;

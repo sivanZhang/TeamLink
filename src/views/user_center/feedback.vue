@@ -1,10 +1,6 @@
 <template>
-  <div class="container">
-    <mt-header title="Feedback" class="row">
-      <router-link to="/user_center" slot="left">
-        <mt-button icon="back"></mt-button>
-      </router-link>
-    </mt-header>
+  <div class="container main">
+    <van-nav-bar title="Feedback" left-arrow @click-left="$router.go(-1)" fixed/>
     <section>
       <h4>Name</h4>
       <input v-model="
@@ -24,7 +20,6 @@
   </div>
 </template>
 <script>
-import { Toast } from "mint-ui";
 export default {
   data() {
     return {
@@ -37,26 +32,19 @@ export default {
     confirm() {
       const REG = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
       if (this.name == "" || this.Email == "" || this.content == "") {
-        Toast({
+        this.$toast({
           message: "The form cannot be empty",
-          position: "bottom",
-          duration: 3000
         });
         return;
       }
-      debugger
       if (!REG.test(this.Email)) {
-        Toast({
+        this.$toast({
           message: "Mailbox format error",
-          position: "bottom",
-          duration: 3000
         });
         return;
       }
-      Toast({
+      this.$toast({
         message: "Success",
-        position: "bottom",
-        duration: 3000
       });
       this.$router.go(-1);
     }

@@ -54,9 +54,7 @@
 </style>
 <template>
   <div class="main">
-    <mt-header title="Inspection Planer" class="header">
-      <mt-button @touchstart.native="$router.go(-1)" icon="back" slot="left"></mt-button>
-    </mt-header>
+    <van-nav-bar title="Inspection Planer" left-arrow @click-left="$router.go(-1)" fixed/>
     <Calendar :markDate="dates" :sundayStart="true" @choseDay="clickDay" @changeMonth="changeDate"></Calendar>
 
     <div class="selectDate">{{SelectDate||new Date().toDateString()}}</div>
@@ -78,7 +76,6 @@
 </template>
 
 <script>
-import { Toast } from "mint-ui";
 import Calendar from "@/plugins/calendar";
 import AJAX from "@/api/inspection";
 export default {
@@ -142,14 +139,14 @@ export default {
       var success = function(message) {
         Toast({
           message: "Success: Event has been added!",
-          position: "bottom",
+          ,
           duration: 3000
         });
       };
       var error = function(message) {
         Toast({
           message: "Error:" + message,
-          position: "bottom",
+          ,
           duration: 3000
         });
       };
@@ -167,9 +164,9 @@ export default {
         );
       }
     }, */
-    changeDate(data) {
+   /*  changeDate(data) {
       console.log(data); //左右点击切换月份
-    }
+    } */
   },
   created() {
     this.getAjax();
