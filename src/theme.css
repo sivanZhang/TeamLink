@@ -2,7 +2,6 @@
 
 .main {
     width: 100%;
-    overflow: auto;
     padding-top: 30px;
     /* 如果有头部组件的话 给外层加这个CSS */
 }
@@ -195,13 +194,19 @@ input {
 img {
     vertical-align: middle;
 }
+
+
 /* vant */
-.van-nav-bar--fixed,.van-nav-bar{
-    height:30px;
+
+.van-nav-bar--fixed,
+.van-nav-bar {
+    height: 30px;
 }
-.van-nav-bar{
+
+.van-nav-bar {
     line-height: 30px;
 }
-.van-nav-bar .van-icon{
+
+.van-nav-bar .van-icon {
     color: #000;
 }

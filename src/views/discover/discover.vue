@@ -3,24 +3,24 @@
     <van-nav-bar title="Teamlink" fixed>
     </van-nav-bar>
     <div class="row swipe-warp">
-      <van-swipe :autoplay="3000" indicator-color="#009999" height="200">
+      <van-swipe :height="200" :autoplay="3000" indicator-color="#009999">
         <van-swipe-item v-for="(item, index) in agentList" :key="index" @click.native="target(item[0].propertyId)" >
-          <img class="swipe-img" :src="item[0].images[0]">
+          <img class="swipe-img" :src="item[0].images[0]" />>
         </van-swipe-item>
       </van-swipe>
     </div>
     <div class="group">
       <router-link tag="div" to="/agent">
-        <img src="../../assets/s1.png" alt="">
+        <img src="@/assets/s1.png" alt="">
       </router-link>
       <router-link tag="div" to="/inspection">
-        <img src="../../assets/s4.png" alt="">
+        <img src="@/assets/s4.png" alt="">
       </router-link>
       <div>
-        <img src="../../assets/s3.png" alt="" @click="getHtml(`http://www.home789.com/gfembed/?f=86`)">
+        <img src="@/assets/s3.png" alt="" @click="getHtml(`http://www.home789.com/gfembed/?f=86`)">
       </div>
       <router-link tag="div" to="/agent">
-        <img src="../../assets/s2.png" alt="">
+        <img src="@/assets/s2.png" alt="">
       </router-link>
     </div>
     <h3 class="suggestd-header">Suggestd for you</h3>
@@ -104,12 +104,6 @@
 .swipe-warp {
     margin-bottom: 20px;
   }
-
-  .van-swipe-item {
-    height: 100%;
-    width: 100%;
-  }
-
   .swipe-img {
     height: 100%;
     width: 100%;

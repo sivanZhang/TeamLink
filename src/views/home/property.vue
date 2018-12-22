@@ -3,7 +3,7 @@
     <van-nav-bar title="Mordern Apartment" left-arrow @click-left="$router.go(-1)" fixed/>
     <!-- 轮播图 -->
 
-    <van-swipe :autoplay="3000" indicator-color="#009999" height="200">
+    <van-swipe :autoplay="3000" :height="200" indicator-color="#009999">
         <van-swipe-item v-for="(item, index) in ajaxData.images" :key="index">
           <img class="swipe-img" :src="item">
         </van-swipe-item>

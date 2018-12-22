@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h4>Hello,{{phone_number}}</h4>
+    <h3>Hello,{{phone_number}}</h3>
     <div class="Profile">
       <template v-if="!image_src">
         <div class="df-img">
@@ -87,7 +87,7 @@ ul.links {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background-color: #000;
+  background-color: #009999;
   color: #fff;
   font-size: 30px;
 }

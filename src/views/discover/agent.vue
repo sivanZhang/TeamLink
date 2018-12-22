@@ -1,9 +1,17 @@
 <template>
-  <div id="agent">
-    <Menu>
-      <i class="fa fa-search" aria-hidden="true" @touchstart="search()"></i>
-      <input v-model="searchText" type="search" class="search" placeholder="search"  @keyup.enter="search()">
-    </Menu>
+  <div id="agent" class>
+    <van-nav-bar left-arrow @click-left="$router.go(-1)" :border="true">
+      <div class="search-warp" slot="title">
+        <i class="fa fa-search" aria-hidden="true" @touchstart="search()"></i>
+        <input
+          v-model="searchText"
+          type="search"
+          class="search"
+          placeholder="search"
+          @keyup.enter="search()"
+        >
+      </div>
+    </van-nav-bar>
     <section v-for="(item,index) in agentList" :key="index" @click="getDetail(item[0].agentId)">
       <img :src="item[0].image" alt>
       <div class="msg">
@@ -17,9 +25,10 @@
           <i class="fa fa-commenting" aria-hidden="true"></i>Chat
         </div>
         <div>
-          
           <span style="white-space:pre"></span>
-          <a :href="`tel://${item[0].attributes.real_estate_agent_office_number}`"><i class="fa fa-phone" aria-hidden="true"></i>Call</a>
+          <a :href="`tel://${item[0].attributes.real_estate_agent_office_number}`">
+            <i class="fa fa-phone" aria-hidden="true"></i>Call
+          </a>
         </div>
       </div>
     </section>
@@ -29,26 +38,22 @@
   </div>
 </template>
 <script>
-import Menu from "@/components/back";
 import Ajax from "@/api/agent";
 export default {
-  data(){
-    return{
-  agentList: [null],
-  searchText:''
-    }
+  data() {
+    return {
+      agentList: [null],
+      searchText: ""
+    };
   },
   name: `agent`,
-  components: {
-    Menu
-  },
   methods: {
-    search(){
-      if(this.searchText!=''){
-        let params ={
-          name:this.searchText
-        }
-        this.getAjax(params)
+    search() {
+      if (this.searchText != "") {
+        let params = {
+          name: this.searchText
+        };
+        this.getAjax(params);
       }
     },
     getDetail(agentid) {
@@ -61,7 +66,7 @@ export default {
     },
     getAjax(params) {
       Ajax.getAgent(params).then(res => {
-        this.agentList=JSON.parse(JSON.stringify(res.data.agents))
+        this.agentList = JSON.parse(JSON.stringify(res.data.agents));
       });
     }
   },
@@ -72,9 +77,31 @@ export default {
 </script>
 <style lang="less" scoped>
 #agent {
-  input.search{
-      font-size: 16px;
+  & /deep/ .van-nav-bar{
+    box-shadow: 0 2px 6px 0px rgba(0, 0, 0, 0.12);
+  }
+  & /deep/ .van-nav-bar__title {
+    width: 100%;
+    max-width: unset;
+  }
+  .search-warp {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .fa-search {
+      font-size: 14px;
+      margin-right: 15px;
+      margin-left: 46px;
+      
     }
+    .search {
+      width: 100%;
+      border: 0px;
+      font-size: 14px;
+      margin-right: 15px;
+    }
+  }
+
   section {
     padding: 0 15px;
     margin: 20px auto;
@@ -90,11 +117,11 @@ export default {
       flex: 0 0 auto;
       margin-left: 30px;
       margin-bottom: 10px;
-      .name{
-          font-weight: 600;
+      .name {
+        font-weight: 600;
       }
     }
-    
+
     .btn-groups {
       border-top: 1px solid #ddd;
       border-bottom: 1px solid #ddd;

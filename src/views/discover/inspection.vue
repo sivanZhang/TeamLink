@@ -1,7 +1,7 @@
 <template>
   <div class="main container">
     <header>
-      <router-link :to="$router.go(-1)" slot="left">
+      <router-link to="/discover" slot="left">
         <i class="fa fa-angle-left fa-2x" aria-hidden="true"></i>
       </router-link>
       <div class="datewarp">
@@ -19,50 +19,46 @@
       </div>
     </header>
     <div v-if="isPlan" class="nothing">nothing planned yet</div>
-      <router-link
+    <router-link
       v-else
-        tag="div"
-        v-for="(item,index) in agentList"
-        class="suggest"
-        :key="index"
-        :to="{name:'property',params:{pid:item.propertyId}}"
-      >
-        <div class="suggest-title">
-          <i class="fa fa-clock-o" aria-hidden="true"></i>
-          {{item.start_time}}~{{item.end_time}}
+      tag="div"
+      v-for="(item,index) in agentList"
+      class="suggest"
+      :key="index"
+      :to="{name:'property',params:{pid:item[0].propertyId}}"
+    >
+      <div class="suggest-title">
+        <i class="fa fa-clock-o" aria-hidden="true"></i>
+      </div>
+      <div class="suggest-details">
+        <img :src="item[0].images[0]" alt>
+      </div>
+      <div class="suggest-info">
+        <div>{{item[0].title}}</div>
+        <div>
+          <i class="fa fa-picture-o" aria-hidden="true"></i>
+          {{item[0].images.length}}
         </div>
-        <div class="suggest-details">
-          <img :src="item.images[0]" alt>
+      </div>
+      <div class="container">
+        <h5>Modern Apartment</h5>
+        <div class="price">${{item[0].attributes.real_estate_property_price}}</div>
+        <div class="outfit">
+          {{item[0].attributes.real_estate_property_bedrooms}}
+          <i class="fa fa-bed" aria-hidden="true"></i>
+          {{item[0].attributes.real_estate_property_bathrooms}}
+          <i
+            class="fa fa-bath"
+            aria-hidden="true"
+          ></i>
+          {{item[0].attributes.real_estate_property_garage}}
+          <i
+            class="fa fa-car"
+            aria-hidden="true"
+          ></i>
         </div>
-        <div class="suggest-info">
-          <div>{{item.title}}</div>
-          <div>
-            <i class="fa fa-picture-o" aria-hidden="true"></i>
-            {{item.images.length}}
-          </div>
-        </div>
-        <div class="container">
-          <h5>Modern Apartment</h5>
-          <div class="price">${{item.attributes.real_estate_property_price}}</div>
-          <div class="outfit">
-            {{item.attributes.real_estate_property_bedrooms}}
-            <i
-              class="fa fa-bed"
-              aria-hidden="true"
-            ></i>
-            {{item.attributes.real_estate_property_bathrooms}}
-            <i
-              class="fa fa-bath"
-              aria-hidden="true"
-            ></i>
-            {{item.attributes.real_estate_property_garage}}
-            <i
-              class="fa fa-car"
-              aria-hidden="true"
-            ></i>
-          </div>
-        </div>
-      </router-link>
+      </div>
+    </router-link>
   </div>
 </template>
 <script>
@@ -172,7 +168,7 @@ export default {
   },
   methods: {
     getAjax(date) {
-      AJAX.getDate({
+      AJAX.getInspectionstPlan({
         params: {
           date
         }
@@ -187,8 +183,7 @@ export default {
     }
   },
   mounted() {
-    /* //S事件日期列表 */
-    AJAX.getInspections().then(res => {
+    AJAX.getInspectionsDates().then(res => {
       const DATEARR = res.data.msg;
       this.week.forEach(item2 => {
         DATEARR.forEach(item1 => {
@@ -198,6 +193,7 @@ export default {
         });
       });
     });
+    //事件日期列表
   }
 };
 </script>
@@ -212,6 +208,9 @@ export default {
     padding: 20px;
     font-size: 14px;
   }
+}
+.fa-angle-left {
+  margin-right: 15px;
 }
 .mybtn {
   color: #656b79;

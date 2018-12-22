@@ -55,7 +55,6 @@
   </div>
 </template>
 <script>
-import Menu from "@/components/back";
 import Ajax from "@/api/agent";
 export default {
   data() {
@@ -65,9 +64,6 @@ export default {
     };
   },
   name: `agent`,
-  components: {
-    Menu
-  },
   methods: {
     target(id){
       this.$router.push({

@@ -185,33 +185,6 @@
       background: #000 !important;
     }
 
-    .tab-group {
-      border-bottom: 1px solid #ddd;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-
-      .tab-button {
-        width: 30%;
-        height: 54px;
-        border-radius: 0px;
-        background: none;
-        box-shadow: unset;
-        border-bottom: transparent 2px solid;
-
-        &.active {
-          outline: none;
-          background: none;
-          border-bottom: #333 2px solid;
-          font-weight: 600;
-        }
-
-        &:focus {
-          outline: none;
-
-        }
-      }
-    }
 
     .relative {
       .search {
@@ -220,15 +193,16 @@
         width: 100%;
         color: #333;
         padding-right: 26px;
-        height: 54px;
+        height: 44px;
         border-radius: 8px;
         padding-left: 35px;
+        border-top: 1px solid #ddd;
       }
 
       .fa-search {
         position: absolute;
         right: 15px;
-        bottom: 18px;
+        bottom: 13px;
       }
     }
   }
