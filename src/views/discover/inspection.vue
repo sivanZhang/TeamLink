@@ -1,14 +1,14 @@
 <template>
   <div class="main container">
     <header>
-      <router-link to="/discover" slot="left">
+      <router-link to="/discover">
         <i class="fa fa-angle-left fa-2x" aria-hidden="true"></i>
       </router-link>
       <div class="datewarp">
-        <template v-for="item in week">
+        <template v-for="(item,index) in week">
           <div
             :key="item.datenumber"
-            :class="[item.active?'plan':'',{ active: classactive == item.weekname }]"
+            :class="[item.active?'plan':'',{ active: classactive == item.weekname },index==0?'today':'']"
             :style="item.active?'color: rgb(255, 87, 34);':''"
             @click="getAjax(item.date),classactive = item.weekname"
           >
@@ -45,7 +45,10 @@
         <div class="price">${{item[0].attributes.real_estate_property_price}}</div>
         <div class="outfit">
           {{item[0].attributes.real_estate_property_bedrooms}}
-          <i class="fa fa-bed" aria-hidden="true"></i>
+          <i
+            class="fa fa-bed"
+            aria-hidden="true"
+          ></i>
           {{item[0].attributes.real_estate_property_bathrooms}}
           <i
             class="fa fa-bath"
@@ -68,7 +71,7 @@ export default {
     return {
       dates: [],
       agentList: "",
-      classactive: "Today",
+      classactive: "",
       isPlan: true
     };
   },
@@ -135,32 +138,28 @@ export default {
         }
       ];
       arr.forEach((item, index) => {
-        if (index == 0) {
-          item.weekname = `Today`;
-        } else {
-          switch (item.weekname) {
-            case 0:
-              item.weekname = `Sun`;
-              break;
-            case 1:
-              item.weekname = `Mon`;
-              break;
-            case 2:
-              item.weekname = `Tue`;
-              break;
-            case 3:
-              item.weekname = `Wed`;
-              break;
-            case 4:
-              item.weekname = `Thu`;
-              break;
-            case 5:
-              item.weekname = `Fri`;
-              break;
-            case 6:
-              item.weekname = `Sat`;
-              break;
-          }
+        switch (item.weekname) {
+          case 0:
+            item.weekname = `Sun`;
+            break;
+          case 1:
+            item.weekname = `Mon`;
+            break;
+          case 2:
+            item.weekname = `Tue`;
+            break;
+          case 3:
+            item.weekname = `Wed`;
+            break;
+          case 4:
+            item.weekname = `Thu`;
+            break;
+          case 5:
+            item.weekname = `Fri`;
+            break;
+          case 6:
+            item.weekname = `Sat`;
+            break;
         }
       });
       return arr;
@@ -181,6 +180,9 @@ export default {
         }
       });
     }
+  },
+  created() {
+    this.classactive = this.week[0].weekname;
   },
   mounted() {
     AJAX.getInspectionsDates().then(res => {
@@ -235,17 +237,14 @@ header {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  i,
-  & > div {
-    flex: 1 1 auto;
-  }
+  overflow: hidden;
   .datewarp {
-    display: flex;
-    justify-content: flex-start;
-    flex-flow: row nowrap;
-    overflow: scroll;
+    width: 100%;
+    overflow-x: scroll;
+    white-space: nowrap;
     & > div {
-      width: 100/5%;
+      display: inline-block;
+      width: 20% !important;
     }
   }
 }
@@ -289,6 +288,9 @@ header {
     background: rgb(255, 87, 34);
     padding: 2px 15px;
   }
+}
+.today{
+  color: #009999;
 }
 </style>
 
