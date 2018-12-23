@@ -10,7 +10,7 @@
       <template v-else>
          <img class="user-img" :src="image_src" alt>
       </template>
-      <i class="fa fa-pencil-square-o fa-lg" @touchstart="toChange" aria-hidden="true"></i>
+      <i class="fa fa-pencil-square-o fa-lg" @touchend="toChange" aria-hidden="true"></i>
     </div>
     <ul class="text-left row links">
       <router-link tag="li" to="/user_center/settings/planer">

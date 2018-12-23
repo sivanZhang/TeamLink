@@ -3,11 +3,11 @@
     <!-- mode="in-out" -->
     <div class="container filter">
       <header>
-        <div @touchstart="cancel">Cancel</div>
+        <div @touchend="cancel">Cancel</div>
         <div class="title">
           Filters
         </div>
-        <div @touchstart="clear">Clear</div>
+        <div @touchend="clear">Clear</div>
       </header>
       <div class="tab-group row">
         <button v-for="(tab,index) in tabs" :key="index" :class="[{ active: currentTab === tab.path },'tab-button','common-btn']" @click="currentTab = tab.path">
@@ -39,20 +39,20 @@
       <section class="bedrooms">
         <div>Bedrooms {{selectBedroom}}</div>
         <div class="select-group">
-          <button v-for="(bedroom,index) in bedrooms" :key="index" :class="[{ active: selectBedroom == bedroom.content },'tab-button','btn']" @touchstart="chooseBedroom(bedroom.content)">
+          <button v-for="(bedroom,index) in bedrooms" :key="index" :class="[{ active: selectBedroom == bedroom.content },'tab-button','btn']" @touchend="chooseBedroom(bedroom.content)">
             {{ bedroom.content }}
           </button>
         </div>
         <div>Bathrooms {{selectBathroom}}</div>
         <div class="select-group">
-          <button v-for="(bathroom,index) in bathrooms" :key="index" :class="[{ active: selectBathroom == bathroom.content },'tab-button','btn']" @touchstart="chooseBathroom(bathroom.content)">
+          <button v-for="(bathroom,index) in bathrooms" :key="index" :class="[{ active: selectBathroom == bathroom.content },'tab-button','btn']" @touchend="chooseBathroom(bathroom.content)">
             {{ bathroom.content }}
           </button>
         </div>
 
         <div>Parking {{selectParking}}</div>
         <div class="select-group">
-          <button v-for="(item,index) in parking" :key="index" :class="[{ active: selectParking == item.content },'tab-button','btn']" @touchstart="chooseParking(item.content)">
+          <button v-for="(item,index) in parking" :key="index" :class="[{ active: selectParking == item.content },'tab-button','btn']" @touchend="chooseParking(item.content)">
             {{ item.content }}
           </button>
         </div>
@@ -67,7 +67,7 @@
         Exclude under contract/offer <Checkbox class="pull-right" v-model="single"></Checkbox>
       </section>
       <div class="row">
-        <button @touchstart="apply()" class="apply black-btn common-btn">
+        <button @touchend="apply()" class="apply black-btn common-btn">
           Apply
         </button>
       </div>

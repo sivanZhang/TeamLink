@@ -79,7 +79,7 @@
       <div v-for="(item,index) in ajaxData.inspections_calendar" :key="index">
         <label class="inspection">{{item.inspection}}</label>
         <span>
-          <i class="fa fa-calendar-plus-o" aria-hidden="true" @touchstart="addcalendar(ajaxData.propertyId,item.startday,item.endday)"></i>
+          <i class="fa fa-calendar-plus-o" aria-hidden="true" @touchend="addcalendar(ajaxData.propertyId,item.startday,item.endday)"></i>
         </span>
       </div>
     </section>

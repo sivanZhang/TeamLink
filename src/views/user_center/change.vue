@@ -239,7 +239,7 @@ export default {
       $image.cropper("destroy").cropper(options);
     });
     // Methods for moblie
-    $(".docs-buttons").on("touchstart", "[data-method]", function() {
+    $(".docs-buttons").on("touchend", "[data-method]", function() {
       var $this = $(this);
       var data = $this.data();
       var $target;

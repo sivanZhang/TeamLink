@@ -6,7 +6,7 @@
         <van-tabs>
           <van-tab
             v-for="(tab,index) in tabs"
-            @touchstart="currentTab = tab.name"
+            @touchend="currentTab = tab.name"
             :key="index"
             :title="tab.name"
           >

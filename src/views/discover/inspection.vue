@@ -1,9 +1,7 @@
 <template>
   <div class="main container">
     <header>
-      <router-link to="/discover">
-        <i class="fa fa-angle-left fa-2x" aria-hidden="true"></i>
-      </router-link>
+      <i class="fa fa-angle-left fa-2x" aria-hidden="true" @touchend="$router.push('/discover')"></i>
       <div class="datewarp">
         <template v-for="(item,index) in week">
           <div

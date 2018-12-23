@@ -7,7 +7,7 @@
                 <i class="fa fa-search" aria-hidden="true"></i>
             </div>
         </h2>
-        <section v-for="(item,index) in msgList" @touchstart="getHtml(`http://www.demo-it.com.au/teamlink/wp-admin/edit.php?post_type=notification`)"
+        <section v-for="(item,index) in msgList" @touchend="getHtml(`http://www.demo-it.com.au/teamlink/wp-admin/edit.php?post_type=notification`)"
         :key="index">
             <div class="profile-phone">
                 <img :src="item.img?item.img:defultImg" alt="">

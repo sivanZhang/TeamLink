@@ -1,11 +1,11 @@
 <template>
   <div id="search">
     <div class="input-group container">
-      <i class="fa fa-chevron-left" @touchstart="back" aria-hidden="true"></i>
-      <i class="fa fa-search" @touchstart="search(searchText)" aria-hidden="true"></i>
+      <i class="fa fa-chevron-left" @touchend="back" aria-hidden="true"></i>
+      <i class="fa fa-search" @touchend="search(searchText)" aria-hidden="true"></i>
       <input class="form-control" v-model="searchText" @keyup.enter="search(searchText)" type="text">
       <span class="input-group-addon">
-        <i @touchstart="showFilters" class="fa fa-sliders" aria-hidden="true"></i>
+        <i @touchend="showFilters" class="fa fa-sliders" aria-hidden="true"></i>
       </span>
     </div>
     <div class="container keywords" v-show="isShow">{{axiosData.length||0}} properties found:"{{keyword||' '}}"</div>

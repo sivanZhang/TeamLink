@@ -8,7 +8,7 @@
         </router-link>
         <router-link tag="li" to="/version">Version
         </router-link>
-        <li @touchstart="sign_out">Log Out</li>
+        <li @touchend="sign_out">Log Out</li>
     </ul>
     </div>
 </template>

@@ -2,7 +2,7 @@
   <div id="agent" class>
     <van-nav-bar left-arrow @click-left="$router.go(-1)" :border="true">
       <div class="search-warp" slot="title">
-        <i class="fa fa-search" aria-hidden="true" @touchstart="search()"></i>
+        <i class="fa fa-search" aria-hidden="true" @touchend="search()"></i>
         <input
           v-model="searchText"
           type="search"

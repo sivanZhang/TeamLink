@@ -1,14 +1,13 @@
 <template>
   <ul class="row">
-    <router-link
-    v-for="(item, index) in nav"
-    :to="item.path"
+    <li v-for="(item, index) in nav"
+    @touchend="$router.push(item.path)"
     :key="index" tag='li'>
 		<img class="icons" :src="$route.path.indexOf(item.path)!=-1?item.src_act:item.src" alt="">
 		<div>
 			{{item.name}}
 		</div>
-    </router-link>
+    </li>
   </ul>
 </template>
 
