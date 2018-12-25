@@ -219,6 +219,14 @@ export const routes = [{
         },
     },
     {
+        path: '/googlemap',
+        component: () =>
+            import ('@/views/user_center/googlemap'),
+        meta: {
+            title: 'Map View',
+        },
+    },
+    {
         path: '/services',
         component: () =>
             import ('@/views/user_center/services'),

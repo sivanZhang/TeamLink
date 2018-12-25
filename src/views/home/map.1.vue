@@ -12,7 +12,6 @@
     :position="m.position"
     :clickable="true"
     :draggable="true"
-    :icon="{ url: require('../../assets/marker.png')}" 
     @click="center=m.position"
   />
 </GmapMap>
