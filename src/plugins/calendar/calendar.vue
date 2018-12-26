@@ -83,6 +83,7 @@
   }
 
   .wh_item_date {
+    position: relative;
     width: 100%;
     height: 100%;
     margin: auto;
@@ -126,6 +127,8 @@
       border-radius: 50%;
       background-color: rgb(255, 87, 34);
       position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
       bottom: 5px;
     }
   }
