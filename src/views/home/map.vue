@@ -1,22 +1,45 @@
 <template>
-
-<GmapMap
-  :center="{lat:10, lng:10}"
-  :zoom="7"
-  map-type-id="terrain"
-  style="width: 500px; height: 300px"
->
-  <GmapMarker
-    :key="index"
-    v-for="(m, index) in markers"
-    :position="m.position"
-    :clickable="true"
-    :draggable="true"
-    :icon="{ url: require('../../assets/marker.png')}" 
-    @click="center=m.position"
-  />
-</GmapMap>
+  <div>
+    <GmapMap :center="center" :zoom="7" map-type-id="terrain" style="width: 100%; height: 100%;">
+      <GmapMarker
+        :key="index"
+        v-for="(m, index) in markers"
+        :position="m.position"
+        :clickable="true"
+        :draggable="true"
+        :icon="{ url: require('../../assets/marker.png')}"
+        @click="center=m.position"
+      />
+    </GmapMap>
+  </div>
 </template>
-<script> 
-  </script>
+<script>
+export default {
+  data() {
+    return {};
+  },
+  props: {
+    position: Array
+  },
+  computed: {
+    center() {
+      return {
+        lat: parseFloat(this.position[0]),
+        lng: parseFloat(this.position[1])
+      };
+    },
+    markers() {
+      return [
+        {
+          position: {
+            lat: parseFloat(this.position[0]),
+            lng: parseFloat(this.position[1])
+          }
+        }
+      ];
+    }
+  }
+};
+</script>
+
     

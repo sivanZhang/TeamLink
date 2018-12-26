@@ -2,8 +2,9 @@
   <div id="property" class="container main warp-pb">
     <van-nav-bar title="Mordern Apartment" left-arrow @click-left="$router.go(-1)" fixed/>
     <!-- 轮播图 -->
-
-    <van-swipe :autoplay="3000" :height="200" indicator-color="#009999">
+    
+    <div class="row">
+      <van-swipe :autoplay="3000" :height="200" indicator-color="#009999">
         <van-swipe-item v-for="(item, index) in ajaxData.images" :key="index">
           <img class="swipe-img" :src="item">
         </van-swipe-item>
@@ -27,8 +28,8 @@
         <i class="fa fa-car" aria-hidden="true"></i>
       </div>
     </div>
-    <div></div>
-    <Map style="height:240px;width:100%;"></Map>
+      <Map :position="ajaxData.location" style="height:240px;width:100%;" ></Map></div>
+    
 
     <section class="card key">
       <header>Key Details</header>
