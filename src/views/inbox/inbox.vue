@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container warp-pb">
         <h2>
             Inbox
             <div class="">
@@ -7,8 +7,8 @@
                 <i class="fa fa-search" aria-hidden="true"></i>
             </div>
         </h2>
-        <section v-for="(item,index) in msgList" @touchend="getHtml(`http://www.demo-it.com.au/teamlink/wp-admin/edit.php?post_type=notification`)"
-        :key="index">
+        <router-link v-for="(item,index) in msgList" to="/inboxDetails"
+        :key="index" tag="section">
             <div class="profile-phone">
                 <img :src="item.img?item.img:defultImg" alt="">
             </div>
@@ -26,8 +26,8 @@
                     {{item.content}}
                 </div>
             </div>
-        </section>
-        <footer-menu></footer-menu>
+        </router-link>
+        <footer-menu />
     </div>
 </template>
 <script>
@@ -47,10 +47,6 @@ export default {
     };
   },
   methods: {
-    getHtml(val) {
-      this.$store.commit("setUrl", val);
-      this.$router.push("/iframe");
-    }
   },
   mounted() {
   }

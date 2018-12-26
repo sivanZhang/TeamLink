@@ -1,11 +1,11 @@
 <template>
-	<div class="container text-center main">
+	<div class="container text-center main warp-pb">
         <van-nav-bar title="TeamLink" left-arrow @click-left="$router.go(-1)" fixed />
     <div class="iframe-warp row">
       <iframe id="show-iframe" frameborder="0" scrolling="auto" :src="$store.state.url" allowfullscreen></iframe>
     </div>
     <loading v-if="loading"></loading>
-    <footer-menu></footer-menu>
+    <footer-menu />
 	</div>
 </template>
 

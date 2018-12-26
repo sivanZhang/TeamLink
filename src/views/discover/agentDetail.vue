@@ -1,5 +1,5 @@
 <template>
-  <div id="agent">
+  <div id="agent" class="warp-pb">
     <van-nav-bar left-arrow @click-left="$router.go(-1)"/>
     <section>
       <img :src="agentData[0].image" alt>
@@ -50,7 +50,7 @@
           <i class="fa fa-car" aria-hidden="true"></i>
         </div>
       </div>
-      <footer-menu></footer-menu>
+      <footer-menu />
     </section>
   </div>
 </template>

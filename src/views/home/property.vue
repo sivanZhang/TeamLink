@@ -1,5 +1,5 @@
 <template>
-  <div id="property" class="container main">
+  <div id="property" class="container main warp-pb">
     <van-nav-bar title="Mordern Apartment" left-arrow @click-left="$router.go(-1)" fixed/>
     <!-- 轮播图 -->
 
@@ -151,7 +151,7 @@
         <button class="black-btn" @click="$router.push('/home/property/enquiry')">Make an Enquiry</button>
       </div>
     </section>
-    <footer-menu></footer-menu>
+    <footer-menu />
     <!--  -->
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div id="agent" class>
+  <div id="agent" class="warp-pb">
     <van-nav-bar left-arrow @click-left="$router.go(-1)" :border="true">
       <div class="search-warp" slot="title">
         <i class="fa fa-search" aria-hidden="true" @touchend="search()"></i>
@@ -33,7 +33,7 @@
       </div>
     </section>
     <div class="container">
-      <footer-menu></footer-menu>
+      <footer-menu />
     </div>
   </div>
 </template>

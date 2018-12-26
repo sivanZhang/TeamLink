@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container warp-pb">
     <h3>Hello,{{phone_number}}</h3>
     <div class="Profile">
       <template v-if="!image_src">
@@ -41,7 +41,7 @@
         <i class="fa fa-fw fa-commenting-o fa-pull-right" aria-hidden="true"></i>
       </router-link>
     </ul>
-    <footer-menu></footer-menu>
+    <footer-menu />
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="container main">
+  <div class="container main warp-pb">
     <van-nav-bar title="Teamlink" fixed></van-nav-bar>
     <div class="search-bg row">
       <div class="search-warp">
@@ -61,7 +61,7 @@
       </div>
     </div>
 
-    <footer-menu></footer-menu>
+    <footer-menu />
   </div>
 </template>
 

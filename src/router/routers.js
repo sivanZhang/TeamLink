@@ -132,6 +132,16 @@ export const routes = [{
         },
     },
     {
+        path: '/inboxDetails',
+        name: 'inboxDetails',
+        component: () =>
+            import ('@/views/inbox/inboxDetails'),
+        meta: {
+            requireAuth: true,
+            title: 'TeamLink Inbox'
+        },
+    },
+    {
         path: '/user_center/settings',
         name: 'settings',
         component: () =>

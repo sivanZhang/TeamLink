@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container warp-pb">
     <header>Collection</header>
     <section
       v-for="(item,index) in dataList"
@@ -26,7 +26,7 @@
     <!--
     <img @click="openPrompt" class="icon-add" src="../../assets/icons/add.svg" alt>
     -->
-    <footer-menu></footer-menu>
+    <footer-menu />
   </div>
 </template>
 

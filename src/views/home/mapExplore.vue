@@ -1,5 +1,5 @@
 <template>
-  <div id="search">
+  <div id="search" class="warp-pb">
     <div class="input-group container">
       <i class="fa fa-chevron-left" @touchend="back" aria-hidden="true"></i>
       <i class="fa fa-search" @touchend="search(searchText)" aria-hidden="true"></i>
@@ -40,7 +40,7 @@
       </router-link>
     </template>
     <div class="container">
-      <footer-menu></footer-menu>
+      <footer-menu />
     </div>
 
     <loading v-if="loading"></loading>

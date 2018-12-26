@@ -6,6 +6,13 @@
 }
  */
 
+
+/* 有底部菜单的时候 */
+
+.warp-pb {
+    padding-bottom: 52px;
+}
+
 .main {
     width: 100%;
     padding-top: 30px;
