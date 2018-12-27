@@ -43,7 +43,8 @@ import 'bootstrap/dist/css/bootstrap.min.css' */
 Vue.use(VueGoogleMaps, {
     load: {
       key: 'AIzaSyD5RwuVXVJPzWOXchbytXjKwUxnK34bDMw',
-      libraries: 'places', // This is required if you use the Autocomplete plugin
+      libraries: 'places',
+      language: 'en-US', // This is required if you use the Autocomplete plugin
       // OR: libraries: 'places,drawing'
       // OR: libraries: 'places,drawing,visualization'
       // (as you require)
