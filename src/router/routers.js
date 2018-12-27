@@ -74,13 +74,22 @@ export const routes = [{
         }
     },
     {
-        path: '/mapExplore/:tid',
+        path: '/home/mapExplore/:tid',
         name: 'mapExplore',
         component: () =>
             import ('@/views/home/mapExplore'),
         meta: {
             keepAlive: true,
             title: 'TeamLink MapExplore',
+        },
+    },
+    {
+        path: '/home/mapExploreList/:tid',
+        name: 'mapExploreList',
+        component: () =>
+            import ('@/views/home/mapExploreList'),
+        meta: {
+            title: 'TeamLink mapExploreList',
         },
     },
     {
