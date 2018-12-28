@@ -147,7 +147,8 @@ export const routes = [{
             import ('@/views/inbox/inboxDetails'),
         meta: {
             requireAuth: true,
-            title: 'TeamLink Inbox'
+            title: 'TeamLink Inbox',
+            keepAlive: true,
         },
     },
     {
