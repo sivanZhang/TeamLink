@@ -11,7 +11,7 @@ const ROUTER = new Router({
 ROUTER.beforeEach((to, from, next) => {
     window.document.title = to.meta.title || 'TeamLink';
     if (to.matched.some(r => r.meta.requireAuth)) {
-        if (store.state.token) {
+        if (store.state.token || localStorage.getItem('token')) {
             next();
         } else {
             Toast({

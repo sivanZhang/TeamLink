@@ -17,7 +17,7 @@ let Ajax = axios.create({
 store.commit('setBASE_URL', 'https://www.chidict.com');
 Ajax.interceptors.request.use(
     config => {
-        if (store.state.token) {
+        if (store.state.token || localStorage.getItem('token')) {
             config.headers.Authorization = store.state.token;
             console.log(store.state.token, '加TOKEN');
         }
