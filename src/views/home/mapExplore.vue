@@ -1,6 +1,6 @@
 <template>
   <div id="search">
-    <GmapMap :center="center" :zoom="7" map-type-id="terrain" style="width: 100%; height: 100vh;">
+    <GmapMap :center="center" :zoom="15" map-type-id="terrain" style="width: 100%; height: 100vh;">
       <GmapMarker
         :key="index"
         v-for="(m, index) in markers"
@@ -132,7 +132,8 @@ export default {
               position: {
                 lat: parseInt(item[0].location[0]),
                 lng: parseInt(item[0].location[1])
-              }
+              },
+              title: 'Hello World!'
             });
           });
         })

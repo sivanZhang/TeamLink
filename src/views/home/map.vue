@@ -1,6 +1,14 @@
 <template>
   <div>
-    <GmapMap :center="center" :zoom="7" map-type-id="terrain" style="width: 100%; height: 100%;">
+    <GmapMap :center="center" :zoom="17"  :options="{
+   zoomControl: true,
+   mapTypeControl: true,
+   scaleControl: false,
+   streetViewControl: false,
+   rotateControl: false,
+   fullscreenControl: false,
+   disableDefaultUi: false
+ }" map-type-id="terrain" style="width: 100%; height: 100%;">
       <GmapMarker
         :key="index"
         v-for="(m, index) in markers"
