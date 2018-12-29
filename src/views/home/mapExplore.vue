@@ -1,6 +1,14 @@
 <template>
   <div id="search">
-    <GmapMap :center="center" :zoom="15" map-type-id="terrain" style="width: 100%; height: 100vh;">
+    <GmapMap :center="center" :zoom="17" :options="{
+   zoomControl: true,
+   mapTypeControl: true,
+   scaleControl: false,
+   streetViewControl: false,
+   rotateControl: false,
+   fullscreenControl: false,
+   disableDefaultUi: false
+ }" map-type-id="terrain" style="width: 100%; height: 100vh;">
       <GmapMarker
         :key="index"
         v-for="(m, index) in markers"
@@ -124,14 +132,14 @@ export default {
           this.keyword = keyword;
           this.markers = [];
           this.center = {
-            lat: parseInt(this.AjaxData[0][0].location[0]),
-            lng: parseInt(this.AjaxData[0][0].location[1])
+            lat: parseFloat(this.AjaxData[0][0].location[0]),
+            lng: parseFloat(this.AjaxData[0][0].location[1])
           };
           this.AjaxData.forEach(item => {
             this.markers.push({
               position: {
-                lat: parseInt(item[0].location[0]),
-                lng: parseInt(item[0].location[1])
+                lat: parseFloat(item[0].location[0]),
+                lng: parseFloat(item[0].location[1])
               },
               title: 'Hello World!'
             });
