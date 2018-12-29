@@ -3,7 +3,7 @@
     <van-nav-bar title="Chancy" left-arrow @click-left="$router.go(-1)" fixed border>
       <van-icon name="delete" slot="right"/>
     </van-nav-bar>
-    <div class="chat">
+    <div class="chat" ref="chat">
       <section class="user">
         <div class="content">Hi,I am interested in this property.</div>
         <div class="img">
@@ -72,7 +72,20 @@ export default {
       }
     }
   },
-  mounted() {}
+  watch: {
+   enters() {
+     console.log("chatlog change");
+     this.$nextTick(() => {
+       var container = this.$refs.chat,document;
+       console.log(container);
+       container.scrollTop = container.scrollHeight;
+     })
+     //  document.getElementById('chatContainer').scrollTop = document.getElementById('chatContainer').scrollHeight+150;
+
+   }
+ },
+  mounted() {
+  }
 };
 </script>
 <style lang="less">
