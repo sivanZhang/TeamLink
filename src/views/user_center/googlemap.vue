@@ -1,83 +1,73 @@
 <template>
-  <div>
-    <div>
-      <h2>Search and add a pin</h2>
-      <label>
-        <gmap-autocomplete
-          @place_changed="setPlace">
-        </gmap-autocomplete>
-        <button @click="addMarker">Add</button>
-      </label>
-      <br/>
-
-    </div>
-    <br>
+ <div>
+    test
     <gmap-map
-      :center="center"
-      :zoom="12"
-      style="width:100%;  height: 400px;"
+        :center="center"
+        :zoom="7"
+        style="width: 100%; height: 300px"
     >
-      <gmap-marker
-        :key="index"
-        v-for="(m, index) in markers"
-        :position="m.position"
-        :icon="{ url: require('../../assets/marker.png')}" 
-        @click="center=m.position"
-      ></gmap-marker>
-    </gmap-map>
-  </div>
+        <gmap-marker
+            :key="index"
+            v-for="(m, index) in markers"
+            :position="m.position"
+            :clickable="true"
+            :draggable="true"
+            :label="m.label"
+            @click="openWindow"
+
+        />
+        <gmap-info-window 
+            @closeclick="window_open=false" 
+            :opened="window_open" 
+            :position="infowindow"
+            :options="{
+          pixelOffset: {
+            width: 0,
+            height: -35
+          }
+        }"
+        >
+           <div><a href="" >跳转</a></div> Hello world!
+        </gmap-info-window>    
+    </gmap-map> 
+
+    <table>
+        <thead>
+            <tr></tr>
+        </thead>
+        <tbody>
+            <tr></tr>
+        </tbody>
+    </table>
+</div>
 </template>
 to be expected
 <script>
 export default {
-  name: "GoogleMap",
-  data() {
-    return {
-      // default to Montreal to keep it simple
-      // change this to whatever makes sense
-      center: { lat: 45.508, lng: -73.587 },
-      markers: [{position: { lat: 34.2257301, lng: -108.8928764 }}],
-      places: [],
-      currentPlace: null
-    };
-  },
-
-  mounted() {
-    this.geolocate();
-  },
-
-  methods: {
-    // receives a place object via the autocomplete component
-    setPlace(place) {
-      this.currentPlace = place;
+    data () {
+        return {
+            center: {lat: 10.0, lng: 10.0},
+            markers: [
+                {
+                    label: "A",
+                    position: {lat: 10.0, lng: 10.0}
+                }, 
+                {
+                    label: "B",
+                    position: {lat: 11.0, lng: 11.0}
+                }
+            ],
+            info_marker: null,
+            infowindow: {lat: 10, lng: 10.0},
+            window_open: false
+        }
     },
-    addMarker() {
-      if (this.currentPlace) {
-        var marker = {
-          lat: 34.2257301,
-          lng: 108.8928764
-        };
-        this.markers.push({position: marker});
-        marker = {
-          lat: 34.2257301,
-          lng: 107.8928764
-        };
-        this.markers.push({position: marker});
-        this.places.push(this.currentPlace);
-        this.center = marker;
-        this.currentPlace = null;
-      }
-    },
-    geolocate: function() {
-      navigator.geolocation.getCurrentPosition(position => {
-        this.center = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-      });
-    }
-  }
-};
+    methods: {
+        openWindow () {
+            this.window_open = true
+        }
+    }        
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
