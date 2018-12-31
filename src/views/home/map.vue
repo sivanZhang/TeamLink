@@ -14,7 +14,6 @@
         v-for="(m, index) in markers"
         :position="m.position"
         :clickable="true"
-        :draggable="true"
         :icon="{ url: require('../../assets/location.svg')}"
         @click="center=m.position"
       />
@@ -30,12 +29,6 @@ export default {
     position: Array
   },
   computed: {
-    center() {
-      return {
-        lat: parseFloat(this.position[0]),
-        lng: parseFloat(this.position[1])
-      };
-    },
     markers() {
       return [
         {
@@ -46,6 +39,12 @@ export default {
         }
       ];
     }
+  },
+  created(){
+    this.center={
+        lat: parseFloat(this.position[0]),
+        lng: parseFloat(this.position[1])
+      };
   }
 };
 </script>
