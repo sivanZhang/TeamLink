@@ -1,6 +1,9 @@
 <template>
   <div id="search">
-    <GmapMap :center="center" :zoom="17" :options="{
+    <GmapMap
+      :center="center"
+      :zoom="14"
+      :options="{
    zoomControl: true,
    mapTypeControl: true,
    scaleControl: false,
@@ -8,16 +11,63 @@
    rotateControl: false,
    fullscreenControl: false,
    disableDefaultUi: false
- }" map-type-id="terrain" style="width: 100%; height: 100vh;">
+ }"
+      map-type-id="terrain"
+      style="width: 100%; height: 100vh;"
+    >
       <GmapMarker
-        :key="index"
-        v-for="(m, index) in markers"
-        :position="m.position"
+        v-for="(m, index) in AjaxData"
+        :key="`marker${index}`"
+        :position="{
+                lat: parseFloat(m[0].location[0]),
+                lng: parseFloat(m[0].location[1])
+              }"
         :clickable="true"
-        :icon="{ url: require('../../assets/location.svg')}"
+        :icon="{ url: require('@/assets/location.svg')}"
+        @click="openWindow(m[0])"
       />
+      <gmap-info-window
+        @closeclick="window_open=false"
+        :opened="window_open"
+        :position="infowindow"
+        :options="{
+          pixelOffset: {
+            width: 0,
+            height: -35
+          }
+        }"
+      >
+        <div v-if="mapIfoData" class="p-data-warp map-data" @click="target(mapIfoData.propertyId)">
+          <div class="p-data">
+            <div class="left">
+              <img :src="mapIfoData.images[0][0]" alt>
+            </div>
+            <div class="right">
+              <div>{{mapIfoData.title}}</div>
+              <div class="adress">Modern Apartment</div>
+              <div class="money">$ {{mapIfoData.attributes.real_estate_property_price}}</div>
+              <div>
+                {{mapIfoData.attributes.real_estate_property_bedrooms}}
+                <i
+                  class="fa fa-bed"
+                  aria-hidden="true"
+                ></i>
+                {{mapIfoData.attributes.real_estate_property_bathrooms}}
+                <i
+                  class="fa fa-bath"
+                  aria-hidden="true"
+                ></i>
+                {{mapIfoData.attributes.real_estate_property_garage}}
+                <i
+                  class="fa fa-car"
+                  aria-hidden="true"
+                ></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </gmap-info-window>
     </GmapMap>
-
     <div class="input-group">
       <i class="fa fa-angle-left fa-2x" @touchend="back" aria-hidden="true"></i>
       <i class="fa fa-search" @touchend="search(searchText)" aria-hidden="true"></i>
@@ -33,7 +83,10 @@
     </div>
     <div class="data-warp" v-show="isShow">
       <div class="keywords">
-        <div><i class="fa fa-angle-left fa-2x" aria-hidden="true"></i>{{AjaxData.length||0}} Listings</div>
+        <div>
+          <i class="fa fa-angle-left fa-2x" aria-hidden="true" @click="isShow=!isShow"></i>
+          {{AjaxData.length||0}} Listings
+        </div>
         <div @touchend="viewAll">View All</div>
       </div>
       <div v-if="AjaxData.length" class="p-data-warp">
@@ -91,18 +144,34 @@ export default {
       AjaxData: [],
       keyword: "",
       center: { lat: 45.508, lng: -73.587 },
-      markers: [{ position: { lat: 45.508, lng: -73.587 } }]
+      window_open: false,
+      infowindow: {},
+      mapIfoData: null,
     };
   },
   methods: {
+    /*
+     *
+     * @datalist {object} 当前maker位置的property
+     *
+     */
+    openWindow(datalist) {
+      this.infowindow = {
+        lat: parseFloat(datalist.location[0]),
+        lng: parseFloat(datalist.location[1])
+      };
+      this.mapIfoData = null;
+      this.mapIfoData = datalist;
+      this.window_open = true;
+    },
     viewAll() {
       // prep some variables
       this.$store.commit("set_search", this.searchText);
       this.$router.push({
         name: "mapExploreList",
         params: {
-          tid: this.$route.params.tid,
-        },
+          tid: this.$route.params.tid
+        }
       });
     },
     showFilters() {
@@ -130,20 +199,10 @@ export default {
 
           this.AjaxData = res.data.properties;
           this.keyword = keyword;
-          this.markers = [];
           this.center = {
             lat: parseFloat(this.AjaxData[0][0].location[0]),
             lng: parseFloat(this.AjaxData[0][0].location[1])
           };
-          this.AjaxData.forEach(item => {
-            this.markers.push({
-              position: {
-                lat: parseFloat(item[0].location[0]),
-                lng: parseFloat(item[0].location[1])
-              },
-              title: 'Hello World!'
-            });
-          });
         })
         .catch(err => {
           console.log(err);
@@ -176,70 +235,82 @@ export default {
   width: 100%;
   background-color: #fff;
   .keywords {
-    i{
+    i {
       margin-right: 15px;
     }
     display: flex;
     justify-content: space-between;
   }
-  .p-data-warp {
-    .clock {
-      color: #fff;
-      background: rgb(255, 87, 34);
-      padding: 2px 10px;
-      width: 100%;
-      margin-top: 8px;
-    }
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
-    .p-data {
-      display: flex;
-      justify-content: flex-start;
-      margin-right: 15px;
-      border: 1px solid #ddd;
-      width: 100%;
-
-      .left {
-        flex: 0 0 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        margin-right: 15px;
-
-        img {
-          width: 5.8rem;
-          height: 5.8rem;
-        }
-
-        .fa {
-          position: absolute;
-          right: 1rem;
-          top: 1rem;
-          color: #fff;
-          font-size: 16px;
-        }
-      }
-
-      .right {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        flex-flow: column nowrap;
-        width: 100%;
-        color: #757575;
-
-        .adress {
-          color: #333;
-        }
-
-        .money {
-          color: rgb(177, 69, 55);
-        }
+}
+.map-data {
+  font-size: 12px;
+  
+  .p-data-warp& > .p-data {
+    border:0px;
+    .left {
+      img {
+        width: 5rem;
+        height: 5rem;
       }
     }
   }
 }
+.p-data-warp {
+  .clock {
+    color: #fff;
+    background: rgb(255, 87, 34);
+    padding: 2px 10px;
+    width: 100%;
+    margin-top: 8px;
+  }
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+  .p-data {
+    display: flex;
+    justify-content: flex-start;
+    margin-right: 15px;
+    border: 1px solid #ddd;
+    width: 100%;
 
+    .left {
+      flex: 0 0 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-right: 15px;
+
+      img {
+        width: 5.8rem;
+        height: 5.8rem;
+      }
+
+      .fa {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        color: #fff;
+        font-size: 16px;
+      }
+    }
+
+    .right {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-flow: column nowrap;
+      width: 100%;
+      color: #757575;
+
+      .adress {
+        color: #333;
+      }
+
+      .money {
+        color: rgb(177, 69, 55);
+      }
+    }
+  }
+}
 .fa {
   font-size: 16px;
 }
