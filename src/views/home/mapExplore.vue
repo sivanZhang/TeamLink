@@ -1,10 +1,18 @@
 <template>
   <div id="search">
+    <!-- <div class="btns">
+      <div>
+        <img src alt>
+      </div>
+      <div>
+        <img src alt>
+      </div>
+    </div> -->
     <GmapMap
       :center="center"
       :zoom="14"
       :options="{
-   zoomControl: true,
+   zoomControl: false,
    mapTypeControl: true,
    scaleControl: false,
    streetViewControl: false,
@@ -145,7 +153,7 @@ export default {
       center: { lat: 45.508, lng: -73.587 },
       window_open: false,
       infowindow: {},
-      mapIfoData: null,
+      mapIfoData: null
     };
   },
   methods: {
@@ -243,9 +251,9 @@ export default {
 }
 .map-data {
   font-size: 12px;
-  
+
   .p-data-warp& > .p-data {
-    border:0px;
+    border: 0px;
     .left {
       img {
         width: 5rem;
@@ -417,5 +425,8 @@ export default {
   & /deep/ .gm-control-active.gm-fullscreen-control {
     margin: 60px 10px 10px !important;
   }
+  /* & /deep/ .gmnoprint.gm-bundled-control.gm-bundled-control-on-bottom {
+    display: none;
+  } */
 }
 </style>

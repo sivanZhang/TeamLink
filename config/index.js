@@ -11,7 +11,7 @@ module.exports = {
         assetsPublicPath: '/',
         proxyTable: { // config/index.js文件
             '/api': {
-                target: 'https://www.chidict.com',
+                target: 'https://tl.chidict.com',
                 changeOrigin: true, //跨域
                 pathRewrite: {
                     '^/api': '/'
