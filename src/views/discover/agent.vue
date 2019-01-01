@@ -65,8 +65,12 @@ export default {
       });
     },
     getAjax(params) {
+      this.$toast.loading({
+        mask: true
+      });
       Ajax.getAgent(params).then(res => {
         this.agentList = JSON.parse(JSON.stringify(res.data.agents));
+        this.$toast.clear();
       });
     }
   },
@@ -115,7 +119,7 @@ export default {
     }
     .msg {
       flex: 0 0 auto;
-      margin-left: 30px;
+      margin-left: 20px;
       margin-bottom: 10px;
       .name {
         font-weight: 600;
