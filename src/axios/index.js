@@ -7,13 +7,15 @@ import { Toast } from "vant";
 
 const isPro = Object.is(process.env.NODE_ENV, 'production')
 let Ajax = axios.create({
-    baseURL: isPro ? 'https://www.chidict.com' : 'api/',
+    //生产环境API
+    baseURL: isPro ? 'https://tl.chidict.com' : 'api/', //https://www.chidict.com
     timeout: 10000,
     ransformRequest: [data => {
         // 对 data 进行任意转换处理
         return qs.stringify(data);
     }]
 });
+//把API放到store中，以便将来给图片等服务器资源加前缀
 store.commit('setBASE_URL', 'https://tl.chidict.com');
 Ajax.interceptors.request.use(
     config => {

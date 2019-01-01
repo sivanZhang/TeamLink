@@ -9,9 +9,9 @@ module.exports = {
     dev: {
         assetsSubDirectory: 'static',
         assetsPublicPath: '/',
-        proxyTable: { // config/index.js文件
+        proxyTable: { //开发环境API
             '/api': {
-                target: 'https://www.chidict.com',
+                target: 'https://tl.chidict.com',
                 changeOrigin: true, //跨域
                 pathRewrite: {
                     '^/api': '/'
