@@ -44,7 +44,6 @@
             </div>
             <div class="right">
               <div>{{mapIfoData.title}}</div>
-              <div class="adress">Modern Apartment</div>
               <div class="money">$ {{mapIfoData.attributes.real_estate_property_price}}</div>
               <div>
                 {{mapIfoData.attributes.real_estate_property_bedrooms}}
