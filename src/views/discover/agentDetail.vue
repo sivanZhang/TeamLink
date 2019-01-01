@@ -8,8 +8,8 @@
         <div>E:{{agentData[0].attributes.real_estate_agent_email}}</div>
         <div>M:{{agentData[0].attributes.real_estate_agent_mobile_number}}</div>
         <div class="btn-groups">
-          <div>
-            <i class="fa fa-commenting" aria-hidden="true" @click="$router.push('/inboxDetails')"></i>Chat
+          <div @click="$router.push('/inboxDetails')">
+            <i class="fa fa-commenting" aria-hidden="true"></i>Chat
           </div>
           <div>
             <span style="white-space:pre"></span>

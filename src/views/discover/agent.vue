@@ -21,8 +21,8 @@
         <div>M:{{item[0].attributes.real_estate_agent_mobile_number}}</div>
       </div>
       <div class="btn-groups">
-        <div>
-          <i class="fa fa-commenting" aria-hidden="true" @click.stop="$router.push('/inboxDetails')"></i>Chat
+        <div @click.stop="$router.push('/inboxDetails')">
+          <i class="fa fa-commenting" aria-hidden="true"></i>Chat
         </div>
         <div>
           <span style="white-space:pre"></span>

@@ -94,7 +94,7 @@
           <i class="fa fa-angle-left fa-2x" aria-hidden="true" @click="isShow=!isShow"></i>
           {{AjaxData.length||0}} Listings
         </div>
-        <div @touchend="viewAll">View All</div>
+        <div @click="viewAll">View All</div>
       </div>
       <div v-if="AjaxData.length" class="p-data-warp">
         <div class="clock">
