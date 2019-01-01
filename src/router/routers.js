@@ -109,6 +109,7 @@ export const routes = [{
             import ('@/views/discover/agent'),
         meta: {
             title: 'TeamLink Agent',
+            keepAlive: true,
         },
     },
     {
@@ -118,6 +119,7 @@ export const routes = [{
             import ('@/views/discover/agentDetail'),
         meta: {
             title: 'TeamLink AgentDetail',
+            keepAlive: true,
         },
     },
     {
