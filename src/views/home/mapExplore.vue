@@ -7,7 +7,7 @@
       <div>
         <img src alt>
       </div>
-    </div> -->
+    </div>-->
     <GmapMap
       :center="center"
       :zoom="14"
@@ -133,8 +133,6 @@
     <div class="container">
       <footer-menu/>
     </div>
-
-    <loading v-if="loading"></loading>
     <!-- <filters v-show="filtersShow"></filters> -->
   </div>
 </template>
@@ -147,7 +145,6 @@ export default {
       postedTime: "",
       /* filtersShow: false, */
       searchText: "",
-      loading: false,
       AjaxData: [],
       keyword: "",
       center: { lat: 45.508, lng: -73.587 },
@@ -173,7 +170,10 @@ export default {
     },
     viewAll() {
       // prep some variables
-      this.$store.commit("set_search", this.searchText);
+      this.$store.commit("setViewList", {
+        obj: this.AjaxData,
+        keyword: this.keyword
+      });
       this.$router.push({
         name: "mapExploreList",
         params: {
@@ -196,22 +196,25 @@ export default {
       if (!keyword) {
         return;
       }
-      this.isShow = true;
+      this.$toast.loading({
+        mask: true
+      });
       let params = {
         title: keyword
       };
       getSearch(params)
         .then(res => {
-          this.loading = false;
-
+          this.$toast.clear();
           this.AjaxData = res.data.properties;
           this.keyword = keyword;
           this.center = {
             lat: parseFloat(this.AjaxData[0][0].location[0]),
             lng: parseFloat(this.AjaxData[0][0].location[1])
           };
+          this.isShow = true;
         })
         .catch(err => {
+          this.$toast.clear();
           console.log(err);
         });
     },
@@ -219,10 +222,7 @@ export default {
       this.$router.go(-1);
     }
   },
-  created() {
-    let params = this.$store.state.search_text;
-    this.search(params);
-  },
+  created() {},
   mounted() {
     let self = this;
     if (self.$store.state.search_text != "") {

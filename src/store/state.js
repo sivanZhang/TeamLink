@@ -6,4 +6,6 @@ export default {
     url: '',
     agents: [null],
     BASE_URL: '',
+    viewList: null,
+    keyword: '',
 }

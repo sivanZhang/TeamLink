@@ -22,7 +22,7 @@
       </div>
       <div class="btn-groups">
         <div>
-          <i class="fa fa-commenting" aria-hidden="true"></i>Chat
+          <i class="fa fa-commenting" aria-hidden="true" @click.stop="$router.push('/inboxDetails')"></i>Chat
         </div>
         <div>
           <span style="white-space:pre"></span>

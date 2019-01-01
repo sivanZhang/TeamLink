@@ -21,4 +21,8 @@ export default {
     setBASE_URL(state, url) {
         state.BASE_URL = url
     },
+    setViewList(state, payload) {
+        state.viewList = payload.obj;
+        state.keyword = payload.keyword;
+    },
 }
