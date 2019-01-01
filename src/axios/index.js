@@ -7,7 +7,7 @@ import { Toast } from "vant";
 
 const isPro = Object.is(process.env.NODE_ENV, 'production')
 let Ajax = axios.create({
-    baseURL: isPro ? 'https://tl.chidict.com' : 'api/',
+    baseURL: isPro ? 'https://www.chidict.com' : 'api/',
     timeout: 10000,
     ransformRequest: [data => {
         // 对 data 进行任意转换处理
@@ -19,7 +19,7 @@ Ajax.interceptors.request.use(
     config => {
         if (store.state.token || localStorage.getItem('token')) {
             config.headers.Authorization = store.state.token;
-            console.log(store.state.token, '加TOKEN');
+            console.log(store.state.token, '加TOKEN'); /*  */
         }
         return config;
     },
