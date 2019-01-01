@@ -19,7 +19,7 @@
       <div>
         <img src="@/assets/s3.png" alt="" @click="getHtml(`http://www.home789.com/gfembed/?f=86`)">
       </div>
-      <router-link tag="div" to="/googlemap">
+      <router-link tag="div" to="/agent">
         <img src="@/assets/s2.png" alt="">
       </router-link>
     </div>
