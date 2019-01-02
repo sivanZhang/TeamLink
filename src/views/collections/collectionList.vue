@@ -82,17 +82,25 @@ header {
     justify-content: center;
     & > div {
       width: 50%;
-      height: 172px;
+      height: 50vw;
+      padding-bottom: 16px;
       overflow: hidden;
+      &:first-child{
+        padding-right: 1px;
+      }
+      &:last-child{
+        padding-left: 1px;
+      }
       img {
         height: 100%;
-        width: auto;
-        
+        width: 100%;
+        object-fit: cover;
       }
     }
   }
   .item-footer {
-    padding: 10px 15px;
+    padding: 0 15px 10px;
+    margin-top: -5px;
     .flex {
       display: flex;
       justify-content: space-between;

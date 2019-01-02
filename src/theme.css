@@ -13,6 +13,10 @@
     padding-bottom: 52px;
 }
 
+img {
+    object-fit: cover;
+}
+
 .main {
     width: 100%;
     padding-top: 30px;
@@ -21,6 +25,7 @@
 
 body,
 html {
+    box-sizing: content-box;
     margin: 0;
     padding: 0;
     color: #000;

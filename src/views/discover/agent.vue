@@ -1,6 +1,6 @@
 <template>
-  <div id="agent" class="warp-pb">
-    <van-nav-bar left-arrow @click-left="$router.go(-1)" :border="true">
+  <div id="agent" class="warp-pb main">
+    <van-nav-bar left-arrow @click-left="$router.go(-1)" :border="true" fixed>
       <div class="search-warp" slot="title">
         <i class="fa fa-search" aria-hidden="true" @touchend="search()"></i>
         <input
@@ -66,7 +66,7 @@ export default {
     },
     getAjax(params) {
       this.$toast.loading({
-        mask: true
+        mask: false
       });
       Ajax.getAgent(params).then(res => {
         this.agentList = JSON.parse(JSON.stringify(res.data.agents));
@@ -82,7 +82,7 @@ export default {
 <style lang="less" scoped>
 #agent {
   & /deep/ .van-nav-bar{
-    box-shadow: 0 2px 6px 0px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 1px 6px 0px rgba(0, 0, 0, 0.12);
   }
   & /deep/ .van-nav-bar__title {
     width: 100%;
@@ -112,15 +112,16 @@ export default {
     display: flex;
     justify-content: flex-start;
     flex-flow: row wrap;
-    & > img {
-      width: 6rem;
-      height: 6rem;
+    & > img { 
+      width: 5.8rem;
+      height: 5.8rem;
       border-radius: 50%;
+      object-fit: cover;
+      border: #eee 1px solid;
     }
     .msg {
       flex: 0 0 auto;
       margin-left: 20px;
-      margin-bottom: 10px;
       .name {
         font-weight: 600;
       }
@@ -130,6 +131,7 @@ export default {
       border-top: 1px solid #ddd;
       border-bottom: 1px solid #ddd;
       width: 100%;
+      margin-top: 5px;
       display: flex;
       justify-content: center;
       padding: 6px 0;

@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import * as VueGoogleMaps from 'vue2-google-maps'
 import App from '@/App'
 import router from '@/router'
 import store from '@/store'
@@ -26,8 +25,8 @@ import '@/theme.css'
 import 'animate.css'
 import 'font-awesome/css/font-awesome.min.css'
 // 解决移动端300毫秒延迟
-/* import FastClick from 'fastclick'
-FastClick.attach(document.body); */
+import FastClick from 'fastclick'
+FastClick.attach(document.body);
 
 //设置为 false 以阻止 vue 在启动时生成生产提示。
 Vue.config.productionTip = false;
@@ -38,6 +37,7 @@ Vue.component('footer-menu', footerMenu);
 
 /* import 'bootstrap/dist/js/bootstrap.min.js'
 import 'bootstrap/dist/css/bootstrap.min.css' */
+import * as VueGoogleMaps from 'vue2-google-maps'
 Vue.use(VueGoogleMaps, {
     load: {
         key: 'AIzaSyD5RwuVXVJPzWOXchbytXjKwUxnK34bDMw',
@@ -63,7 +63,6 @@ Vue.use(VueGoogleMaps, {
     // then disable the following:
     //installComponents: true,
 })
-
 new Vue({
     router,
     store,

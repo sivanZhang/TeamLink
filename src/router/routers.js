@@ -119,7 +119,6 @@ export const routes = [{
             import ('@/views/discover/agentDetail'),
         meta: {
             title: 'TeamLink AgentDetail',
-            keepAlive: true,
         },
     },
     {

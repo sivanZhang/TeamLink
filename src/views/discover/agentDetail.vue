@@ -83,10 +83,14 @@ export default {
       Ajax.getAgentDetail(this.$route.params.aid).then(res => {
         this.agentData = res.data.agent;
         this.properties = res.data.properties;
+        this.$toast.clear();
       });
     }
   },
   created() {
+    this.$toast.loading({
+        mask: false
+      });
     this.getAjax();
   }
 };
@@ -106,8 +110,9 @@ export default {
         flex: 0 0 0;
         position: relative;
         img {
-          width: 10rem;
-          height: 10rem;
+          width: 7rem;
+          height: 7rem;
+          object-fit: cover;
         }
         .fa {
           position: absolute;
@@ -150,6 +155,7 @@ export default {
     & > img {
       width: 6rem;
       height: 6rem;
+      object-fit: cover;
     }
     .msg {
       flex: 1 0 auto;

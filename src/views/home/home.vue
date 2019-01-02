@@ -26,42 +26,43 @@
 
     <h4>Recently Viewed</h4>
     <div class="data-warp">
-      <div
-        class="p-data"
-        v-for="(item,index) in ajaxData"
-        @click="target(item[0].propertyId)"
-        :key="index"
-      >
-        <div class="left">
-          <img :src="item[0].images[0]" alt>
-          <!-- <i @click.stop="collections(item[0].propertyId)" :class="['fa',item[0].collection=='Yes'?`fa-heart`:`fa-heart-o`]" class="fa" aria-hidden="true"></i> -->
-        </div>
-        <div class="right">
-          <div>{{item[0].title}}</div>
-          <div class="adress">Modern Apartment</div>
-          <div class="money">$ {{item[0].attributes.real_estate_property_price}}</div>
-          <div>
-            {{item[0].attributes.real_estate_property_bedrooms}}
-            <i
-              class="fa fa-bed"
-              aria-hidden="true"
-            ></i>
-            {{item[0].attributes.real_estate_property_bathrooms}}
-            <i
-              class="fa fa-bath"
-              aria-hidden="true"
-            ></i>
-            {{item[0].attributes.real_estate_property_garage}}
-            <i
-              class="fa fa-car"
-              aria-hidden="true"
-            ></i>
+      <van-loading class="loading"/>
+<div
+          class="p-data"
+          v-for="(item,index) in ajaxData"
+          @click="target(item[0].propertyId)"
+          :key="index"
+        >
+          <div class="left">
+            <img :src="item[0].images[0]" alt>
+            <!-- <i @click.stop="collections(item[0].propertyId)" :class="['fa',item[0].collection=='Yes'?`fa-heart`:`fa-heart-o`]" class="fa" aria-hidden="true"></i> -->
+          </div>
+          <div class="right">
+            <div>{{item[0].title}}</div>
+            <div class="adress">Modern Apartment</div>
+            <div class="money">$ {{item[0].attributes.real_estate_property_price}}</div>
+            <div>
+              {{item[0].attributes.real_estate_property_bedrooms}}
+              <i
+                class="fa fa-bed"
+                aria-hidden="true"
+              ></i>
+              {{item[0].attributes.real_estate_property_bathrooms}}
+              <i
+                class="fa fa-bath"
+                aria-hidden="true"
+              ></i>
+              {{item[0].attributes.real_estate_property_garage}}
+              <i
+                class="fa fa-car"
+                aria-hidden="true"
+              ></i>
+            </div>
           </div>
         </div>
-      </div>
     </div>
 
-    <footer-menu />
+    <footer-menu/>
   </div>
 </template>
 
@@ -124,6 +125,9 @@ export default {
 };
 </script>
 <style scoped lang="less">
+.loading {
+  margin: 20px auto;
+}
 .fa-heart {
   color: red !important;
 }
@@ -206,8 +210,8 @@ export default {
   & /deep/ .van-hairline--top-bottom::after {
     border-width: 0px 0px 1px;
   }
-  & /deep/ [class*=van-hairline]::after{
-    border-color:#ddd;
+  & /deep/ [class*="van-hairline"]::after {
+    border-color: #ddd;
   }
   & /deep/ .van-tabs__line {
     background: #000 !important;
