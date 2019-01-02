@@ -253,10 +253,16 @@ export default {
     Map,
     Mortage
   },
+  created(){
+    this.$toast.loading({
+        mask: false
+      });
+  },
   mounted() {
     getProperty(this.$route.params.pid)
       .then(res => {
         this.ajaxData = res.data.property[0];
+        this.$toast.clear();
       })
       .catch(err => {
         console.log(err);
