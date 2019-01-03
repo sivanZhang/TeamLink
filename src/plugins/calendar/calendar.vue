@@ -156,11 +156,11 @@
   <section class="wh_container">
     <div class="wh_content_all">
       <div class="wh_top_changge">
-        <li @click="PreMonth(myDate,false)">
+        <li @click.passive="PreMonth(myDate,false)">
           <div class="wh_jiantou1"></div>
         </li>
         <li class="wh_content_li">{{dateTop}}</li>
-        <li @click="NextMonth(myDate,false)">
+        <li @click.passive="NextMonth(myDate,false)">
           <div class="wh_jiantou2"></div>
         </li>
       </div>
@@ -172,7 +172,7 @@
         </div>
       </div>
       <div class="wh_content">
-        <div class="wh_content_item" v-for="(item,index) in list" @click="clickDay(item,index)">
+        <div class="wh_content_item" v-for="(item,index) in list" @click.passive="clickDay(item,index)">
           <div class="wh_item_date" v-bind:class="[{ wh_isMark: item.isMark},{wh_other_dayhide:item.otherMonth!=='nowMonth'},{wh_want_dayhide:item.dayHide},{wh_isToday:item.isToday},{wh_chose_day:item.chooseDay},setClass(item)]">
             {{item.id}}
           </div>

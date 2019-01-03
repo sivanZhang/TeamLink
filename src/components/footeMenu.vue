@@ -1,8 +1,8 @@
 <template>
   <ul class="row">
     <li v-for="(item, index) in nav"
-    @touchend="$router.push(item.path)"
-    :key="index" tag='li'>
+    @touchstart="$router.push(item.path)"
+    :key="index">
 		<img class="icons" :src="$route.path.indexOf(item.path)!=-1?item.src_act:item.src" alt="">
 		<div>
 			{{item.name}}

@@ -1,6 +1,6 @@
 <template>
   <div id="agent" class="warp-pb main">
-    <van-nav-bar left-arrow @click-left="$router.go(-1)" :border="true" fixed>
+    <van-nav-bar left-arrow @click-left="$router.go(-1)" :border="true">
       <div class="search-warp" slot="title">
         <i class="fa fa-search" aria-hidden="true" @touchend="search()"></i>
         <input
@@ -12,7 +12,7 @@
         >
       </div>
     </van-nav-bar>
-    <section v-for="(item,index) in agentList" :key="index" @click="getDetail(item[0].agentId)">
+    <section v-for="(item,index) in agentList" :key="index" @click.passive="getDetail(item[0].agentId)">
       <img :src="item[0].image" alt>
       <div class="msg">
         <div class="name">{{item[0].attributes.real_estate_agent_company}}</div>
@@ -26,7 +26,7 @@
         </div>
         <div>
           <span style="white-space:pre"></span>
-          <a :href="`tel://${item[0].attributes.real_estate_agent_office_number}`">
+          <a :href="`tel://${item[0].attributes.real_estate_agent_office_number}`" @click.stop>
             <i class="fa fa-phone" aria-hidden="true"></i>Call
           </a>
         </div>

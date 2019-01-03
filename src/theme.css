@@ -1,218 +1,222 @@
 /* ----------------------------------------复用类----------------------------------- */
 
-
 .warp-pb {
-  /* 有底部菜单的时候 */
-  padding-bottom: 52px;
+    /* 有底部菜单的时候 */
+    padding-bottom: 52px;
 }
 
 .main {
-  /* 如果有头部组件的话 给外层加这个CSS */
-  width: 100%;
-  padding-top: 30px;
-
+    /* 如果有头部组件的话 给外层加这个CSS */
+    width: 100%;
+    padding-top: 30px;
 }
 
-
-
 .c_red {
-  color: rgb(177, 69, 55);
+    color: rgb(177, 69, 55);
 }
 
 .c_orange {
-  color: rgb(255, 87, 34);
+    color: rgb(255, 87, 34);
 }
 
 .price {
-  color: rgb(177, 69, 55);
+    color: rgb(177, 69, 55);
 }
 
 .pull-right {
-  float: right !important;
+    float: right !important;
 }
 
 .text-overflow {
-  display: block;
-  /*内联对象需加*/
-  width: 100%;
-  word-break: keep-all;
-  /* 不换行 */
-  white-space: nowrap;
-  /* 不换行 */
-  overflow: hidden;
-  /* 内容超出宽度时隐藏超出部分的内容 */
-  text-overflow: ellipsis;
-  /* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+    display: block;
+    /*内联对象需加*/
+    width: 100%;
+    word-break: keep-all;
+    /* 不换行 */
+    white-space: nowrap;
+    /* 不换行 */
+    overflow: hidden;
+    /* 内容超出宽度时隐藏超出部分的内容 */
+    text-overflow: ellipsis;
+    /* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
 }
 
 .relative {
-  position: relative;
+    position: relative;
 }
 
 .black-btn {
-  background-color: black;
-  color: #fff;
+    background-color: black;
+    color: #fff;
 }
 
 label {
-  margin-bottom: unset;
-  font-weight: 300;
+    margin-bottom: unset;
+    font-weight: 300;
 }
 
 .mint-header {
-  background: #fff;
-  color: #333;
+    background: #fff;
+    color: #333;
 }
 
 .common-btn {
-  display: inline-block;
-  padding: 6px 12px;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.42857143;
-  text-align: center;
-  vertical-align: middle;
-  -ms-touch-action: manipulation;
-  touch-action: manipulation;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  background-image: none;
-  border: 1px solid transparent;
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
 }
 
 .fs {
-  font-size: 12px;
+    font-size: 12px;
 }
 
 .header h1 {
-  margin: 0;
+    margin: 0;
 }
 
 .header .mint-button {
-  height: 16px;
+    height: 16px;
 }
 
 .header a {
-  color: inherit;
+    color: inherit;
 }
 
 .header {
-  background-color: #fff;
-  position: fixed !important;
-  top: 0;
-  width: 100%;
-  z-index: 200;
-  height: 30px !important;
+    background-color: #fff;
+    position: fixed !important;
+    top: 0;
+    width: 100%;
+    z-index: 200;
+    height: 30px !important;
 }
 
 
 /* ----------------------------------------更改默认样式----------------------------------- */
+
 img {
-  object-fit: cover;
+    object-fit: cover;
 }
 
 html {
-  color: #000;
-  font-family: 'SFNSDisplay-Regular'
+    color: #000;
+    font-family: 'SFNSDisplay-Regular'
+}
+
+body {
+    user-select: none;
 }
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-  /* 有事件监听的元素被点击的时候会被高亮显示 */
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    /* 有事件监听的元素被点击的时候会被高亮显示 */
 }
 
 .common-btn[disabled],
 #send_code[disabled] {
-  cursor: not-allowed;
-  filter: alpha(opacity=65);
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  opacity: .65;
+    cursor: not-allowed;
+    filter: alpha(opacity=65);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    opacity: .65;
 }
 
 .common-btn:active {
-  color: initial;
+    color: initial;
 }
 
 body {
-  margin: 0px !important;
+    margin: 0px !important;
 }
 
 ul {
-  padding: 0px;
-  margin: 0px;
-  list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
 }
 
 a:link,
 a:visited,
 a:hover,
 a:active {
-  text-decoration: none;
-  color: inherit;
+    text-decoration: none;
+    color: inherit;
 }
 
 .form-control:focus {
-  box-shadow: unset;
+    box-shadow: unset;
 }
 
 input {
-  /* IOs删除input内阴影 */
-  -webkit-appearance: none;
+    /* IOs删除input内阴影 */
+    -webkit-appearance: none;
 }
 
+
 /* iview */
+
 .ivu-select-selection,
 .ivu-select-dropdown {
-  border-radius: 0px !important;
+    border-radius: 0px !important;
 }
 
 .container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .row {
-  margin-right: -15px;
-  margin-left: -15px;
+    margin-right: -15px;
+    margin-left: -15px;
 }
 
 .text-center {
-  text-align: center
+    text-align: center
 }
 
 .text-right {
-  text-align: right
+    text-align: right
 }
 
 .text-left {
-  text-align: left
+    text-align: left
 }
 
 img {
-  vertical-align: middle;
+    vertical-align: middle;
 }
+
 
 /* vant */
 
 .van-nav-bar--fixed,
 .van-nav-bar {
-  height: 30px;
+    height: 30px;
 }
 
 .van-nav-bar {
-  line-height: 30px;
+    line-height: 30px;
 }
 
 .van-nav-bar .van-icon {
-  color: #000;
+    color: #000;
 }

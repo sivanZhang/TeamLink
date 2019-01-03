@@ -23,7 +23,7 @@
         placeholder="Password"
         style="background-color:white"
       >
-       <Button :loading="loading" class="teamlinklogin"  @click="submit" :disabled="isDisabled" ghost>Log in</Button>
+       <Button :loading="loading" class="teamlinklogin"  @click.passive="submit" :disabled="isDisabled" ghost>Log in</Button>
       <!--
       <div class="row">
         <router-link to="" class="col-xs-6 blue-link text-left">Create an account</router-link> 

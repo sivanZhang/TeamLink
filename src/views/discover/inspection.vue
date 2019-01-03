@@ -7,7 +7,7 @@
           <div
             :key="item.datenumber"
             :class="{ active: classactive == item.weekname,plan: item.active,today:index==0 }"
-            @click="getAjax(item.Sdate),classactive = item.weekname"
+            @click.passive="getAjax(item.Sdate),classactive = item.weekname"
           >
             <div>{{item.weekname}}</div>
             {{item.datenumber}}

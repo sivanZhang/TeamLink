@@ -8,7 +8,7 @@
         <div>E:{{agentData[0].attributes.real_estate_agent_email}}</div>
         <div>M:{{agentData[0].attributes.real_estate_agent_mobile_number}}</div>
         <div class="btn-groups">
-          <div @click="$router.push('/inboxDetails')">
+          <div @click.passive="$router.push('/inboxDetails')">
             <i class="fa fa-commenting" aria-hidden="true"></i>Chat
           </div>
           <div>
@@ -33,7 +33,7 @@
       </div>
 
 
-      <div class="p-data" v-for="(item,index) in properties" @click="target(item[0].propertyId)" :key="index">
+      <div class="p-data" v-for="(item,index) in properties" @click.passive="target(item[0].propertyId)" :key="index">
         <div class="left">
           <img :src="item[0].images[0]" alt>
           <i class="fa fa-heart-o" aria-hidden="true"></i>

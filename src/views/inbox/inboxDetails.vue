@@ -41,7 +41,7 @@
     <div class="enter">
       <img src="@/assets/icons/yuyin1.svg" alt>
       <input @keyup.enter="send" type="text" v-model="enterContent" class="inp"/>
-      <img @click="send" src="@/assets/icons/send1.svg" alt>
+      <img @click.passive="send" src="@/assets/icons/send1.svg" alt>
     </div>
   </div>
 </template>

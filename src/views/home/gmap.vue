@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-button @click="show2 = true;">{{ ('button2') }}</van-button>
+    <van-button @click.passive="show2 = true;">{{ ('button2') }}</van-button>
 
       <van-popup
         v-model="show2"

@@ -9,11 +9,7 @@ Vue.use(Vant);
 import { Locale } from 'vant';
 import enUS from 'vant/lib/locale/lang/en-US';
 Locale.use('en-US', enUS);
-//iView框架
-/* import iView from 'iview';
-Vue.use(iView)
- */
-//iView国际化
+//iView
 import locale from 'iview/dist/locale/en-US';
 Vue.use({ locale });
 import 'iview/dist/styles/iview.css';
@@ -24,9 +20,6 @@ Vue.component('Input', Input);
 import '@/theme.css'
 import 'animate.css'
 import 'font-awesome/css/font-awesome.min.css'
-// 解决移动端300毫秒延迟
-import FastClick from 'fastclick'
-FastClick.attach(document.body);
 
 //设置为 false 以阻止 vue 在启动时生成生产提示。
 Vue.config.productionTip = false;
@@ -56,7 +49,6 @@ Vue.use(VueGoogleMaps, {
     // instead of going through Vue templates (e.g. `<GmapMap @zoom_changed="someFunc">`)
     // you might need to turn this on.
     autobindAllEvents: false,
-
     // If you want to manually install components, e.g.
     // import {GmapMarker} from 'vue2-google-maps/src/components/marker'
     // Vue.component('GmapMarker', GmapMarker)

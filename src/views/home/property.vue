@@ -67,7 +67,7 @@
       </div>
       <div>
         City:
-        <span>{{`Chicago`}}</span>
+        <span>{{ajaxData.attributes.property_address_country}}</span>
       </div>
     </section>
     <section class="card">
@@ -109,7 +109,7 @@
       </div>
       <div class="btn-groups">
         <div>
-          <i class="fa fa-commenting" aria-hidden="true" @click="$router.push('/inboxDetails')"></i>Chat
+          <i class="fa fa-commenting" aria-hidden="true" @click.passive="$router.push('/inboxDetails')"></i>Chat
         </div>
         <div>
           <span style="white-space:pre"></span>
@@ -125,7 +125,7 @@
         <button
           v-for="(tab,index) in tabs"
           :class="[{ active: currentTab == tab.name },'tab-button','common-btn']"
-          @click="currentTab = tab.name"
+          @click.passive="currentTab = tab.name"
           :key="index"
         >{{ tab.name }}</button>
       </div>
@@ -155,7 +155,7 @@
     <section class="feature">
       <div>
         <div>
-          <button @click="collections(ajaxData.propertyId)">
+          <button @click.passive="collections(ajaxData.propertyId)">
             <i v-if="ajaxData.collection=='No'" class="fa fa-heart-o" aria-hidden="true"></i>
             <i v-else class="fa fa-heart" aria-hidden="true"></i>
           </button>
@@ -165,7 +165,7 @@
           </button>
           -->
         </div>
-        <button class="black-btn" @click="$router.push('/home/property/enquiry')">Make an Enquiry</button>
+        <button class="black-btn" @click.passive="$router.push('/home/property/enquiry')">Make an Enquiry</button>
       </div>
     </section>
     <footer-menu/>

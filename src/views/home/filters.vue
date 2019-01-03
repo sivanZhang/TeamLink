@@ -10,7 +10,7 @@
         <div @touchend="clear">Clear</div>
       </header>
       <div class="tab-group row">
-        <button v-for="(tab,index) in tabs" :key="index" :class="[{ active: currentTab === tab.path },'tab-button','common-btn']" @click="currentTab = tab.path">
+        <button v-for="(tab,index) in tabs" :key="index" :class="[{ active: currentTab === tab.path },'tab-button','common-btn']" @click.passive="currentTab = tab.path">
           {{ tab.name }}
         </button>
       </div>

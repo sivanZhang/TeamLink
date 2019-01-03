@@ -19,7 +19,7 @@
       <textarea v-model="content" name id cols="30" rows="10"></textarea>
     </section>
     <div class="container row">
-      <button class="black-btn common-btn" @click="confirm">Submit</button>
+      <button class="black-btn common-btn" @click.passive="confirm">Submit</button>
     </div>
   </div>
 </template>

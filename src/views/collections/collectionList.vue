@@ -5,7 +5,7 @@
       v-for="(item,index) in dataList"
       :key="index"
       class="collections-item"
-      @click="target(item[0].propertyId)"
+      @click.passive="target(item[0].propertyId)"
     >
       <div class="item-img">
         <div class="img_warp">

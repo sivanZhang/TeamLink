@@ -11,7 +11,7 @@
             :title="tab.name"
           >
             <div class="relative">
-              <i class="fa fa-search" @click="search(tab.name)" aria-hidden="true"></i>
+              <i class="fa fa-search" @click.passive="search(tab.name)" aria-hidden="true"></i>
               <input
                 type="search"
                 v-model="searchText"
@@ -30,7 +30,7 @@
 <div
           class="p-data"
           v-for="(item,index) in ajaxData"
-          @click="target(item[0].propertyId)"
+          @click.passive="target(item[0].propertyId)"
           :key="index"
         >
           <div class="left">

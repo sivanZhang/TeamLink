@@ -60,7 +60,7 @@
     <div class="selectDate">{{SelectDate||new Date().toDateString()}}</div>
     <div v-if="isPlan" class="nothing">nothing planned yet</div>
     <template v-else>
-      <div v-for="(item,index) in planeList" :key="index" class="plan" @click="target(item.propertyId)">
+      <div v-for="(item,index) in planeList" :key="index" class="plan" @click.passive="target(item.propertyId)">
         <div class="plan-date text-center">
           {{item.date}}
           <br>
