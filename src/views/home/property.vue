@@ -62,12 +62,8 @@
         <span>{{`2000 pre quatre`}}</span>
       </div>
       <div>
-        Region:
-        <span>{{`Epping`}}</span>
-      </div>
-      <div>
-        City:
-        <span>{{ajaxData.attributes.property_address_country}}</span>
+        address:
+        <span>{{ajaxData.attributes.real_estate_property_address}}</span>
       </div>
     </section>
     <section class="card">
