@@ -30,7 +30,7 @@
         :to="{name:'property',params:{pid:item[0].propertyId}}"
       >
         <div class="suggest-title">
-          <i class="fa fa-clock-o" aria-hidden="true"></i>
+          <i class="fa fa-clock-o" aria-hidden="true"></i> {{item[0].inspections_calendar[0].inspection.split(' ')[1]}} {{item[0].inspections_calendar[0].inspection.split(' ')[2]}} {{item[0].inspections_calendar[0].inspection.split(' ')[3]}}
         </div>
         <div class="suggest-details">
           <img :src="item[0].images[0]" alt>
