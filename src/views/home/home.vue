@@ -23,7 +23,6 @@
         </van-tabs>
       </div>
     </div>
-
     <h4>Recently Viewed</h4>
     <div class="data-warp">
       <van-loading class="loading"/>

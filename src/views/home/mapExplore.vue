@@ -99,6 +99,7 @@
       <div v-if="AjaxData.length" class="p-data-warp">
         <div class="clock">
           <i class="fa fa-clock-o" aria-hidden="true"></i>
+          {{clockTime}}
         </div>
         <div class="p-data" @click="target(AjaxData[0][0].propertyId)">
           <div class="left">
@@ -108,7 +109,7 @@
           <div class="right">
             <div>{{AjaxData[0][0].title}}</div>
             <div class="adress">Modern Apartment</div>
-            <div class="money">$ {{AjaxData[0][0].attributes.real_estate_property_price}}</div>
+            <div class="money">From $ {{AjaxData[0][0].attributes.real_estate_property_price}}</div>
             <div>
               {{AjaxData[0][0].attributes.real_estate_property_bedrooms}}
               <i
@@ -142,8 +143,7 @@ export default {
   data() {
     return {
       isShow: false,
-      postedTime: "",
-      /* filtersShow: false, */
+      clockTime:'',
       searchText: "",
       AjaxData: [],
       keyword: "",
@@ -212,6 +212,10 @@ export default {
             lng: parseFloat(this.AjaxData[0][0].location[1])
           };
           this.isShow = true;
+          this.AjaxData.forEach(item=>{
+            item[0].inspections_calendar?this.clockTime=`${item[0].inspections_calendar[0].inspection.split(' ')[1]} ${item[0].inspections_calendar[0].inspection.split(' ')[2]} ${item[0].inspections_calendar[0].inspection.split(' ')[3]}`:
+            this.clockTime=`Today 1:00 PM - 5:00 PM`
+          })
         })
         .catch(err => {
           this.$toast.clear();

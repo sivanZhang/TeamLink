@@ -27,7 +27,7 @@
       >
         <div class="suggest-title">
           <i class="fa fa-clock-o" aria-hidden="true"></i>
-          {{postedTime}}
+          {{clockTime}}
         </div>
         <div class="suggest-details">
           <img :src="item[0].images[0]" alt>
@@ -41,7 +41,7 @@
         </div>
         <div class="container">
           <h5>Modern Apartment</h5>
-          <div class="price">${{item[0].attributes.real_estate_property_price}}</div>
+          <div class="price">From ${{item[0].attributes.real_estate_property_price}}</div>
           <div class="outfit">
             {{item[0].attributes.real_estate_property_bedrooms}}
             <i
@@ -75,7 +75,6 @@ export default {
   data() {
     return {
       isShow: false,
-      postedTime: "",
       /* filtersShow: false, */
       searchText: "",
       axiosData: "",
@@ -99,6 +98,10 @@ export default {
         .then(res => {
           this.axiosData = res.data.properties.concat();
           this.keyword = keyword;
+          this.axiosData.forEach(item=>{
+            item[0].inspections_calendar?this.clockTime=`${item[0].inspections_calendar[0].inspection.split(' ')[1]} ${item[0].inspections_calendar[0].inspection.split(' ')[2]} ${item[0].inspections_calendar[0].inspection.split(' ')[3]}`:
+            this.clockTime=`Today 1:00 PM - 5:00 PM`
+          })
         })
         .catch(err => {
           console.log(err);
@@ -110,6 +113,10 @@ export default {
   },
   created() {
     this.axiosData = this.$store.state.viewList;
+    this.axiosData.forEach(item=>{
+            item[0].inspections_calendar?this.clockTime=`${item[0].inspections_calendar[0].inspection.split(' ')[1]} ${item[0].inspections_calendar[0].inspection.split(' ')[2]} ${item[0].inspections_calendar[0].inspection.split(' ')[3]}`:
+            this.clockTime=`Today 1:00 PM - 5:00 PM`
+          })
     this.keyword = this.$store.state.keyword;
     if(this.axiosData){
       this.isShow = true;
