@@ -50,8 +50,8 @@
         <span>{{`Apt`}}</span>
       </div>
       <div>
-        Land Size:
-        <span>{{ajaxData.attributes.real_estate_property_land}}{{ajaxData.attributes.real_estate_property_land_postfix}}</span>
+        Building Size:
+        <span>square meters</span>
       </div>
       <div>
         Deposit:
